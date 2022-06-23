@@ -12,9 +12,12 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import SearchIcon from "@mui/icons-material/Search";
 
 const HeaderText = styled("h2")(({ theme }) => ({
-  color: "#fff",
+  color: "#000",
   fontWeight: "900",
   fontSize: "23px",
   [theme.breakpoints.down("md")]: {
@@ -24,7 +27,7 @@ const HeaderText = styled("h2")(({ theme }) => ({
 }));
 
 const StyledToolBar = styled(Toolbar)({
-  width: "90%",
+  width: "70%",
   margin: "auto",
   display: "flex",
   justifyContent: "space-between",
@@ -32,17 +35,24 @@ const StyledToolBar = styled(Toolbar)({
 });
 
 const StyledMenuButton = styled(Button)({
-  color: "#fff",
-  fontWeight: 700,
-  fontSize: "13px",
+  color: "#000",
+  fontWeight: 600,
+  fontSize: "15px",
 });
 
 const StyledLoginButton = styled(Button)({
-  color: "#333",
+  color: "#fff",
   fontWeight: 800,
-  backgroundColor: "#fff",
+  backgroundColor: "#416cb7",
   width: "120px",
-  "&:hover": { backgroundColor: "#2f53a5", color: "white" },
+  "&:hover": { backgroundColor: "#2f53a5", color: "orange" },
+});
+
+const StyledAppBAr = styled(AppBar)({
+  backgroundColor: "#fff",
+  boxShadow: "none",
+  position: "fixed",
+  paddingTop: "10px",
 });
 
 const Navbar = () => {
@@ -104,16 +114,11 @@ const Navbar = () => {
 
   return (
     <div>
-      <AppBar
-        position="fixed"
-        sx={{
-          backgroundColor: "#07163a",
-          boxShadow: "none",
-          position: "fixed",
-        }}
-      >
+      <StyledAppBAr position="fixed">
         <StyledToolBar>
-          <HeaderText>Consulta.io</HeaderText>
+          <HeaderText>
+            <span style={{ color: "orange", fontSize: "28px" }}>Net</span>Porch
+          </HeaderText>
           <Box direction="row" sx={{ display: { xs: "none", md: "block" } }}>
             <StyledMenuButton onClick={() => navigate("/")} variant="body1">
               Home
@@ -122,27 +127,36 @@ const Navbar = () => {
               onClick={() => navigate("/services")}
               variant="body1"
             >
-              Services
+              Shop
             </StyledMenuButton>
             <StyledMenuButton onClick={() => navigate("/faq")} variant="body1">
-              Question & Answer
+              About
             </StyledMenuButton>
             <StyledMenuButton
               onClick={() => navigate("/consult")}
               variant="body1"
             >
-              Consultation
+              Product
             </StyledMenuButton>
             <StyledMenuButton onClick={() => navigate("/blog")} variant="body1">
-              Articles
+              Contact
             </StyledMenuButton>
           </Box>
           <Box>
-            <StyledLoginButton
+            <IconButton
               onClick={() => navigate("/login")}
-              sx={{ display: { xs: "none", md: "block" } }}
+              sx={{ color: "black" }}
             >
-              Log in
+              <SearchIcon />
+            </IconButton>
+            <IconButton
+              onClick={() => navigate("/login")}
+              sx={{ color: "black" }}
+            >
+              <ShoppingCartIcon />
+            </IconButton>
+            <StyledLoginButton onClick={() => navigate("/login")}>
+              Login
             </StyledLoginButton>
             <IconButton
               onClick={toggleDrawer("left", true)}
@@ -152,7 +166,7 @@ const Navbar = () => {
             </IconButton>
           </Box>
         </StyledToolBar>
-      </AppBar>
+      </StyledAppBAr>
       <Drawer open={state["left"]} onClose={toggleDrawer("left", false)}>
         {list("left")}
       </Drawer>
