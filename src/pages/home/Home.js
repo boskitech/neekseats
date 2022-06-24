@@ -1,12 +1,14 @@
 import { Button, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import BannerImg from "../../assets/img/banner_img_6.png";
+import SpecImg from "../../assets/img/banner_img_11.png";
 import WatchLogo from "../../assets/img/watch_img_23.png";
 import ProgressBar from "../../assets/img/progressBar.png";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
+import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 
 //-------------------------------Welcome Banner Styles--------------------------------
 
@@ -138,39 +140,166 @@ const Home = () => {
 
   const FeaturesBar = styled(Grid)(({ theme }) => ({
     width: "100%",
-    height: "120px",
+    height: "110px",
     color: "black",
     boxShadow: "0 0 20px #dfdfdf",
     padding: "20px",
   }));
 
   const FeaturesLogo = styled(Grid)(({ theme }) => ({
-    width: "80px",
-    height: "80px",
+    width: "70px",
+    height: "70px",
     borderRadius: "5px",
   }));
 
   const FeaturesShippingIcon = styled(LocalShippingOutlinedIcon)(
     ({ theme }) => ({
-      width: "60px",
-      height: "60px",
+      width: "50px",
+      height: "50px",
       padding: "10px",
       color: "#5eb3d4",
     })
   );
 
   const FeaturesSupportIcon = styled(CallOutlinedIcon)(({ theme }) => ({
-    width: "60px",
-    height: "60px",
+    width: "50px",
+    height: "50px",
     padding: "10px",
     color: "#d87676",
   }));
 
   const FeaturesPaymentIcon = styled(SecurityOutlinedIcon)(({ theme }) => ({
-    width: "60px",
-    height: "60px",
+    width: "50px",
+    height: "50px",
     padding: "10px",
     color: "#afae4f ",
+  }));
+
+  const StyledFeaturesHeading = styled("div")(({ theme }) => ({
+    fontSize: "18px",
+    fontWeight: 600,
+    color: "#000",
+  }));
+
+  const StyledFeaturesText = styled("div")(({ theme }) => ({
+    fontSize: "13px",
+    fontWeight: 400,
+    color: "#666",
+    marginTop: "7px",
+  }));
+
+  //-------------------------------Specs Bar Styles--------------------------------
+
+  const StyledTopSpecs = styled("div")(({ theme }) => ({
+    width: "100%",
+    marginTop: "50px",
+  }));
+
+  const StyledTopSpecsHeader = styled("div")(({ theme }) => ({
+    width: "50%",
+    fontSize: "30px",
+    textAlign: "center",
+    fontWeight: 600,
+    color: "#000",
+    margin: "auto",
+  }));
+
+  const StyledTopSpecsText = styled("div")(({ theme }) => ({
+    width: "60%",
+    fontSize: "15px",
+    textAlign: "center",
+    fontWeight: 400,
+    color: "#666",
+    margin: "18px auto",
+    lineHeight: "18px",
+  }));
+
+  const StyledTrackText = styled("div")(({ theme }) => ({
+    fontSize: "19px",
+    fontWeight: 400,
+    color: "#f0593e",
+    margin: "5px auto",
+  }));
+
+  const StyledTrackHeader = styled("div")(({ theme }) => ({
+    fontSize: "25px",
+    fontWeight: 500,
+    color: "#000",
+  }));
+
+  const StyledTrackList = styled("div")(({ theme }) => ({
+    width: "170px",
+    fontSize: "14px",
+    fontWeight: 440,
+    color: "#222",
+    marginTop: "15px",
+  }));
+
+  const StyledTrackIcon = styled(CheckCircleOutlineOutlinedIcon)(
+    ({ theme }) => ({
+      fontSize: "14px",
+      fontWeight: 450,
+      float: "right",
+      color: "#f0593e",
+    })
+  );
+
+  const StyledTracKBuyButton = styled(Button)(({ theme }) => ({
+    fontSize: "13px",
+    fontWeight: 450,
+    color: "#b43e3a",
+    marginTop: "27px",
+    border: "2px solid #b43e3a",
+  }));
+
+  const StyledTracKBuyNowButton = styled(Button)(({ theme }) => ({
+    fontSize: "13px",
+    fontWeight: 450,
+    color: "#fff",
+    marginTop: "27px",
+    background: "#b43e3a",
+  }));
+
+  const StyledTopSpecImage = styled("img")(({ theme }) => ({
+    width: "500px",
+    height: "auto",
+    margin: "auto",
+  }));
+
+  //-------------------------------Popular Products Styles--------------------------------
+
+  const StyledPopularProducts = styled("div")(({ theme }) => ({
+    width: "100%",
+    marginTop: "150px",
+  }));
+
+  const StyledPopularProductsHeader = styled("div")(({ theme }) => ({
+    fontSize: "30px",
+    fontWeight: 600,
+    color: "#000",
+    margin: "auto",
+  }));
+
+  const StyledPopularProductsText = styled("div")(({ theme }) => ({
+    fontSize: "15px",
+    fontWeight: 400,
+    color: "#666",
+    margin: "8px auto",
+    lineHeight: "18px",
+  }));
+
+  const StyledPopularProductsImage = styled("img")(({ theme }) => ({
+    width: "500px",
+    height: "auto",
+    margin: "auto",
+  }));
+
+  const StyledPopularProductsButton = styled(Button)(({ theme }) => ({
+    fontSize: "13px",
+    fontWeight: 450,
+    color: "#b43e3a",
+    marginTop: "27px",
+    border: "2px solid #b43e3a",
   }));
 
   return (
@@ -238,25 +367,138 @@ const Home = () => {
           </Grid>
         </Grid>
       </StyledBanner>
+      {/* features  bar------------------------------------------------------ */}
       <FeaturesBar>
         <Grid container>
-          <Grid item md={4}>
-            <FeaturesLogo sx={{ background: "#c2e7f0" }}>
-              <FeaturesShippingIcon />
-            </FeaturesLogo>
+          <Grid item md={4} xs={12}>
+            <Grid container direction="row">
+              <Grid item md={4}>
+                <FeaturesLogo sx={{ background: "#c2e7f0" }}>
+                  <FeaturesShippingIcon />
+                </FeaturesLogo>
+              </Grid>
+              <Grid item md={8}>
+                <StyledFeaturesHeading>Free Shipping</StyledFeaturesHeading>
+                <StyledFeaturesText>
+                  Free shipping on most orders
+                </StyledFeaturesText>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item md={4}>
-            <FeaturesLogo sx={{ background: "#fdd4d4" }}>
-              <FeaturesSupportIcon />
-            </FeaturesLogo>
+          <Grid item md={4} xs={12}>
+            <Grid container>
+              <Grid item md={4}>
+                <FeaturesLogo sx={{ background: "#fdd4d4" }}>
+                  <FeaturesSupportIcon />
+                </FeaturesLogo>
+              </Grid>
+              <Grid item md={8}>
+                <StyledFeaturesHeading>24 Hours Support</StyledFeaturesHeading>
+                <StyledFeaturesText>
+                  Contact at every hour of the day
+                </StyledFeaturesText>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item md={4}>
-            <FeaturesLogo sx={{ background: "#f1e8b0" }}>
-              <FeaturesPaymentIcon />
-            </FeaturesLogo>
+          <Grid item md={4} xs={12}>
+            <Grid container>
+              <Grid item md={4}>
+                <FeaturesLogo sx={{ background: "#f1e8b0" }}>
+                  <FeaturesPaymentIcon />
+                </FeaturesLogo>
+              </Grid>
+              <Grid item md={8}>
+                <StyledFeaturesHeading>Secured Payment</StyledFeaturesHeading>
+                <StyledFeaturesText>
+                  Highly secured payment gateway
+                </StyledFeaturesText>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </FeaturesBar>
+      {/* top specs  bar------------------------------------------------------ */}
+      <StyledTopSpecs>
+        <StyledTopSpecsHeader>Top Features Of The Watch</StyledTopSpecsHeader>
+        <StyledTopSpecsText>
+          The watch has many features ranging from tracking the wearers movement
+          to counting the number steps you make and saving so that you can
+          access it whenever you like.
+        </StyledTopSpecsText>
+        <Grid container sx={{ marginTop: "50px" }}>
+          <Grid item md={2.5} xs={12}>
+            <StyledTrackHeader>Unic Track</StyledTrackHeader>
+            <StyledTrackText>$55.99</StyledTrackText>
+            <StyledTrackList>
+              Fitness Tracker
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Heart Rate Monitor
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Battery
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Alarm Clock
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Sports Tracker
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTracKBuyButton variant="outlined">
+              Buy Now
+            </StyledTracKBuyButton>
+          </Grid>
+          <Grid item md={7} xs={12}>
+            <StyledTopSpecImage src={SpecImg} />
+          </Grid>
+          <Grid item md={2.5} xs={12}>
+            <StyledTrackHeader>Smart Track</StyledTrackHeader>
+            <StyledTrackText>$45.99</StyledTrackText>
+            <StyledTrackList>
+              Fitness Tracker
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Heart Rate Monitor
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Battery
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Alarm Clock
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Sports Tracker
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTracKBuyNowButton>Buy Now</StyledTracKBuyNowButton>
+          </Grid>
+        </Grid>
+      </StyledTopSpecs>
+      {/* Popular Products  bar------------------------------------------------------ */}
+      <StyledPopularProducts>
+        <StyledPopularProductsHeader>
+          Popular Products
+        </StyledPopularProductsHeader>
+        <StyledPopularProductsText>
+          Most viewed products across our site
+        </StyledPopularProductsText>
+        <Grid container sx={{ marginTop: "50px" }}>
+          <Grid item md={2.5} xs={12}></Grid>
+          <Grid item md={7} xs={12}>
+            <StyledPopularProductsImage />
+          </Grid>
+          <Grid item md={2.5} xs={12}></Grid>
+        </Grid>
+      </StyledPopularProducts>
     </HomeBody>
   );
 };
