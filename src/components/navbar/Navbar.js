@@ -12,7 +12,7 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -26,13 +26,16 @@ const HeaderText = styled("h2")(({ theme }) => ({
   },
 }));
 
-const StyledToolBar = styled(Toolbar)({
+const StyledToolBar = styled(Toolbar)(({ theme }) => ({
   width: "70%",
   margin: "auto",
   display: "flex",
   justifyContent: "space-between",
   boxShadow: "0px",
-});
+  [theme.breakpoints.up("xl")]: {
+    width: "60%",
+  },
+}));
 
 const StyledMenuButton = styled(Button)({
   color: "#000",
@@ -153,7 +156,7 @@ const Navbar = () => {
               onClick={() => navigate("/login")}
               sx={{ color: "black" }}
             >
-              <ShoppingCartIcon />
+              <ShoppingCartOutlinedIcon />
             </IconButton>
             <StyledLoginButton onClick={() => navigate("/login")}>
               Login
