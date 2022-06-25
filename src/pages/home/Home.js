@@ -6,12 +6,14 @@ import WatchLogo from "../../assets/img/watch_img_23.png";
 import Watch1 from "../../assets/img/watch_img_21.png";
 import Watch2 from "../../assets/img/watch_img_19.png";
 import Watch3 from "../../assets/img/watch_img_26.png";
+import BestWatch from "../../assets/img/watch_img_31.png";
 import ProgressBar from "../../assets/img/progressBar.png";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
+import Rating from "@mui/material/Rating";
 
 //-------------------------------Welcome Banner Styles--------------------------------
 
@@ -269,7 +271,7 @@ const Home = () => {
     margin: "auto",
   }));
 
-  //-------------------------------Popular Products Styles--------------------------------
+  //----------------------Popular Products Styles--------------------------------
 
   const StyledPopularProducts = styled("div")(({ theme }) => ({
     width: "100%",
@@ -320,6 +322,7 @@ const Home = () => {
   const StyledPopularProductsDivText = styled("div")(({ theme }) => ({
     fontSize: "16px",
     fontWeight: 450,
+    textAlign: "center",
     color: "red",
     marginTop: "10px",
   }));
@@ -327,17 +330,65 @@ const Home = () => {
   const StyledStrikedProductsDivText = styled("span")(({ theme }) => ({
     fontSize: "16px",
     fontWeight: 450,
+    textAlign: "center",
     color: "#888",
     marginLeft: "8px",
     textDecoration: "line-through",
   }));
 
-  const StyledPopularProductsButton = styled(Button)(({ theme }) => ({
-    fontSize: "10px",
-    fontWeight: 450,
-    color: "#b43e3a",
-    marginTop: "27px",
-    border: "2px solid #b43e3a",
+  // const StyledPopularProductsButton = styled(Button)(({ theme }) => ({
+  //   fontSize: "10px",
+  //   fontWeight: 450,
+  //   color: "#b43e3a",
+  //   marginTop: "27px",
+  //   border: "2px solid #b43e3a",
+  // }));
+
+  //----------------------Best Time Styles--------------------------------
+
+  const StyledBestTime = styled("div")(({ theme }) => ({
+    width: "100%",
+    marginTop: "100px",
+  }));
+
+  const StyledBestTimeHeader = styled("div")(({ theme }) => ({
+    fontSize: "35px",
+    fontWeight: 600,
+    color: "#000",
+    lineHeight: "45px",
+    margin: "30px auto 0 auto",
+  }));
+
+  const StyledBestTimeText = styled("div")(({ theme }) => ({
+    fontSize: "15px",
+    fontWeight: 400,
+    color: "#666",
+    margin: "10px auto",
+    lineHeight: "18px",
+  }));
+
+  const StyledBestTimeDiv = styled("div")(({ theme }) => ({
+    width: "70%",
+    height: "auto",
+    padding: "30px 20px",
+    textAlign: "center",
+    borderRadius: "20px",
+    border: "25px solid #e9a135",
+    boxShadow: "0 0 10px #dfdfdf",
+    backgroundColor: "white",
+  }));
+
+  const StyledBestTimeImage = styled("img")(({ theme }) => ({
+    width: "250px",
+    height: "auto",
+    margin: "auto",
+  }));
+
+  const StyledBestTimeButton = styled(Button)(({ theme }) => ({
+    fontSize: "13px",
+    color: "white",
+    marginTop: "10px",
+    backgroundColor: "#b43e3a",
   }));
   return (
     <HomeBody>
@@ -541,9 +592,12 @@ const Home = () => {
                   $179.99
                 </StyledStrikedProductsDivText>
               </StyledPopularProductsDivText>
-              <StyledPopularProductsButton>
-                View Collection
-              </StyledPopularProductsButton>
+              <Rating
+                name="read-only"
+                value={4}
+                readOnly
+                sx={{ margin: "10px auto" }}
+              />
             </StyledPopularProductsDiv>
           </Grid>
           <Grid item md={4} xs={12}>
@@ -558,9 +612,12 @@ const Home = () => {
                   $249.99
                 </StyledStrikedProductsDivText>
               </StyledPopularProductsDivText>
-              <StyledPopularProductsButton>
-                View Collection
-              </StyledPopularProductsButton>
+              <Rating
+                name="read-only"
+                value={5}
+                readOnly
+                sx={{ margin: "10px auto" }}
+              />
             </StyledPopularProductsDiv>
           </Grid>
           <Grid item md={4} xs={12}>
@@ -575,13 +632,36 @@ const Home = () => {
                   $349.99
                 </StyledStrikedProductsDivText>
               </StyledPopularProductsDivText>
-              <StyledPopularProductsButton>
-                View Collection
-              </StyledPopularProductsButton>
+              <Rating
+                name="read-only"
+                value={5}
+                readOnly
+                sx={{ margin: "10px auto" }}
+              />
             </StyledPopularProductsDiv>
           </Grid>
         </Grid>
       </StyledPopularProducts>
+      {/* Best Time  bar------------------------------------------------------ */}
+      <StyledBestTime>
+        <Grid container spacing={7}>
+          <Grid item md={6} xs={12}>
+            <StyledBestTimeDiv>
+              <StyledBestTimeImage src={BestWatch} />
+            </StyledBestTimeDiv>
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <StyledBestTimeHeader>
+              The Best Product For Your Best Time
+            </StyledBestTimeHeader>
+            <StyledBestTimeText>
+              Time awaits no man. Why not take care of time with our smart wrist
+              watches. The most affordable you can get anywhere across the net.
+            </StyledBestTimeText>
+            <StyledBestTimeButton>See Products</StyledBestTimeButton>
+          </Grid>
+        </Grid>
+      </StyledBestTime>
     </HomeBody>
   );
 };

@@ -13,7 +13,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 
 const HeaderText = styled("h2")(({ theme }) => ({
@@ -48,7 +48,8 @@ const StyledLoginButton = styled(Button)({
   fontWeight: 800,
   backgroundColor: "#416cb7",
   width: "120px",
-  "&:hover": { backgroundColor: "#2f53a5", color: "orange" },
+  marginLeft: "10px",
+  "&:hover": { backgroundColor: "#2f53a5", color: "white" },
 });
 
 const StyledAppBAr = styled(AppBar)({
