@@ -1,8 +1,11 @@
 import { Button, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import BannerImg from "../../assets/img/banner_img_6.png";
-import SpecImg from "../../assets/img/banner_img_11.png";
+import SpecImg from "../../assets/img/watch_img_6.png";
 import WatchLogo from "../../assets/img/watch_img_23.png";
+import Watch1 from "../../assets/img/watch_img_21.png";
+import Watch2 from "../../assets/img/watch_img_19.png";
+import Watch3 from "../../assets/img/watch_img_26.png";
 import ProgressBar from "../../assets/img/progressBar.png";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
@@ -270,7 +273,7 @@ const Home = () => {
 
   const StyledPopularProducts = styled("div")(({ theme }) => ({
     width: "100%",
-    marginTop: "150px",
+    marginTop: "100px",
   }));
 
   const StyledPopularProductsHeader = styled("div")(({ theme }) => ({
@@ -288,20 +291,54 @@ const Home = () => {
     lineHeight: "18px",
   }));
 
+  const StyledPopularProductsDiv = styled("div")(({ theme }) => ({
+    width: "94%",
+    height: "auto",
+    padding: "10px",
+    textAlign: "center",
+    borderRadius: "5px",
+    boxShadow: "0 0 10px #dfdfdf",
+    backgroundColor: "white",
+    marginTop: "20px",
+  }));
+
   const StyledPopularProductsImage = styled("img")(({ theme }) => ({
-    width: "500px",
+    width: "200px",
     height: "auto",
     margin: "auto",
   }));
 
+  const StyledPopularProductsDivHeader = styled("div")(({ theme }) => ({
+    fontSize: "18px",
+    fontWeight: 800,
+    color: "black",
+    marginTop: "17px",
+    textAlign: "center",
+    width: "100%",
+  }));
+
+  const StyledPopularProductsDivText = styled("div")(({ theme }) => ({
+    fontSize: "16px",
+    fontWeight: 450,
+    color: "red",
+    marginTop: "10px",
+  }));
+
+  const StyledStrikedProductsDivText = styled("span")(({ theme }) => ({
+    fontSize: "16px",
+    fontWeight: 450,
+    color: "#888",
+    marginLeft: "8px",
+    textDecoration: "line-through",
+  }));
+
   const StyledPopularProductsButton = styled(Button)(({ theme }) => ({
-    fontSize: "13px",
+    fontSize: "10px",
     fontWeight: 450,
     color: "#b43e3a",
     marginTop: "27px",
     border: "2px solid #b43e3a",
   }));
-
   return (
     <HomeBody>
       <StyledBanner>
@@ -491,12 +528,58 @@ const Home = () => {
         <StyledPopularProductsText>
           Most viewed products across our site
         </StyledPopularProductsText>
-        <Grid container sx={{ marginTop: "50px" }}>
-          <Grid item md={2.5} xs={12}></Grid>
-          <Grid item md={7} xs={12}>
-            <StyledPopularProductsImage />
+        <Grid container spacing={4}>
+          <Grid item md={4} xs={12}>
+            <StyledPopularProductsDiv>
+              <StyledPopularProductsImage src={Watch1} />
+              <StyledPopularProductsDivHeader>
+                Chronic Apple Watches
+              </StyledPopularProductsDivHeader>
+              <StyledPopularProductsDivText>
+                $149.99
+                <StyledStrikedProductsDivText>
+                  $179.99
+                </StyledStrikedProductsDivText>
+              </StyledPopularProductsDivText>
+              <StyledPopularProductsButton>
+                View Collection
+              </StyledPopularProductsButton>
+            </StyledPopularProductsDiv>
           </Grid>
-          <Grid item md={2.5} xs={12}></Grid>
+          <Grid item md={4} xs={12}>
+            <StyledPopularProductsDiv>
+              <StyledPopularProductsImage src={Watch2} />
+              <StyledPopularProductsDivHeader>
+                Watch Proof Watches
+              </StyledPopularProductsDivHeader>
+              <StyledPopularProductsDivText>
+                $199.99
+                <StyledStrikedProductsDivText>
+                  $249.99
+                </StyledStrikedProductsDivText>
+              </StyledPopularProductsDivText>
+              <StyledPopularProductsButton>
+                View Collection
+              </StyledPopularProductsButton>
+            </StyledPopularProductsDiv>
+          </Grid>
+          <Grid item md={4} xs={12}>
+            <StyledPopularProductsDiv>
+              <StyledPopularProductsImage src={Watch3} />
+              <StyledPopularProductsDivHeader>
+                Custom Strip Watches
+              </StyledPopularProductsDivHeader>
+              <StyledPopularProductsDivText>
+                $249.99
+                <StyledStrikedProductsDivText>
+                  $349.99
+                </StyledStrikedProductsDivText>
+              </StyledPopularProductsDivText>
+              <StyledPopularProductsButton>
+                View Collection
+              </StyledPopularProductsButton>
+            </StyledPopularProductsDiv>
+          </Grid>
         </Grid>
       </StyledPopularProducts>
     </HomeBody>
