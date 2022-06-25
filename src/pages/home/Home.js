@@ -7,6 +7,7 @@ import Watch1 from "../../assets/img/watch_img_21.png";
 import Watch2 from "../../assets/img/watch_img_19.png";
 import Watch3 from "../../assets/img/watch_img_26.png";
 import BestWatch from "../../assets/img/watch_img_31.png";
+import OfferWatch from "../../assets/img/banner_img_11.png";
 import ProgressBar from "../../assets/img/progressBar.png";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
@@ -390,6 +391,48 @@ const Home = () => {
     marginTop: "10px",
     backgroundColor: "#b43e3a",
   }));
+
+  //----------------------Best Time Styles--------------------------------
+
+  const StyledOfferBar = styled(Grid)(({ theme }) => ({
+    width: "100%",
+    height: "auto",
+    color: "black",
+    padding: "10px 30px",
+    backgroundColor: "#fff9eb",
+    borderRaduis: "10px",
+    margin: "100px 0",
+  }));
+
+  const StyledOfferBarHeader = styled("div")(({ theme }) => ({
+    fontSize: "35px",
+    fontWeight: 600,
+    color: "#000",
+    lineHeight: "45px",
+    margin: "30px auto 0 auto",
+  }));
+
+  const StyledOfferBarText = styled("div")(({ theme }) => ({
+    fontSize: "15px",
+    fontWeight: 400,
+    color: "#666",
+    margin: "10px auto",
+    lineHeight: "18px",
+  }));
+
+  const StyledOfferBarImage = styled("img")(({ theme }) => ({
+    width: "300px",
+    height: "auto",
+    margin: "auto",
+  }));
+
+  const StyledOfferBarButton = styled(Button)(({ theme }) => ({
+    fontSize: "13px",
+    color: "white",
+    marginTop: "10px",
+    backgroundColor: "#b43e3a",
+  }));
+
   return (
     <HomeBody>
       <StyledBanner>
@@ -662,6 +705,24 @@ const Home = () => {
           </Grid>
         </Grid>
       </StyledBestTime>
+      {/* offer  bar------------------------------------------------------ */}
+      <StyledOfferBar>
+        <Grid container spacing={7}>
+          <Grid item md={7} xs={8}>
+            <StyledOfferBarHeader>
+              Buy now and get up to 30% discount
+            </StyledOfferBarHeader>
+            <StyledOfferBarText>
+              Get access to the most reliable set of smart watches with
+              varieties of options
+            </StyledOfferBarText>
+            <StyledOfferBarButton>Buy Now</StyledOfferBarButton>
+          </Grid>
+          <Grid item md={5} xs={8}>
+            <StyledOfferBarImage src={OfferWatch} />
+          </Grid>
+        </Grid>
+      </StyledOfferBar>
     </HomeBody>
   );
 };
