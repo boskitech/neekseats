@@ -15,6 +15,7 @@ import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import Rating from "@mui/material/Rating";
+import BuyButton from "../../components/BuyButton/BuyButton";
 
 //-------------------------------Welcome Banner Styles--------------------------------
 
@@ -39,6 +40,9 @@ const Home = () => {
     backgroundRepeat: "no-repeat",
     backgroundPositionX: "60%",
     color: "white",
+    [theme.breakpoints.down("md")]: {
+      backgroundImage: `none`,
+    },
   }));
 
   const StyledUpperSideDiv = styled("div")(({ theme }) => ({
@@ -50,11 +54,18 @@ const Home = () => {
     boxShadow: "0 0 20px #dfdfdf",
     backgroundColor: "white",
     float: "right",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   }));
 
   const StyledLeftSideBanner = styled("div")(({ theme }) => ({
     width: "70%",
     marginTop: "30px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      marginTop: "10px",
+    },
   }));
 
   const StyledBannerHeaderText = styled("div")(({ theme }) => ({
@@ -80,6 +91,10 @@ const Home = () => {
     padding: "10px",
     fontSize: "11px",
     marginRight: "10px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      height: "50px",
+    },
   }));
 
   const StyledBannerWatchtButton = styled(Button)(({ theme }) => ({
@@ -91,6 +106,10 @@ const Home = () => {
     fontWeight: 600,
     marginRight: "10px",
     padding: "2px",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      height: "50px",
+    },
   }));
 
   const StyledWatchLogo = styled("div")(({ theme }) => ({
@@ -115,6 +134,9 @@ const Home = () => {
     fontWeight: 400,
     color: "#666",
     marginTop: "7px",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   }));
 
   const StyledLowerSideDiv = styled("div")(({ theme }) => ({
@@ -125,8 +147,11 @@ const Home = () => {
     boxShadow: "0 0 20px #dfdfdf",
     backgroundColor: "white",
     float: "right",
-    marginTop: "130px",
     bottom: 0,
+    marginTop: "30px",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   }));
 
   const StyledBackgroundBar = styled("div")(({ theme }) => ({
@@ -146,7 +171,7 @@ const Home = () => {
 
   const FeaturesBar = styled(Grid)(({ theme }) => ({
     width: "100%",
-    height: "110px",
+    height: "auto",
     color: "black",
     boxShadow: "0 0 20px #dfdfdf",
     padding: "20px",
@@ -185,6 +210,9 @@ const Home = () => {
     fontSize: "18px",
     fontWeight: 600,
     color: "#000",
+    [theme.breakpoints.down("md")]: {
+      margin: "10px 15px",
+    },
   }));
 
   const StyledFeaturesText = styled("div")(({ theme }) => ({
@@ -192,6 +220,9 @@ const Home = () => {
     fontWeight: 400,
     color: "#666",
     marginTop: "7px",
+    [theme.breakpoints.down("md")]: {
+      margin: "10px 15px",
+    },
   }));
 
   //-------------------------------Specs Bar Styles--------------------------------
@@ -208,6 +239,9 @@ const Home = () => {
     fontWeight: 600,
     color: "#000",
     margin: "auto",
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
   }));
 
   const StyledTopSpecsText = styled("div")(({ theme }) => ({
@@ -218,6 +252,9 @@ const Home = () => {
     color: "#666",
     margin: "18px auto",
     lineHeight: "18px",
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
   }));
 
   const StyledTrackText = styled("div")(({ theme }) => ({
@@ -270,6 +307,9 @@ const Home = () => {
     width: "500px",
     height: "auto",
     margin: "auto",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   }));
 
   //----------------------Popular Products Styles--------------------------------
@@ -377,19 +417,15 @@ const Home = () => {
     border: "25px solid #e9a135",
     boxShadow: "0 0 10px #dfdfdf",
     backgroundColor: "white",
+    [theme.breakpoints.down("md")]: {
+      width: "75%",
+    },
   }));
 
   const StyledBestTimeImage = styled("img")(({ theme }) => ({
     width: "250px",
     height: "auto",
     margin: "auto",
-  }));
-
-  const StyledBestTimeButton = styled(Button)(({ theme }) => ({
-    fontSize: "13px",
-    color: "white",
-    marginTop: "10px",
-    backgroundColor: "#b43e3a",
   }));
 
   //----------------------Best Time Styles--------------------------------
@@ -424,13 +460,6 @@ const Home = () => {
     width: "300px",
     height: "auto",
     margin: "auto",
-  }));
-
-  const StyledOfferBarButton = styled(Button)(({ theme }) => ({
-    fontSize: "13px",
-    color: "white",
-    marginTop: "10px",
-    backgroundColor: "#b43e3a",
   }));
 
   return (
@@ -500,15 +529,15 @@ const Home = () => {
       </StyledBanner>
       {/* features  bar------------------------------------------------------ */}
       <FeaturesBar>
-        <Grid container>
+        <Grid container spacing={4}>
           <Grid item md={4} xs={12}>
             <Grid container direction="row">
-              <Grid item md={4}>
+              <Grid item md={3}>
                 <FeaturesLogo sx={{ background: "#c2e7f0" }}>
                   <FeaturesShippingIcon />
                 </FeaturesLogo>
               </Grid>
-              <Grid item md={8}>
+              <Grid item md={9}>
                 <StyledFeaturesHeading>Free Shipping</StyledFeaturesHeading>
                 <StyledFeaturesText>
                   Free shipping on most orders
@@ -518,12 +547,12 @@ const Home = () => {
           </Grid>
           <Grid item md={4} xs={12}>
             <Grid container>
-              <Grid item md={4}>
+              <Grid item md={3}>
                 <FeaturesLogo sx={{ background: "#fdd4d4" }}>
                   <FeaturesSupportIcon />
                 </FeaturesLogo>
               </Grid>
-              <Grid item md={8}>
+              <Grid item md={9}>
                 <StyledFeaturesHeading>24 Hours Support</StyledFeaturesHeading>
                 <StyledFeaturesText>
                   Contact at every hour of the day
@@ -533,12 +562,12 @@ const Home = () => {
           </Grid>
           <Grid item md={4} xs={12}>
             <Grid container>
-              <Grid item md={4}>
+              <Grid item md={3}>
                 <FeaturesLogo sx={{ background: "#f1e8b0" }}>
                   <FeaturesPaymentIcon />
                 </FeaturesLogo>
               </Grid>
-              <Grid item md={8}>
+              <Grid item md={9}>
                 <StyledFeaturesHeading>Secured Payment</StyledFeaturesHeading>
                 <StyledFeaturesText>
                   Highly secured payment gateway
@@ -557,7 +586,7 @@ const Home = () => {
           access it whenever you like.
         </StyledTopSpecsText>
         <Grid container sx={{ marginTop: "50px" }}>
-          <Grid item md={2.5} xs={12}>
+          <Grid item md={2.5} xs={6}>
             <StyledTrackHeader>Unic Track</StyledTrackHeader>
             <StyledTrackText>$55.99</StyledTrackText>
             <StyledTrackList>
@@ -584,10 +613,10 @@ const Home = () => {
               Buy Now
             </StyledTracKBuyButton>
           </Grid>
-          <Grid item md={7} xs={12}>
+          <Grid item md={7} xs={0}>
             <StyledTopSpecImage src={SpecImg} />
           </Grid>
-          <Grid item md={2.5} xs={12}>
+          <Grid item md={2.5} xs={6}>
             <StyledTrackHeader>Smart Track</StyledTrackHeader>
             <StyledTrackText>$45.99</StyledTrackText>
             <StyledTrackList>
@@ -701,14 +730,14 @@ const Home = () => {
               Time awaits no man. Why not take care of time with our smart wrist
               watches. The most affordable you can get anywhere across the net.
             </StyledBestTimeText>
-            <StyledBestTimeButton>See Products</StyledBestTimeButton>
+            <BuyButton>See Products</BuyButton>
           </Grid>
         </Grid>
       </StyledBestTime>
       {/* offer  bar------------------------------------------------------ */}
       <StyledOfferBar>
         <Grid container spacing={7}>
-          <Grid item md={7} xs={8}>
+          <Grid item md={7} xs={12}>
             <StyledOfferBarHeader>
               Buy now and get up to 30% discount
             </StyledOfferBarHeader>
@@ -716,9 +745,9 @@ const Home = () => {
               Get access to the most reliable set of smart watches with
               varieties of options
             </StyledOfferBarText>
-            <StyledOfferBarButton>Buy Now</StyledOfferBarButton>
+            <BuyButton>Buy Now</BuyButton>
           </Grid>
-          <Grid item md={5} xs={8}>
+          <Grid item md={5} xs={12}>
             <StyledOfferBarImage src={OfferWatch} />
           </Grid>
         </Grid>

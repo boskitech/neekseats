@@ -35,6 +35,9 @@ const StyledToolBar = styled(Toolbar)(({ theme }) => ({
   [theme.breakpoints.up("xl")]: {
     width: "60%",
   },
+  [theme.breakpoints.down("md")]: {
+    width: "90%",
+  },
 }));
 
 const StyledMenuButton = styled(Button)({
@@ -43,20 +46,23 @@ const StyledMenuButton = styled(Button)({
   fontSize: "15px",
 });
 
-const StyledLoginButton = styled(Button)({
+const StyledLoginButton = styled(Button)(({ theme }) => ({
   color: "#fff",
   fontWeight: 800,
   backgroundColor: "#416cb7",
   width: "120px",
   marginLeft: "10px",
   "&:hover": { backgroundColor: "#2f53a5", color: "white" },
-});
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
 
 const StyledAppBAr = styled(AppBar)({
   backgroundColor: "#fff",
   boxShadow: "none",
   position: "fixed",
-  paddingTop: "10px",
+  paddingTop: "5px",
 });
 
 const Navbar = () => {
