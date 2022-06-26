@@ -42,6 +42,7 @@ const Home = () => {
     color: "white",
     [theme.breakpoints.down("md")]: {
       backgroundImage: `none`,
+      height: "auto",
     },
   }));
 
@@ -94,6 +95,16 @@ const Home = () => {
     [theme.breakpoints.down("md")]: {
       width: "100%",
       height: "50px",
+    },
+  }));
+
+  const StyledBannerMobileImage = styled("img")(({ theme }) => ({
+    display: "none",
+    [theme.breakpoints.down("md")]: {
+      display: "block",
+      width: "330px",
+      height: "auto",
+      margin: "auto",
     },
   }));
 
@@ -276,6 +287,9 @@ const Home = () => {
     fontWeight: 440,
     color: "#222",
     marginTop: "15px",
+    [theme.breakpoints.down("md")]: {
+      width: "150px",
+    },
   }));
 
   const StyledTrackIcon = styled(CheckCircleOutlineOutlinedIcon)(
@@ -471,6 +485,7 @@ const Home = () => {
               <StyledBannerHeaderText>
                 OUR BEST COLLECTIONS FOR YOU
               </StyledBannerHeaderText>
+              <StyledBannerMobileImage src={BannerImg} />
               <StyledBannerText>
                 The style of watches available to consumers are endless and
                 profit also endless

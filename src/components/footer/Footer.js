@@ -24,6 +24,9 @@ const Footer = () => {
     [theme.breakpoints.down("xl")]: {
       width: "70%",
     },
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
   }));
 
   const StyledGridHeader = styled("div")(({ theme }) => ({
