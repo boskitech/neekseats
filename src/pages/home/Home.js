@@ -24,11 +24,14 @@ const Home = () => {
   const HomeBody = styled("div")(({ theme }) => ({
     width: "70%",
     margin: "auto",
-    [theme.breakpoints.down("md")]: {
-      width: "90%",
-    },
     [theme.breakpoints.up("xl")]: {
       width: "60%",
+    },
+    [theme.breakpoints.down("lg")]: {
+      width: "80%",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
     },
   }));
 
@@ -198,6 +201,10 @@ const Home = () => {
     width: "70px",
     height: "70px",
     borderRadius: "5px",
+    [theme.breakpoints.down("md")]: {
+      width: "50px",
+      height: "50px",
+    },
   }));
 
   const FeaturesShippingIcon = styled(LocalShippingOutlinedIcon)(
@@ -206,6 +213,10 @@ const Home = () => {
       height: "50px",
       padding: "10px",
       color: "#5eb3d4",
+      [theme.breakpoints.down("md")]: {
+        width: "30px",
+        height: "30px",
+      },
     })
   );
 
@@ -214,6 +225,10 @@ const Home = () => {
     height: "50px",
     padding: "10px",
     color: "#d87676",
+    [theme.breakpoints.down("md")]: {
+      width: "30px",
+      height: "30px",
+    },
   }));
 
   const FeaturesPaymentIcon = styled(SecurityOutlinedIcon)(({ theme }) => ({
@@ -221,6 +236,10 @@ const Home = () => {
     height: "50px",
     padding: "10px",
     color: "#afae4f ",
+    [theme.breakpoints.down("md")]: {
+      width: "30px",
+      height: "30px",
+    },
   }));
 
   const StyledFeaturesHeading = styled("div")(({ theme }) => ({

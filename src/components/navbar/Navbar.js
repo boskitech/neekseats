@@ -38,6 +38,9 @@ const StyledToolBar = styled(Toolbar)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     width: "90%",
   },
+  [theme.breakpoints.down("lg")]: {
+    width: "90%",
+  },
 }));
 
 const StyledMenuButton = styled(Button)({
