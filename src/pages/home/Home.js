@@ -3,6 +3,8 @@ import { styled } from "@mui/system";
 import BannerImg from "../../assets/img/banner_img_6.png";
 import SpecImg from "../../assets/img/watch_img_6.png";
 import WatchLogo from "../../assets/img/watch_img_23.png";
+import WatchFace from "../../assets/img/watch_face.png";
+import MobileWatch from "../../assets/img/mobile_bar.png";
 import Watch1 from "../../assets/img/watch_img_21.png";
 import Watch2 from "../../assets/img/watch_img_19.png";
 import Watch3 from "../../assets/img/watch_img_26.png";
@@ -41,6 +43,7 @@ const Home = () => {
     backgroundPositionX: "60%",
     color: "white",
     [theme.breakpoints.down("md")]: {
+      margin: "70px auto",
       backgroundImage: `none`,
       height: "auto",
     },
@@ -102,9 +105,9 @@ const Home = () => {
     display: "none",
     [theme.breakpoints.down("md")]: {
       display: "block",
-      width: "330px",
+      width: "100%",
       height: "auto",
-      margin: "auto",
+      margin: "30px auto",
     },
   }));
 
@@ -485,7 +488,7 @@ const Home = () => {
               <StyledBannerHeaderText>
                 OUR BEST COLLECTIONS FOR YOU
               </StyledBannerHeaderText>
-              <StyledBannerMobileImage src={BannerImg} />
+              <StyledBannerMobileImage src={MobileWatch} />
               <StyledBannerText>
                 The style of watches available to consumers are endless and
                 profit also endless

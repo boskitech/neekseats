@@ -58,12 +58,16 @@ const StyledLoginButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const StyledAppBAr = styled(AppBar)({
+const StyledAppBAr = styled(AppBar)(({ theme }) => ({
   backgroundColor: "#fff",
   boxShadow: "none",
   position: "fixed",
   paddingTop: "5px",
-});
+  [theme.breakpoints.down("md")]: {
+    paddingTop: "0px",
+    height: "60px",
+  },
+}));
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -155,13 +159,13 @@ const Navbar = () => {
           <Box>
             <IconButton
               onClick={() => navigate("/login")}
-              sx={{ color: "black" }}
+              sx={{ display: { xs: "none", md: "block" }, color: "black" }}
             >
               <SearchIcon />
             </IconButton>
             <IconButton
               onClick={() => navigate("/login")}
-              sx={{ color: "black" }}
+              sx={{ display: { xs: "none", md: "block" }, color: "black" }}
             >
               <ShoppingCartOutlinedIcon />
             </IconButton>
@@ -170,7 +174,7 @@ const Navbar = () => {
             </StyledLoginButton>
             <IconButton
               onClick={toggleDrawer("left", true)}
-              sx={{ display: { xs: "block", md: "none", color: "white" } }}
+              sx={{ display: { xs: "block", md: "none", color: "black" } }}
             >
               <MenuIcon />
             </IconButton>
