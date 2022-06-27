@@ -1,9 +1,8 @@
 import { Button, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import BannerImg from "../../assets/img/banner_img_6.png";
-import SpecImg from "../../assets/img/watch_img_6.png";
 import WatchLogo from "../../assets/img/watch_img_23.png";
-import WatchFace from "../../assets/img/watch_face.png";
+import WatchFace from "../../assets/img/watch_face_2.png";
 import MobileWatch from "../../assets/img/mobile_bar.png";
 import Watch1 from "../../assets/img/watch_img_21.png";
 import Watch2 from "../../assets/img/watch_img_19.png";
@@ -98,6 +97,8 @@ const Home = () => {
     [theme.breakpoints.down("md")]: {
       width: "100%",
       height: "50px",
+      fontWeight: 500,
+      fontSize: "15px",
     },
   }));
 
@@ -123,6 +124,8 @@ const Home = () => {
     [theme.breakpoints.down("md")]: {
       width: "100%",
       height: "50px",
+      marginTop: "20px",
+      fontSize: "14px",
     },
   }));
 
@@ -603,6 +606,7 @@ const Home = () => {
           to counting the number steps you make and saving so that you can
           access it whenever you like.
         </StyledTopSpecsText>
+        <StyledBannerMobileImage src={WatchFace} />
         <Grid container sx={{ marginTop: "50px" }}>
           <Grid item md={2.5} xs={6}>
             <StyledTrackHeader>Unic Track</StyledTrackHeader>
@@ -632,7 +636,7 @@ const Home = () => {
             </StyledTracKBuyButton>
           </Grid>
           <Grid item md={7} xs={0}>
-            <StyledTopSpecImage src={SpecImg} />
+            <StyledTopSpecImage src={WatchFace} />
           </Grid>
           <Grid item md={2.5} xs={6}>
             <StyledTrackHeader>Smart Track</StyledTrackHeader>
@@ -754,6 +758,7 @@ const Home = () => {
       </StyledBestTime>
       {/* offer  bar------------------------------------------------------ */}
       <StyledOfferBar>
+        <StyledBannerMobileImage src={WatchFace} />
         <Grid container spacing={7}>
           <Grid item md={7} xs={12}>
             <StyledOfferBarHeader>
@@ -765,7 +770,12 @@ const Home = () => {
             </StyledOfferBarText>
             <BuyButton>Buy Now</BuyButton>
           </Grid>
-          <Grid item md={5} xs={12}>
+          <Grid
+            sx={{ display: { xs: "none", md: "block" } }}
+            item
+            md={5}
+            xs={12}
+          >
             <StyledOfferBarImage src={OfferWatch} />
           </Grid>
         </Grid>

@@ -157,21 +157,23 @@ const Navbar = () => {
             </StyledMenuButton>
           </Box>
           <Box>
-            <IconButton
-              onClick={() => navigate("/login")}
-              sx={{ display: { xs: "none", md: "block" }, color: "black" }}
-            >
-              <SearchIcon />
-            </IconButton>
-            <IconButton
-              onClick={() => navigate("/login")}
-              sx={{ display: { xs: "none", md: "block" }, color: "black" }}
-            >
-              <ShoppingCartOutlinedIcon />
-            </IconButton>
-            <StyledLoginButton onClick={() => navigate("/login")}>
-              Login
-            </StyledLoginButton>
+            <Box sx={{ display: { xs: "none", md: "block" }, color: "black" }}>
+              <IconButton
+                onClick={() => navigate("/login")}
+                sx={{ color: "black" }}
+              >
+                <SearchIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => navigate("/login")}
+                sx={{ color: "black" }}
+              >
+                <ShoppingCartOutlinedIcon />
+              </IconButton>
+              <StyledLoginButton onClick={() => navigate("/login")}>
+                Login
+              </StyledLoginButton>
+            </Box>
             <IconButton
               onClick={toggleDrawer("left", true)}
               sx={{ display: { xs: "block", md: "none", color: "black" } }}
