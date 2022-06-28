@@ -467,7 +467,7 @@ const Home = () => {
     margin: "auto",
   }));
 
-  //----------------------Best Time Styles--------------------------------
+  //----------------------Discount Styles--------------------------------
 
   const StyledOfferBar = styled(Grid)(({ theme }) => ({
     width: "100%",
