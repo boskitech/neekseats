@@ -168,7 +168,7 @@ const Home = () => {
     backgroundColor: "white",
     float: "right",
     bottom: 0,
-    marginTop: "30px",
+    marginTop: "70px",
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
@@ -247,7 +247,7 @@ const Home = () => {
     fontWeight: 600,
     color: "#000",
     [theme.breakpoints.down("md")]: {
-      margin: "10px 15px",
+      margin: "0px 15px",
     },
   }));
 
@@ -257,7 +257,7 @@ const Home = () => {
     color: "#666",
     marginTop: "7px",
     [theme.breakpoints.down("md")]: {
-      margin: "10px 15px",
+      margin: "0px 15px",
     },
   }));
 

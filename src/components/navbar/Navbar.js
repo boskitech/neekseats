@@ -140,22 +140,25 @@ const Navbar = () => {
             <StyledMenuButton onClick={() => navigate("/")} variant="body1">
               Home
             </StyledMenuButton>
-            <StyledMenuButton
-              onClick={() => navigate("/services")}
-              variant="body1"
-            >
+            <StyledMenuButton onClick={() => navigate("/shop")} variant="body1">
               Shop
             </StyledMenuButton>
-            <StyledMenuButton onClick={() => navigate("/faq")} variant="body1">
+            <StyledMenuButton
+              onClick={() => navigate("/about")}
+              variant="body1"
+            >
               About
             </StyledMenuButton>
             <StyledMenuButton
-              onClick={() => navigate("/consult")}
+              onClick={() => navigate("/products")}
               variant="body1"
             >
               Product
             </StyledMenuButton>
-            <StyledMenuButton onClick={() => navigate("/blog")} variant="body1">
+            <StyledMenuButton
+              onClick={() => navigate("/contact")}
+              variant="body1"
+            >
               Contact
             </StyledMenuButton>
           </Box>
