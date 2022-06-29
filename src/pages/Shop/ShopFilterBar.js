@@ -29,7 +29,7 @@ export default function ShopFilterBar() {
       { listName: "Most Reviewed", listValue: "mostReviewed" },
     ],
     availability: [
-      { listName: "Current Available", listValue: "currently" },
+      { listName: "Currently Available", listValue: "currently" },
       { listName: "Pre-Order", listValue: "preOrder" },
       { listName: "2 weeks", listValue: "twoweeks" },
       { listName: "4 weeks", listValue: "fourweeks" },
@@ -44,7 +44,6 @@ export default function ShopFilterBar() {
     ],
   };
 
-  console.log(filters);
   const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
   ))(({ theme }) => ({
@@ -54,6 +53,11 @@ export default function ShopFilterBar() {
     },
     "&:before": {
       display: "none",
+    },
+    "&:hover": {
+      fontWeight: 600,
+      color: "#444",
+      backgroundColor: "#fff9eb",
     },
   }));
 
@@ -79,11 +83,16 @@ export default function ShopFilterBar() {
     letterSpacing: "1px",
     textTransform: "uppercase",
     color: "#444",
+    "&:hover": {
+      fontWeight: 600,
+      color: "#444",
+      backgroundColor: "#fff9eb",
+    },
   }));
 
   const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     backgroundColor: "#fff9eb",
-    padding: theme.spacing(2),
+    padding: "5px 0px 0px 20px",
   }));
 
   return (
