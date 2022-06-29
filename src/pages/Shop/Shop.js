@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import React from "react";
 import ShopFilterBar from "./ShopFilterBar";
@@ -7,6 +7,8 @@ import Watch2 from "../../assets/img/watch_img_19.png";
 import Watch3 from "../../assets/img/watch_img_26.png";
 import Rating from "@mui/material/Rating";
 import FavButton from "../../components/FavButton/FavButton";
+import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
+import ListIcon from "@mui/icons-material/List";
 
 const Shop = () => {
   const ShopBody = styled("div")(({ theme }) => ({
@@ -26,7 +28,7 @@ const Shop = () => {
   const StyledShopContent = styled("div")(({ theme }) => ({
     width: "100%",
     height: "auto",
-    margin: "120px auto",
+    margin: "20px auto",
   }));
 
   const StyledFilterBar = styled("div")(({ theme }) => ({
@@ -43,11 +45,16 @@ const Shop = () => {
 
   const StyledProductsDiv = styled("div")(({ theme }) => ({
     width: "100%",
-    height: "310px",
+    height: "330px",
     textAlign: "center",
     borderRadius: "5px",
-    boxShadow: "0 0 10px #dfdfdf",
-    backgroundColor: "white",
+    boxShadow: "0 0 6px #dfdfdf",
+    // border: "1px solid #f6eedc",
+    background: "#fff",
+    "&:hover": {
+      background: "#fffbf0",
+      cursor: "pointer",
+    },
     [theme.breakpoints.up("xl")]: {
       height: "400px",
     },
@@ -85,8 +92,51 @@ const Shop = () => {
     marginTop: "0px",
   }));
 
+  const StyledLinkTagBar = styled(Grid)(({ theme }) => ({
+    fontSize: "13px",
+    fontWeight: 450,
+    color: "#222",
+    marginTop: "110px",
+  }));
+
+  const StyledLinkButton = styled(Button)(({ theme }) => ({
+    fontSize: "13px",
+    fontWeight: 450,
+    color: "#222",
+    textTransform: "capitalize",
+  }));
+
   return (
     <ShopBody>
+      <StyledLinkTagBar
+        container
+        direction="row"
+        display="flex"
+        justifyContent="space-between"
+      >
+        <Grid item>
+          <StyledLinkButton>Home </StyledLinkButton>&gt;
+          <StyledLinkButton>Shop</StyledLinkButton>&gt;
+          <StyledLinkButton>Smart Watches</StyledLinkButton>
+        </Grid>
+        <Grid item>
+          <span>View Type: </span>
+          <StyledLinkButton
+            variant="outlined"
+            sx={{ marginLeft: "5px", border: "1px solid #333" }}
+            startIcon={<GridViewOutlinedIcon />}
+          >
+            Grid
+          </StyledLinkButton>
+          <StyledLinkButton
+            sx={{ marginLeft: "5px", border: "1px solid #333" }}
+            variant="outlined"
+            startIcon={<ListIcon />}
+          >
+            List
+          </StyledLinkButton>
+        </Grid>
+      </StyledLinkTagBar>
       <StyledShopContent>
         <Grid container spacing={4}>
           <Grid item md={3} xs={12}>
