@@ -16,7 +16,7 @@ import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import Rating from "@mui/material/Rating";
-import BuyButton from "../../components/BuyButton/BuyButton";
+import BuyButton from "../../components/buyButton/BuyButton";
 
 //-------------------------------Welcome Banner Styles--------------------------------
 

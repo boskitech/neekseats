@@ -6,7 +6,7 @@ import Watch1 from "../../assets/img/watch_img_21.png";
 import Watch2 from "../../assets/img/watch_img_19.png";
 import Watch3 from "../../assets/img/watch_img_26.png";
 import Rating from "@mui/material/Rating";
-import FavButton from "../../components/FavButton/FavButton";
+import FavButton from "../../components/favButton/FavButton";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ListIcon from "@mui/icons-material/List";
 

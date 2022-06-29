@@ -5,7 +5,7 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/system";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import ToggleButtons from "../../components/ToggleButton/Toggle";
+import ToggleButtons from "../../components/toggleButton/Toggle";
 
 export default function ShopFilterBar() {
   const filters = {
