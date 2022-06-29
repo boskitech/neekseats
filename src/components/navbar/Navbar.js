@@ -150,12 +150,6 @@ const Navbar = () => {
               About
             </StyledMenuButton>
             <StyledMenuButton
-              onClick={() => navigate("/products")}
-              variant="body1"
-            >
-              Product
-            </StyledMenuButton>
-            <StyledMenuButton
               onClick={() => navigate("/contact")}
               variant="body1"
             >

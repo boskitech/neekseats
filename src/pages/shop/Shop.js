@@ -9,6 +9,7 @@ import Rating from "@mui/material/Rating";
 import FavButton from "../../components/favButton/FavButton";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ListIcon from "@mui/icons-material/List";
+import { motion } from "framer-motion";
 
 const Shop = () => {
   const ShopBody = styled("div")(({ theme }) => ({
@@ -45,7 +46,7 @@ const Shop = () => {
 
   const StyledProductsDiv = styled("div")(({ theme }) => ({
     width: "100%",
-    height: "330px",
+    height: "350px",
     textAlign: "center",
     borderRadius: "5px",
     boxShadow: "0 0 6px #dfdfdf",
@@ -107,433 +108,440 @@ const Shop = () => {
   }));
 
   return (
-    <ShopBody>
-      <StyledLinkTagBar
-        container
-        direction="row"
-        display="flex"
-        justifyContent="space-between"
-      >
-        <Grid item>
-          <StyledLinkButton>Home </StyledLinkButton>&gt;
-          <StyledLinkButton>Shop</StyledLinkButton>&gt;
-          <StyledLinkButton>Smart Watches</StyledLinkButton>
-        </Grid>
-        <Grid item>
-          <span>View Type: </span>
-          <StyledLinkButton
-            variant="outlined"
-            sx={{ marginLeft: "5px", border: "1px solid #333" }}
-            startIcon={<GridViewOutlinedIcon />}
-          >
-            Grid
-          </StyledLinkButton>
-          <StyledLinkButton
-            sx={{ marginLeft: "5px", border: "1px solid #333" }}
-            variant="outlined"
-            startIcon={<ListIcon />}
-          >
-            List
-          </StyledLinkButton>
-        </Grid>
-      </StyledLinkTagBar>
-      <StyledShopContent>
-        <Grid container spacing={4}>
-          <Grid item md={3} xs={12}>
-            <StyledFilterBar>
-              <ShopFilterBar />
-            </StyledFilterBar>
+    <motion.div
+      initial={{ opacity: 0.5, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0.5, x: -100 }}
+      transition={{ duration: 0.3 }}
+    >
+      <ShopBody>
+        <StyledLinkTagBar
+          container
+          direction="row"
+          display="flex"
+          justifyContent="space-between"
+        >
+          <Grid item>
+            <StyledLinkButton>Home </StyledLinkButton>&gt;
+            <StyledLinkButton>Shop</StyledLinkButton>&gt;
+            <StyledLinkButton>Smart Watches</StyledLinkButton>
           </Grid>
-          <Grid item md={9}>
-            <StyledProductsBar>
-              <Grid container spacing={2}>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch1} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch2} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch1} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch2} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch1} />
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch2} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch1} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch2} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch1} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch2} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch1} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch2} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={4} xs={6}>
-                  <StyledProductsDiv>
-                    <FavButton />
-                    <StyledProductsImage src={Watch3} />
-                    <StyledProductsDivHeader>
-                      Custom Strip Watches
-                    </StyledProductsDivHeader>
-                    <Rating
-                      name="read-only"
-                      value={5}
-                      readOnly
-                      sx={{ margin: "10px auto" }}
-                    />
-                    <StyledProductsDivText>$249.99</StyledProductsDivText>
-                  </StyledProductsDiv>
-                </Grid>
-              </Grid>
-            </StyledProductsBar>
+          <Grid item>
+            <span>View Type: </span>
+            <StyledLinkButton
+              variant="outlined"
+              sx={{ marginLeft: "5px", border: "1px solid #333" }}
+              startIcon={<GridViewOutlinedIcon />}
+            >
+              Grid
+            </StyledLinkButton>
+            <StyledLinkButton
+              sx={{ marginLeft: "5px", border: "1px solid #333" }}
+              variant="outlined"
+              startIcon={<ListIcon />}
+            >
+              List
+            </StyledLinkButton>
           </Grid>
-        </Grid>
-      </StyledShopContent>
-    </ShopBody>
+        </StyledLinkTagBar>
+        <StyledShopContent>
+          <Grid container spacing={4}>
+            <Grid item md={3} xs={12}>
+              <StyledFilterBar>
+                <ShopFilterBar />
+              </StyledFilterBar>
+            </Grid>
+            <Grid item md={9}>
+              <StyledProductsBar>
+                <Grid container spacing={2}>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch1} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch2} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch1} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch2} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch1} />
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch2} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch1} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch2} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch1} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch2} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch1} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch2} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={4} xs={6}>
+                    <StyledProductsDiv>
+                      <FavButton />
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductsDivHeader>
+                        Custom Strip Watches
+                      </StyledProductsDivHeader>
+                      <Rating
+                        name="read-only"
+                        value={5}
+                        readOnly
+                        sx={{ margin: "10px auto" }}
+                      />
+                      <StyledProductsDivText>$249.99</StyledProductsDivText>
+                    </StyledProductsDiv>
+                  </Grid>
+                </Grid>
+              </StyledProductsBar>
+            </Grid>
+          </Grid>
+        </StyledShopContent>
+      </ShopBody>
+    </motion.div>
   );
 };
 

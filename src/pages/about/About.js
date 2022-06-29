@@ -1,4 +1,5 @@
 import { styled } from "@mui/system";
+import { motion } from "framer-motion";
 
 const AboutUs = () => {
   const StyledAboutBody = styled("div")(({ theme }) => ({
@@ -45,7 +46,12 @@ const AboutUs = () => {
   }));
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0.5, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0.5, x: -100 }}
+      transition={{ duration: 0.3 }}
+    >
       <StyledAboutBody>
         <StyledAboutTitle>About US</StyledAboutTitle>
         <StyledAboutSubTitle>
@@ -118,7 +124,7 @@ const AboutUs = () => {
           We can't wait to see what you do.
         </StyledAboutText>
       </StyledAboutBody>
-    </div>
+    </motion.div>
   );
 };
 
