@@ -694,7 +694,7 @@ const Home = () => {
           Most viewed products across our site
         </StyledPopularProductsText>
         <Grid container spacing={4}>
-          <Grid item md={4} xs={12} data-aos="fade-right">
+          <Grid item md={4} xs={12} data-aos="fade-up">
             <StyledPopularProductsDiv>
               <StyledPopularProductsImage src={Watch1} />
               <StyledPopularProductsDivHeader>
@@ -734,7 +734,7 @@ const Home = () => {
               />
             </StyledPopularProductsDiv>
           </Grid>
-          <Grid item md={4} xs={12} data-aos="fade-left">
+          <Grid item md={4} xs={12} data-aos="fade-up">
             <StyledPopularProductsDiv>
               <StyledPopularProductsImage src={Watch3} />
               <StyledPopularProductsDivHeader>
