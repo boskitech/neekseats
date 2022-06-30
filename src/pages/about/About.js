@@ -1,5 +1,4 @@
 import { styled } from "@mui/system";
-import { motion } from "framer-motion";
 
 const AboutUs = () => {
   const StyledAboutBody = styled("div")(({ theme }) => ({

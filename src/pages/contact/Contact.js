@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import ContactMap from "../../assets/img/map.png";
-import { motion } from "framer-motion";
 
 const ContactUs = () => {
   const StyledContactBody = styled("div")(({ theme }) => ({
