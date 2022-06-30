@@ -62,75 +62,68 @@ const ContactUs = () => {
   }));
 
   return (
-    <motion.div
-      initial={{ opacity: 0.5, x: 100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0.5, x: -100 }}
-      transition={{ duration: 0.3 }}
-    >
-      <StyledContactBody>
-        <StyledContactTitle>Contact US</StyledContactTitle>
-        <StyledContactSubTitle>Reach out anytime</StyledContactSubTitle>
-        <StyledContactSubTitle>Our Offices</StyledContactSubTitle>
-        <StyledGrid container direction="row">
-          <Grid item xs={4}>
-            <StyledContactMap />
-          </Grid>
-          <Grid item xs={7} sx={{ padding: "14px" }}>
-            <StyledContactHeader>Global HQ</StyledContactHeader>
-            <StyledContactSubHeader>
-              475 Brannan St.
-              <br />
-              Suite 430
-              <br />
-              San Francisco
-              <br />
-              CA 94107
-              <br />
-              Phone: (650) 316-7500
-            </StyledContactSubHeader>
-          </Grid>
-        </StyledGrid>
-        <StyledGrid container direction="row">
-          <Grid item xs={4}>
-            <StyledContactMap />
-          </Grid>
-          <Grid item xs={7} sx={{ padding: "14px" }}>
-            <StyledContactHeader>Nigeria Head Office</StyledContactHeader>
-            <StyledContactSubHeader>
-              475 Brannan St.
-              <br />
-              Suite 430
-              <br />
-              Lugard Hall
-              <br />
-              CA 94107
-              <br />
-              Phone: +2348084417245
-            </StyledContactSubHeader>
-          </Grid>
-        </StyledGrid>
-        <StyledGrid container direction="row">
-          <Grid item xs={4}>
-            <StyledContactMap />
-          </Grid>
-          <Grid item xs={7} sx={{ padding: "14px" }}>
-            <StyledContactHeader>Mailing Adrdress</StyledContactHeader>
-            <StyledContactSubHeader>
-              475 Brannan St.
-              <br />
-              Suite 430
-              <br />
-              San Francisco
-              <br />
-              CA 94107
-              <br />
-              Phone: (650) 316-7500
-            </StyledContactSubHeader>
-          </Grid>
-        </StyledGrid>
-      </StyledContactBody>
-    </motion.div>
+    <StyledContactBody data-aos="fade-left">
+      <StyledContactTitle>Contact US</StyledContactTitle>
+      <StyledContactSubTitle>Reach out anytime</StyledContactSubTitle>
+      <StyledContactSubTitle>Our Offices</StyledContactSubTitle>
+      <StyledGrid container direction="row">
+        <Grid item xs={4}>
+          <StyledContactMap />
+        </Grid>
+        <Grid item xs={7} sx={{ padding: "14px" }}>
+          <StyledContactHeader>Global HQ</StyledContactHeader>
+          <StyledContactSubHeader>
+            475 Brannan St.
+            <br />
+            Suite 430
+            <br />
+            San Francisco
+            <br />
+            CA 94107
+            <br />
+            Phone: (650) 316-7500
+          </StyledContactSubHeader>
+        </Grid>
+      </StyledGrid>
+      <StyledGrid container direction="row">
+        <Grid item xs={4}>
+          <StyledContactMap />
+        </Grid>
+        <Grid item xs={7} sx={{ padding: "14px" }}>
+          <StyledContactHeader>Nigeria Head Office</StyledContactHeader>
+          <StyledContactSubHeader>
+            475 Brannan St.
+            <br />
+            Suite 430
+            <br />
+            Lugard Hall
+            <br />
+            CA 94107
+            <br />
+            Phone: +2348084417245
+          </StyledContactSubHeader>
+        </Grid>
+      </StyledGrid>
+      <StyledGrid container direction="row">
+        <Grid item xs={4}>
+          <StyledContactMap />
+        </Grid>
+        <Grid item xs={7} sx={{ padding: "14px" }}>
+          <StyledContactHeader>Mailing Adrdress</StyledContactHeader>
+          <StyledContactSubHeader>
+            475 Brannan St.
+            <br />
+            Suite 430
+            <br />
+            San Francisco
+            <br />
+            CA 94107
+            <br />
+            Phone: (650) 316-7500
+          </StyledContactSubHeader>
+        </Grid>
+      </StyledGrid>
+    </StyledContactBody>
   );
 };
 

@@ -503,314 +503,304 @@ const Home = () => {
   }));
 
   return (
-    <motion.div
-      initial={{ x: 100 }}
-      animate={{ x: 0 }}
-      exit={{ x: -100 }}
-      transition={{ duration: 0.5 }}
-    >
-      <HomeBody>
-        <StyledBanner>
-          <Grid container>
-            <Grid item md={6} sm={12}>
-              <StyledLeftSideBanner>
-                <StyledBannerHeaderText>
-                  OUR BEST COLLECTIONS FOR YOU
-                </StyledBannerHeaderText>
-                <StyledBannerMobileImage src={MobileWatch} />
-                <StyledBannerText>
-                  The style of watches available to consumers are endless and
-                  profit also endless
-                </StyledBannerText>
-                <StyledBannerCartButton startIcon={<AddShoppingCartIcon />}>
-                  Add to cart
-                </StyledBannerCartButton>
-                <StyledBannerWatchtButton startIcon={<StyledWatchLogo />}>
-                  More info &gt;
-                </StyledBannerWatchtButton>
-              </StyledLeftSideBanner>
-            </Grid>
-            <Grid item md={6} sm={12}>
-              <Grid container direction="column">
-                <Grid item>
-                  <StyledUpperSideDiv>
-                    <StyledUpperSideHeader>
-                      Get up to 30% off
-                    </StyledUpperSideHeader>
-                    <StyledUpperSideText>
-                      You can get up to 30 percent discount from here
-                    </StyledUpperSideText>
-                  </StyledUpperSideDiv>
-                </Grid>
-                <Grid item>
-                  <StyledLowerSideDiv>
-                    <StyledBackgroundBar>
-                      <p
-                        style={{
-                          fontSize: "19px",
-                          fontWeight: 500,
-                          paddingTop: "40px",
-                        }}
-                      >
-                        2,445
-                        <br />
-                        Steps
-                      </p>
-                    </StyledBackgroundBar>
+    <HomeBody data-aos="fade-left">
+      <StyledBanner>
+        <Grid container>
+          <Grid item md={6} sm={12}>
+            <StyledLeftSideBanner>
+              <StyledBannerHeaderText>
+                OUR BEST COLLECTIONS FOR YOU
+              </StyledBannerHeaderText>
+              <StyledBannerMobileImage src={MobileWatch} />
+              <StyledBannerText>
+                The style of watches available to consumers are endless and
+                profit also endless
+              </StyledBannerText>
+              <StyledBannerCartButton startIcon={<AddShoppingCartIcon />}>
+                Add to cart
+              </StyledBannerCartButton>
+              <StyledBannerWatchtButton startIcon={<StyledWatchLogo />}>
+                More info &gt;
+              </StyledBannerWatchtButton>
+            </StyledLeftSideBanner>
+          </Grid>
+          <Grid item md={6} sm={12}>
+            <Grid container direction="column">
+              <Grid item>
+                <StyledUpperSideDiv>
+                  <StyledUpperSideHeader>
+                    Get up to 30% off
+                  </StyledUpperSideHeader>
+                  <StyledUpperSideText>
+                    You can get up to 30 percent discount from here
+                  </StyledUpperSideText>
+                </StyledUpperSideDiv>
+              </Grid>
+              <Grid item>
+                <StyledLowerSideDiv>
+                  <StyledBackgroundBar>
                     <p
                       style={{
-                        fontSize: "24px",
-                        color: "#000",
-                        fontWeight: "550",
-                        textAlign: "center",
-                        margin: "30px auto",
+                        fontSize: "19px",
+                        fontWeight: 500,
+                        paddingTop: "40px",
                       }}
                     >
-                      8:24:00
+                      2,445
+                      <br />
+                      Steps
                     </p>
-                  </StyledLowerSideDiv>
-                </Grid>
+                  </StyledBackgroundBar>
+                  <p
+                    style={{
+                      fontSize: "24px",
+                      color: "#000",
+                      fontWeight: "550",
+                      textAlign: "center",
+                      margin: "30px auto",
+                    }}
+                  >
+                    8:24:00
+                  </p>
+                </StyledLowerSideDiv>
               </Grid>
             </Grid>
           </Grid>
-        </StyledBanner>
-        {/* features  bar------------------------------------------------------ */}
-        <FeaturesBar>
-          <Grid container spacing={4}>
-            <Grid item md={4} xs={12}>
-              <Grid container direction="row">
-                <Grid item md={3}>
-                  <FeaturesLogo sx={{ background: "#c2e7f0" }}>
-                    <FeaturesShippingIcon />
-                  </FeaturesLogo>
-                </Grid>
-                <Grid item md={9}>
-                  <StyledFeaturesHeading>Free Shipping</StyledFeaturesHeading>
-                  <StyledFeaturesText>
-                    Free shipping on most orders
-                  </StyledFeaturesText>
-                </Grid>
+        </Grid>
+      </StyledBanner>
+      {/* features  bar------------------------------------------------------ */}
+      <FeaturesBar>
+        <Grid container spacing={4}>
+          <Grid item md={4} xs={12} data-aos="fade-left">
+            <Grid container direction="row">
+              <Grid item md={3}>
+                <FeaturesLogo sx={{ background: "#c2e7f0" }}>
+                  <FeaturesShippingIcon />
+                </FeaturesLogo>
               </Grid>
-            </Grid>
-            <Grid item md={4} xs={12}>
-              <Grid container>
-                <Grid item md={3}>
-                  <FeaturesLogo sx={{ background: "#fdd4d4" }}>
-                    <FeaturesSupportIcon />
-                  </FeaturesLogo>
-                </Grid>
-                <Grid item md={9}>
-                  <StyledFeaturesHeading>
-                    24 Hours Support
-                  </StyledFeaturesHeading>
-                  <StyledFeaturesText>
-                    Contact at every hour of the day
-                  </StyledFeaturesText>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item md={4} xs={12}>
-              <Grid container>
-                <Grid item md={3}>
-                  <FeaturesLogo sx={{ background: "#f1e8b0" }}>
-                    <FeaturesPaymentIcon />
-                  </FeaturesLogo>
-                </Grid>
-                <Grid item md={9}>
-                  <StyledFeaturesHeading>Secured Payment</StyledFeaturesHeading>
-                  <StyledFeaturesText>
-                    Highly secured payment gateway
-                  </StyledFeaturesText>
-                </Grid>
+              <Grid item md={9}>
+                <StyledFeaturesHeading>Free Shipping</StyledFeaturesHeading>
+                <StyledFeaturesText>
+                  Free shipping on most orders
+                </StyledFeaturesText>
               </Grid>
             </Grid>
           </Grid>
-        </FeaturesBar>
-        {/* top specs  bar------------------------------------------------------ */}
-        <StyledTopSpecs data-aos="fade-up">
-          <StyledTopSpecsHeader>Top Features Of The Watch</StyledTopSpecsHeader>
-          <StyledTopSpecsText>
-            The watch has many features ranging from tracking the wearers
-            movement to counting the number steps you make and saving so that
-            you can access it whenever you like.
-          </StyledTopSpecsText>
-          <StyledBannerMobileImage src={WatchFace} />
-          <Grid container sx={{ marginTop: "50px" }}>
-            <Grid item md={2.5} xs={6}>
-              <StyledTrackHeader>Unic Track</StyledTrackHeader>
-              <StyledTrackText>$55.99</StyledTrackText>
-              <StyledTrackList>
-                Fitness Tracker
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTrackList>
-                Heart Rate Monitor
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTrackList>
-                Battery
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTrackList>
-                Alarm Clock
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTrackList>
-                Sports Tracker
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTracKBuyButton variant="outlined">
-                Buy Now
-              </StyledTracKBuyButton>
-            </Grid>
-            <Grid item md={7} xs={0}>
-              <StyledTopSpecImage src={WatchFace} />
-            </Grid>
-            <Grid item md={2.5} xs={6}>
-              <StyledTrackHeader>Smart Track</StyledTrackHeader>
-              <StyledTrackText>$45.99</StyledTrackText>
-              <StyledTrackList>
-                Fitness Tracker
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTrackList>
-                Heart Rate Monitor
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTrackList>
-                Battery
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTrackList>
-                Alarm Clock
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTrackList>
-                Sports Tracker
-                <StyledTrackIcon />
-              </StyledTrackList>
-              <StyledTracKBuyNowButton>Buy Now</StyledTracKBuyNowButton>
+          <Grid item md={4} xs={12} data-aos="fade-left">
+            <Grid container>
+              <Grid item md={3}>
+                <FeaturesLogo sx={{ background: "#fdd4d4" }}>
+                  <FeaturesSupportIcon />
+                </FeaturesLogo>
+              </Grid>
+              <Grid item md={9}>
+                <StyledFeaturesHeading>24 Hours Support</StyledFeaturesHeading>
+                <StyledFeaturesText>
+                  Contact at every hour of the day
+                </StyledFeaturesText>
+              </Grid>
             </Grid>
           </Grid>
-        </StyledTopSpecs>
-        {/* Popular Products  bar------------------------------------------------------ */}
-        <StyledPopularProducts>
-          <StyledPopularProductsHeader>
-            Popular Products
-          </StyledPopularProductsHeader>
-          <StyledPopularProductsText>
-            Most viewed products across our site
-          </StyledPopularProductsText>
-          <Grid container spacing={4}>
-            <Grid item md={4} xs={12} data-aos="fade-right">
-              <StyledPopularProductsDiv>
-                <StyledPopularProductsImage src={Watch1} />
-                <StyledPopularProductsDivHeader>
-                  Chronic Apple Watches
-                </StyledPopularProductsDivHeader>
-                <StyledPopularProductsDivText>
-                  $149.99
-                  <StyledStrikedProductsDivText>
-                    $179.99
-                  </StyledStrikedProductsDivText>
-                </StyledPopularProductsDivText>
-                <Rating
-                  name="read-only"
-                  value={4}
-                  readOnly
-                  sx={{ margin: "10px auto" }}
-                />
-              </StyledPopularProductsDiv>
+          <Grid item md={4} xs={12} data-aos="fade-left">
+            <Grid container>
+              <Grid item md={3}>
+                <FeaturesLogo sx={{ background: "#f1e8b0" }}>
+                  <FeaturesPaymentIcon />
+                </FeaturesLogo>
+              </Grid>
+              <Grid item md={9}>
+                <StyledFeaturesHeading>Secured Payment</StyledFeaturesHeading>
+                <StyledFeaturesText>
+                  Highly secured payment gateway
+                </StyledFeaturesText>
+              </Grid>
             </Grid>
-            <Grid item md={4} xs={12} data-aos="fade-up">
-              <StyledPopularProductsDiv>
-                <StyledPopularProductsImage src={Watch2} />
-                <StyledPopularProductsDivHeader>
-                  Watch Proof Watches
-                </StyledPopularProductsDivHeader>
-                <StyledPopularProductsDivText>
-                  $199.99
-                  <StyledStrikedProductsDivText>
-                    $249.99
-                  </StyledStrikedProductsDivText>
-                </StyledPopularProductsDivText>
-                <Rating
-                  name="read-only"
-                  value={5}
-                  readOnly
-                  sx={{ margin: "10px auto" }}
-                />
-              </StyledPopularProductsDiv>
-            </Grid>
-            <Grid item md={4} xs={12} data-aos="fade-left">
-              <StyledPopularProductsDiv>
-                <StyledPopularProductsImage src={Watch3} />
-                <StyledPopularProductsDivHeader>
-                  Custom Strip Watches
-                </StyledPopularProductsDivHeader>
-                <StyledPopularProductsDivText>
+          </Grid>
+        </Grid>
+      </FeaturesBar>
+      {/* top specs  bar------------------------------------------------------ */}
+      <StyledTopSpecs data-aos="fade-up">
+        <StyledTopSpecsHeader>Top Features Of The Watch</StyledTopSpecsHeader>
+        <StyledTopSpecsText>
+          The watch has many features ranging from tracking the wearers movement
+          to counting the number steps you make and saving so that you can
+          access it whenever you like.
+        </StyledTopSpecsText>
+        <StyledBannerMobileImage src={WatchFace} />
+        <Grid container sx={{ marginTop: "50px" }}>
+          <Grid item md={2.5} xs={6}>
+            <StyledTrackHeader>Unic Track</StyledTrackHeader>
+            <StyledTrackText>$55.99</StyledTrackText>
+            <StyledTrackList>
+              Fitness Tracker
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Heart Rate Monitor
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Battery
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Alarm Clock
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Sports Tracker
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTracKBuyButton variant="outlined">
+              Buy Now
+            </StyledTracKBuyButton>
+          </Grid>
+          <Grid item md={7} xs={0}>
+            <StyledTopSpecImage src={WatchFace} />
+          </Grid>
+          <Grid item md={2.5} xs={6}>
+            <StyledTrackHeader>Smart Track</StyledTrackHeader>
+            <StyledTrackText>$45.99</StyledTrackText>
+            <StyledTrackList>
+              Fitness Tracker
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Heart Rate Monitor
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Battery
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Alarm Clock
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTrackList>
+              Sports Tracker
+              <StyledTrackIcon />
+            </StyledTrackList>
+            <StyledTracKBuyNowButton>Buy Now</StyledTracKBuyNowButton>
+          </Grid>
+        </Grid>
+      </StyledTopSpecs>
+      {/* Popular Products  bar------------------------------------------------------ */}
+      <StyledPopularProducts>
+        <StyledPopularProductsHeader>
+          Popular Products
+        </StyledPopularProductsHeader>
+        <StyledPopularProductsText>
+          Most viewed products across our site
+        </StyledPopularProductsText>
+        <Grid container spacing={4}>
+          <Grid item md={4} xs={12} data-aos="fade-right">
+            <StyledPopularProductsDiv>
+              <StyledPopularProductsImage src={Watch1} />
+              <StyledPopularProductsDivHeader>
+                Chronic Apple Watches
+              </StyledPopularProductsDivHeader>
+              <StyledPopularProductsDivText>
+                $149.99
+                <StyledStrikedProductsDivText>
+                  $179.99
+                </StyledStrikedProductsDivText>
+              </StyledPopularProductsDivText>
+              <Rating
+                name="read-only"
+                value={4}
+                readOnly
+                sx={{ margin: "10px auto" }}
+              />
+            </StyledPopularProductsDiv>
+          </Grid>
+          <Grid item md={4} xs={12} data-aos="fade-up">
+            <StyledPopularProductsDiv>
+              <StyledPopularProductsImage src={Watch2} />
+              <StyledPopularProductsDivHeader>
+                Watch Proof Watches
+              </StyledPopularProductsDivHeader>
+              <StyledPopularProductsDivText>
+                $199.99
+                <StyledStrikedProductsDivText>
                   $249.99
-                  <StyledStrikedProductsDivText>
-                    $349.99
-                  </StyledStrikedProductsDivText>
-                </StyledPopularProductsDivText>
-                <Rating
-                  name="read-only"
-                  value={5}
-                  readOnly
-                  sx={{ margin: "10px auto" }}
-                />
-              </StyledPopularProductsDiv>
-            </Grid>
+                </StyledStrikedProductsDivText>
+              </StyledPopularProductsDivText>
+              <Rating
+                name="read-only"
+                value={5}
+                readOnly
+                sx={{ margin: "10px auto" }}
+              />
+            </StyledPopularProductsDiv>
           </Grid>
-        </StyledPopularProducts>
-        {/* Best Time  bar------------------------------------------------------ */}
-        <StyledBestTime>
-          <Grid container spacing={7}>
-            <Grid item md={6} xs={12} data-aos="fade-up">
-              <StyledBestTimeDiv>
-                <StyledBestTimeImage src={BestWatch} />
-              </StyledBestTimeDiv>
-            </Grid>
-            <Grid item md={6} xs={12} data-aos="fade-left">
-              <StyledBestTimeHeader>
-                The Best Product For Your Best Time
-              </StyledBestTimeHeader>
-              <StyledBestTimeText>
-                Time awaits no man. Why not take care of time with our smart
-                wrist watches. The most affordable you can get anywhere across
-                the net.
-              </StyledBestTimeText>
-              <BuyButton>See Products</BuyButton>
-            </Grid>
+          <Grid item md={4} xs={12} data-aos="fade-left">
+            <StyledPopularProductsDiv>
+              <StyledPopularProductsImage src={Watch3} />
+              <StyledPopularProductsDivHeader>
+                Custom Strip Watches
+              </StyledPopularProductsDivHeader>
+              <StyledPopularProductsDivText>
+                $249.99
+                <StyledStrikedProductsDivText>
+                  $349.99
+                </StyledStrikedProductsDivText>
+              </StyledPopularProductsDivText>
+              <Rating
+                name="read-only"
+                value={5}
+                readOnly
+                sx={{ margin: "10px auto" }}
+              />
+            </StyledPopularProductsDiv>
           </Grid>
-        </StyledBestTime>
-        {/* offer  bar------------------------------------------------------ */}
-        <StyledOfferBar data-aos="fade-up">
-          <StyledBannerMobileImage src={WatchFace} />
-          <Grid container spacing={7}>
-            <Grid item md={7} xs={12}>
-              <StyledOfferBarHeader>
-                Buy now and get up to 30% discount
-              </StyledOfferBarHeader>
-              <StyledOfferBarText>
-                Get access to the most reliable set of smart watches with
-                varieties of options
-              </StyledOfferBarText>
-              <BuyButton>Buy Now</BuyButton>
-            </Grid>
-            <Grid
-              sx={{ display: { xs: "none", md: "block" } }}
-              item
-              md={5}
-              xs={12}
-            >
-              <StyledOfferBarImage src={OfferWatch} />
-            </Grid>
+        </Grid>
+      </StyledPopularProducts>
+      {/* Best Time  bar------------------------------------------------------ */}
+      <StyledBestTime>
+        <Grid container spacing={7}>
+          <Grid item md={6} xs={12} data-aos="fade-up">
+            <StyledBestTimeDiv>
+              <StyledBestTimeImage src={BestWatch} />
+            </StyledBestTimeDiv>
           </Grid>
-        </StyledOfferBar>
-      </HomeBody>
-    </motion.div>
+          <Grid item md={6} xs={12} data-aos="fade-left">
+            <StyledBestTimeHeader>
+              The Best Product For Your Best Time
+            </StyledBestTimeHeader>
+            <StyledBestTimeText>
+              Time awaits no man. Why not take care of time with our smart wrist
+              watches. The most affordable you can get anywhere across the net.
+            </StyledBestTimeText>
+            <BuyButton>See Products</BuyButton>
+          </Grid>
+        </Grid>
+      </StyledBestTime>
+      {/* offer  bar------------------------------------------------------ */}
+      <StyledOfferBar data-aos="fade-up">
+        <StyledBannerMobileImage src={WatchFace} />
+        <Grid container spacing={7}>
+          <Grid item md={7} xs={12}>
+            <StyledOfferBarHeader>
+              Buy now and get up to 30% discount
+            </StyledOfferBarHeader>
+            <StyledOfferBarText>
+              Get access to the most reliable set of smart watches with
+              varieties of options
+            </StyledOfferBarText>
+            <BuyButton>Buy Now</BuyButton>
+          </Grid>
+          <Grid
+            sx={{ display: { xs: "none", md: "block" } }}
+            item
+            md={5}
+            xs={12}
+          >
+            <StyledOfferBarImage src={OfferWatch} />
+          </Grid>
+        </Grid>
+      </StyledOfferBar>
+    </HomeBody>
   );
 };
 
