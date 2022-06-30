@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 const Shop = () => {
   const ShopBody = styled("div")(({ theme }) => ({
     width: "70%",
-    margin: "auto",
+    margin: "110px auto",
     [theme.breakpoints.up("xl")]: {
       width: "60%",
     },
@@ -97,7 +97,6 @@ const Shop = () => {
     fontSize: "13px",
     fontWeight: 450,
     color: "#222",
-    marginTop: "110px",
   }));
 
   const StyledLinkButton = styled(Button)(({ theme }) => ({
@@ -109,10 +108,10 @@ const Shop = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0.5, x: 100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0.5, x: -100 }}
-      transition={{ duration: 0.3 }}
+      initial={{ x: 100 }}
+      animate={{ x: 0 }}
+      exit={{ x: -100 }}
+      transition={{ duration: 0.5 }}
     >
       <ShopBody>
         <StyledLinkTagBar

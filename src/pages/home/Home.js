@@ -24,7 +24,7 @@ import { motion } from "framer-motion";
 const Home = () => {
   const HomeBody = styled("div")(({ theme }) => ({
     width: "70%",
-    margin: "auto",
+    margin: "100px auto",
     [theme.breakpoints.up("xl")]: {
       width: "60%",
     },
@@ -39,7 +39,7 @@ const Home = () => {
   const StyledBanner = styled("div")(({ theme }) => ({
     width: "100%",
     height: 420,
-    margin: "100px auto",
+    margin: "auto",
     backgroundImage: `url(${BannerImg})`,
     backgroundSize: "630px 420px",
     backgroundRepeat: "no-repeat",
@@ -504,10 +504,10 @@ const Home = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0.5, x: 100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0.5, x: -100 }}
-      transition={{ duration: 0.3 }}
+      initial={{ x: 100 }}
+      animate={{ x: 0 }}
+      exit={{ x: -100 }}
+      transition={{ duration: 0.5 }}
     >
       <HomeBody>
         <StyledBanner>
@@ -786,10 +786,10 @@ const Home = () => {
           </Grid>
         </StyledBestTime>
         {/* offer  bar------------------------------------------------------ */}
-        <StyledOfferBar>
+        <StyledOfferBar data-aos="fade-up">
           <StyledBannerMobileImage src={WatchFace} />
           <Grid container spacing={7}>
-            <Grid item md={7} xs={12} data-aos="zoom-in">
+            <Grid item md={7} xs={12}>
               <StyledOfferBarHeader>
                 Buy now and get up to 30% discount
               </StyledOfferBarHeader>
@@ -804,7 +804,6 @@ const Home = () => {
               item
               md={5}
               xs={12}
-              data-aos="fade-down"
             >
               <StyledOfferBarImage src={OfferWatch} />
             </Grid>

@@ -9,6 +9,7 @@ import ContactUs from "./pages/contact/Contact";
 import { AnimatePresence } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ViewItem from "./pages/shop/ViewItem";
 
 function App() {
   useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/viewitem" element={<ViewItem />} />
         </Routes>
         <Footer />
       </BrowserRouter>
