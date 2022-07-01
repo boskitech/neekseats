@@ -263,12 +263,12 @@ const ViewItem = () => {
               sx={{ margin: "20px auto" }}
             />
             <StyledColorGrid container>
-              <Grid item xs={2.5}>
+              <Grid item md={2.5} xs={3}>
                 <StyledProductsDivText sx={{ margin: "0" }}>
                   Color:
                 </StyledProductsDivText>
               </Grid>
-              <Grid item xs={9.5}>
+              <Grid item md={9.5} xs={9}>
                 <ToggleButtonGroup
                   value={value}
                   onChange={handleValue}
@@ -294,12 +294,12 @@ const ViewItem = () => {
               </Grid>
             </StyledColorGrid>
             <StyledQuantityGrid container>
-              <Grid item xs={2.5}>
+              <Grid item md={2.5} xs={3}>
                 <StyledProductsDivText sx={{ margin: "0" }}>
                   Quantity:
                 </StyledProductsDivText>
               </Grid>
-              <Grid item xs={9.5}>
+              <Grid item md={9.5} xs={9}>
                 <Button
                   sx={{
                     border: "1px solid #444",
