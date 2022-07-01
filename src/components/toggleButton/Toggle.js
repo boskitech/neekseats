@@ -10,8 +10,6 @@ export default function ToggleButtons({ listName, listValue }) {
     setValue(newValue);
   };
 
-  console.log(value);
-
   const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
     display: "block",
     width: "100%",
