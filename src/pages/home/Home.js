@@ -10,9 +10,11 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Rating from "@mui/material/Rating";
 import BuyButton from "../../components/buyButton/BuyButton";
 import * as HomeStyles from "./Home.styles";
+import { useNavigate } from "react-router-dom";
 //-------------------------------Welcome Banner Styles--------------------------------
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <HomeStyles.HomeBody data-aos="fade-left">
       <HomeStyles.StyledBanner>
@@ -29,6 +31,7 @@ const Home = () => {
               </HomeStyles.StyledBannerText>
               <HomeStyles.StyledBannerCartButton
                 startIcon={<AddShoppingCartIcon />}
+                onClick={() => navigate("/viewitem")}
               >
                 Add to cart
               </HomeStyles.StyledBannerCartButton>

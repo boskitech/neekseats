@@ -84,6 +84,9 @@ export const StyledBannerCartButton = styled(Button)(({ theme }) => ({
   padding: "10px",
   fontSize: "11px",
   marginRight: "10px",
+  "&:hover": {
+    background: "#f85321",
+  },
   [theme.breakpoints.down("md")]: {
     width: "100%",
     height: "50px",
@@ -321,6 +324,11 @@ export const StyledTracKBuyButton = styled(Button)(({ theme }) => ({
   color: "#b43e3a",
   marginTop: "27px",
   border: "2px solid #b43e3a",
+  "&:hover": {
+    border: "2px solid #f85321",
+    background: "#f85321",
+    color: "white",
+  },
 }));
 
 export const StyledTracKBuyNowButton = styled(Button)(({ theme }) => ({
@@ -329,6 +337,9 @@ export const StyledTracKBuyNowButton = styled(Button)(({ theme }) => ({
   color: "#fff",
   marginTop: "27px",
   background: "#b43e3a",
+  "&:hover": {
+    background: "#f85321",
+  },
 }));
 
 export const StyledTopSpecImage = styled("img")(({ theme }) => ({

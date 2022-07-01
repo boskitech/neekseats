@@ -6,5 +6,8 @@ const BuyButton = styled(Button)(({ theme }) => ({
   color: "white",
   marginTop: "10px",
   backgroundColor: "#b43e3a",
+  "&:hover": {
+    background: "#f85321",
+  },
 }));
 export default BuyButton;
