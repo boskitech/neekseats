@@ -87,7 +87,7 @@ const ViewItem = () => {
 
   const StyledImageBar = styled("div")(({ theme }) => ({
     width: "100%",
-    height: "400px",
+    height: "auto",
   }));
 
   const StyledSelectionBar = styled("div")(({ theme }) => ({
@@ -120,7 +120,7 @@ const ViewItem = () => {
     margin: "60px auto",
     filter: "drop-shadow(-10px 30px 4px #efefef)",
     [theme.breakpoints.down("md")]: {
-      margin: "10px auto",
+      margin: "0px auto",
     },
   }));
 
