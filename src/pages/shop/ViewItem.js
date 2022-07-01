@@ -17,10 +17,6 @@ const ViewItem = () => {
     setValue(newValue);
   };
 
-  // const handleQuantity = () => {
-  //   setQuantity(quantity + 1);
-  // };
-
   //Toggle button -----------------------------------------------------
   const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
     width: "100px",
@@ -32,6 +28,7 @@ const ViewItem = () => {
     fontSize: "13px",
     color: "#444",
     marginRight: "10px",
+    marginTop: "10px",
     textTransform: "capitalize",
     "&.Mui-selected, &.Mui-selected:hover": {
       color: "#805a0f",
@@ -201,6 +198,23 @@ const ViewItem = () => {
     },
   }));
 
+  const StyledDiscriptionBar = styled("div")(({ theme }) => ({
+    color: "#333",
+    width: "100%",
+    height: "auto",
+    textAlign: "justify",
+    marginTop: "100px",
+    fontSize: "15px",
+    borderTop: "1px solid #cfcfcf",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      height: "auto",
+      fontWeight: 500,
+      fontSize: "15px",
+      marginTop: "50px",
+    },
+  }));
+
   return (
     <ViewItemBody>
       <Grid container spacing={7} display="flex" justifyContent="space-between">
@@ -319,21 +333,144 @@ const ViewItem = () => {
             </StyledQuantityGrid>
           </StyledSelectionBar>
           <StyledBuyAndCheckOut>
-            <StyledBannerCartButton
-              sx={{
-                backgroundColor: "#fff",
-                border: "1.5px solid #c73217",
-                color: "#c73217",
-                fontWeight: 600,
-              }}
-              startIcon={<AddShoppingCartIcon />}
-            >
-              Add To Cart
-            </StyledBannerCartButton>
-            <StyledBannerCartButton>Buy Now</StyledBannerCartButton>
+            <Grid container>
+              <Grid item md={2.5} xs={0}></Grid>
+              <Grid item md={9.5} xs={12}>
+                <StyledBannerCartButton
+                  sx={{
+                    backgroundColor: "#fff",
+                    border: "1.5px solid #c73217",
+                    color: "#c73217",
+                    fontWeight: 600,
+                  }}
+                  startIcon={<AddShoppingCartIcon />}
+                >
+                  Add To Cart
+                </StyledBannerCartButton>
+                <StyledBannerCartButton>Buy Now</StyledBannerCartButton>
+              </Grid>
+            </Grid>
           </StyledBuyAndCheckOut>
         </Grid>
       </Grid>
+      <StyledDiscriptionBar>
+        <StyledProductsDivHeader
+          sx={{ marginTop: "25px", fontSize: "25px", color: "#333" }}
+        >
+          Description
+        </StyledProductsDivHeader>
+        <StyledProductsDivText sx={{ fontWeight: "400", marginTop: "20px" }}>
+          <h3>Tougher around the clock.</h3> 50% thicker front crystal. The
+          front crystal is over twice as thick at its tallest point as Apple
+          Watch Series 6, adding strength and durability. Robust geometry. The
+          front crystal has been redesigned with a flat base, creating a
+          sturdier shape more resistant to cracks. <h3>OLED display</h3>The
+          touch sensor has been integrated onto the OLED panel, creating one
+          unified component and reducing display thickness and borders. The
+          future of health. On full display.{" "}
+          <h3>
+            Measure your blood oxygen level with a revolutionary sensor and app
+          </h3>
+          Take an ECG anytime, anywhere. Check your heart rate along with other
+          innovations like mindfulness and sleep tracking to keep you healthy
+          from head to toe. Series 7 puts more health insights in sight. Apple
+          Watch Measure Close up Apple Watch showing Blood Oxygen Measure your
+          blood oxygen. It's a breathtaking innovation. Your blood oxygen level
+          is a key indicator of your overall wellness. It can help you
+          understand how well your body is absorbing oxygen and the amount of
+          oxygen delivered to your body. The remarkable sensor and app in Apple
+          Watch Series 7 allow you to take on-demand readings of your blood
+          oxygen as well as background readings, day and night.3 Learn how to
+          use the Blood Oxygen app ECG Take an ECG at any time. With the ECG
+          app, Apple Watch Series 7 is capable of generating an ECG similar to a
+          single-lead electrocardiogram. <h3>Charges in no time</h3> The entire
+          charging system for Apple Watch Series 7 has been rethought to get you
+          up and running faster than ever. With an updated charging architecture
+          and fast-charging USB-C cable, it takes about 45 minutes to go from 0
+          to 80% charge.6 Up to 33% faster charging than Series 67 8mins
+          provides 8 hours of sleep tracking8 Stay centered. <h3>Move ahead</h3>{" "}
+          Taking a moment throughout the day to pause and breathe can reduce
+          stress. The Reflect feature in the Mindfulness app helps you set an
+          intention and center yourself with a beautiful animation. And audio
+          and video guided meditations in Apple Fitness+ focus on improving your
+          overall wellbeing with specific themes such as calm, gratitude, or
+          kindness.9 Reflect App Massively motivating.{" "}
+          <h3>Tap into dozens of workouts</h3>
+          Track all the ways you move. Advance your goals with Apple Fitness+.
+          Apple Watch Series 7 gives it everything. And thanks to the larger
+          display, you'll see all your progress and metrics more quickly and
+          clearly, in and out of the water. Let's go — there's more in there.
+          Fitness that revolves around you. Squat, spin, stride, you name it —
+          Apple Watch has a workout for it. There's even Tai Chi and Pilates to
+          get your endorphins going. <h3>
+            The starting line is on your wrist
+          </h3>{" "}
+          Apple Watch Outdoor Cycling Airpods Left Apple Watch displaying
+          halfway point Airpods Right Cycling finds a whole new gear. Apple
+          Watch automatically detects when you begin pedaling and reminds you to
+          start a workout. Fall detection, optimized for cycling and other
+          workouts,10 can call emergency services if you take a spill.11 And to
+          help you keep your eyes on the road, a voice feedback feature
+          announces workout milestones, like speed, distance, and more. For
+          e-bikes, an improved algorithm more accurately calculates calories.
+          H2O. You're good to go.{" "}
+          <h3>Apple Watch is water resistant to 50 meters</h3>
+          So whether you're in open water or tracking your splits and sets at
+          the pool, you're covered.2 Music, Podcasts, and Audiobooks. With Apple
+          Music, you've got over 90 million tracks of musical motivation riding
+          on your wrist. There are also podcasts and audiobooks to help you lose
+          calories and yourself along the way.12 Apple Fitness+ shown on Watch
+          and Phone Apple Fitness+ The first fitness service powered by Apple
+          Watch. Apple Fitness+ is a different kind of fitness experience. There
+          are new workouts every week, from 5 to 45 minutes. Eleven workout
+          types, including HIIT, Strength, Pilates, and Yoga. Guided meditations
+          to help you focus on your overall wellbeing. And personal metrics from
+          Apple Watch synced to your iPhone, iPad, and Apple TV. Get 3 months
+          free when you buy an Apple Watch.
+          <h3>Take a call from the trail</h3> Text a smiley face to your friends
+          stuck in the office. Apple Watch with cellular gives you all the right
+          connections. Feel free to leave your phone at home. Wallet keeps it
+          all in one place. That's money. Unlock your door. Start your car.
+          Board your plane. Pay for just about anything. And that's only the
+          start. With the Wallet app, you've got everything important in one
+          location. Perfect when you're all over the place.15 Siri.{" "}
+          <h3>An answer for life's big questions</h3> What's the capital of
+          Christmas Island? Where's the closest gas station? What's that song?
+          Ask away. Siri can even translate foreign languages in real time.
+          That's fantástico. Maps. Your guiding hand. Whether you're walking,
+          driving, cycling, or taking public transit, Maps makes it easy every
+          step of the way. Gentle taps from the Taptic Engine let you know when
+          it's time to turn left or right, so you don't have to look at your
+          watch. <h3>Your family, joined at the wrist</h3> With Family Setup,
+          you can use your iPhone to pair watches for your children or older
+          adults who don't have their own iPhone. So everyone can stay in touch
+          by phone or text message.16 Family Image One Alt Text Kids can call,
+          text, ask Siri questions, listen to music, download and use apps, and
+          get their allowance through Apple Cash Family. Family Image Two Alt
+          Text Everyone can share their location for you to see with the Find
+          People app. Be alerted when older family members and kids get home or
+          aren't where they're expected to be. Family Image Three Alt Text Using
+          the Memoji app, family members can customize a Memoji to be as fun as
+          they want, then share it as a sticker in Messages or make it their
+          watch face. <h3>Apps specifically designed to do everything</h3> With
+          access to thousands of apps from the App Store right on your wrist,
+          Apple Watch is the perfect personal device for whatever you love to
+          do. Surfing, photography, astronomy, you name it. Just download the
+          app straight to your Apple Watch and you've got everything you need
+          right at hand. Watch faces that look just like you. Create your own
+          watch face with complications tailored to whatever you're into. If
+          you're a surfer, see the tides, wind, and water temperature at a
+          glance. You can even share faces with friends and family by email or
+          text. <h3>Three amazing materials</h3> Each singularly beautiful. An
+          extreme level of craftsmanship was required to create a watch that's
+          as stunning to look at as it is capable to use. Apple Watch is
+          available in three remarkable materials — titanium, stainless steel,
+          and 100% recyclable aluminum. Environment We take responsibility for
+          the environmental footprint of our products throughout their life
+          cycle. We're committed to one day sourcing 100% recycled and renewable
+          materials across all of our products and packaging.
+        </StyledProductsDivText>
+      </StyledDiscriptionBar>
     </ViewItemBody>
   );
 };
