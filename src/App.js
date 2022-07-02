@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollTop";
 import Footer from "./components/footer/Footer";
 import Shop from "./pages/shop/Shop";
 import AboutUs from "./pages/about/About";
@@ -23,15 +24,17 @@ function App() {
     <AnimatePresence exitBeforeEnter>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/viewitem" element={<ViewItem />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/viewitem" element={<ViewItem />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </ScrollToTop>
         <Footer />
       </BrowserRouter>
     </AnimatePresence>

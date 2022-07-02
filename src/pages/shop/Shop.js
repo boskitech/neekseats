@@ -12,6 +12,7 @@ import * as ShopStyles from "./Shop.styles";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import StickyBox from "react-sticky-box";
+
 const Shop = () => {
   const navigate = useNavigate();
   return (

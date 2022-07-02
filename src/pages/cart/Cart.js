@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
+import StickyBox from "react-sticky-box";
 
 const Cart = () => {
   const [color, setColor] = useState("black");
@@ -714,10 +715,12 @@ const Cart = () => {
             </StyledCartGrid>
           </Grid>
           <Grid item md={4} xs={12}>
-            <StyledCheckoutGrid>
-              <StyledCheckOutHeader>Delivery</StyledCheckOutHeader>
-              <DeliveryBar />
-            </StyledCheckoutGrid>
+            <StickyBox offsetTop={90} offsetBottom={90}>
+              <StyledCheckoutGrid>
+                <StyledCheckOutHeader>Delivery</StyledCheckOutHeader>
+                <DeliveryBar />
+              </StyledCheckoutGrid>
+            </StickyBox>
           </Grid>
         </Grid>
       </CartBody>
