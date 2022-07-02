@@ -4,6 +4,7 @@ import Paper from "@mui/material/Paper";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { Button } from "@mui/material";
+import { Box } from "@mui/system";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   "& .MuiToggleButtonGroup-grouped": {
@@ -95,7 +96,7 @@ export default function DeliveryBar() {
   };
 
   return (
-    <div style={{ padding: "0px 15px" }}>
+    <Box sx={{ padding: { xs: "0px", md: "0px 15px" } }}>
       <Paper
         elevation={0}
         sx={{
@@ -143,6 +144,6 @@ export default function DeliveryBar() {
         </StyledSubTotalHeader>
         <StyledBannerCartButton>Proceed to checkout</StyledBannerCartButton>
       </StyledSubTotal>
-    </div>
+    </Box>
   );
 }

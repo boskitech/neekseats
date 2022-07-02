@@ -12,11 +12,22 @@ import Watch3 from "../../assets/img/watch_img_29.png";
 import Watch4 from "../../assets/img/watch_img_21.png";
 import DeliveryBar from "./DeliveryBar";
 import { motion } from "framer-motion";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
 
 const Cart = () => {
   const [color, setColor] = useState("black");
   const [quantity, SetQuantity] = useState(1);
+  const [open, setOpen] = useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleChange = (event) => {
     setColor(event.target.value);
   };
@@ -52,6 +63,10 @@ const Cart = () => {
     color: "#666",
     fontWeight: 400,
     padding: "15px",
+    [theme.breakpoints.down("md")]: {
+      padding: "15px 0px",
+      fontSize: "18px",
+    },
   }));
 
   const StyledCartGrid = styled("div")(({ theme }) => ({
@@ -202,6 +217,11 @@ const Cart = () => {
     },
   }));
 
+  const StyledMobileCheckoutGrid = styled("div")(({ theme }) => ({
+    width: "100%",
+    height: "auto",
+  }));
+
   return (
     <motion.div
       initial={{ x: 200, opacity: 0 }}
@@ -209,6 +229,24 @@ const Cart = () => {
       exit={{ x: 200, scale: 0, opacity: 0 }}
       transition={{ type: "spring", duration: 0.5 }}
     >
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        width="90%"
+        fullScreen
+      >
+        <DialogContent>
+          <StyledMobileCheckoutGrid>
+            <StyledCheckOutHeader>Delivery</StyledCheckOutHeader>
+            <DeliveryBar />
+          </StyledMobileCheckoutGrid>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
       <CartBody>
         <Grid container spacing={5}>
           <Grid item md={8} xs={12}>
@@ -684,7 +722,10 @@ const Cart = () => {
           </Grid>
         </Grid>
       </CartBody>
-      <StyledMobileCheckoutButton startIcon={<ShoppingCartCheckoutIcon />}>
+      <StyledMobileCheckoutButton
+        onClick={handleClickOpen}
+        startIcon={<ShoppingCartCheckoutIcon />}
+      >
         Checkout
       </StyledMobileCheckoutButton>
     </motion.div>
