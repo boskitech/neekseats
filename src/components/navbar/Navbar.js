@@ -129,6 +129,16 @@ const Navbar = () => {
             <ListItemText primary="contact" />
           </ListItemButton>
         </ListItem>
+        <ListItem onClick={() => navigate("/cart")} disablePadding>
+          <ListItemButton>
+            <ListItemText primary="Cart" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem onClick={() => navigate("/login")} disablePadding>
+          <ListItemButton>
+            <ListItemText primary="Login" />
+          </ListItemButton>
+        </ListItem>
       </List>
       <Divider />
     </Box>
