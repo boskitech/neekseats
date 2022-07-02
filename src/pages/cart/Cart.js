@@ -9,8 +9,6 @@ import Watch1 from "../../assets/img/watch_img_27.png";
 import Watch2 from "../../assets/img/watch_img_12.png";
 import Watch3 from "../../assets/img/watch_img_29.png";
 import Watch4 from "../../assets/img/watch_img_21.png";
-// import Watch5 from "../../assets/img/watch_img_3.png";
-// import Watch6 from "../../assets/img/watch_img_7.png";
 import DeliveryBar from "./DeliveryBar";
 import { motion } from "framer-motion";
 
@@ -42,6 +40,11 @@ const Cart = () => {
     color: "#444",
     fontWeight: 400,
     padding: "15px",
+    [theme.breakpoints.down("md")]: {
+      padding: "12px",
+      boxShadow: "0 0 5px #dfdfdf",
+      borderRadius: "5px",
+    },
   }));
 
   const StyledCheckOutHeader = styled("div")(({ theme }) => ({
@@ -75,8 +78,8 @@ const Cart = () => {
     padding: "15px 0px 15px 15px",
     [theme.breakpoints.down("md")]: {
       width: "96%",
-      boxShadow: "0 0 5px #efefef",
-      margin: "20px 0",
+      boxShadow: "0 0 5px #dfdfdf",
+      margin: "15px 0",
       height: "auto",
     },
   }));
@@ -138,15 +141,6 @@ const Cart = () => {
     },
   }));
 
-  //   const StyledQuantityButton = styled(Button)(({ theme }) => ({
-  //     width: "20px",
-  //     height: "30px",
-  //     fontSize: "17px",
-  //     border: "1px solid #bfbfbf",
-  //     margin: "0 10px",
-  //     color: "#777",
-  //   }));
-
   const StyledDeleteButton = styled(Button)(({ theme }) => ({
     width: "20px",
     height: "30px",
@@ -197,7 +191,12 @@ const Cart = () => {
             <StyledCartGrid>
               <StyledCartHeader>
                 Cart
-                <Divider sx={{ marginTop: "13px" }} />
+                <Divider
+                  sx={{
+                    marginTop: "13px",
+                    display: { xs: "none", sm: "block" },
+                  }}
+                />
               </StyledCartHeader>
               <StyledCartItems>
                 <Grid container direction="row" spacing="20">
