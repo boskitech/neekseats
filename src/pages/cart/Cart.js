@@ -43,7 +43,7 @@ const Cart = () => {
     },
     [theme.breakpoints.down("md")]: {
       width: "90%",
-      margin: "70px auto 20px auto",
+      margin: "70px auto 0px auto",
     },
   }));
 
@@ -182,12 +182,11 @@ const Cart = () => {
     width: "auto",
     borderRadius: "4px",
     border: "1px solid #bfbfbf",
-    margin: "20px 10px",
+    margin: "20px 0px 20px 10px",
     color: "#777",
     fontSize: "15px",
     [theme.breakpoints.down("md")]: {
-      marginTop: "10px",
-      marginBottom: "10px",
+      margin: "10px 0px 10px 7px",
     },
   }));
 
@@ -700,7 +699,7 @@ const Cart = () => {
                             >
                               <DeleteIcon
                                 sx={{
-                                  fontSize: "18px",
+                                  fontSize: "17px",
                                   marginTop: "8px",
                                 }}
                               />
