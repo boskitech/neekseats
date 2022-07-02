@@ -69,6 +69,9 @@ const Cart = () => {
     height: "auto",
     borderRadius: "5px",
     boxShadow: "0 0 15px #efefef",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   }));
 
   const StyledCartItems = styled("div")(({ theme }) => ({
@@ -182,7 +185,7 @@ const Cart = () => {
     backgroundColor: "#c73217",
     color: "white",
     width: "100%",
-    height: "45px",
+    height: "50px",
     textTransform: "capitalize",
     margin: "0",
     padding: "10px",
