@@ -41,7 +41,7 @@ const Cart = () => {
     fontWeight: 400,
     padding: "15px",
     [theme.breakpoints.down("md")]: {
-      padding: "12px",
+      padding: "5px 0",
       borderRadius: "5px",
     },
   }));
