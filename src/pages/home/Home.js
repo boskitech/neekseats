@@ -31,7 +31,7 @@ const Home = () => {
               </HomeStyles.StyledBannerText>
               <HomeStyles.StyledBannerCartButton
                 startIcon={<AddShoppingCartIcon />}
-                onClick={() => navigate("/viewitem")}
+                onClick={() => navigate("/cart")}
               >
                 Add to cart
               </HomeStyles.StyledBannerCartButton>
