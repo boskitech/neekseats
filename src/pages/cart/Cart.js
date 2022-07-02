@@ -73,7 +73,7 @@ const Cart = () => {
     width: "100%",
     height: "auto",
     borderRadius: "5px",
-    boxShadow: "0 0 15px #efefef",
+    boxShadow: "0 0 7px #cfcfcf",
     [theme.breakpoints.down("md")]: {
       boxShadow: "none",
     },
@@ -83,7 +83,7 @@ const Cart = () => {
     width: "100%",
     height: "auto",
     borderRadius: "5px",
-    boxShadow: "0 0 15px #efefef",
+    boxShadow: "0 0 7px #cfcfcf",
     [theme.breakpoints.down("md")]: {
       display: "none",
     },

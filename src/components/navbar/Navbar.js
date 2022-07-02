@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
@@ -74,7 +74,18 @@ const StyledAppBAr = styled(AppBar)(({ theme }) => ({
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [state, setState] = React.useState({ left: false });
+  const [state, setState] = useState({ left: false });
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    window.onscroll = function () {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+  }, []);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -125,7 +136,11 @@ const Navbar = () => {
 
   return (
     <div>
-      <StyledAppBAr position="fixed">
+      <StyledAppBAr
+        position="fixed"
+        // sx={{ ...(scrolled && { boxShadow: "0 0 10px #dfdfdf" }) }}
+        sx={{ boxShadow: scrolled ? "0 0 10px #afafaf" : "none" }}
+      >
         <StyledToolBar>
           <HeaderText>
             <span style={{ color: "orange", fontSize: "28px" }}>Net</span>Porch
