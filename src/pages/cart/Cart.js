@@ -23,7 +23,7 @@ const Cart = () => {
 
   const CartBody = styled("div")(({ theme }) => ({
     width: "70%",
-    margin: "130px auto",
+    margin: "130px auto 20px auto",
     [theme.breakpoints.up("xl")]: {
       width: "60%",
     },
