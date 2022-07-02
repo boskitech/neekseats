@@ -77,7 +77,7 @@ const Cart = () => {
     padding: "15px 0px 15px 15px",
     [theme.breakpoints.down("md")]: {
       width: "96%",
-      boxShadow: "0 0 3px #dfdfdf",
+      boxShadow: "0 0 2px #cfcfcf",
       margin: "15px 0",
       height: "auto",
     },
