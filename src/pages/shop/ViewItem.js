@@ -16,8 +16,8 @@ const ViewItem = () => {
   const [value, setValue] = React.useState("");
   const [quantity, setQuantity] = React.useState(1);
   
-  const handleValue = (e) => {
-    setValue(e.target.value);
+  const handleValue = (event, newValue) => {
+    setValue(newValue);
   };
 
  
