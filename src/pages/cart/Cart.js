@@ -6,18 +6,19 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Watch1 from "../../assets/img/watch_img_27.png";
-import Watch2 from "../../assets/img/watch_img_8.png";
+import Watch2 from "../../assets/img/watch_img_12.png";
 import Watch3 from "../../assets/img/watch_img_29.png";
 import Watch4 from "../../assets/img/watch_img_21.png";
 import Watch5 from "../../assets/img/watch_img_3.png";
 import Watch6 from "../../assets/img/watch_img_7.png";
+import DeliveryBar from "./DeliveryBar";
 
 const Cart = () => {
-  const [age, setAge] = useState("");
+  const [color, setColor] = useState("black");
   const [quantity, SetQuantity] = useState(1);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setColor(event.target.value);
   };
 
   const CartBody = styled("div")(({ theme }) => ({
@@ -31,7 +32,7 @@ const Cart = () => {
     },
     [theme.breakpoints.down("md")]: {
       width: "90%",
-      margin: "40px auto",
+      margin: "70px auto",
     },
   }));
 
@@ -54,20 +55,29 @@ const Cart = () => {
     height: "auto",
     borderRadius: "5px",
     boxShadow: "0 0 15px #efefef",
+    [theme.breakpoints.down("md")]: {
+      boxShadow: "none",
+    },
   }));
 
   const StyledCheckoutGrid = styled("div")(({ theme }) => ({
     width: "100%",
-    height: "200px",
+    height: "auto",
     borderRadius: "5px",
     boxShadow: "0 0 15px #efefef",
   }));
 
   const StyledCartItems = styled("div")(({ theme }) => ({
-    width: "100%",
+    width: "96%",
     height: "200px",
     borderRadius: "5px",
-    padding: "15px",
+    padding: "15px 0px 15px 15px",
+    [theme.breakpoints.down("md")]: {
+      width: "96%",
+      boxShadow: "0 0 5px #efefef",
+      margin: "20px 0",
+      height: "auto",
+    },
   }));
 
   const StyledCartImageDiv = styled("div")(({ theme }) => ({
@@ -90,20 +100,30 @@ const Cart = () => {
     color: "#666",
     fontWeight: 400,
     padding: "15px 0px",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "5px",
+      padding: "0px",
+    },
   }));
 
   const StyledItemPrice = styled("div")(({ theme }) => ({
     fontSize: "16px",
     color: "#222",
     fontWeight: 400,
-    padding: "15px 40px",
+    padding: "15px 10px",
+    [theme.breakpoints.down("md")]: {
+      padding: "0px 15px 0 10px",
+    },
   }));
 
   const StyledShippingText = styled("span")(({ theme }) => ({
     fontSize: "13px",
     color: "#999",
     fontWeight: 400,
-    padding: "0",
+    padding: "10px 0",
+    [theme.breakpoints.down("md")]: {
+      paddingTop: "10px",
+    },
   }));
 
   const StyledSelectButton = styled(MuiSelect)(({ theme }) => ({
@@ -112,6 +132,9 @@ const Cart = () => {
     marginTop: "20px",
     fontSize: "13px",
     outline: "none",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "10px",
+    },
   }));
 
   //   const StyledQuantityButton = styled(Button)(({ theme }) => ({
@@ -135,6 +158,10 @@ const Cart = () => {
       color: "red",
       background: "none",
     },
+    [theme.breakpoints.down("md")]: {
+      margin: "0px 10px 0 0",
+      float: "right",
+    },
   }));
 
   const StyledQuantityBar = styled("div")(({ theme }) => ({
@@ -145,6 +172,10 @@ const Cart = () => {
     margin: "20px 10px",
     color: "#777",
     fontSize: "15px",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "10px",
+      marginBottom: "10px",
+    },
   }));
 
   const QuantityDiv = styled("div")(({ theme }) => ({
@@ -156,7 +187,7 @@ const Cart = () => {
     <CartBody>
       <Grid container spacing={5}>
         <Grid item md={8} xs={12}>
-          <StyledCartGrid item md={8} xs={12}>
+          <StyledCartGrid>
             <StyledCartHeader>
               Cart
               <Divider sx={{ marginTop: "13px" }} />
@@ -172,9 +203,7 @@ const Cart = () => {
                   <Grid container direction="column">
                     <Grid
                       item
-                      direction="row"
-                      display="flex"
-                      justifyContent="space-between"
+                      sx={{ display: "flex", justifyContent: "space-between" }}
                     >
                       <StyledItemName>Smart Apple Chromic Watch</StyledItemName>
                       <StyledItemPrice>$12.99 </StyledItemPrice>
@@ -189,19 +218,26 @@ const Cart = () => {
                         direction="row"
                         justifyContent="space-between"
                       >
-                        <Grid item display="flex" direction="row">
+                        <Grid
+                          item
+                          md={9}
+                          xs={12}
+                          sx={{
+                            display: "flex",
+                          }}
+                        >
                           <StyledSelectButton
-                            value={age}
+                            value={color}
                             onChange={handleChange}
                             displayEmpty
                             inputProps={{ "aria-label": "Without label" }}
                           >
-                            <MenuItem value="">
+                            <MenuItem value="none">
                               <em>Black</em>
                             </MenuItem>
-                            <MenuItem value={10}>Black</MenuItem>
-                            <MenuItem value={20}>White</MenuItem>
-                            <MenuItem value={30}>Brown</MenuItem>
+                            <MenuItem value="black">Black</MenuItem>
+                            <MenuItem value="white">White</MenuItem>
+                            <MenuItem value="brown">Brown</MenuItem>
                           </StyledSelectButton>
                           <StyledQuantityBar>
                             <QuantityDiv>
@@ -235,447 +271,7 @@ const Cart = () => {
                             </QuantityDiv>
                           </StyledQuantityBar>
                         </Grid>
-                        <Grid item>
-                          <StyledDeleteButton>
-                            <DeleteIcon
-                              sx={{ fontSize: "14px", marginRight: "3px" }}
-                            />
-                            Delete
-                          </StyledDeleteButton>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </StyledCartItems>
-            <StyledCartItems>
-              <Grid container direction="row" spacing="20">
-                <Grid item xs={3}>
-                  <StyledCartImageDiv>
-                    <StyledCartImage src={Watch2}></StyledCartImage>
-                  </StyledCartImageDiv>
-                </Grid>
-                <Grid item xs={9}>
-                  <Grid container direction="column">
-                    <Grid
-                      item
-                      direction="row"
-                      display="flex"
-                      justifyContent="space-between"
-                    >
-                      <StyledItemName>Smart Apple Chromic Watch</StyledItemName>
-                      <StyledItemPrice>$12.99 </StyledItemPrice>
-                    </Grid>
-                    <Grid item>
-                      <StyledShippingText>Shipping - $12.99</StyledShippingText>
-                    </Grid>
-                    <Grid item>
-                      <Grid
-                        container
-                        display="flex"
-                        direction="row"
-                        justifyContent="space-between"
-                      >
-                        <Grid item display="flex" direction="row">
-                          <StyledSelectButton
-                            value={age}
-                            onChange={handleChange}
-                            displayEmpty
-                            inputProps={{ "aria-label": "Without label" }}
-                          >
-                            <MenuItem value="">
-                              <em>Black</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Black</MenuItem>
-                            <MenuItem value={20}>White</MenuItem>
-                            <MenuItem value={30}>Brown</MenuItem>
-                          </StyledSelectButton>
-                          <StyledQuantityBar>
-                            <QuantityDiv>
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity - 1)}
-                              >
-                                <RemoveIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                              {quantity}
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity + 1)}
-                              >
-                                <AddIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                            </QuantityDiv>
-                          </StyledQuantityBar>
-                        </Grid>
-                        <Grid item>
-                          <StyledDeleteButton>
-                            <DeleteIcon
-                              sx={{ fontSize: "14px", marginRight: "3px" }}
-                            />
-                            Delete
-                          </StyledDeleteButton>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </StyledCartItems>
-            <StyledCartItems>
-              <Grid container direction="row" spacing="20">
-                <Grid item xs={3}>
-                  <StyledCartImageDiv>
-                    <StyledCartImage src={Watch3}></StyledCartImage>
-                  </StyledCartImageDiv>
-                </Grid>
-                <Grid item xs={9}>
-                  <Grid container direction="column">
-                    <Grid
-                      item
-                      direction="row"
-                      display="flex"
-                      justifyContent="space-between"
-                    >
-                      <StyledItemName>Smart Apple Chromic Watch</StyledItemName>
-                      <StyledItemPrice>$12.99 </StyledItemPrice>
-                    </Grid>
-                    <Grid item>
-                      <StyledShippingText>Shipping - $12.99</StyledShippingText>
-                    </Grid>
-                    <Grid item>
-                      <Grid
-                        container
-                        display="flex"
-                        direction="row"
-                        justifyContent="space-between"
-                      >
-                        <Grid item display="flex" direction="row">
-                          <StyledSelectButton
-                            value={age}
-                            onChange={handleChange}
-                            displayEmpty
-                            inputProps={{ "aria-label": "Without label" }}
-                          >
-                            <MenuItem value="">
-                              <em>Black</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Black</MenuItem>
-                            <MenuItem value={20}>White</MenuItem>
-                            <MenuItem value={30}>Brown</MenuItem>
-                          </StyledSelectButton>
-                          <StyledQuantityBar>
-                            <QuantityDiv>
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity - 1)}
-                              >
-                                <RemoveIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                              {quantity}
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity + 1)}
-                              >
-                                <AddIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                            </QuantityDiv>
-                          </StyledQuantityBar>
-                        </Grid>
-                        <Grid item>
-                          <StyledDeleteButton>
-                            <DeleteIcon
-                              sx={{ fontSize: "14px", marginRight: "3px" }}
-                            />
-                            Delete
-                          </StyledDeleteButton>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </StyledCartItems>
-            <StyledCartItems>
-              <Grid container direction="row" spacing="20">
-                <Grid item xs={3}>
-                  <StyledCartImageDiv>
-                    <StyledCartImage src={Watch4}></StyledCartImage>
-                  </StyledCartImageDiv>
-                </Grid>
-                <Grid item xs={9}>
-                  <Grid container direction="column">
-                    <Grid
-                      item
-                      direction="row"
-                      display="flex"
-                      justifyContent="space-between"
-                    >
-                      <StyledItemName>Smart Apple Chromic Watch</StyledItemName>
-                      <StyledItemPrice>$12.99 </StyledItemPrice>
-                    </Grid>
-                    <Grid item>
-                      <StyledShippingText>Shipping - $12.99</StyledShippingText>
-                    </Grid>
-                    <Grid item>
-                      <Grid
-                        container
-                        display="flex"
-                        direction="row"
-                        justifyContent="space-between"
-                      >
-                        <Grid item display="flex" direction="row">
-                          <StyledSelectButton
-                            value={age}
-                            onChange={handleChange}
-                            displayEmpty
-                            inputProps={{ "aria-label": "Without label" }}
-                          >
-                            <MenuItem value="">
-                              <em>Black</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Black</MenuItem>
-                            <MenuItem value={20}>White</MenuItem>
-                            <MenuItem value={30}>Brown</MenuItem>
-                          </StyledSelectButton>
-                          <StyledQuantityBar>
-                            <QuantityDiv>
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity - 1)}
-                              >
-                                <RemoveIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                              {quantity}
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity + 1)}
-                              >
-                                <AddIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                            </QuantityDiv>
-                          </StyledQuantityBar>
-                        </Grid>
-                        <Grid item>
-                          <StyledDeleteButton>
-                            <DeleteIcon
-                              sx={{ fontSize: "14px", marginRight: "3px" }}
-                            />
-                            Delete
-                          </StyledDeleteButton>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </StyledCartItems>
-            <StyledCartItems>
-              <Grid container direction="row" spacing="20">
-                <Grid item xs={3}>
-                  <StyledCartImageDiv>
-                    <StyledCartImage src={Watch5}></StyledCartImage>
-                  </StyledCartImageDiv>
-                </Grid>
-                <Grid item xs={9}>
-                  <Grid container direction="column">
-                    <Grid
-                      item
-                      direction="row"
-                      display="flex"
-                      justifyContent="space-between"
-                    >
-                      <StyledItemName>Smart Apple Chromic Watch</StyledItemName>
-                      <StyledItemPrice>$12.99 </StyledItemPrice>
-                    </Grid>
-                    <Grid item>
-                      <StyledShippingText>Shipping - $12.99</StyledShippingText>
-                    </Grid>
-                    <Grid item>
-                      <Grid
-                        container
-                        display="flex"
-                        direction="row"
-                        justifyContent="space-between"
-                      >
-                        <Grid item display="flex" direction="row">
-                          <StyledSelectButton
-                            value={age}
-                            onChange={handleChange}
-                            displayEmpty
-                            inputProps={{ "aria-label": "Without label" }}
-                          >
-                            <MenuItem value="">
-                              <em>Black</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Black</MenuItem>
-                            <MenuItem value={20}>White</MenuItem>
-                            <MenuItem value={30}>Brown</MenuItem>
-                          </StyledSelectButton>
-                          <StyledQuantityBar>
-                            <QuantityDiv>
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity - 1)}
-                              >
-                                <RemoveIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                              {quantity}
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity + 1)}
-                              >
-                                <AddIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                            </QuantityDiv>
-                          </StyledQuantityBar>
-                        </Grid>
-                        <Grid item>
-                          <StyledDeleteButton>
-                            <DeleteIcon
-                              sx={{ fontSize: "14px", marginRight: "3px" }}
-                            />
-                            Delete
-                          </StyledDeleteButton>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </StyledCartItems>
-            <StyledCartItems>
-              <Grid container direction="row" spacing="20">
-                <Grid item xs={3}>
-                  <StyledCartImageDiv>
-                    <StyledCartImage src={Watch6}></StyledCartImage>
-                  </StyledCartImageDiv>
-                </Grid>
-                <Grid item xs={9}>
-                  <Grid container direction="column">
-                    <Grid
-                      item
-                      direction="row"
-                      display="flex"
-                      justifyContent="space-between"
-                    >
-                      <StyledItemName>Smart Apple Chromic Watch</StyledItemName>
-                      <StyledItemPrice>$12.99 </StyledItemPrice>
-                    </Grid>
-                    <Grid item>
-                      <StyledShippingText>Shipping - $12.99</StyledShippingText>
-                    </Grid>
-                    <Grid item>
-                      <Grid
-                        container
-                        display="flex"
-                        direction="row"
-                        justifyContent="space-between"
-                      >
-                        <Grid item display="flex" direction="row">
-                          <StyledSelectButton
-                            value={age}
-                            onChange={handleChange}
-                            displayEmpty
-                            inputProps={{ "aria-label": "Without label" }}
-                          >
-                            <MenuItem value="">
-                              <em>Black</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Black</MenuItem>
-                            <MenuItem value={20}>White</MenuItem>
-                            <MenuItem value={30}>Brown</MenuItem>
-                          </StyledSelectButton>
-                          <StyledQuantityBar>
-                            <QuantityDiv>
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity - 1)}
-                              >
-                                <RemoveIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                              {quantity}
-                              <IconButton
-                                size="small"
-                                onClick={() => SetQuantity(quantity + 1)}
-                              >
-                                <AddIcon
-                                  sx={{
-                                    fontSize: "17px",
-                                    marginRight: "6px",
-                                    marginLeft: "6px",
-                                    marginBottom: "3px",
-                                  }}
-                                />
-                              </IconButton>
-                            </QuantityDiv>
-                          </StyledQuantityBar>
-                        </Grid>
-                        <Grid item>
+                        <Grid item md={2} xs={12}>
                           <StyledDeleteButton>
                             <DeleteIcon
                               sx={{ fontSize: "14px", marginRight: "3px" }}
@@ -694,6 +290,7 @@ const Cart = () => {
         <Grid item md={4} xs={12}>
           <StyledCheckoutGrid>
             <StyledCheckOutHeader>Delivery</StyledCheckOutHeader>
+            <DeliveryBar />
           </StyledCheckoutGrid>
         </Grid>
       </Grid>

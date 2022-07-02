@@ -44,9 +44,9 @@ const StyledToolBar = styled(Toolbar)(({ theme }) => ({
 }));
 
 const StyledMenuButton = styled(Button)({
-  color: "#000",
-  fontWeight: 600,
-  fontSize: "15px",
+  color: "#333",
+  fontWeight: 550,
+  fontSize: "14px",
 });
 
 const StyledLoginButton = styled(Button)(({ theme }) => ({

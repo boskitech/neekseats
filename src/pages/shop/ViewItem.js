@@ -15,10 +15,12 @@ import { IconButton } from "@mui/material";
 const ViewItem = () => {
   const [value, setValue] = React.useState("");
   const [quantity, setQuantity] = React.useState(1);
-
-  const handleValue = (event, newValue) => {
-    setValue(newValue);
+  
+  const handleValue = (e) => {
+    setValue(e.target.value);
   };
+
+ 
 
   //Toggle button -----------------------------------------------------
   const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
