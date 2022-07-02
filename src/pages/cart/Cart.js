@@ -9,8 +9,8 @@ import Watch1 from "../../assets/img/watch_img_27.png";
 import Watch2 from "../../assets/img/watch_img_12.png";
 import Watch3 from "../../assets/img/watch_img_29.png";
 import Watch4 from "../../assets/img/watch_img_21.png";
-import Watch5 from "../../assets/img/watch_img_3.png";
-import Watch6 from "../../assets/img/watch_img_7.png";
+// import Watch5 from "../../assets/img/watch_img_3.png";
+// import Watch6 from "../../assets/img/watch_img_7.png";
 import DeliveryBar from "./DeliveryBar";
 
 const Cart = () => {
