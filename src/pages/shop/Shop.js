@@ -11,7 +11,7 @@ import ListIcon from "@mui/icons-material/List";
 import * as ShopStyles from "./Shop.styles";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import StickyBox from "react-sticky-box";
 const Shop = () => {
   const navigate = useNavigate();
   return (
@@ -56,9 +56,14 @@ const Shop = () => {
         <ShopStyles.StyledShopContent>
           <Grid container spacing={4}>
             <Grid item md={3} xs={12}>
-              <ShopStyles.StyledFilterBar>
-                <ShopFilterBar />
-              </ShopStyles.StyledFilterBar>
+              <StickyBox offsetTop={90} offsetBottom={90}>
+                <ShopStyles.StyledFilterBar>
+                  <ShopFilterBar
+                    position="fixed"
+                    style={{ position: "fixed", top: 70 }}
+                  />
+                </ShopStyles.StyledFilterBar>
+              </StickyBox>
             </Grid>
             <Grid item md={9}>
               <ShopStyles.StyledProductsBar>

@@ -27,6 +27,8 @@ export const StyledFilterBar = styled("div")(({ theme }) => ({
   height: "auto",
   backgroundColor: "#fff9eb",
   padding: "20px 0px 50px 0px",
+  position: "sticky",
+  top: "70",
 }));
 
 export const StyledProductsBar = styled("div")(({ theme }) => ({
