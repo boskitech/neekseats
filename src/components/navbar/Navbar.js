@@ -101,27 +101,21 @@ const Navbar = () => {
           </ListItemButton>
         </ListItem>
         <Divider />
-        <ListItem onClick={() => navigate("/services")} disablePadding>
+        <ListItem onClick={() => navigate("/shop")} disablePadding>
           <ListItemButton>
-            <ListItemText primary="Services" />
+            <ListItemText primary="Shop" />
           </ListItemButton>
         </ListItem>
         <Divider />
-        <ListItem onClick={() => navigate("/faq")} disablePadding>
+        <ListItem onClick={() => navigate("/about")} disablePadding>
           <ListItemButton>
-            <ListItemText primary="Question and Answer" />
+            <ListItemText primary="About" />
           </ListItemButton>
         </ListItem>
         <Divider />
-        <ListItem onClick={() => navigate("/consult")} disablePadding>
+        <ListItem onClick={() => navigate("/contact")} disablePadding>
           <ListItemButton>
-            <ListItemText primary="Consultation" />
-          </ListItemButton>
-        </ListItem>
-        <Divider />
-        <ListItem onClick={() => navigate("/blog")} disablePadding>
-          <ListItemButton>
-            <ListItemText primary="Articles" />
+            <ListItemText primary="contact" />
           </ListItemButton>
         </ListItem>
       </List>
@@ -165,7 +159,7 @@ const Navbar = () => {
                 <SearchIcon />
               </IconButton>
               <IconButton
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("/cart")}
                 sx={{ color: "black" }}
               >
                 <ShoppingCartOutlinedIcon />
