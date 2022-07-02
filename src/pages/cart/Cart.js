@@ -3,6 +3,7 @@ import MuiSelect from "@mui/material/Select";
 import { styled } from "@mui/system";
 import { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Watch1 from "../../assets/img/watch_img_27.png";
@@ -175,6 +176,27 @@ const Cart = () => {
   const QuantityDiv = styled("div")(({ theme }) => ({
     fontSize: "15px",
     padding: "1px",
+  }));
+
+  const StyledMobileCheckoutButton = styled(Button)(({ theme }) => ({
+    backgroundColor: "#c73217",
+    color: "white",
+    width: "100%",
+    height: "45px",
+    textTransform: "capitalize",
+    margin: "0",
+    padding: "10px",
+    fontSize: "18px",
+    bottom: "0px",
+    zIndex: "999",
+    position: "fixed",
+    borderRadius: "0px",
+    "&:hover": {
+      backgroundColor: "#416cb7",
+    },
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
   }));
 
   return (
@@ -659,6 +681,9 @@ const Cart = () => {
           </Grid>
         </Grid>
       </CartBody>
+      <StyledMobileCheckoutButton startIcon={<ShoppingCartCheckoutIcon />}>
+        Checkout
+      </StyledMobileCheckoutButton>
     </motion.div>
   );
 };
