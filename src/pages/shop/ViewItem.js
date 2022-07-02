@@ -8,6 +8,9 @@ import Rating from "@mui/material/Rating";
 import MuiToggleButton from "@mui/material/ToggleButton";
 import MuiToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import { IconButton } from "@mui/material";
 
 const ViewItem = () => {
   const [value, setValue] = React.useState("");
@@ -21,7 +24,7 @@ const ViewItem = () => {
   const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
     width: "100px",
     height: "100px",
-    outline: "1px solid #777",
+    outline: "1px solid #bfbfbf",
     border: "none",
     borderRadius: "0px",
     textAlign: "left",
@@ -55,6 +58,21 @@ const ViewItem = () => {
     width: "100%",
     color: "#333",
     marginTop: "-5px",
+  }));
+
+  //Quantity Button --------------------------------------------------------------
+
+  const StyledQuantityBar = styled("div")(({ theme }) => ({
+    height: "35px",
+    width: "100px",
+    borderRadius: "4px",
+    border: "1px solid #bfbfbf",
+    color: "#777",
+  }));
+
+  const QuantityDiv = styled("div")(({ theme }) => ({
+    fontSize: "17px",
+    padding: "4px",
   }));
 
   //View item button -----------------------------------------------------
@@ -300,42 +318,44 @@ const ViewItem = () => {
                 </StyledProductsDivText>
               </Grid>
               <Grid item md={9.5} xs={9}>
-                <Button
-                  sx={{
-                    border: "1px solid #444",
-                    marginRight: "9px",
-                    color: "#222",
-                    fontSize: "28px",
-                    width: "30px",
-                    height: "35px",
-                  }}
-                  variant="outlined"
-                  onClick={() => setQuantity(quantity - 1)}
-                >
-                  -
-                </Button>
-                {quantity}
-                <Button
-                  sx={{
-                    border: "1px solid #444",
-                    marginLeft: "9px",
-                    color: "#222",
-                    fontSize: "25px",
-                    width: "30px",
-                    height: "35px",
-                  }}
-                  variant="outlined"
-                  onClick={() => setQuantity(quantity + 1)}
-                >
-                  +
-                </Button>
+                <StyledQuantityBar>
+                  <QuantityDiv>
+                    <IconButton
+                      size="small"
+                      onClick={() => setQuantity(quantity - 1)}
+                    >
+                      <RemoveIcon
+                        sx={{
+                          fontSize: "17px",
+                          marginRight: "6px",
+                          marginLeft: "6px",
+                          marginBottom: "3px",
+                        }}
+                      />
+                    </IconButton>
+                    {quantity}
+                    <IconButton
+                      size="small"
+                      onClick={() => setQuantity(quantity + 1)}
+                    >
+                      <AddIcon
+                        sx={{
+                          fontSize: "17px",
+                          marginRight: "6px",
+                          marginLeft: "6px",
+                          marginBottom: "3px",
+                        }}
+                      />
+                    </IconButton>
+                  </QuantityDiv>
+                </StyledQuantityBar>
               </Grid>
             </StyledQuantityGrid>
           </StyledSelectionBar>
           <StyledBuyAndCheckOut>
             <Grid container>
-              <Grid item md={2.5} xs={0}></Grid>
-              <Grid item md={9.5} xs={12}>
+              <Grid item xl={2.5} md={0} xs={0}></Grid>
+              <Grid item xl={9.5} md={12} xs={12}>
                 <StyledBannerCartButton
                   sx={{
                     backgroundColor: "#fff",
