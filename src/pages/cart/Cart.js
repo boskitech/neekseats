@@ -186,8 +186,8 @@ const Cart = () => {
 
   return (
     <motion.div
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
+      initial={{ x: 200, opacity: 0 }}
+      animate={{ x: 0, scale: 1, opacity: 1 }}
       exit={{ x: 200, scale: 0, opacity: 0 }}
       transition={{ type: "spring", duration: 0.5 }}
     >
