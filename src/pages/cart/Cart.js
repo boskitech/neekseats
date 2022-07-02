@@ -43,7 +43,7 @@ const Cart = () => {
     },
     [theme.breakpoints.down("md")]: {
       width: "90%",
-      margin: "70px auto",
+      margin: "70px auto 20px auto",
     },
   }));
 
