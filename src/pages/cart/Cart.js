@@ -81,7 +81,7 @@ const Cart = () => {
   const StyledCartImage = styled("img")(({ theme }) => ({
     width: "90%",
     height: "auto",
-    margin: "10px auto",
+    margin: "10px",
     borderRadius: "5px",
   }));
 
@@ -93,7 +93,7 @@ const Cart = () => {
   }));
 
   const StyledItemPrice = styled("div")(({ theme }) => ({
-    fontSize: "15px",
+    fontSize: "16px",
     color: "#222",
     fontWeight: 400,
     padding: "15px 40px",
@@ -107,7 +107,7 @@ const Cart = () => {
   }));
 
   const StyledSelectButton = styled(MuiSelect)(({ theme }) => ({
-    width: "80px",
+    width: "auto",
     height: "30px",
     marginTop: "20px",
     fontSize: "13px",
