@@ -181,6 +181,10 @@ const ViewItem = () => {
     marginBottom: "10px",
     marginTop: "40px",
     width: "100%",
+    [theme.breakpoints.down("md")]: {
+      marginTop: "25px",
+      marginBottom: "5px",
+    },
   }));
 
   const StyledProductsDivPriceText = styled("div")(({ theme }) => ({
