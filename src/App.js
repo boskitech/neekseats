@@ -11,7 +11,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import ViewItem from "./pages/shop/ViewItem";
 import Cart from "./pages/cart/Cart";
-import Login from "./pages/auth/Login";
+import Login from "./pages/auth/auth";
 
 function App() {
   useEffect(() => {
