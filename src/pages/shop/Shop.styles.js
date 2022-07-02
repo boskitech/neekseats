@@ -11,6 +11,7 @@ export const ShopBody = styled("div")(({ theme }) => ({
     width: "80%",
   },
   [theme.breakpoints.down("md")]: {
+    margin: "85px auto",
     width: "90%",
   },
 }));

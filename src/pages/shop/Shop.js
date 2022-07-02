@@ -28,7 +28,7 @@ const Shop = () => {
           display="flex"
           justifyContent="space-between"
         >
-          <Grid item>
+          <Grid item sx={{ display: { xs: "none", md: "block" } }}>
             <ShopStyles.StyledLinkButton>Home </ShopStyles.StyledLinkButton>&gt;
             <ShopStyles.StyledLinkButton>Shop</ShopStyles.StyledLinkButton>&gt;
             <ShopStyles.StyledLinkButton>
