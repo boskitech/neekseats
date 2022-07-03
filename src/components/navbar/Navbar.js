@@ -143,6 +143,13 @@ import SearchIcon from "@mui/icons-material/Search";
      };
    }, []);
 
+   const handleBlur = () => {
+     setTimeout(() => {
+       setFocus(false);
+       setSearchValue("");
+     }, [200]);
+   };
+
    const handleChange = (e) => {
      setSearchValue(e.target.value);
      const userInput = e.target.value;
@@ -154,8 +161,6 @@ import SearchIcon from "@mui/icons-material/Search";
 
      if (userInput) setSearchResults(data);
    };
-
-   console.log(searchResults);
 
    const toggleDrawer = (anchor, open) => (event) => {
      if (
@@ -274,9 +279,10 @@ import SearchIcon from "@mui/icons-material/Search";
                <StyledGridLoginInput
                  onChange={handleChange}
                  onFocus={() => setFocus(true)}
-                 onBlur={() => setFocus(false)}
+                 onBlur={handleBlur}
                  size="small"
                  placeholder="Search Items"
+                 value={searchValue}
                />
                <StyledLoginButton
                  sx={{ width: "40px", marginLeft: "5px", height: "40px" }}
@@ -296,7 +302,9 @@ import SearchIcon from "@mui/icons-material/Search";
                  >
                    {searchResults.map((results, index) => (
                      <StyledSearchUl key={index}>
-                       <StyledSearchLi>{results.listName}</StyledSearchLi>
+                       <StyledSearchLi onClick={() => navigate("/shop")}>
+                         {results.listName}
+                       </StyledSearchLi>
                      </StyledSearchUl>
                    ))}
                  </Box>
