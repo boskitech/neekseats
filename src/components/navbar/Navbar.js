@@ -3,14 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import {
-  Button,
-  Fade,
-  Grow,
-  IconButton,
-  Slide,
-  TextField,
-} from "@mui/material";
+import { Button, IconButton, Slide, TextField } from "@mui/material";
 import { useNavigate } from "react-router";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
@@ -220,10 +213,7 @@ const Navbar = () => {
               direction="row"
               sx={{ marginTop: "15px", display: { xs: "none", md: "block" } }}
             >
-              <StyledGridLoginInput
-                size="small"
-                placeholder="Search for items"
-              />
+              <StyledGridLoginInput size="small" placeholder="Search Items" />
               <StyledLoginButton
                 sx={{ width: "40px", marginLeft: "5px", height: "40px" }}
               >

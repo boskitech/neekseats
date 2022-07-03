@@ -1,4 +1,5 @@
 import { Button, Grid, Slide, TextField } from "@mui/material";
+import { motion } from "framer-motion";
 import { styled } from "@mui/system";
 import { useState } from "react";
 
@@ -82,162 +83,169 @@ const Login = () => {
   }));
 
   return (
-    <StyledGridLoginSideDiv
-      container
-      direction="column"
-      display="flex"
-      justifyContent="center"
+    <motion.div
+      initial={{ x: 200, opacity: 0 }}
+      animate={{ x: 0, scale: 1, opacity: 1 }}
+      exit={{ x: 200, scale: 0, opacity: 0 }}
+      transition={{ type: "spring", duration: 0.5 }}
     >
-      <Grid item>
-        <StyledGridLoginHeader>
-          <StyledGridSelctButton
-            sx={{
-              ...(actionType === "Register" && {
-                borderBottom: "3px solid #cf7b1b",
-                borderRadius: "0px",
-                "&:hover": {
-                  color: "#444",
-                },
-              }),
-            }}
-            onClick={() => setActionType("Register")}
-          >
-            Register
-          </StyledGridSelctButton>
-          <StyledGridSelctButton
-            sx={{
-              ...(actionType === "Login" && {
-                borderBottom: "3px solid #cf7b1b",
-                borderRadius: "0px",
-                "&:hover": {
-                  color: "#444",
-                },
-              }),
-            }}
-            onClick={() => setActionType("Login")}
-          >
-            Sign in
-          </StyledGridSelctButton>
-        </StyledGridLoginHeader>
-      </Grid>
-      {actionType === "Register" && (
-        <>
-          {" "}
-          <Slide
-            direction="right"
-            in={actionType === "Register"}
-            mountOnEnter
-            unmountOnExit
-          >
-            <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput placeholder="Firstname" />
-            </Grid>
-          </Slide>
-          <Slide
-            direction="right"
-            in={actionType === "Register"}
-            mountOnEnter
-            unmountOnExit
-          >
-            <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput placeholder="Lastname" />
-            </Grid>
-          </Slide>
-          <Slide
-            direction="right"
-            in={actionType === "Register"}
-            mountOnEnter
-            unmountOnExit
-          >
-            <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput placeholder="Email" />
-            </Grid>
-          </Slide>
-          <Slide
-            direction="right"
-            in={actionType === "Register"}
-            mountOnEnter
-            unmountOnExit
-          >
-            <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput placeholder="Location" />
-            </Grid>
-          </Slide>
-          <Slide
-            direction="right"
-            in={actionType === "Register"}
-            mountOnEnter
-            unmountOnExit
-          >
-            <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput placeholder="Password" />
-            </Grid>
-          </Slide>
-        </>
-      )}
-      {actionType === "Login" && (
-        <>
-          {" "}
+      <StyledGridLoginSideDiv
+        container
+        direction="column"
+        display="flex"
+        justifyContent="center"
+      >
+        <Grid item>
+          <StyledGridLoginHeader>
+            <StyledGridSelctButton
+              sx={{
+                ...(actionType === "Register" && {
+                  borderBottom: "3px solid #cf7b1b",
+                  borderRadius: "0px",
+                  "&:hover": {
+                    color: "#444",
+                  },
+                }),
+              }}
+              onClick={() => setActionType("Register")}
+            >
+              Register
+            </StyledGridSelctButton>
+            <StyledGridSelctButton
+              sx={{
+                ...(actionType === "Login" && {
+                  borderBottom: "3px solid #cf7b1b",
+                  borderRadius: "0px",
+                  "&:hover": {
+                    color: "#444",
+                  },
+                }),
+              }}
+              onClick={() => setActionType("Login")}
+            >
+              Sign in
+            </StyledGridSelctButton>
+          </StyledGridLoginHeader>
+        </Grid>
+        {actionType === "Register" && (
+          <>
+            {" "}
+            <Slide
+              direction="right"
+              in={actionType === "Register"}
+              mountOnEnter
+              unmountOnExit
+            >
+              <Grid sx={{ margin: "auto" }} item>
+                <StyledGridLoginInput placeholder="Firstname" />
+              </Grid>
+            </Slide>
+            <Slide
+              direction="right"
+              in={actionType === "Register"}
+              mountOnEnter
+              unmountOnExit
+            >
+              <Grid sx={{ margin: "auto" }} item>
+                <StyledGridLoginInput placeholder="Lastname" />
+              </Grid>
+            </Slide>
+            <Slide
+              direction="right"
+              in={actionType === "Register"}
+              mountOnEnter
+              unmountOnExit
+            >
+              <Grid sx={{ margin: "auto" }} item>
+                <StyledGridLoginInput placeholder="Email" />
+              </Grid>
+            </Slide>
+            <Slide
+              direction="right"
+              in={actionType === "Register"}
+              mountOnEnter
+              unmountOnExit
+            >
+              <Grid sx={{ margin: "auto" }} item>
+                <StyledGridLoginInput placeholder="Location" />
+              </Grid>
+            </Slide>
+            <Slide
+              direction="right"
+              in={actionType === "Register"}
+              mountOnEnter
+              unmountOnExit
+            >
+              <Grid sx={{ margin: "auto" }} item>
+                <StyledGridLoginInput placeholder="Password" />
+              </Grid>
+            </Slide>
+          </>
+        )}
+        {actionType === "Login" && (
+          <>
+            {" "}
+            <Slide
+              direction="left"
+              in={actionType === "Login"}
+              mountOnEnter
+              unmountOnExit
+            >
+              <Grid sx={{ margin: "auto" }} item>
+                <StyledGridLoginInput placeholder="Email" />
+              </Grid>
+            </Slide>
+            <Slide
+              direction="left"
+              in={actionType === "Login"}
+              mountOnEnter
+              unmountOnExit
+            >
+              <Grid sx={{ margin: "auto" }} item>
+                <StyledGridLoginInput placeholder="Password" />
+              </Grid>
+            </Slide>
+          </>
+        )}
+        <Grid item>
           <Slide
             direction="left"
             in={actionType === "Login"}
             mountOnEnter
             unmountOnExit
           >
-            <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput placeholder="Email" />
-            </Grid>
+            <StyledGridLoginButton>
+              {actionType === "Login" ? "Sign In" : "Register"}
+            </StyledGridLoginButton>
           </Slide>
           <Slide
-            direction="left"
-            in={actionType === "Login"}
+            direction="right"
+            in={actionType === "Register"}
             mountOnEnter
             unmountOnExit
           >
-            <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput placeholder="Password" />
-            </Grid>
+            <StyledGridLoginButton>
+              {actionType === "Login" ? "Sign In" : "Register"}
+            </StyledGridLoginButton>
           </Slide>
-        </>
-      )}
-      <Grid item>
-        <Slide
-          direction="left"
-          in={actionType === "Login"}
-          mountOnEnter
-          unmountOnExit
-        >
-          <StyledGridLoginButton>
-            {actionType === "Login" ? "Sign In" : "Register"}
-          </StyledGridLoginButton>
-        </Slide>
-        <Slide
-          direction="right"
-          in={actionType === "Register"}
-          mountOnEnter
-          unmountOnExit
-        >
-          <StyledGridLoginButton>
-            {actionType === "Login" ? "Sign In" : "Register"}
-          </StyledGridLoginButton>
-        </Slide>
-      </Grid>
-      <Grid item>
-        <Slide
-          direction="right"
-          in={actionType === "Register"}
-          mountOnEnter
-          unmountOnExit
-        >
-          <StyledGridLoginText>
-            By signing up, you agreee to our <br />
-            <span style={{ color: "#1738a5", cursor: "pointer" }}>
-              Terms and Conditions & Privacy and Policy
-            </span>
-          </StyledGridLoginText>
-        </Slide>
-      </Grid>
-    </StyledGridLoginSideDiv>
+        </Grid>
+        <Grid item>
+          <Slide
+            direction="right"
+            in={actionType === "Register"}
+            mountOnEnter
+            unmountOnExit
+          >
+            <StyledGridLoginText>
+              By signing up, you agreee to our <br />
+              <span style={{ color: "#1738a5", cursor: "pointer" }}>
+                Terms and Conditions & Privacy and Policy
+              </span>
+            </StyledGridLoginText>
+          </Slide>
+        </Grid>
+      </StyledGridLoginSideDiv>
+    </motion.div>
   );
 };
 
