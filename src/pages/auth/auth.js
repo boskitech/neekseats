@@ -44,7 +44,7 @@ const Login = () => {
   const StyledGridLoginButton = styled(Button)(({ theme }) => ({
     display: "block",
     width: "400px",
-    height: "50px",
+    height: "45px",
     backgroundColor: "#c73217",
     color: "white",
     margin: "10px auto",
