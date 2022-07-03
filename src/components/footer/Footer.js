@@ -5,14 +5,12 @@ import { useNavigate } from "react-router-dom";
 const Footer = () => {
   const navigate = useNavigate();
 
-  const StyledFooter = styled(Grid)(({ theme }) => ({
+  const StyledFooter = styled("div")(({ theme }) => ({
     width: "100%",
     height: "auto",
     backgroundColor: "#fffdf8",
     color: "black",
     margin: "auto",
-    bottom: "0",
-    marginTop: "50px",
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },
@@ -75,7 +73,7 @@ const Footer = () => {
   }));
 
   return (
-    <StyledFooter container>
+    <StyledFooter>
       <StyledInerGrid container>
         <Grid item sm={3} xs={6}>
           <StyledGridHeader>Our Services</StyledGridHeader>
@@ -116,7 +114,8 @@ const Footer = () => {
         </Grid>
         <Grid item sm={3} xs={6}>
           <StyledGridLogo>
-            <span style={{ color: "orange", fontSize: "28px" }}>Net</span>Porch
+            <span style={{ color: "orange", fontSize: "28px" }}>Net</span>
+            Porch
           </StyledGridLogo>
           <StyledGridText>
             An affordable tertiary and multispecialty healthcare framework that

@@ -31,9 +31,9 @@ const Login = () => {
   }));
 
   const StyledGridLoginInput = styled(TextField)(({ theme }) => ({
-    width: "350px",
-    height: "45px",
-    margin: "5px auto",
+    width: "400px",
+    height: "50px",
+    margin: "10px auto",
     fontSize: "14px",
     backgoundColor: "white",
     [theme.breakpoints.down("md")]: {
@@ -43,8 +43,8 @@ const Login = () => {
 
   const StyledGridLoginButton = styled(Button)(({ theme }) => ({
     display: "block",
-    width: "350px",
-    height: "40px",
+    width: "400px",
+    height: "50px",
     backgroundColor: "#c73217",
     color: "white",
     margin: "10px auto",
@@ -130,7 +130,7 @@ const Login = () => {
             unmountOnExit
           >
             <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput size="small" placeholder="Firstname" />
+              <StyledGridLoginInput placeholder="Firstname" />
             </Grid>
           </Slide>
           <Slide
@@ -140,7 +140,7 @@ const Login = () => {
             unmountOnExit
           >
             <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput size="small" placeholder="Lastname" />
+              <StyledGridLoginInput placeholder="Lastname" />
             </Grid>
           </Slide>
           <Slide
@@ -150,7 +150,7 @@ const Login = () => {
             unmountOnExit
           >
             <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput size="small" placeholder="Email" />
+              <StyledGridLoginInput placeholder="Email" />
             </Grid>
           </Slide>
           <Slide
@@ -160,7 +160,7 @@ const Login = () => {
             unmountOnExit
           >
             <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput size="small" placeholder="Location" />
+              <StyledGridLoginInput placeholder="Location" />
             </Grid>
           </Slide>
           <Slide
@@ -170,7 +170,7 @@ const Login = () => {
             unmountOnExit
           >
             <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput size="small" placeholder="Password" />
+              <StyledGridLoginInput placeholder="Password" />
             </Grid>
           </Slide>
         </>
@@ -185,7 +185,7 @@ const Login = () => {
             unmountOnExit
           >
             <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput size="small" placeholder="Email" />
+              <StyledGridLoginInput placeholder="Email" />
             </Grid>
           </Slide>
           <Slide
@@ -195,7 +195,7 @@ const Login = () => {
             unmountOnExit
           >
             <Grid sx={{ margin: "auto" }} item>
-              <StyledGridLoginInput size="small" placeholder="Password" />
+              <StyledGridLoginInput placeholder="Password" />
             </Grid>
           </Slide>
         </>
