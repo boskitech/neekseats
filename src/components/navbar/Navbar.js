@@ -89,8 +89,6 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [search, setSearch] = useState(false);
 
-  console.log(search);
-
   useEffect(() => {
     window.onscroll = function () {
       if (window.scrollY > 50) {
@@ -143,11 +141,13 @@ const Navbar = () => {
             <ListItemText primary="contact" />
           </ListItemButton>
         </ListItem>
+        <Divider />
         <ListItem onClick={() => navigate("/cart")} disablePadding>
           <ListItemButton>
             <ListItemText primary="Cart" />
           </ListItemButton>
         </ListItem>
+        <Divider />
         <ListItem onClick={() => navigate("/login")} disablePadding>
           <ListItemButton>
             <ListItemText primary="Login" />
