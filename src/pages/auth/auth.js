@@ -223,12 +223,19 @@ const Login = () => {
         </Slide>
       </Grid>
       <Grid item>
-        <StyledGridLoginText>
-          By signing up, you agreee to our <br />
-          <span style={{ color: "#1738a5", cursor: "pointer" }}>
-            Terms and Conditions & Privacy and Policy
-          </span>
-        </StyledGridLoginText>
+        <Slide
+          direction="right"
+          in={actionType === "Register"}
+          mountOnEnter
+          unmountOnExit
+        >
+          <StyledGridLoginText>
+            By signing up, you agreee to our <br />
+            <span style={{ color: "#1738a5", cursor: "pointer" }}>
+              Terms and Conditions & Privacy and Policy
+            </span>
+          </StyledGridLoginText>
+        </Slide>
       </Grid>
     </StyledGridLoginSideDiv>
   );

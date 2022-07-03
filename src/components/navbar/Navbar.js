@@ -3,7 +3,14 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import { Button, IconButton } from "@mui/material";
+import {
+  Button,
+  Fade,
+  Grow,
+  IconButton,
+  Slide,
+  TextField,
+} from "@mui/material";
 import { useNavigate } from "react-router";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
@@ -72,10 +79,24 @@ const StyledAppBAr = styled(AppBar)(({ theme }) => ({
   },
 }));
 
+const StyledGridLoginInput = styled(TextField)(({ theme }) => ({
+  width: "400px",
+  height: "50px",
+  margin: "0px auto 0 auto",
+  fontSize: "14px",
+  backgoundColor: "white",
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
+
 const Navbar = () => {
   const navigate = useNavigate();
   const [state, setState] = useState({ left: false });
   const [scrolled, setScrolled] = useState(false);
+  const [search, setSearch] = useState(false);
+
+  console.log(search);
 
   useEffect(() => {
     window.onscroll = function () {
@@ -155,33 +176,68 @@ const Navbar = () => {
           <HeaderText>
             <span style={{ color: "orange", fontSize: "28px" }}>Net</span>Porch
           </HeaderText>
-          <Box direction="row" sx={{ display: { xs: "none", md: "block" } }}>
-            <StyledMenuButton onClick={() => navigate("/")} variant="body1">
-              Home
-            </StyledMenuButton>
-            <StyledMenuButton onClick={() => navigate("/shop")} variant="body1">
-              Shop
-            </StyledMenuButton>
-            <StyledMenuButton
-              onClick={() => navigate("/about")}
-              variant="body1"
+          <Slide
+            direction="left"
+            in={!search}
+            mountOnEnter
+            unmountOnExit
+            style={{ transformOrigin: "0 0 0" }}
+            {...(!search ? { timeout: 50 } : {})}
+          >
+            <Box direction="row" sx={{ display: { xs: "none", md: "block" } }}>
+              <StyledMenuButton onClick={() => navigate("/")} variant="body1">
+                Home
+              </StyledMenuButton>
+              <StyledMenuButton
+                onClick={() => navigate("/shop")}
+                variant="body1"
+              >
+                Shop
+              </StyledMenuButton>
+              <StyledMenuButton
+                onClick={() => navigate("/about")}
+                variant="body1"
+              >
+                About
+              </StyledMenuButton>
+              <StyledMenuButton
+                onClick={() => navigate("/contact")}
+                variant="body1"
+              >
+                Contact
+              </StyledMenuButton>
+            </Box>
+          </Slide>
+          <Slide
+            direction="left"
+            in={search}
+            mountOnEnter
+            unmountOnExit
+            style={{ transformOrigin: "0 0 0" }}
+            {...(search ? { timeout: 100 } : {})}
+          >
+            <Box
+              direction="row"
+              sx={{ marginTop: "15px", display: { xs: "none", md: "block" } }}
             >
-              About
-            </StyledMenuButton>
-            <StyledMenuButton
-              onClick={() => navigate("/contact")}
-              variant="body1"
-            >
-              Contact
-            </StyledMenuButton>
-          </Box>
+              <StyledGridLoginInput
+                size="small"
+                placeholder="Search for items"
+              />
+              <StyledLoginButton
+                sx={{ width: "40px", marginLeft: "5px", height: "40px" }}
+              >
+                <SearchIcon />
+              </StyledLoginButton>
+            </Box>
+          </Slide>
           <Box>
             <Box sx={{ display: { xs: "none", md: "block" }, color: "black" }}>
               <IconButton
-                onClick={() => navigate("/login")}
+                onClick={() => setSearch(!search)}
                 sx={{ color: "black" }}
               >
-                <SearchIcon />
+                {!search ? <SearchIcon /> : <MenuIcon />}
               </IconButton>
               <IconButton
                 onClick={() => navigate("/cart")}
