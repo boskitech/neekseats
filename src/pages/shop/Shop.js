@@ -5,10 +5,12 @@ import Watch1 from "../../assets/img/watch_img_21.png";
 import Watch2 from "../../assets/img/watch_img_19.png";
 import Watch3 from "../../assets/img/watch_img_26.png";
 import Rating from "@mui/material/Rating";
-import FavButton from "../../components/favButton/FavButton";
+// import FavButton from "../../components/favButton/FavButton";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ListIcon from "@mui/icons-material/List";
 import StickyBox from "react-sticky-box";
+import Fab from "@mui/material/Fab";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { Button, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
@@ -83,13 +85,13 @@ const Shop = () => {
       height: gridView ? "400px" : "200px",
     },
     [theme.breakpoints.down("lg")]: {
-      height: "350px",
+      height: gridView ? "350px" : "200px",
     },
     [theme.breakpoints.down("md")]: {
-      height: "350px",
+      height: gridView ? "350px" : "200px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "300px",
+      height: gridView ? "300px" : "200px",
     },
   }));
 
@@ -112,7 +114,7 @@ const Shop = () => {
   const StyledProductsDivText = styled("div")(({ theme }) => ({
     fontSize: "25px",
     fontWeight: 450,
-    textAlign: "center",
+    textAlign: gridView && "center",
     color: "#222",
     marginTop: "0px",
   }));
@@ -132,7 +134,28 @@ const Shop = () => {
 
   const StyledProductDetails = styled("div")(({ theme }) => ({
     float: !gridView && "left",
-    margin: !gridView && "55px 20px",
+    margin: !gridView && "45px 20px",
+  }));
+
+  const StyledFabButton = styled(Fab)(({ theme }) => ({
+    background: "#fff",
+    border: "1px solid #5fa5e3",
+    position: gridView ? "absolute" : "relative",
+    display: "flex",
+    justifyContent: gridView ? "flex-start" : "flex-end",
+    alignContent: !gridView && "flex-end",
+    color: "#5fa5e3",
+    margin: gridView ? "15px" : "140px 15px 15px 15px",
+    boxShadow: "none",
+    float: "right",
+    "&:hover": {
+      background: "#416cb7",
+      border: "1px solid #416cb7",
+      color: "#fff",
+    },
+    [theme.breakpoints.down("md")]: {
+      margin: "8px",
+    },
   }));
 
   return (
@@ -158,14 +181,26 @@ const Shop = () => {
             <span>View Type: </span>
             <StyledLinkButton
               variant="outlined"
-              sx={{ marginLeft: "5px", border: "1px solid #333" }}
+              sx={{
+                marginLeft: "5px",
+                border: gridView ? "2px solid #d89b45" : "1px solid #333",
+                "&:hover": {
+                  border: gridView ? "2px solid #d89b45" : "1px solid #e0c092",
+                },
+              }}
               startIcon={<GridViewOutlinedIcon />}
               onClick={handleGridView}
             >
               Grid
             </StyledLinkButton>
             <StyledLinkButton
-              sx={{ marginLeft: "5px", border: "1px solid #333" }}
+              sx={{
+                marginLeft: "5px",
+                border: !gridView ? "2px solid #d89b45" : "1px solid #333",
+                "&:hover": {
+                  border: !gridView ? "2px solid #d89b45" : "1px solid #e0c092",
+                },
+              }}
               variant="outlined"
               startIcon={<ListIcon />}
               onClick={handleListView}
@@ -191,7 +226,19 @@ const Shop = () => {
                 <Grid container spacing={2}>
                   <Grid item md={viewType} xs={mobileViewType}>
                     <StyledProductsDiv onClick={() => navigate("/viewitem")}>
-                      <FavButton sx={{ float: !gridView && "left" }} />
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
                       <StyledProductsImage src={Watch1} />
                       <StyledProductDetails>
                         <StyledProductsDivHeader>
@@ -209,7 +256,19 @@ const Shop = () => {
                   </Grid>
                   <Grid item md={viewType} xs={mobileViewType}>
                     <StyledProductsDiv onClick={() => navigate("/viewitem")}>
-                      <FavButton />
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
                       <StyledProductsImage src={Watch2} />
                       <StyledProductDetails>
                         <StyledProductsDivHeader>
@@ -227,7 +286,19 @@ const Shop = () => {
                   </Grid>
                   <Grid item md={viewType} xs={mobileViewType}>
                     <StyledProductsDiv onClick={() => navigate("/viewitem")}>
-                      <FavButton />
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
                       <StyledProductsImage src={Watch3} />
                       <StyledProductDetails>
                         <StyledProductsDivHeader>
