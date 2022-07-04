@@ -18,7 +18,7 @@ const ContactUs = () => {
   const StyledContactTitle = styled("div")(({ theme }) => ({
     fontSize: "40px",
     fontWeight: 500,
-    color: "#07163a",
+    color: "#000",
   }));
 
   const StyledContactSubTitle = styled("div")(({ theme }) => ({

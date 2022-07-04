@@ -214,7 +214,7 @@ const Login = () => {
             mountOnEnter
             unmountOnExit
           >
-            <StyledGridLoginButton>
+            <StyledGridLoginButton sx={{ marginBottom: "300px" }}>
               {actionType === "Login" ? "Sign In" : "Register"}
             </StyledGridLoginButton>
           </Slide>

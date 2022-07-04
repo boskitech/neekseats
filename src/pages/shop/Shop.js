@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import * as ShopStyles from "./Shop.styles";
 import ShopFilterBar from "./ShopFilterBar";
 import Watch1 from "../../assets/img/watch_img_21.png";
-import Watch2 from "../../assets/img/watch_img_19.png";
+import Watch2 from "../../assets/img/watch_img_17.png";
 import Watch3 from "../../assets/img/watch_img_26.png";
 import Rating from "@mui/material/Rating";
 // import FavButton from "../../components/favButton/FavButton";
@@ -71,37 +71,40 @@ const Shop = () => {
 
   const StyledProductsDiv = styled("div")(({ theme }) => ({
     width: "100%",
-    height: gridView ? "350px" : "200px",
+    height: gridView ? "auto" : "200px",
     textAlign: gridView && "center",
     borderRadius: "5px",
     boxShadow: "0 0 6px #dfdfdf",
     // border: "1px solid #f6eedc",
+    padding: gridView && "0px 0px 20px 0px",
     background: "#fff",
     "&:hover": {
       background: "#fffbf0",
       cursor: "pointer",
     },
     [theme.breakpoints.up("xl")]: {
-      height: gridView ? "400px" : "200px",
+      height: gridView ? "auto" : "200px",
     },
     [theme.breakpoints.down("lg")]: {
-      height: gridView ? "350px" : "200px",
+      height: gridView ? "auto" : "200px",
     },
     [theme.breakpoints.down("md")]: {
-      height: gridView ? "350px" : "200px",
+      height: gridView ? "auto" : "200px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: gridView ? "300px" : "200px",
+      height: gridView ? "auto" : "200px",
     },
   }));
 
   const StyledProductsImage = styled("img")(({ theme }) => ({
-    width: gridView ? "92%" : "150px",
-    height: gridView ? "auto" : "150px",
+    width: gridView ? "200px" : "150px",
+    height: gridView ? "200px" : "150px",
     float: !gridView && "left",
-    margin: gridView ? "13px" : "23px",
+    margin: gridView ? "20px auto" : "23px auto",
     [theme.breakpoints.down("md")]: {
-      margin: gridView ? "13px" : "0px",
+      width: gridView ? "150px" : "150px",
+      height: gridView ? "150px" : "150px",
+      margin: gridView ? "13px" : "10px",
     },
   }));
 
@@ -120,6 +123,9 @@ const Shop = () => {
     textAlign: gridView && "center",
     color: "#222",
     marginTop: "0px",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "20px",
+    },
   }));
 
   const StyledLinkTagBar = styled(Grid)(({ theme }) => ({

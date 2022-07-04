@@ -16,7 +16,7 @@ const AboutUs = () => {
   const StyledAboutTitle = styled("div")(({ theme }) => ({
     fontSize: "40px",
     fontWeight: 500,
-    color: "#07163a",
+    color: "#000",
   }));
 
   const StyledAboutSubTitle = styled("div")(({ theme }) => ({
@@ -39,7 +39,7 @@ const AboutUs = () => {
 
   const StyledAboutQuoteText = styled("div")(({ theme }) => ({
     fontSize: "22px",
-    color: "#07163a",
+    color: "#000",
     marginTop: "10px",
     fontWeight: 500,
   }));
@@ -47,9 +47,7 @@ const AboutUs = () => {
   return (
     <StyledAboutBody data-aos="fade-left">
       <StyledAboutTitle>About US</StyledAboutTitle>
-      <StyledAboutSubTitle>
-        The World's best online healthcare
-      </StyledAboutSubTitle>
+      <StyledAboutSubTitle>The World's best online store</StyledAboutSubTitle>
       <StyledAboutText>
         Consulta began over two decades ago by pioneering a better way of
         working, helping businesses find more flexibility and connecting talent
