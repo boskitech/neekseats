@@ -140,6 +140,8 @@ const ViewItem = () => {
     margin: "60px auto",
     filter: "drop-shadow(-10px 30px 4px #efefef)",
     [theme.breakpoints.down("md")]: {
+      width: "340px",
+      height: "auto",
       margin: "0px auto",
     },
   }));
@@ -179,10 +181,10 @@ const ViewItem = () => {
     fontWeight: 500,
     color: "#777",
     marginBottom: "10px",
-    marginTop: "40px",
+    marginTop: "0px",
     width: "100%",
     [theme.breakpoints.down("md")]: {
-      marginTop: "25px",
+      marginTop: "0px",
       marginBottom: "5px",
     },
   }));
@@ -278,7 +280,9 @@ const ViewItem = () => {
             <StyledProductsDivHeader>
               Apple Series 3 Smart Watch
             </StyledProductsDivHeader>
-            <StyledProductsDivText>Price</StyledProductsDivText>
+            <StyledProductsDivText sx={{ marginTop: "25px" }}>
+              Price
+            </StyledProductsDivText>
             <StyledProductsDivPriceText>$249.99</StyledProductsDivPriceText>
             <Rating
               name="read-only"
@@ -319,9 +323,7 @@ const ViewItem = () => {
             </StyledColorGrid>
             <StyledQuantityGrid container>
               <Grid item md={2.5} xs={3}>
-                <StyledProductsDivText sx={{ margin: "0" }}>
-                  Quantity:
-                </StyledProductsDivText>
+                <StyledProductsDivText>Quantity:</StyledProductsDivText>
               </Grid>
               <Grid item md={9.5} xs={9}>
                 <StyledQuantityBar>
