@@ -14,7 +14,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import { Button, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import Skeleton from "@mui/material/Skeleton";
 
 const Shop = () => {
@@ -77,6 +77,7 @@ const Shop = () => {
     textAlign: gridView && "center",
     borderRadius: "5px",
     boxShadow: "0 0 6px #dfdfdf",
+    overflow: "hidden",
     // border: "1px solid #f6eedc",
     padding: gridView && "0px 0px 20px 0px",
     background: "#fff",
@@ -120,9 +121,10 @@ const Shop = () => {
     float: !gridView && "left",
     margin: gridView ? "0px 0px 25px 0px" : "0px",
     [theme.breakpoints.down("md")]: {
-      width: gridView ? "100%" : "150px",
-      height: gridView ? "150px" : "150px",
-      margin: gridView ? "13px" : "10px 0px",
+      width: gridView ? "300px" : "150px",
+      height: gridView ? "150px" : "100%",
+      margin: gridView ? "0px" : "0px",
+      overFlow: "hidden",
     },
   }));
 
