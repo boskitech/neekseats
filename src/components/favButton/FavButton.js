@@ -23,7 +23,7 @@ const FavButton = () => {
     },
   }));
   return (
-    <div sx={{}}>
+    <div>
       <StyledFabButton size="small" color="primary" aria-label="add">
         <FavoriteBorderOutlinedIcon
           sx={{

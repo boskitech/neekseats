@@ -159,7 +159,7 @@ import SearchIcon from "@mui/icons-material/Search";
          searchitem.listName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
      );
 
-     if (userInput) setSearchResults(data);
+     if (userInput) setSearchResults(data.slice(0, 8));
    };
 
    const toggleDrawer = (anchor, open) => (event) => {
