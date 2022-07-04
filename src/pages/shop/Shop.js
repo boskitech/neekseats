@@ -104,7 +104,7 @@ const Shop = () => {
     [theme.breakpoints.down("md")]: {
       width: gridView ? "150px" : "150px",
       height: gridView ? "150px" : "150px",
-      margin: gridView ? "13px" : "10px",
+      margin: gridView ? "13px" : "10px 0px",
     },
   }));
 
@@ -145,7 +145,7 @@ const Shop = () => {
     float: !gridView && "left",
     margin: !gridView && "45px 20px",
     [theme.breakpoints.down("md")]: {
-      margin: !gridView && "40px 0",
+      margin: !gridView && "40px 0 0 0",
     },
   }));
 
@@ -169,6 +169,12 @@ const Shop = () => {
       margin: gridView ? "8px" : "140px 15px 15px 15px",
       position: !gridView && "absolute",
       right: !gridView && "5px",
+      border: "none",
+      "&:hover": {
+        background: "#fff",
+        border: "1px solid #fff",
+        color: "#fff",
+      },
     },
   }));
 
@@ -284,6 +290,276 @@ const Shop = () => {
                         />
                       </StyledFabButton>
                       <StyledProductsImage src={Watch2} />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          Custom Strip Watches
+                        </StyledProductsDivHeader>
+                        <Rating
+                          name="read-only"
+                          value={5}
+                          readOnly
+                          sx={{ margin: "10px auto" }}
+                        />
+                        <StyledProductsDivText>$249.99</StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          Custom Strip Watches
+                        </StyledProductsDivHeader>
+                        <Rating
+                          name="read-only"
+                          value={5}
+                          readOnly
+                          sx={{ margin: "10px auto" }}
+                        />
+                        <StyledProductsDivText>$249.99</StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          Custom Strip Watches
+                        </StyledProductsDivHeader>
+                        <Rating
+                          name="read-only"
+                          value={5}
+                          readOnly
+                          sx={{ margin: "10px auto" }}
+                        />
+                        <StyledProductsDivText>$249.99</StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage src={Watch1} />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          Custom Strip Watches
+                        </StyledProductsDivHeader>
+                        <Rating
+                          name="read-only"
+                          value={5}
+                          readOnly
+                          sx={{ margin: "10px auto" }}
+                        />
+                        <StyledProductsDivText>$249.99</StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage src={Watch2} />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          Custom Strip Watches
+                        </StyledProductsDivHeader>
+                        <Rating
+                          name="read-only"
+                          value={5}
+                          readOnly
+                          sx={{ margin: "10px auto" }}
+                        />
+                        <StyledProductsDivText>$249.99</StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          Custom Strip Watches
+                        </StyledProductsDivHeader>
+                        <Rating
+                          name="read-only"
+                          value={5}
+                          readOnly
+                          sx={{ margin: "10px auto" }}
+                        />
+                        <StyledProductsDivText>$249.99</StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage src={Watch3} />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          Custom Strip Watches
+                        </StyledProductsDivHeader>
+                        <Rating
+                          name="read-only"
+                          value={5}
+                          readOnly
+                          sx={{ margin: "10px auto" }}
+                        />
+                        <StyledProductsDivText>$249.99</StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage src={Watch1} />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          Custom Strip Watches
+                        </StyledProductsDivHeader>
+                        <Rating
+                          name="read-only"
+                          value={5}
+                          readOnly
+                          sx={{ margin: "10px auto" }}
+                        />
+                        <StyledProductsDivText>$249.99</StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage src={Watch2} />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          Custom Strip Watches
+                        </StyledProductsDivHeader>
+                        <Rating
+                          name="read-only"
+                          value={5}
+                          readOnly
+                          sx={{ margin: "10px auto" }}
+                        />
+                        <StyledProductsDivText>$249.99</StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage src={Watch3} />
                       <StyledProductDetails>
                         <StyledProductsDivHeader>
                           Custom Strip Watches
