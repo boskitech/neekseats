@@ -72,7 +72,7 @@ const Shop = () => {
   const StyledProductsDiv = styled("div")(({ theme }) => ({
     width: "100%",
     height: gridView ? "350px" : "200px",
-    textAlign: gridView ? "center" : "",
+    textAlign: gridView && "center",
     borderRadius: "5px",
     boxShadow: "0 0 6px #dfdfdf",
     // border: "1px solid #f6eedc",
@@ -100,6 +100,9 @@ const Shop = () => {
     height: gridView ? "auto" : "150px",
     float: !gridView && "left",
     margin: gridView ? "13px" : "23px",
+    [theme.breakpoints.down("md")]: {
+      margin: gridView ? "13px" : "0px",
+    },
   }));
 
   const StyledProductsDivHeader = styled("div")(({ theme }) => ({
@@ -135,6 +138,9 @@ const Shop = () => {
   const StyledProductDetails = styled("div")(({ theme }) => ({
     float: !gridView && "left",
     margin: !gridView && "45px 20px",
+    [theme.breakpoints.down("md")]: {
+      margin: !gridView && "40px 0",
+    },
   }));
 
   const StyledFabButton = styled(Fab)(({ theme }) => ({
@@ -154,7 +160,9 @@ const Shop = () => {
       color: "#fff",
     },
     [theme.breakpoints.down("md")]: {
-      margin: "8px",
+      margin: gridView ? "8px" : "140px 15px 15px 15px",
+      position: !gridView && "absolute",
+      right: !gridView && "5px",
     },
   }));
 
