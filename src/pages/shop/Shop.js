@@ -14,7 +14,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import { Button, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Skeleton from "@mui/material/Skeleton";
 
 const Shop = () => {
@@ -41,6 +41,9 @@ const Shop = () => {
     margin: "110px auto",
     [theme.breakpoints.up("xl")]: {
       width: "60%",
+    },
+    [theme.breakpoints.down("xl")]: {
+      width: "80%",
     },
     [theme.breakpoints.down("lg")]: {
       width: "80%",
@@ -199,270 +202,270 @@ const Shop = () => {
   }));
 
   return (
-    // <motion.div
-    //   initial={{ x: 200, opacity: 0 }}
-    //   animate={{ x: 0, scale: 1, opacity: 1 }}
-    //   exit={{ x: 200, scale: 0, opacity: 0 }}
-    //   transition={{ type: "spring", duration: 0.5 }}
-    // >
-    <ShopBody>
-      <StyledLinkTagBar
-        container
-        direction="row"
-        display="flex"
-        justifyContent="space-between"
-      >
-        <Grid item sx={{ display: { xs: "none", md: "block" } }}>
-          <StyledLinkButton>Home </StyledLinkButton>&gt;
-          <StyledLinkButton>Shop</StyledLinkButton>&gt;
-          <StyledLinkButton>Smart Watches</StyledLinkButton>
-        </Grid>
-        <Grid item>
-          <span>View Type: </span>
-          <StyledLinkButton
-            variant="outlined"
-            sx={{
-              marginLeft: "5px",
-              border: gridView ? "2px solid #d89b45" : "1px solid #333",
-              "&:hover": {
-                border: gridView ? "2px solid #d89b45" : "1px solid #e0c092",
-              },
-            }}
-            startIcon={<GridViewOutlinedIcon />}
-            onClick={handleGridView}
-          >
-            Grid
-          </StyledLinkButton>
-          <StyledLinkButton
-            sx={{
-              marginLeft: "5px",
-              border: !gridView ? "2px solid #d89b45" : "1px solid #333",
-              "&:hover": {
-                border: !gridView ? "2px solid #d89b45" : "1px solid #e0c092",
-              },
-            }}
-            variant="outlined"
-            startIcon={<ListIcon />}
-            onClick={handleListView}
-          >
-            List
-          </StyledLinkButton>
-        </Grid>
-      </StyledLinkTagBar>
-      <StyledShopContent>
-        <Grid container spacing={4}>
-          <Grid item md={3} xs={12}>
-            <StickyBox offsetTop={90} offsetBottom={90}>
-              <StyledFilterBar>
-                <ShopFilterBar
-                  position="fixed"
-                  style={{ position: "fixed", top: 70 }}
-                />
-              </StyledFilterBar>
-            </StickyBox>
+    <motion.div
+      initial={{ x: 200, opacity: 0 }}
+      animate={{ x: 0, scale: 1, opacity: 1 }}
+      exit={{ x: 200, scale: 0, opacity: 0 }}
+      transition={{ type: "spring", duration: 0.5 }}
+    >
+      <ShopBody>
+        <StyledLinkTagBar
+          container
+          direction="row"
+          display="flex"
+          justifyContent="space-between"
+        >
+          <Grid item sx={{ display: { xs: "none", md: "block" } }}>
+            <StyledLinkButton>Home </StyledLinkButton>&gt;
+            <StyledLinkButton>Shop</StyledLinkButton>&gt;
+            <StyledLinkButton>Smart Watches</StyledLinkButton>
           </Grid>
-          <Grid item md={9}>
-            <StyledProductsBar>
-              <Grid container spacing={2}>
-                <Grid item md={viewType} xs={mobileViewType}>
-                  <StyledProductsDiv onClick={() => navigate("/viewitem")}>
-                    <StyledFabButton
-                      size="small"
-                      color="primary"
-                      aria-label="add"
-                    >
-                      <FavoriteBorderOutlinedIcon
-                        sx={{
-                          display: "flex",
-                          justifyContent: "flex-end",
-                          margin: "auto",
-                        }}
-                      />
-                    </StyledFabButton>
-                    <StyledProductsImage
-                      src={Watch1}
-                      onLoad={() => setLoaded(true)}
-                      sx={{ display: loaded ? "" : "none" }}
-                    />
-                    <StyledSkeletonImage
-                      variant="rectangular"
-                      sx={{ display: !loaded ? "" : "none" }}
-                    />
-                    <StyledProductDetails>
-                      <StyledProductsDivHeader>
-                        {loaded ? (
-                          "Custom Strip Watches"
-                        ) : (
-                          <Skeleton height="20px" />
-                        )}
-                      </StyledProductsDivHeader>
-                      {loaded ? (
-                        <Rating
-                          name="read-only"
-                          value={5}
-                          readOnly
-                          sx={{ margin: "10px auto" }}
-                        />
-                      ) : (
-                        <Skeleton />
-                      )}
-                      <StyledProductsDivText>
-                        {loaded ? "$249.99" : <Skeleton />}{" "}
-                      </StyledProductsDivText>
-                    </StyledProductDetails>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={viewType} xs={mobileViewType}>
-                  <StyledProductsDiv onClick={() => navigate("/viewitem")}>
-                    <StyledFabButton
-                      size="small"
-                      color="primary"
-                      aria-label="add"
-                    >
-                      <FavoriteBorderOutlinedIcon
-                        sx={{
-                          display: "flex",
-                          justifyContent: "flex-end",
-                          margin: "auto",
-                        }}
-                      />
-                    </StyledFabButton>
-                    <StyledProductsImage
-                      src={Watch2}
-                      onLoad={() => setLoaded(true)}
-                      sx={{ display: loaded ? "" : "none" }}
-                    />
-                    <StyledSkeletonImage
-                      variant="rectangular"
-                      sx={{ display: !loaded ? "" : "none" }}
-                    />
-                    <StyledProductDetails>
-                      <StyledProductsDivHeader>
-                        {loaded ? (
-                          "Custom Strip Watches"
-                        ) : (
-                          <Skeleton height="20px" />
-                        )}
-                      </StyledProductsDivHeader>
-                      {loaded ? (
-                        <Rating
-                          name="read-only"
-                          value={5}
-                          readOnly
-                          sx={{ margin: "10px auto" }}
-                        />
-                      ) : (
-                        <Skeleton />
-                      )}
-                      <StyledProductsDivText>
-                        {loaded ? "$249.99" : <Skeleton />}{" "}
-                      </StyledProductsDivText>
-                    </StyledProductDetails>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={viewType} xs={mobileViewType}>
-                  <StyledProductsDiv onClick={() => navigate("/viewitem")}>
-                    <StyledFabButton
-                      size="small"
-                      color="primary"
-                      aria-label="add"
-                    >
-                      <FavoriteBorderOutlinedIcon
-                        sx={{
-                          display: "flex",
-                          justifyContent: "flex-end",
-                          margin: "auto",
-                        }}
-                      />
-                    </StyledFabButton>
-                    <StyledProductsImage
-                      src={Watch3}
-                      onLoad={() => setLoaded(true)}
-                      sx={{ display: loaded ? "" : "none" }}
-                    />
-                    <StyledSkeletonImage
-                      variant="rectangular"
-                      sx={{ display: !loaded ? "" : "none" }}
-                    />
-                    <StyledProductDetails>
-                      <StyledProductsDivHeader>
-                        {loaded ? (
-                          "Custom Strip Watches"
-                        ) : (
-                          <Skeleton height="20px" />
-                        )}
-                      </StyledProductsDivHeader>
-                      {loaded ? (
-                        <Rating
-                          name="read-only"
-                          value={5}
-                          readOnly
-                          sx={{ margin: "10px auto" }}
-                        />
-                      ) : (
-                        <Skeleton />
-                      )}
-                      <StyledProductsDivText>
-                        {loaded ? "$249.99" : <Skeleton />}{" "}
-                      </StyledProductsDivText>
-                    </StyledProductDetails>
-                  </StyledProductsDiv>
-                </Grid>
-                <Grid item md={viewType} xs={mobileViewType}>
-                  <StyledProductsDiv onClick={() => navigate("/viewitem")}>
-                    <StyledFabButton
-                      size="small"
-                      color="primary"
-                      aria-label="add"
-                    >
-                      <FavoriteBorderOutlinedIcon
-                        sx={{
-                          display: "flex",
-                          justifyContent: "flex-end",
-                          margin: "auto",
-                        }}
-                      />
-                    </StyledFabButton>
-                    <StyledProductsImage
-                      src={Watch1}
-                      onLoad={() => setLoaded(true)}
-                      sx={{ display: loaded ? "" : "none" }}
-                    />
-                    <StyledSkeletonImage
-                      variant="rectangular"
-                      sx={{ display: !loaded ? "" : "none" }}
-                    />
-                    <StyledProductDetails>
-                      <StyledProductsDivHeader>
-                        {loaded ? (
-                          "Custom Strip Watches"
-                        ) : (
-                          <Skeleton height="20px" />
-                        )}
-                      </StyledProductsDivHeader>
-                      {loaded ? (
-                        <Rating
-                          name="read-only"
-                          value={5}
-                          readOnly
-                          sx={{ margin: "10px auto" }}
-                        />
-                      ) : (
-                        <Skeleton />
-                      )}
-                      <StyledProductsDivText>
-                        {loaded ? "$249.99" : <Skeleton />}{" "}
-                      </StyledProductsDivText>
-                    </StyledProductDetails>
-                  </StyledProductsDiv>
-                </Grid>
-              </Grid>
-            </StyledProductsBar>
+          <Grid item>
+            <span>View Type: </span>
+            <StyledLinkButton
+              variant="outlined"
+              sx={{
+                marginLeft: "5px",
+                border: gridView ? "2px solid #d89b45" : "1px solid #333",
+                "&:hover": {
+                  border: gridView ? "2px solid #d89b45" : "1px solid #e0c092",
+                },
+              }}
+              startIcon={<GridViewOutlinedIcon />}
+              onClick={handleGridView}
+            >
+              Grid
+            </StyledLinkButton>
+            <StyledLinkButton
+              sx={{
+                marginLeft: "5px",
+                border: !gridView ? "2px solid #d89b45" : "1px solid #333",
+                "&:hover": {
+                  border: !gridView ? "2px solid #d89b45" : "1px solid #e0c092",
+                },
+              }}
+              variant="outlined"
+              startIcon={<ListIcon />}
+              onClick={handleListView}
+            >
+              List
+            </StyledLinkButton>
           </Grid>
-        </Grid>
-      </StyledShopContent>
-    </ShopBody>
-    // </motion.div>
+        </StyledLinkTagBar>
+        <StyledShopContent>
+          <Grid container spacing={4}>
+            <Grid item md={3} xs={12}>
+              <StickyBox offsetTop={90} offsetBottom={90}>
+                <StyledFilterBar>
+                  <ShopFilterBar
+                    position="fixed"
+                    style={{ position: "fixed", top: 70 }}
+                  />
+                </StyledFilterBar>
+              </StickyBox>
+            </Grid>
+            <Grid item md={9}>
+              <StyledProductsBar>
+                <Grid container spacing={2}>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage
+                        src={Watch1}
+                        onLoad={() => setLoaded(true)}
+                        sx={{ display: loaded ? "" : "none" }}
+                      />
+                      <StyledSkeletonImage
+                        variant="rectangular"
+                        sx={{ display: !loaded ? "" : "none" }}
+                      />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          {loaded ? (
+                            "Custom Strip Watches"
+                          ) : (
+                            <Skeleton height="20px" />
+                          )}
+                        </StyledProductsDivHeader>
+                        {loaded ? (
+                          <Rating
+                            name="read-only"
+                            value={5}
+                            readOnly
+                            sx={{ margin: "10px auto" }}
+                          />
+                        ) : (
+                          <Skeleton />
+                        )}
+                        <StyledProductsDivText>
+                          {loaded ? "$249.99" : <Skeleton />}{" "}
+                        </StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage
+                        src={Watch2}
+                        onLoad={() => setLoaded(true)}
+                        sx={{ display: loaded ? "" : "none" }}
+                      />
+                      <StyledSkeletonImage
+                        variant="rectangular"
+                        sx={{ display: !loaded ? "" : "none" }}
+                      />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          {loaded ? (
+                            "Custom Strip Watches"
+                          ) : (
+                            <Skeleton height="20px" />
+                          )}
+                        </StyledProductsDivHeader>
+                        {loaded ? (
+                          <Rating
+                            name="read-only"
+                            value={5}
+                            readOnly
+                            sx={{ margin: "10px auto" }}
+                          />
+                        ) : (
+                          <Skeleton />
+                        )}
+                        <StyledProductsDivText>
+                          {loaded ? "$249.99" : <Skeleton />}{" "}
+                        </StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage
+                        src={Watch3}
+                        onLoad={() => setLoaded(true)}
+                        sx={{ display: loaded ? "" : "none" }}
+                      />
+                      <StyledSkeletonImage
+                        variant="rectangular"
+                        sx={{ display: !loaded ? "" : "none" }}
+                      />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          {loaded ? (
+                            "Custom Strip Watches"
+                          ) : (
+                            <Skeleton height="20px" />
+                          )}
+                        </StyledProductsDivHeader>
+                        {loaded ? (
+                          <Rating
+                            name="read-only"
+                            value={5}
+                            readOnly
+                            sx={{ margin: "10px auto" }}
+                          />
+                        ) : (
+                          <Skeleton />
+                        )}
+                        <StyledProductsDivText>
+                          {loaded ? "$249.99" : <Skeleton />}{" "}
+                        </StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                  <Grid item md={viewType} xs={mobileViewType}>
+                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                      <StyledFabButton
+                        size="small"
+                        color="primary"
+                        aria-label="add"
+                      >
+                        <FavoriteBorderOutlinedIcon
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            margin: "auto",
+                          }}
+                        />
+                      </StyledFabButton>
+                      <StyledProductsImage
+                        src={Watch1}
+                        onLoad={() => setLoaded(true)}
+                        sx={{ display: loaded ? "" : "none" }}
+                      />
+                      <StyledSkeletonImage
+                        variant="rectangular"
+                        sx={{ display: !loaded ? "" : "none" }}
+                      />
+                      <StyledProductDetails>
+                        <StyledProductsDivHeader>
+                          {loaded ? (
+                            "Custom Strip Watches"
+                          ) : (
+                            <Skeleton height="20px" />
+                          )}
+                        </StyledProductsDivHeader>
+                        {loaded ? (
+                          <Rating
+                            name="read-only"
+                            value={5}
+                            readOnly
+                            sx={{ margin: "10px auto" }}
+                          />
+                        ) : (
+                          <Skeleton />
+                        )}
+                        <StyledProductsDivText>
+                          {loaded ? "$249.99" : <Skeleton />}{" "}
+                        </StyledProductsDivText>
+                      </StyledProductDetails>
+                    </StyledProductsDiv>
+                  </Grid>
+                </Grid>
+              </StyledProductsBar>
+            </Grid>
+          </Grid>
+        </StyledShopContent>
+      </ShopBody>
+    </motion.div>
   );
 };
 

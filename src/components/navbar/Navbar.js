@@ -54,6 +54,9 @@ import SearchIcon from "@mui/icons-material/Search";
    [theme.breakpoints.up("xl")]: {
      width: "60%",
    },
+   [theme.breakpoints.down("xl")]: {
+     width: "80%",
+   },
    [theme.breakpoints.down("md")]: {
      width: "90%",
    },

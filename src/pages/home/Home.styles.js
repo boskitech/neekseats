@@ -14,8 +14,11 @@ export const HomeBody = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("xl")]: {
     width: "60%",
   },
-  [theme.breakpoints.down("lg")]: {
+  [theme.breakpoints.down("xl")]: {
     width: "80%",
+  },
+  [theme.breakpoints.down("lg")]: {
+    width: "90%",
   },
   [theme.breakpoints.down("md")]: {
     width: "90%",
@@ -191,30 +194,40 @@ export const FeaturesLogo = styled(Grid)(({ theme }) => ({
   width: "70px",
   height: "70px",
   borderRadius: "5px",
+  [theme.breakpoints.down("lg")]: {
+    width: "60px",
+    height: "60px",
+  },
   [theme.breakpoints.down("md")]: {
     width: "50px",
     height: "50px",
   },
 }));
 
-export const FeaturesShippingIcon = styled(LocalShippingOutlinedIcon)(
-  ({ theme }) => ({
-    width: "50px",
-    height: "50px",
-    padding: "10px",
-    color: "#5eb3d4",
-    [theme.breakpoints.down("md")]: {
-      width: "30px",
-      height: "30px",
-    },
-  })
-);
+export const FeaturesShippingIcon = styled(LocalShippingOutlinedIcon)(({ theme }) => ({
+  width: "50px",
+  height: "50px",
+  padding: "10px",
+  color: "#5eb3d4",
+  [theme.breakpoints.down("lg")]: {
+    width: "40px",
+    height: "40px",
+  },
+  [theme.breakpoints.down("md")]: {
+    width: "30px",
+    height: "30px",
+  },
+}));
 
 export const FeaturesSupportIcon = styled(CallOutlinedIcon)(({ theme }) => ({
   width: "50px",
   height: "50px",
   padding: "10px",
   color: "#d87676",
+  [theme.breakpoints.down("lg")]: {
+    width: "40px",
+    height: "40px",
+  },
   [theme.breakpoints.down("md")]: {
     width: "30px",
     height: "30px",
@@ -227,6 +240,10 @@ export const FeaturesPaymentIcon = styled(SecurityOutlinedIcon)(
     height: "50px",
     padding: "10px",
     color: "#afae4f ",
+    [theme.breakpoints.down("lg")]: {
+      width: "40px",
+      height: "40px",
+    },
     [theme.breakpoints.down("md")]: {
       width: "30px",
       height: "30px",
