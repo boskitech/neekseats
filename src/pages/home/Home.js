@@ -89,7 +89,7 @@ const Home = () => {
       {/* features  bar------------------------------------------------------ */}
       <HomeStyles.FeaturesBar>
         <Grid container spacing={4}>
-          <Grid item md={4} xs={12} data-aos="zoom-in">
+          <Grid item md={4} xs={12}>
             <Grid container direction="row">
               <Grid item md={3}>
                 <HomeStyles.FeaturesLogo sx={{ background: "#c2e7f0" }}>
@@ -106,7 +106,7 @@ const Home = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item md={4} xs={12} data-aos="zoom-in">
+          <Grid item md={4} xs={12}>
             <Grid container>
               <Grid item md={3}>
                 <HomeStyles.FeaturesLogo sx={{ background: "#fdd4d4" }}>
@@ -123,7 +123,7 @@ const Home = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item md={4} xs={12} data-aos="zoom-in">
+          <Grid item md={4} xs={12}>
             <Grid container>
               <Grid item md={3}>
                 <HomeStyles.FeaturesLogo sx={{ background: "#f1e8b0" }}>
