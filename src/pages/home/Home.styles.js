@@ -66,7 +66,7 @@ export const StyledLeftSideBanner = styled("div")(({ theme }) => ({
 
 export const StyledBannerHeaderText = styled("div")(({ theme }) => ({
   fontSize: "48px",
-  fontWeight: 800,
+  fontWeight: 550,
   color: "#000",
   lineHeight: "65px",
 }));

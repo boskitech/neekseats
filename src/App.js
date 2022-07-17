@@ -13,6 +13,7 @@ import "aos/dist/aos.css";
 import ViewItem from "./pages/shop/ViewItem";
 import Cart from "./pages/cart/Cart";
 import Login from "./pages/auth/auth";
+import AddProduct from "./pages/dashboard/AddProduct";
 
 function App() {
   useEffect(() => {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/viewitem" element={<ViewItem />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/addproduct" element={<AddProduct />} />
           </Routes>
         </ScrollToTop>
         <Footer />
