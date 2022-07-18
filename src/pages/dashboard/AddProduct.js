@@ -105,7 +105,7 @@ const AddProduct = React.memo(() => {
 
     axios
       .post("http://localhost:5200/api/product/", formData, {})
-      .then((res) => console.log(res))
+      .then((res) => alert(res))
       .catch((err) => console.log(err));
 
     console.log(productData);
@@ -116,7 +116,7 @@ const AddProduct = React.memo(() => {
       container
       display="flex"
       justifyContent="space-around"
-      sx={{ width: "60%", margin: "auto" }}
+      sx={{ width: "100%", margin: "auto" }}
       data-aos="fade-left"
     >
       <Grid item md={5} xs={12}>
