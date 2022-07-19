@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import * as ShopStyles from "./Shop.styles";
 import ShopFilterBar from "./ShopFilterBar";
 import Watch1 from "../../assets/img/watch_img_21.png";
 import Watch2 from "../../assets/img/watch_img_17.png";
 import Watch3 from "../../assets/img/watch_img_26.png";
 import Rating from "@mui/material/Rating";
-// import FavButton from "../../components/favButton/FavButton";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ListIcon from "@mui/icons-material/List";
 import StickyBox from "react-sticky-box";
@@ -16,13 +15,22 @@ import { styled } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Skeleton from "@mui/material/Skeleton";
+import {
+  fetchProducts,
+  selectAllProducts,
+  productStatus,
+} from "../../reducers/productSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Shop = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [viewType, setViewType] = useState(4);
   const [mobileViewType, setMobileViewType] = useState(6);
   const [gridView, setGridView] = useState(true);
   const [loaded, setLoaded] = useState(false);
+  const allProducts = useSelector(selectAllProducts);
+  const status = useSelector(productStatus);
 
   const handleListView = () => {
     setViewType(12);
@@ -35,6 +43,13 @@ const Shop = () => {
     setMobileViewType(6);
     setGridView(true);
   };
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
+    console.log(allProducts);
+  });
 
   const ShopBody = styled("div")(({ theme }) => ({
     width: "70%",
@@ -267,54 +282,56 @@ const Shop = () => {
             <Grid item md={9}>
               <StyledProductsBar>
                 <Grid container spacing={2}>
-                  <Grid item md={viewType} xs={mobileViewType}>
-                    <StyledProductsDiv onClick={() => navigate("/viewitem")}>
-                      <StyledFabButton
-                        size="small"
-                        color="primary"
-                        aria-label="add"
-                      >
-                        <FavoriteBorderOutlinedIcon
-                          sx={{
-                            display: "flex",
-                            justifyContent: "flex-end",
-                            margin: "auto",
-                          }}
-                        />
-                      </StyledFabButton>
-                      <StyledProductsImage
-                        src={Watch1}
-                        onLoad={() => setLoaded(true)}
-                        sx={{ display: loaded ? "" : "none" }}
-                      />
-                      <StyledSkeletonImage
-                        variant="rectangular"
-                        sx={{ display: !loaded ? "" : "none" }}
-                      />
-                      <StyledProductDetails>
-                        <StyledProductsDivHeader>
-                          {loaded ? (
-                            "Custom Strip Watches"
-                          ) : (
-                            <Skeleton height="20px" />
-                          )}
-                        </StyledProductsDivHeader>
-                        {loaded ? (
-                          <Rating
-                            name="read-only"
-                            value={5}
-                            readOnly
-                            sx={{ margin: "10px auto" }}
+                  {allProducts.map((product) => (
+                    <Grid item md={viewType} xs={mobileViewType}>
+                      <StyledProductsDiv onClick={() => navigate("/viewitem")}>
+                        <StyledFabButton
+                          size="small"
+                          color="primary"
+                          aria-label="add"
+                        >
+                          <FavoriteBorderOutlinedIcon
+                            sx={{
+                              display: "flex",
+                              justifyContent: "flex-end",
+                              margin: "auto",
+                            }}
                           />
-                        ) : (
-                          <Skeleton />
-                        )}
-                        <StyledProductsDivText>
-                          {loaded ? "$249.99" : <Skeleton />}{" "}
-                        </StyledProductsDivText>
-                      </StyledProductDetails>
-                    </StyledProductsDiv>
-                  </Grid>
+                        </StyledFabButton>
+                        <StyledProductsImage
+                          src={`http://localhost:5200${product.productImage}`}
+                          onLoad={() => setLoaded(true)}
+                          sx={{ display: loaded ? "" : "none" }}
+                        />
+                        <StyledSkeletonImage
+                          variant="rectangular"
+                          sx={{ display: !loaded ? "" : "none" }}
+                        />
+                        <StyledProductDetails>
+                          <StyledProductsDivHeader>
+                            {loaded ? (
+                              product.productName
+                            ) : (
+                              <Skeleton height="20px" />
+                            )}
+                          </StyledProductsDivHeader>
+                          {loaded ? (
+                            <Rating
+                              name="read-only"
+                              value={5}
+                              readOnly
+                              sx={{ margin: "10px auto" }}
+                            />
+                          ) : (
+                            <Skeleton />
+                          )}
+                          <StyledProductsDivText>
+                            {loaded ? product.productPrice : <Skeleton />}{" "}
+                          </StyledProductsDivText>
+                        </StyledProductDetails>
+                      </StyledProductsDiv>
+                    </Grid>
+                  ))}
                   <Grid item md={viewType} xs={mobileViewType}>
                     <StyledProductsDiv onClick={() => navigate("/viewitem")}>
                       <StyledFabButton
