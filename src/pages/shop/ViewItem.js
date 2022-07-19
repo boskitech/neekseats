@@ -11,16 +11,31 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { IconButton } from "@mui/material";
+import { useParams } from "react-router-dom";
+import {
+  fetchOneProduct,
+  selectProduct,
+  OneProdStatus,
+} from "../../reducers/productSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const ViewItem = () => {
+  let params = useParams();
+  let id = params.id;
+  const dispatch = useDispatch();
   const [value, setValue] = React.useState("");
   const [quantity, setQuantity] = React.useState(1);
-  
+
+  const oneProduct = useSelector(selectProduct);
+  const status = useSelector(OneProdStatus);
+
   const handleValue = (event, newValue) => {
     setValue(newValue);
   };
 
- 
+  React.useEffect(() => {
+    dispatch(fetchOneProduct(id));
+  }, [id, status, dispatch]);
 
   //Toggle button -----------------------------------------------------
   const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
@@ -63,7 +78,6 @@ const ViewItem = () => {
   }));
 
   //Quantity Button --------------------------------------------------------------
-
   const StyledQuantityBar = styled("div")(({ theme }) => ({
     height: "35px",
     width: "100px",
@@ -159,10 +173,10 @@ const ViewItem = () => {
   }));
 
   const StyledProductsDivHeader = styled("div")(({ theme }) => ({
-    fontSize: "27px",
+    fontSize: "23px",
     fontWeight: 500,
     color: "#555",
-    textTransform: "uppercase",
+    textTransform: "capitalize",
     marginTop: "0px",
     width: "100%",
   }));
@@ -270,20 +284,26 @@ const ViewItem = () => {
         <Grid item md={4.5} sm={12}>
           <StyledImageBar>
             <StyledProductsDiv>
-              <StyledProductsImage src={Watch1} />
+              <StyledProductsImage
+                src={`http://localhost:5200${oneProduct.productImage}`}
+              />
             </StyledProductsDiv>
           </StyledImageBar>
         </Grid>
         <Grid item md={5.5} sm={12}>
           <StyledSelectionBar>
-            <StyledProductsDivBrandText>APPLE</StyledProductsDivBrandText>
+            <StyledProductsDivBrandText>
+              {oneProduct.productBrand}
+            </StyledProductsDivBrandText>
             <StyledProductsDivHeader>
-              Apple Series 3 Smart Watch
+              {oneProduct.productName}
             </StyledProductsDivHeader>
             <StyledProductsDivText sx={{ marginTop: "25px" }}>
               Price
             </StyledProductsDivText>
-            <StyledProductsDivPriceText>$249.99</StyledProductsDivPriceText>
+            <StyledProductsDivPriceText>
+              {oneProduct.productPrice}
+            </StyledProductsDivPriceText>
             <Rating
               name="read-only"
               value={3.49}
@@ -501,6 +521,6 @@ const ViewItem = () => {
       </StyledDiscriptionBar>
     </ViewItemBody>
   );
-};
+};;
 
 export default ViewItem;

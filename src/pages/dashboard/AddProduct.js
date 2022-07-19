@@ -55,19 +55,19 @@ const StyledGridLoginButton = styled(Button)(({ theme }) => ({
 }));
 
 const StyledImageView = styled("div")({
-  width: "300px",
-  height: "300px",
-  margin: "200px auto",
+  width: "100px",
+  height: "100px",
+  margin: "100px auto",
   border: "1px solid #777",
 });
 
 const StyledImg = styled("img")({
-  width: "300px",
-  height: "300px",
+  width: "100px",
+  height: "100px",
 });
 
 const AddProduct = React.memo(() => {
-  const [ProductImage, setProductImage] = useState("");
+  const [productImages, setProductImages] = useState("");
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productBrand, setProductBrand] = useState("");
@@ -81,7 +81,7 @@ const AddProduct = React.memo(() => {
 
   const imageChange = useCallback((e) => {
     if (e.target.files && e.target.files.length > 0) {
-      setProductImage(e.target.files[0]);
+      setProductImages(e.target.files);
     }
   }, []);
 
@@ -92,14 +92,20 @@ const AddProduct = React.memo(() => {
       productPrice: productPrice,
       productShipping: productShipping,
       productBrand: productBrand,
-      productColor: { productColor1, productColor2, productColor3 },
+      productColor: [
+        { color: productColor1 },
+        { color: productColor2 },
+        { color: productColor3 },
+      ],
       productCategory: productCategory,
       productQuantity: productQuantity,
-      productImage: "",
+      productImage: {},
       productDescription: productDescription,
     };
 
-    formData.append("productImage", ProductImage);
+    for (const single_image of productImages) {
+      formData.append("productImage", single_image);
+    }
     formData.append("meta", JSON.stringify(productData));
 
     axios
@@ -218,13 +224,40 @@ const AddProduct = React.memo(() => {
       </Grid>
       <Grid item md={5} xs={12}>
         <StyledImageView>
-          {ProductImage && (
+          {productImages[0] && (
             <StyledImg
-              src={URL.createObjectURL(ProductImage)}
+              src={URL.createObjectURL(productImages[0])}
               alt="display tag"
             />
           )}
-          {!ProductImage && "Image appears here"}
+          {!productImages[0] && "Image appears here"}
+        </StyledImageView>
+        <StyledImageView>
+          {productImages[1] && (
+            <StyledImg
+              src={URL.createObjectURL(productImages[1])}
+              alt="display tag"
+            />
+          )}
+          {!productImages[1] && "Image appears here"}
+        </StyledImageView>
+        <StyledImageView>
+          {productImages[2] && (
+            <StyledImg
+              src={URL.createObjectURL(productImages[2])}
+              alt="display tag"
+            />
+          )}
+          {!productImages[2] && "Image appears here"}
+        </StyledImageView>
+        <StyledImageView>
+          {productImages[3] && (
+            <StyledImg
+              src={URL.createObjectURL(productImages[3])}
+              alt="display tag"
+            />
+          )}
+          {!productImages[3] && "Image appears here"}
         </StyledImageView>
         <StyledGridLoginButton
           sx={{
@@ -236,7 +269,13 @@ const AddProduct = React.memo(() => {
           component="label"
         >
           Upload product image
-          <input type="file" accept="image" hidden onChange={imageChange} />
+          <input
+            type="file"
+            accept="image"
+            multiple
+            hidden
+            onChange={imageChange}
+          />
         </StyledGridLoginButton>
         <StyledGridLoginButton onClick={handleSubmit}>
           Add Product

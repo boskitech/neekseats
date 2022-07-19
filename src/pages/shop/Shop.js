@@ -280,9 +280,14 @@ const Shop = () => {
               <StyledProductsBar>
                 <Grid container spacing={2}>
                   {allProducts.map((product) => (
-                    <Grid item md={viewType} xs={mobileViewType}>
+                    <Grid
+                      key={product._id}
+                      item
+                      md={viewType}
+                      xs={mobileViewType}
+                    >
                       <Link
-                        to={`shop/${product._id}`}
+                        to={`../shop/${product._id}`}
                         style={{ textDecoration: "none" }}
                       >
                         <StyledProductsDiv>

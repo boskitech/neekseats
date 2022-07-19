@@ -31,8 +31,10 @@ export const fetchProductByCategory = createAsyncThunk(
 
 const initialState = {
   products: [],
+  product: [],
   productsCategory: [],
   status: "idle",
+  oneProdStatus: "idle",
   error: null,
 };
 
@@ -55,14 +57,14 @@ const productsSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(fetchOneProduct.pending, (state, action) => {
-        state.status = "loading";
+        state.oneProdStatus = "loading";
       })
       .addCase(fetchOneProduct.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.registerResponse = action.payload;
+        state.oneProdStatus = "succeeded";
+        state.product = action.payload;
       })
       .addCase(fetchOneProduct.rejected, (state, action) => {
-        state.status = "failed";
+        state.oneProdStatus = "failed";
         state.error = action.error.message;
       })
       .addCase(fetchProductByCategory.fulfilled, (state, action) => {
@@ -72,7 +74,9 @@ const productsSlice = createSlice({
 });
 
 export const productStatus = (state) => state.products.status;
+export const OneProdStatus = (state) => state.products.oneProdStatus;
 export const selectAllProducts = (state) => state.products.products;
+export const selectProduct = (state) => state.products.product;
 export const selectByCategory = (state) => state.products.productsCategory;
 
 export default productsSlice.reducer;
