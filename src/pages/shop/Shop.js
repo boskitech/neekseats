@@ -45,7 +45,7 @@ const Shop = () => {
     if (status === "idle") {
       dispatch(fetchProducts());
     }
-    console.log(allProducts);
+    // console.log(allProducts.map((product) => product.productImage[0].image));
   });
 
   const ShopBody = styled("div")(({ theme }) => ({
@@ -305,10 +305,11 @@ const Shop = () => {
                             />
                           </StyledFabButton>
                           <StyledProductsImage
-                            src={`http://localhost:5200${product.productImage}`}
+                            src={`http://localhost:5200/uploads/${product.productImage[0].image}`}
                             onLoad={() => setLoaded(true)}
                             sx={{ display: loaded ? "" : "none" }}
                           />
+
                           <StyledSkeletonImage
                             variant="rectangular"
                             sx={{ display: !loaded ? "" : "none" }}

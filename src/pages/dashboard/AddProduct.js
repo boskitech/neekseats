@@ -57,7 +57,7 @@ const StyledGridLoginButton = styled(Button)(({ theme }) => ({
 const StyledImageView = styled("div")({
   width: "100px",
   height: "100px",
-  margin: "100px auto",
+  margin: "30px auto 20px auto",
   border: "1px solid #777",
 });
 
@@ -110,7 +110,7 @@ const AddProduct = React.memo(() => {
 
     axios
       .post("http://localhost:5200/api/product/", formData, {})
-      .then((res) => alert(res))
+      .then((res) => alert("Success"))
       .catch((err) => console.log(err));
 
     console.log(productData);
@@ -222,7 +222,7 @@ const AddProduct = React.memo(() => {
           </Grid>
         </StyledGridLoginSideDiv>
       </Grid>
-      <Grid item md={5} xs={12}>
+      <Grid item md={5} xs={12} sx={{ marginTop: "150px" }}>
         <StyledImageView>
           {productImages[0] && (
             <StyledImg

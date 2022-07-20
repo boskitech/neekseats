@@ -41,7 +41,11 @@ const initialState = {
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    changeStatus: (state) => {
+      state.oneProdStatus = "idle";
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchProducts.pending, (state, action) => {
@@ -73,6 +77,7 @@ const productsSlice = createSlice({
   },
 });
 
+export const { changeStatus } = productsSlice.actions;
 export const productStatus = (state) => state.products.status;
 export const OneProdStatus = (state) => state.products.oneProdStatus;
 export const selectAllProducts = (state) => state.products.products;
