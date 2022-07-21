@@ -7,7 +7,7 @@ import ListIcon from "@mui/icons-material/List";
 import StickyBox from "react-sticky-box";
 import Fab from "@mui/material/Fab";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { Button, Grid } from "@mui/material";
+import { Button, CircularProgress, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -276,79 +276,90 @@ const Shop = () => {
                 </StyledFilterBar>
               </StickyBox>
             </Grid>
-            <Grid item md={9}>
-              <StyledProductsBar>
-                <Grid container spacing={2}>
-                  {allProducts.map((product) => (
-                    <Grid
-                      key={product._id}
-                      item
-                      md={viewType}
-                      xs={mobileViewType}
-                    >
-                      <Link
-                        to={`../shop/${product._id}`}
-                        style={{ textDecoration: "none" }}
+            {status === "succeeded" ? (
+              <Grid item md={9}>
+                <StyledProductsBar>
+                  <Grid container spacing={2}>
+                    {allProducts.map((product) => (
+                      <Grid
+                        key={product._id}
+                        item
+                        md={viewType}
+                        xs={mobileViewType}
                       >
-                        <StyledProductsDiv>
-                          <StyledFabButton
-                            size="small"
-                            color="primary"
-                            aria-label="add"
-                          >
-                            <FavoriteBorderOutlinedIcon
-                              sx={{
-                                display: "flex",
-                                justifyContent: "flex-end",
-                                margin: "auto",
-                              }}
-                            />
-                          </StyledFabButton>
-                          <StyledProductsImage
-                            src={`http://localhost:5200/uploads/${product.productImage[0].image}`}
-                            onLoad={() => setLoaded(true)}
-                            sx={{ display: loaded ? "" : "none" }}
-                          />
-
-                          <StyledSkeletonImage
-                            variant="rectangular"
-                            sx={{ display: !loaded ? "" : "none" }}
-                          />
-                          <StyledProductDetails>
-                            <StyledProductsDivHeader
-                              sx={{ overflow: "ellipse" }}
+                        <Link
+                          to={`../shop/${product._id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <StyledProductsDiv>
+                            <StyledFabButton
+                              size="small"
+                              color="primary"
+                              aria-label="add"
                             >
-                              {loaded ? (
-                                gridView ? (
-                                  product.productName.substr(0, 50) + "..."
-                                ) : (
-                                  product.productName.substr(0, 60) + "..."
-                                )
-                              ) : (
-                                <Skeleton height="20px" />
-                              )}
-                            </StyledProductsDivHeader>
-                            {loaded ? (
-                              <Rating
-                                name="read-only"
-                                value={5}
-                                readOnly
-                                sx={{ margin: "10px auto" }}
+                              <FavoriteBorderOutlinedIcon
+                                sx={{
+                                  display: "flex",
+                                  justifyContent: "flex-end",
+                                  margin: "auto",
+                                }}
                               />
-                            ) : (
-                              <Skeleton />
-                            )}
-                            <StyledProductsDivText>
-                              {loaded ? product.productPrice : <Skeleton />}{" "}
-                            </StyledProductsDivText>
-                          </StyledProductDetails>
-                        </StyledProductsDiv>
-                      </Link>
-                    </Grid>
-                  ))}
-                </Grid>
-              </StyledProductsBar>
-            </Grid>
+                            </StyledFabButton>
+                            <StyledProductsImage
+                              src={`http://localhost:5200/uploads/${product.productImage[0].image}`}
+                              onLoad={() => setLoaded(true)}
+                              sx={{ display: loaded ? "" : "none" }}
+                            />
+                            <StyledSkeletonImage
+                              variant="rectangular"
+                              sx={{ display: !loaded ? "" : "none" }}
+                            />
+                            <StyledProductDetails>
+                              <StyledProductsDivHeader
+                                sx={{ overflow: "ellipse" }}
+                              >
+                                {loaded ? (
+                                  gridView ? (
+                                    product.productName.substr(0, 50) + "..."
+                                  ) : (
+                                    product.productName.substr(0, 60) + "..."
+                                  )
+                                ) : (
+                                  <Skeleton height="20px" />
+                                )}
+                              </StyledProductsDivHeader>
+                              {loaded ? (
+                                <Rating
+                                  name="read-only"
+                                  value={5}
+                                  readOnly
+                                  sx={{ margin: "10px auto" }}
+                                />
+                              ) : (
+                                <Skeleton />
+                              )}
+                              <StyledProductsDivText>
+                                {loaded ? product.productPrice : <Skeleton />}{" "}
+                              </StyledProductsDivText>
+                            </StyledProductDetails>
+                          </StyledProductsDiv>
+                        </Link>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </StyledProductsBar>
+              </Grid>
+            ) : (
+              <div
+                style={{
+                  margin: "60px auto",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <CircularProgress />
+              </div>
+            )}
           </Grid>
         </StyledShopContent>
       </ShopBody>

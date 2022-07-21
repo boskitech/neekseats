@@ -21,20 +21,22 @@ import {
   changeStatus,
 } from "../../reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { addToCart, addToCartStatus } from "../../reducers/cartSlice";
 
 const ViewItem = () => {
   let params = useParams();
   let id = params.id;
   const dispatch = useDispatch();
-  const [value, setValue] = React.useState("");
+  const [color, setColor] = React.useState("");
   const [quantity, setQuantity] = React.useState(1);
   const oneProduct = useSelector(selectProduct);
   const status = useSelector(OneProdStatus);
+  const addCartItemStatus = useSelector(addToCartStatus);
 
   const [imageUrl, setImageUrl] = React.useState("");
 
   const handleValue = (event, newValue) => {
-    setValue(newValue);
+    setColor(newValue);
   };
 
   React.useEffect(() => {
@@ -44,6 +46,23 @@ const ViewItem = () => {
     };
     // eslint-disable-next-line
   }, []);
+
+  const handleAddToCart = () => {
+    let postData = {
+      userID: Math.random(0, 1000),
+      itemID: oneProduct._id,
+      cartItemName: oneProduct.productName,
+      cartItemPrice: oneProduct.productPrice,
+      itemShippingPrice: oneProduct.productShipping,
+      cartItemQuantity: quantity,
+      cartItemColor: color,
+      cartItemImage: oneProduct.productImage[0].image,
+    };
+
+    if (addCartItemStatus === "idle") dispatch(addToCart(postData));
+  };
+
+  const handleBuyNow = () => {};
 
   //Toggle button -----------------------------------------------------
   const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
@@ -367,7 +386,7 @@ const ViewItem = () => {
                   </Grid>
                   <Grid item md={9.5} xs={9}>
                     <ToggleButtonGroup
-                      value={value}
+                      value={color}
                       onChange={handleValue}
                       exclusive
                       aria-label="text formatting"
@@ -450,10 +469,13 @@ const ViewItem = () => {
                         fontWeight: 600,
                       }}
                       startIcon={<AddShoppingCartIcon />}
+                      onClick={handleAddToCart}
                     >
                       Add To Cart
                     </StyledBannerCartButton>
-                    <StyledBannerCartButton>Buy Now</StyledBannerCartButton>
+                    <StyledBannerCartButton onClick={handleBuyNow}>
+                      Buy Now
+                    </StyledBannerCartButton>
                   </Grid>
                 </Grid>
               </StyledBuyAndCheckOut>
@@ -598,6 +620,6 @@ const ViewItem = () => {
       )}
     </ViewItemBody>
   );
-};;;;;;;;;;;;;;;;;;;;;;;;;;
+};
 
 export default ViewItem;

@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchCartProducts = createAsyncThunk(
@@ -12,16 +11,23 @@ export const fetchCartProducts = createAsyncThunk(
   }
 );
 
-export const addToCart = createAsyncThunk("cart/addToCart", async (id) => {
-  const response = await axios.post(`http://localhost:5000/api/cart/`);
-  return response.data;
-});
+export const addToCart = createAsyncThunk(
+  "cart/addToCart",
+  async (postData) => {
+    const response = await axios.post(
+      `http://localhost:5200/api/cart/`,
+      postData,
+      {}
+    );
+    return response.data;
+  }
+);
 
 export const patchQuanity = createAsyncThunk(
   "cart/patchQuantity",
-  async (userid) => {
+  async (itemId) => {
     const response = await axios.get(
-      `http://localhost:5000/api/product/category/${userid}`
+      `http://localhost:5000/api/product/category/${itemId}`
     );
     return response.data;
   }
@@ -29,23 +35,18 @@ export const patchQuanity = createAsyncThunk(
 
 export const patchColor = createAsyncThunk(
   "cart/patchColor",
-  async (userid) => {
+  async (itemId) => {
     const response = await axios.get(
-      `http://localhost:5000/api/product/category/${userid}`
+      `http://localhost:5000/api/product/category/${itemId}`
     );
     return response.data;
   }
 );
 
-export const deleteProduct = createAsyncThunk(
-  "cart/patchColor",
-  async (userid) => {
-    const response = await axios.get(
-      `http://localhost:5000/api/cart/${userid}`
-    );
-    return response.data;
-  }
-);
+export const deleteItem = createAsyncThunk("cart/deeteItem", async (itemId) => {
+  const response = await axios.get(`http://localhost:5000/api/cart/${itemId}`);
+  return response.data;
+});
 
 export const clearCart = createAsyncThunk("cart/clearCart", async (userid) => {
   const response = await axios.delete(
@@ -56,7 +57,8 @@ export const clearCart = createAsyncThunk("cart/clearCart", async (userid) => {
 
 const initialState = {
   cart: [],
-  status: "idle",
+  cartStatus: "idle",
+  addToCartStatus: "idle",
   error: null,
 };
 
@@ -67,26 +69,26 @@ const cartSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchCartProducts.pending, (state, action) => {
-        state.status = "loading";
+        state.cartStatus = "loading";
       })
       .addCase(fetchCartProducts.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.cartStatus = "succeeded";
         // Add any fetched posts to the array
         state.cart = action.payload;
       })
       .addCase(fetchCartProducts.rejected, (state, action) => {
-        state.status = "failed";
+        state.cartStatus = "failed";
         state.error = action.error.message;
       })
       .addCase(addToCart.pending, (state, action) => {
-        state.status = "loading";
+        state.AddToCartStatus = "loading";
       })
       .addCase(addToCart.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.registerResponse = action.payload;
+        state.AddToCartStatus = "succeeded";
+        state.cart.push(action.payload);
       })
       .addCase(addToCart.rejected, (state, action) => {
-        state.status = "failed";
+        state.AddToCartStatus = "failed";
         state.error = action.error.message;
       })
       .addCase(patchQuanity.pending, (state, action) => {
@@ -111,14 +113,14 @@ const cartSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      .addCase(deleteProduct.pending, (state, action) => {
+      .addCase(deleteItem.pending, (state, action) => {
         state.status = "loading";
       })
-      .addCase(deleteProduct.fulfilled, (state, action) => {
+      .addCase(deleteItem.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.registerResponse = action.payload;
       })
-      .addCase(deleteProduct.rejected, (state, action) => {
+      .addCase(deleteItem.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
@@ -136,8 +138,8 @@ const cartSlice = createSlice({
   },
 });
 
-export const cartStatus = (state) => state.cart.status;
+export const cartStatus = (state) => state.cart.cartStatus;
+export const addToCartStatus = (state) => state.cart.addToCartStatus;
 export const selectAllCart = (state) => state.cart.cart;
-export const selectByCategory = (state) => state.users.productsCategory;
 
 export default cartSlice.reducer;
