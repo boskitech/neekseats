@@ -3,7 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import { Button, IconButton, Slide, TextField } from "@mui/material";
+import { Badge, Button, IconButton, Slide, TextField } from "@mui/material";
 import { useNavigate } from "react-router";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
@@ -17,6 +17,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSelector, useDispatch } from "react-redux";
 import { user, token, checkUser } from "../../reducers/usersSlice";
+import { selectUserCart } from "../../reducers/cartSlice";
 
 const searchItems = [
   { listName: "Apple Series 2", listValue: "appleSeries6" },
@@ -142,6 +143,7 @@ const Navbar = () => {
   const [userd, setUserd] = useState("");
   const newToken = useSelector(token);
   const myUser = useSelector(user);
+  const cart = useSelector(selectUserCart);
 
   useEffect(() => {
     window.onscroll = function () {
@@ -352,7 +354,9 @@ const Navbar = () => {
                 onClick={() => navigate("/cart")}
                 sx={{ color: "black" }}
               >
-                <ShoppingCartOutlinedIcon />
+                <Badge badgeContent={cart.length} color="primary">
+                  <ShoppingCartOutlinedIcon />
+                </Badge>
               </IconButton>
               {!checkToken ? (
                 <StyledLoginButton onClick={() => navigate("/login")}>

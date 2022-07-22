@@ -81,14 +81,15 @@ const cartSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addToCart.pending, (state, action) => {
-        state.AddToCartStatus = "loading";
+        state.addToCartStatus = "loading";
       })
       .addCase(addToCart.fulfilled, (state, action) => {
-        state.AddToCartStatus = "succeeded";
-        state.cart.push(action.payload);
+        state.addToCartStatus = "succeeded";
+        state.cart.unshift(action.payload.item);
+        console.log(action.payload.item);
       })
       .addCase(addToCart.rejected, (state, action) => {
-        state.AddToCartStatus = "failed";
+        state.addToCartStatus = "failed";
         state.error = action.error.message;
       })
       .addCase(patchQuanity.pending, (state, action) => {
@@ -140,6 +141,6 @@ const cartSlice = createSlice({
 
 export const cartStatus = (state) => state.cart.cartStatus;
 export const addToCartStatus = (state) => state.cart.addToCartStatus;
-export const selectAllCart = (state) => state.cart.cart;
+export const selectUserCart = (state) => state.cart.cart;
 
 export default cartSlice.reducer;

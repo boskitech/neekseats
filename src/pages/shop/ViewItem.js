@@ -24,229 +24,228 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, addToCartStatus } from "../../reducers/cartSlice";
 
 //Toggle button -----------------------------------------------------
-  const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
-    width: "100px",
-    height: "100px",
-    outline: "1px solid #bfbfbf",
-    border: "none",
-    borderRadius: "0px",
-    textAlign: "left",
-    fontSize: "13px",
-    color: "#444",
-    marginRight: "10px",
-    marginTop: "10px",
-    textTransform: "capitalize",
-    "&.Mui-selected, &.Mui-selected:hover": {
-      color: "#805a0f",
-      fontWeight: 600,
-      outline: "2px solid orange",
-      backgroundColor: "#fff",
-    },
-    "&.Mui-selected:hover": {
-      color: "#dfac47",
-      fontWeight: 600,
-      backgroundColor: "#fff",
-    },
-    "&:hover": {
-      fontWeight: 600,
-      color: "#444",
-      outline: "1px solid orange",
-      backgroundColor: "#fff",
-    },
-  }));
-
-  const ToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme }) => ({
+const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
+  width: "100px",
+  height: "100px",
+  outline: "1px solid #bfbfbf",
+  border: "none",
+  borderRadius: "0px",
+  textAlign: "left",
+  fontSize: "13px",
+  color: "#444",
+  marginRight: "10px",
+  marginTop: "10px",
+  textTransform: "capitalize",
+  "&.Mui-selected, &.Mui-selected:hover": {
+    color: "#805a0f",
+    fontWeight: 600,
+    outline: "2px solid orange",
     backgroundColor: "#fff",
-    display: "block",
-    width: "100%",
-    color: "#333",
-    marginTop: "-5px",
-  }));
+  },
+  "&.Mui-selected:hover": {
+    color: "#dfac47",
+    fontWeight: 600,
+    backgroundColor: "#fff",
+  },
+  "&:hover": {
+    fontWeight: 600,
+    color: "#444",
+    outline: "1px solid orange",
+    backgroundColor: "#fff",
+  },
+}));
 
-  //Quantity Button --------------------------------------------------------------
-  const StyledQuantityBar = styled("span")(({ theme }) => ({
-    height: "35px",
-    overflow: "hidden",
-    borderRadius: "4px",
-    color: "#777",
-  }));
+const ToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme }) => ({
+  backgroundColor: "#fff",
+  display: "block",
+  width: "100%",
+  color: "#333",
+  marginTop: "-5px",
+}));
 
-  const QuantityDiv = styled("span")(({ theme }) => ({
-    fontSize: "17px",
-    padding: "5px",
-    border: "1px solid #bfbfbf",
-    borderRadius: "4px",
-    margin: "auto",
-    width: "auto",
-  }));
+//Quantity Button --------------------------------------------------------------
+const StyledQuantityBar = styled("span")(({ theme }) => ({
+  height: "35px",
+  overflow: "hidden",
+  borderRadius: "4px",
+  color: "#777",
+}));
 
-  //View item button -----------------------------------------------------
+const QuantityDiv = styled("span")(({ theme }) => ({
+  fontSize: "17px",
+  padding: "5px",
+  border: "1px solid #bfbfbf",
+  borderRadius: "4px",
+  margin: "auto",
+  width: "auto",
+}));
 
-  const ViewItemBody = styled("div")(({ theme }) => ({
-    width: "70%",
-    margin: "130px auto",
-    [theme.breakpoints.up("xl")]: {
-      width: "60%",
-    },
-    [theme.breakpoints.down("lg")]: {
-      width: "80%",
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "90%",
-      margin: "40px auto",
-    },
-  }));
+//View item button -----------------------------------------------------
 
-  const StyledSideBar = styled("section")(({ theme }) => ({
-    width: "100%",
-    height: "auto",
-    textAlign: "center",
-    background: "#fff",
-    paddingBottom: "10px",
-    boxShadow: "0 0 20px #dfdfdf",
-    [theme.breakpoints.down("md")]: {
-      display: "none",
-    },
-  }));
+const ViewItemBody = styled("div")(({ theme }) => ({
+  width: "70%",
+  margin: "130px auto",
+  [theme.breakpoints.up("xl")]: {
+    width: "60%",
+  },
+  [theme.breakpoints.down("lg")]: {
+    width: "80%",
+  },
+  [theme.breakpoints.down("md")]: {
+    width: "90%",
+    margin: "40px auto",
+  },
+}));
 
-  const StyledImageBar = styled("div")(({ theme }) => ({
-    width: "100%",
-    height: "auto",
-  }));
+const StyledSideBar = styled("section")(({ theme }) => ({
+  width: "100%",
+  height: "auto",
+  textAlign: "center",
+  background: "#fff",
+  paddingBottom: "10px",
+  boxShadow: "0 0 20px #dfdfdf",
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
 
-  const StyledSelectionBar = styled("div")(({ theme }) => ({
-    width: "100%",
-    height: "auto",
-  }));
+const StyledImageBar = styled("div")(({ theme }) => ({
+  width: "100%",
+  height: "auto",
+}));
 
-  const StyledProductsDiv = styled("div")(({ theme }) => ({
-    width: "100%",
+const StyledSelectionBar = styled("div")(({ theme }) => ({
+  width: "100%",
+  height: "auto",
+}));
+
+const StyledProductsDiv = styled("div")(({ theme }) => ({
+  width: "100%",
+  height: "350px",
+  textAlign: "center",
+  borderRadius: "5px",
+  [theme.breakpoints.up("xl")]: {
+    height: "400px",
+  },
+  [theme.breakpoints.down("lg")]: {
     height: "350px",
-    textAlign: "center",
-    borderRadius: "5px",
-    [theme.breakpoints.up("xl")]: {
-      height: "400px",
-    },
-    [theme.breakpoints.down("lg")]: {
-      height: "350px",
-    },
-    [theme.breakpoints.down("md")]: {
-      height: "350px",
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: "300px",
-    },
-  }));
+  },
+  [theme.breakpoints.down("md")]: {
+    height: "350px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    height: "300px",
+  },
+}));
 
-  const StyledProductsImage = styled("img")(({ theme }) => ({
-    width: "98%",
+const StyledProductsImage = styled("img")(({ theme }) => ({
+  width: "98%",
+  height: "auto",
+  margin: "60px auto",
+  filter: "drop-shadow(-10px 30px 4px #efefef)",
+  [theme.breakpoints.down("md")]: {
+    width: "340px",
     height: "auto",
-    margin: "60px auto",
-    filter: "drop-shadow(-10px 30px 4px #efefef)",
-    [theme.breakpoints.down("md")]: {
-      width: "340px",
-      height: "auto",
-      margin: "0px auto",
-    },
-  }));
+    margin: "0px auto",
+  },
+}));
 
-  const StyledProductsButttonImage = styled("img")(({ theme }) => ({
-    width: "90px",
-    height: "90px",
-    margin: "60px 0",
-  }));
+const StyledProductsButttonImage = styled("img")(({ theme }) => ({
+  width: "90px",
+  height: "90px",
+  margin: "60px 0",
+}));
 
-  // const StyledImageGrid = styled("img")(({ theme }) => ({
-  //   width: "100px",
-  //   height: "auto",
-  //   margin: "10px auto",
-  // }));
+// const StyledImageGrid = styled("img")(({ theme }) => ({
+//   width: "100px",
+//   height: "auto",
+//   margin: "10px auto",
+// }));
 
-  const StyledProductsDivHeader = styled("div")(({ theme }) => ({
-    fontSize: "23px",
-    fontWeight: 500,
-    color: "#555",
-    textTransform: "capitalize",
+const StyledProductsDivHeader = styled("div")(({ theme }) => ({
+  fontSize: "23px",
+  fontWeight: 500,
+  color: "#555",
+  textTransform: "capitalize",
+  marginTop: "0px",
+  width: "100%",
+}));
+
+const StyledProductsDivBrandText = styled("div")(({ theme }) => ({
+  fontSize: "17px",
+  fontWeight: 500,
+  color: "#777",
+  textTransform: "uppercase",
+  marginBottom: "10px",
+  width: "100%",
+}));
+
+const StyledProductsDivText = styled("div")(({ theme }) => ({
+  fontSize: "17px",
+  fontWeight: 500,
+  color: "#777",
+  marginBottom: "10px",
+  marginTop: "0px",
+  width: "100%",
+  [theme.breakpoints.down("md")]: {
     marginTop: "0px",
-    width: "100%",
-  }));
+    marginBottom: "5px",
+  },
+}));
 
-  const StyledProductsDivBrandText = styled("div")(({ theme }) => ({
-    fontSize: "17px",
+const StyledProductsDivPriceText = styled("div")(({ theme }) => ({
+  fontSize: "25px",
+  fontWeight: 450,
+  color: "#222",
+  marginTop: "0px",
+}));
+
+const StyledColorGrid = styled(Grid)(({ theme }) => ({
+  marginTop: "25px",
+}));
+
+const StyledQuantityGrid = styled(Grid)(({ theme }) => ({
+  marginTop: "50px",
+}));
+
+const StyledBuyAndCheckOut = styled("div")(({ theme }) => ({
+  marginTop: "50px",
+}));
+
+const StyledBannerCartButton = styled(Button)(({ theme }) => ({
+  backgroundColor: "#c73217",
+  color: "white",
+  width: "180px",
+  marginTop: "30px",
+  padding: "10px",
+  fontSize: "15px",
+  marginRight: "10px",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+    height: "50px",
     fontWeight: 500,
-    color: "#777",
-    textTransform: "uppercase",
-    marginBottom: "10px",
-    width: "100%",
-  }));
-
-  const StyledProductsDivText = styled("div")(({ theme }) => ({
-    fontSize: "17px",
-    fontWeight: 500,
-    color: "#777",
-    marginBottom: "10px",
-    marginTop: "0px",
-    width: "100%",
-    [theme.breakpoints.down("md")]: {
-      marginTop: "0px",
-      marginBottom: "5px",
-    },
-  }));
-
-  const StyledProductsDivPriceText = styled("div")(({ theme }) => ({
-    fontSize: "25px",
-    fontWeight: 450,
-    color: "#222",
-    marginTop: "0px",
-  }));
-
-  const StyledColorGrid = styled(Grid)(({ theme }) => ({
-    marginTop: "25px",
-  }));
-
-  const StyledQuantityGrid = styled(Grid)(({ theme }) => ({
-    marginTop: "50px",
-  }));
-
-  const StyledBuyAndCheckOut = styled("div")(({ theme }) => ({
-    marginTop: "50px",
-  }));
-
-  const StyledBannerCartButton = styled(Button)(({ theme }) => ({
-    backgroundColor: "#c73217",
-    color: "white",
-    width: "180px",
-    marginTop: "30px",
-    padding: "10px",
     fontSize: "15px",
-    marginRight: "10px",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      height: "50px",
-      fontWeight: 500,
-      fontSize: "15px",
-    },
-  }));
+  },
+}));
 
-  const StyledDiscriptionBar = styled("div")(({ theme }) => ({
-    color: "#333",
+const StyledDiscriptionBar = styled("div")(({ theme }) => ({
+  color: "#333",
+  width: "100%",
+  height: "auto",
+  textAlign: "justify",
+  marginTop: "100px",
+  fontSize: "15px",
+  borderTop: "1px solid #cfcfcf",
+  [theme.breakpoints.down("md")]: {
     width: "100%",
     height: "auto",
-    textAlign: "justify",
-    marginTop: "100px",
+    fontWeight: 500,
     fontSize: "15px",
-    borderTop: "1px solid #cfcfcf",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      height: "auto",
-      fontWeight: 500,
-      fontSize: "15px",
-      marginTop: "50px",
-    },
-  }));
-  
+    marginTop: "50px",
+  },
+}));
+
 const user = JSON.parse(localStorage.getItem("user"));
-console.log(user);
 
 const ViewItem = () => {
   let params = useParams();
@@ -257,8 +256,8 @@ const ViewItem = () => {
   const oneProduct = useSelector(selectProduct);
   const status = useSelector(OneProdStatus);
   const addCartItemStatus = useSelector(addToCartStatus);
-
   const [imageUrl, setImageUrl] = React.useState("");
+  const [loader, setLoader] = React.useState("");
 
   const handleValue = (event, newValue) => {
     setColor(newValue);
@@ -272,6 +271,10 @@ const ViewItem = () => {
     // eslint-disable-next-line
   }, []);
 
+  React.useEffect(() => {
+    setLoader(addCartItemStatus);
+  }, [addCartItemStatus]);
+
   const handleAddToCart = () => {
     let postData = {
       userID: user._id,
@@ -284,7 +287,7 @@ const ViewItem = () => {
       cartItemImage: oneProduct.productImage[0].image,
     };
 
-    if (addCartItemStatus === "idle") dispatch(addToCart(postData));
+    dispatch(addToCart(postData));
   };
 
   const handleBuyNow = () => {};
@@ -466,15 +469,19 @@ const ViewItem = () => {
                   <Grid item xl={9.5} md={12} xs={12}>
                     <StyledBannerCartButton
                       sx={{
-                        backgroundColor: "#fff",
-                        border: "1.5px solid #c73217",
-                        color: "#c73217",
+                        backgroundColor:
+                          loader === "loading" ? "#dfdfdf" : "#fff",
+                        border:
+                          loader === "loading"
+                            ? "#dfdfdf"
+                            : "1.5px solid #c73217",
+                        color: loader === "loading" ? "#444" : "#c73217",
                         fontWeight: 600,
                       }}
                       startIcon={<AddShoppingCartIcon />}
                       onClick={handleAddToCart}
                     >
-                      Add To Cart
+                      {loader === "loading" ? "Loading..." : "Add To Cart"}
                     </StyledBannerCartButton>
                     <StyledBannerCartButton onClick={handleBuyNow}>
                       Buy Now
