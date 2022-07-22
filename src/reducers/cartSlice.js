@@ -5,7 +5,7 @@ export const fetchCartProducts = createAsyncThunk(
   "cart/fetchCartProducts",
   async (userid) => {
     const response = await axios.get(
-      `http://localhost:5000/api/cart/user/${userid}`
+      `http://localhost:5200/api/cart/user/${userid}`
     );
     return response.data;
   }
@@ -27,7 +27,7 @@ export const patchQuanity = createAsyncThunk(
   "cart/patchQuantity",
   async (itemId) => {
     const response = await axios.get(
-      `http://localhost:5000/api/product/category/${itemId}`
+      `http://localhost:5200/api/product/category/${itemId}`
     );
     return response.data;
   }
@@ -37,20 +37,20 @@ export const patchColor = createAsyncThunk(
   "cart/patchColor",
   async (itemId) => {
     const response = await axios.get(
-      `http://localhost:5000/api/product/category/${itemId}`
+      `http://localhost:5200/api/product/category/${itemId}`
     );
     return response.data;
   }
 );
 
 export const deleteItem = createAsyncThunk("cart/deeteItem", async (itemId) => {
-  const response = await axios.get(`http://localhost:5000/api/cart/${itemId}`);
+  const response = await axios.get(`http://localhost:5200/api/cart/${itemId}`);
   return response.data;
 });
 
 export const clearCart = createAsyncThunk("cart/clearCart", async (userid) => {
   const response = await axios.delete(
-    `http://localhost:5000/api/cart/clearcart/${userid}`
+    `http://localhost:5200/api/cart/clearcart/${userid}`
   );
   return response.data;
 });

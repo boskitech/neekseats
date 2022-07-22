@@ -7,19 +7,13 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   return response.data;
 });
 
-export const fetchUser = createAsyncThunk("users/fetchUser", async (id) => {
-  const response = await axios.get(
-    `http://localhost:5200/api/users/getUser/${id}`
-  );
-  return response.data;
-});
-
 export const addUser = createAsyncThunk(
   "users/addUser",
   async (initialPost) => {
     const response = await axios.post(
-      "http://localhost:5000/api/users/register",
-      initialPost
+      "http://localhost:5200/api/users/register",
+      initialPost,
+      {}
     );
     return response.data;
   }
@@ -29,8 +23,9 @@ export const loginUser = createAsyncThunk(
   "users/loginUser",
   async (loginPost) => {
     const response = await axios.post(
-      "http://localhost:5000/api/users/login",
-      loginPost
+      "http://localhost:5200/api/users/login/",
+      loginPost,
+      {}
     );
     return response.data;
   }
@@ -39,14 +34,21 @@ export const loginUser = createAsyncThunk(
 const initialState = {
   users: [],
   user: [],
+  token: false,
   status: "idle",
+  addUserStatus: "idle",
+  loginStatus: "idle",
   error: null,
 };
 
 const usersSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    setToken: (state) => {
+      state.token = true;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchUsers.pending, (state, action) => {
@@ -62,24 +64,42 @@ const usersSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addUser.pending, (state, action) => {
-        state.status = "loading";
+        state.addUserStatus = "loading";
       })
       .addCase(addUser.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.addUserStatus = "succeeded";
         state.registerResponse = action.payload;
       })
       .addCase(addUser.rejected, (state, action) => {
-        state.status = "failed";
+        state.addUserStatus = "failed";
         state.error = action.error.message;
       })
-      .addCase(fetchUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+      .addCase(loginUser.pending, (state, action) => {
+        state.loginStatus = "loading";
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.loginStatus = "succeeded";
+        const data = action.payload;
+        const user = data.user;
+        const token = data.token;
+        delete user.password;
+        state.user = JSON.stringify(user);
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", token);
+        state.token = true;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loginStatus = "failed";
+        state.error = action.error.message;
       });
   },
 });
 
-export const postStatus = (state) => state.users.status;
-export const selectAllUsers = (state) => state.users.users;
-export const selectUser = (state) => state.users.user;
+export const { setToken } = usersSlice.actions;
+export const user = (state) => state.users.user;
+export const token = (state) => state.users.token;
+export const loginStatus = (state) => state.users.loginStatus;
+export const addUserStatus = (state) => state.users.addUserStatus;
+export const fetchUserStatus = (state) => state.users.status;
 
 export default usersSlice.reducer;

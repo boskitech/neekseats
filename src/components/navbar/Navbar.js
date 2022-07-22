@@ -13,339 +13,363 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
+import { useSelector } from "react-redux";
+import { user, token } from "../../reducers/usersSlice";
 
- const searchItems = [
-   { listName: "Apple Series 2", listValue: "appleSeries6" },
-   { listName: "Apple Series 3", listValue: "appleSeries6" },
-   { listName: "Apple Series 4", listValue: "appleSeries6" },
-   { listName: "Apple Series 5", listValue: "appleSeries6" },
-   { listName: "Apple Series 6", listValue: "appleSeries6" },
-   { listName: "Custom Smart Watches", listValue: "customSmartWatches" },
-   {
-     listName: "Gorilla Face Smart Watches",
-     listValue: "gorillaFaceSmartWatches",
-   },
-   { listName: "Water Resitant", listValue: "waterResitant" },
-   { listName: "LV Strip", listValue: "lvstrip" },
-   { listName: "Gucci Strip", listValue: "guccistrip" },
-   { listName: "Dior Strip", listValue: "diorstrip" },
-   { listName: "Quartz Leather Strip", listValue: "quartzleatherstrip" },
-   { listName: "Quartz Chain Strip", listValue: "quartzchainstrip" },
- ];
+const searchItems = [
+  { listName: "Apple Series 2", listValue: "appleSeries6" },
+  { listName: "Apple Series 3", listValue: "appleSeries6" },
+  { listName: "Apple Series 4", listValue: "appleSeries6" },
+  { listName: "Apple Series 5", listValue: "appleSeries6" },
+  { listName: "Apple Series 6", listValue: "appleSeries6" },
+  { listName: "Custom Smart Watches", listValue: "customSmartWatches" },
+  {
+    listName: "Gorilla Face Smart Watches",
+    listValue: "gorillaFaceSmartWatches",
+  },
+  { listName: "Water Resitant", listValue: "waterResitant" },
+  { listName: "LV Strip", listValue: "lvstrip" },
+  { listName: "Gucci Strip", listValue: "guccistrip" },
+  { listName: "Dior Strip", listValue: "diorstrip" },
+  { listName: "Quartz Leather Strip", listValue: "quartzleatherstrip" },
+  { listName: "Quartz Chain Strip", listValue: "quartzchainstrip" },
+];
 
- const HeaderText = styled("h2")(({ theme }) => ({
-   color: "#000",
-   fontWeight: "900",
-   fontSize: "23px",
-   [theme.breakpoints.down("md")]: {
-     fontWeight: "800",
-     fontSize: "20px",
-   },
- }));
+const HeaderText = styled("h2")(({ theme }) => ({
+  color: "#000",
+  fontWeight: "900",
+  fontSize: "23px",
+  [theme.breakpoints.down("md")]: {
+    fontWeight: "800",
+    fontSize: "20px",
+  },
+}));
 
- const StyledToolBar = styled(Toolbar)(({ theme }) => ({
-   width: "70%",
-   margin: "auto",
-   display: "flex",
-   justifyContent: "space-between",
-   boxShadow: "0px",
-   [theme.breakpoints.up("xl")]: {
-     width: "60%",
-   },
-   [theme.breakpoints.down("xl")]: {
-     width: "80%",
-   },
-   [theme.breakpoints.down("md")]: {
-     width: "90%",
-   },
-   [theme.breakpoints.down("lg")]: {
-     width: "90%",
-   },
- }));
+const StyledToolBar = styled(Toolbar)(({ theme }) => ({
+  width: "70%",
+  margin: "auto",
+  display: "flex",
+  justifyContent: "space-between",
+  boxShadow: "0px",
+  [theme.breakpoints.up("xl")]: {
+    width: "60%",
+  },
+  [theme.breakpoints.down("xl")]: {
+    width: "80%",
+  },
+  [theme.breakpoints.down("md")]: {
+    width: "90%",
+  },
+  [theme.breakpoints.down("lg")]: {
+    width: "90%",
+  },
+}));
 
- const StyledMenuButton = styled(Button)({
-   color: "#333",
-   fontWeight: 550,
-   fontSize: "14px",
- });
+const StyledMenuButton = styled(Button)({
+  color: "#333",
+  fontWeight: 550,
+  fontSize: "14px",
+});
 
- const StyledLoginButton = styled(Button)(({ theme }) => ({
-   color: "#fff",
-   fontWeight: 800,
-   backgroundColor: "#416cb7",
-   width: "120px",
-   marginLeft: "10px",
-   "&:hover": { backgroundColor: "#2f53a5", color: "white" },
-   [theme.breakpoints.down("md")]: {
-     display: "none",
-   },
- }));
+const StyledLoginButton = styled(Button)(({ theme }) => ({
+  color: "#fff",
+  fontWeight: 800,
+  backgroundColor: "#416cb7",
+  width: "120px",
+  marginLeft: "10px",
+  "&:hover": { backgroundColor: "#2f53a5", color: "white" },
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
 
- const StyledAppBAr = styled(AppBar)(({ theme }) => ({
-   backgroundColor: "#fff",
-   boxShadow: "none",
-   position: "fixed",
-   paddingTop: "5px",
-   [theme.breakpoints.down("md")]: {
-     paddingTop: "0px",
-     height: "60px",
-   },
- }));
+const StyledAppBAr = styled(AppBar)(({ theme }) => ({
+  backgroundColor: "#fff",
+  boxShadow: "none",
+  position: "fixed",
+  paddingTop: "5px",
+  [theme.breakpoints.down("md")]: {
+    paddingTop: "0px",
+    height: "60px",
+  },
+}));
 
- const StyledGridLoginInput = styled(TextField)(({ theme }) => ({
-   width: "400px",
-   height: "50px",
-   margin: "0px auto 0 auto",
-   fontSize: "14px",
-   backgoundColor: "white",
-   [theme.breakpoints.down("md")]: {
-     display: "none",
-   },
- }));
+const StyledGridLoginInput = styled(TextField)(({ theme }) => ({
+  width: "400px",
+  height: "50px",
+  margin: "0px auto 0 auto",
+  fontSize: "14px",
+  backgoundColor: "white",
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
 
- const StyledSearchUl = styled("ul")(({ theme }) => ({
-   textDecoration: "none",
-   listStyleType: "none",
-   padding: "15px",
-   margin: "0px",
-   height: "15px",
-   "&:hover": {
-     backgroundColor: "#ebebeb",
-     cursor: "pointer",
-   },
- }));
+const StyledSearchUl = styled("ul")(({ theme }) => ({
+  textDecoration: "none",
+  listStyleType: "none",
+  padding: "15px",
+  margin: "0px",
+  height: "15px",
+  "&:hover": {
+    backgroundColor: "#ebebeb",
+    cursor: "pointer",
+  },
+}));
 
- const StyledSearchLi = styled("li")(({ theme }) => ({
-   textDecoration: "none",
-   height: "15px",
-   listStyleType: "none",
-   paddingLeft: "0",
-   "&:hover": {
-     cursor: "pointer",
-   },
- }));
+const StyledSearchLi = styled("li")(({ theme }) => ({
+  textDecoration: "none",
+  height: "15px",
+  listStyleType: "none",
+  paddingLeft: "0",
+  "&:hover": {
+    cursor: "pointer",
+  },
+}));
 
- const Navbar = () => {
-   const navigate = useNavigate();
-   const [state, setState] = useState({ left: false });
-   const [scrolled, setScrolled] = useState(false);
-   const [search, setSearch] = useState(false);
-   const [searchValue, setSearchValue] = useState("");
-   const [searchResults, setSearchResults] = useState("");
-   const [focus, setFocus] = useState(false);
+const Navbar = () => {
+  const navigate = useNavigate();
+  const [state, setState] = useState({ left: false });
+  const [scrolled, setScrolled] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState("");
+  const [focus, setFocus] = useState(false);
+  const [checkToken, setCheckToken] = useState(false);
+  const newToken = useSelector(token);
+  const loggedUser = JSON.parse(localStorage.getItem("user"));
 
-   useEffect(() => {
-     window.onscroll = function () {
-       if (window.scrollY > 50) {
-         setScrolled(true);
-       } else {
-         setScrolled(false);
-       }
-     };
-   }, []);
+  useEffect(() => {
+    window.onscroll = function () {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+  }, []);
 
-   const handleBlur = () => {
-     setTimeout(() => {
-       setFocus(false);
-       setSearchValue("");
-     }, [200]);
-   };
+  useEffect(() => {
+    if (newToken || localStorage.getItem("token")) {
+      setCheckToken(true);
+    } else {
+      setCheckToken(false);
+    }
+    console.log(loggedUser.firstname);
+  }, [checkToken, newToken, loggedUser]);
 
-   const handleChange = (e) => {
-     setSearchValue(e.target.value);
-     const userInput = e.target.value;
+  const handleBlur = () => {
+    setTimeout(() => {
+      setFocus(false);
+      setSearchValue("");
+    }, [200]);
+  };
 
-     const data = searchItems.filter(
-       (searchitem) =>
-         searchitem.listName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-     );
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+    const userInput = e.target.value;
 
-     if (userInput) setSearchResults(data.slice(0, 8));
-   };
+    const data = searchItems.filter(
+      (searchitem) =>
+        searchitem.listName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+    );
 
-   const toggleDrawer = (anchor, open) => (event) => {
-     if (
-       event.type === "keydown" &&
-       (event.key === "Tab" || event.key === "Shift")
-     ) {
-       return;
-     }
+    if (userInput) setSearchResults(data.slice(0, 8));
+  };
 
-     setState({ ...state, [anchor]: open });
-   };
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
 
-   const list = (anchor) => (
-     <Box
-       sx={{ width: 250 }}
-       role="presentation"
-       onClick={toggleDrawer(anchor, false)}
-       onKeyDown={toggleDrawer(anchor, false)}
-     >
-       <List>
-         <ListItem onClick={() => navigate("/")} disablePadding>
-           <ListItemButton>
-             <ListItemText primary="Home" />
-           </ListItemButton>
-         </ListItem>
-         <Divider />
-         <ListItem onClick={() => navigate("/shop")} disablePadding>
-           <ListItemButton>
-             <ListItemText primary="Shop" />
-           </ListItemButton>
-         </ListItem>
-         <Divider />
-         <ListItem onClick={() => navigate("/about")} disablePadding>
-           <ListItemButton>
-             <ListItemText primary="About" />
-           </ListItemButton>
-         </ListItem>
-         <Divider />
-         <ListItem onClick={() => navigate("/contact")} disablePadding>
-           <ListItemButton>
-             <ListItemText primary="contact" />
-           </ListItemButton>
-         </ListItem>
-         <Divider />
-         <ListItem onClick={() => navigate("/cart")} disablePadding>
-           <ListItemButton>
-             <ListItemText primary="Cart" />
-           </ListItemButton>
-         </ListItem>
-         <Divider />
-         <ListItem onClick={() => navigate("/login")} disablePadding>
-           <ListItemButton>
-             <ListItemText primary="Login" />
-           </ListItemButton>
-         </ListItem>
-       </List>
-       <Divider />
-     </Box>
-   );
+    setState({ ...state, [anchor]: open });
+  };
 
-   return (
-     <div>
-       <StyledAppBAr
-         position="fixed"
-         // sx={{ ...(scrolled && { boxShadow: "0 0 10px #dfdfdf" }) }}
-         sx={{ boxShadow: scrolled ? "0 0 10px #afafaf" : "none" }}
-       >
-         <StyledToolBar>
-           <HeaderText>
-             <span style={{ color: "orange", fontSize: "28px" }}>Net</span>Porch
-           </HeaderText>
-           <Slide
-             direction="left"
-             in={!search}
-             mountOnEnter
-             unmountOnExit
-             style={{ transformOrigin: "0 0 0" }}
-             {...(!search ? { timeout: 50 } : {})}
-           >
-             <Box direction="row" sx={{ display: { xs: "none", md: "block" } }}>
-               <StyledMenuButton onClick={() => navigate("/")} variant="body1">
-                 Home
-               </StyledMenuButton>
-               <StyledMenuButton
-                 onClick={() => navigate("/shop")}
-                 variant="body1"
-               >
-                 Shop
-               </StyledMenuButton>
-               <StyledMenuButton
-                 onClick={() => navigate("/about")}
-                 variant="body1"
-               >
-                 About
-               </StyledMenuButton>
-               <StyledMenuButton
-                 onClick={() => navigate("/contact")}
-                 variant="body1"
-               >
-                 Contact
-               </StyledMenuButton>
-             </Box>
-           </Slide>
-           <Slide
-             direction="left"
-             in={search}
-             mountOnEnter
-             unmountOnExit
-             style={{ transformOrigin: "0 0 0" }}
-             {...(search ? { timeout: 100 } : {})}
-           >
-             <Box
-               direction="row"
-               sx={{ marginTop: "15px", display: { xs: "none", md: "block" } }}
-             >
-               <StyledGridLoginInput
-                 onChange={handleChange}
-                 onFocus={() => setFocus(true)}
-                 onBlur={handleBlur}
-                 size="small"
-                 placeholder="Search Items"
-                 value={searchValue}
-               />
-               <StyledLoginButton
-                 sx={{ width: "40px", marginLeft: "5px", height: "40px" }}
-               >
-                 <SearchIcon />
-               </StyledLoginButton>
-               {searchValue !== " " && searchValue !== "" && focus && (
-                 <Box
-                   sx={{
-                     width: "400px",
-                     backgroundColor: "#fff",
-                     position: "absolute",
-                     border: "1px solid #dfdfdf",
-                     color: "black",
-                     overflow: "auto",
-                   }}
-                 >
-                   {searchResults.map((results, index) => (
-                     <StyledSearchUl key={index}>
-                       <StyledSearchLi onClick={() => navigate("/shop")}>
-                         {results.listName}
-                       </StyledSearchLi>
-                     </StyledSearchUl>
-                   ))}
-                 </Box>
-               )}
-             </Box>
-           </Slide>
-           <Box>
-             <Box sx={{ display: { xs: "none", md: "block" }, color: "black" }}>
-               <IconButton
-                 onClick={() => setSearch(!search)}
-                 sx={{ color: "black" }}
-               >
-                 {!search ? <SearchIcon /> : <MenuIcon />}
-               </IconButton>
-               <IconButton
-                 onClick={() => navigate("/cart")}
-                 sx={{ color: "black" }}
-               >
-                 <ShoppingCartOutlinedIcon />
-               </IconButton>
-               <StyledLoginButton onClick={() => navigate("/login")}>
-                 Login
-               </StyledLoginButton>
-             </Box>
-             <IconButton
-               onClick={toggleDrawer("left", true)}
-               sx={{ display: { xs: "block", md: "none", color: "black" } }}
-             >
-               <MenuIcon />
-             </IconButton>
-           </Box>
-         </StyledToolBar>
-       </StyledAppBAr>
-       <Drawer open={state["left"]} onClose={toggleDrawer("left", false)}>
-         {list("left")}
-       </Drawer>
-     </div>
-   );
- };
+  const list = (anchor) => (
+    <Box
+      sx={{ width: 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        <ListItem onClick={() => navigate("/")} disablePadding>
+          <ListItemButton>
+            <ListItemText primary="Home" />
+          </ListItemButton>
+        </ListItem>
+        <Divider />
+        <ListItem onClick={() => navigate("/shop")} disablePadding>
+          <ListItemButton>
+            <ListItemText primary="Shop" />
+          </ListItemButton>
+        </ListItem>
+        <Divider />
+        <ListItem onClick={() => navigate("/about")} disablePadding>
+          <ListItemButton>
+            <ListItemText primary="About" />
+          </ListItemButton>
+        </ListItem>
+        <Divider />
+        <ListItem onClick={() => navigate("/contact")} disablePadding>
+          <ListItemButton>
+            <ListItemText primary="contact" />
+          </ListItemButton>
+        </ListItem>
+        <Divider />
+        <ListItem onClick={() => navigate("/cart")} disablePadding>
+          <ListItemButton>
+            <ListItemText primary="Cart" />
+          </ListItemButton>
+        </ListItem>
+        <Divider />
+        <ListItem onClick={() => navigate("/login")} disablePadding>
+          <ListItemButton>
+            <ListItemText primary="Login" />
+          </ListItemButton>
+        </ListItem>
+      </List>
+      <Divider />
+    </Box>
+  );
+
+  return (
+    <div>
+      <StyledAppBAr
+        position="fixed"
+        // sx={{ ...(scrolled && { boxShadow: "0 0 10px #dfdfdf" }) }}
+        sx={{ boxShadow: scrolled ? "0 0 10px #afafaf" : "none" }}
+      >
+        <StyledToolBar>
+          <HeaderText>
+            <span style={{ color: "orange", fontSize: "28px" }}>Net</span>Porch
+          </HeaderText>
+          <Slide
+            direction="left"
+            in={!search}
+            mountOnEnter
+            unmountOnExit
+            style={{ transformOrigin: "0 0 0" }}
+            {...(!search ? { timeout: 50 } : {})}
+          >
+            <Box direction="row" sx={{ display: { xs: "none", md: "block" } }}>
+              <StyledMenuButton onClick={() => navigate("/")} variant="body1">
+                Home
+              </StyledMenuButton>
+              <StyledMenuButton
+                onClick={() => navigate("/shop")}
+                variant="body1"
+              >
+                Shop
+              </StyledMenuButton>
+              <StyledMenuButton
+                onClick={() => navigate("/about")}
+                variant="body1"
+              >
+                About
+              </StyledMenuButton>
+              <StyledMenuButton
+                onClick={() => navigate("/contact")}
+                variant="body1"
+              >
+                Contact
+              </StyledMenuButton>
+            </Box>
+          </Slide>
+          <Slide
+            direction="left"
+            in={search}
+            mountOnEnter
+            unmountOnExit
+            style={{ transformOrigin: "0 0 0" }}
+            {...(search ? { timeout: 100 } : {})}
+          >
+            <Box
+              direction="row"
+              sx={{ marginTop: "15px", display: { xs: "none", md: "block" } }}
+            >
+              <StyledGridLoginInput
+                onChange={handleChange}
+                onFocus={() => setFocus(true)}
+                onBlur={handleBlur}
+                size="small"
+                placeholder="Search Items"
+                value={searchValue}
+              />
+              <StyledLoginButton
+                sx={{ width: "40px", marginLeft: "5px", height: "40px" }}
+              >
+                <SearchIcon />
+              </StyledLoginButton>
+              {searchValue !== " " && searchValue !== "" && focus && (
+                <Box
+                  sx={{
+                    width: "400px",
+                    backgroundColor: "#fff",
+                    position: "absolute",
+                    border: "1px solid #dfdfdf",
+                    color: "black",
+                    overflow: "auto",
+                  }}
+                >
+                  {searchResults.map((results, index) => (
+                    <StyledSearchUl key={index}>
+                      <StyledSearchLi onClick={() => navigate("/shop")}>
+                        {results.listName}
+                      </StyledSearchLi>
+                    </StyledSearchUl>
+                  ))}
+                </Box>
+              )}
+            </Box>
+          </Slide>
+          <Box>
+            <Box sx={{ display: { xs: "none", md: "block" }, color: "black" }}>
+              <IconButton
+                onClick={() => setSearch(!search)}
+                sx={{ color: "black" }}
+              >
+                {!search ? <SearchIcon /> : <MenuIcon />}
+              </IconButton>
+              <IconButton
+                onClick={() => navigate("/cart")}
+                sx={{ color: "black" }}
+              >
+                <ShoppingCartOutlinedIcon />
+              </IconButton>
+              {!checkToken ? (
+                <StyledLoginButton onClick={() => navigate("/login")}>
+                  Login
+                </StyledLoginButton>
+              ) : (
+                <IconButton
+                  onClick={() => navigate("/acount")}
+                  sx={{ color: "black" }}
+                >
+                  <AccountCircleIcon />
+                  {loggedUser.firstname}
+                </IconButton>
+              )}
+            </Box>
+            <IconButton
+              onClick={toggleDrawer("left", true)}
+              sx={{ display: { xs: "block", md: "none", color: "black" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
+        </StyledToolBar>
+      </StyledAppBAr>
+      <Drawer open={state["left"]} onClose={toggleDrawer("left", false)}>
+        {list("left")}
+      </Drawer>
+    </div>
+  );
+};
 
 export default Navbar;

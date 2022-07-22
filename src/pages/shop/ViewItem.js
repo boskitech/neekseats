@@ -23,48 +23,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, addToCartStatus } from "../../reducers/cartSlice";
 
-const ViewItem = () => {
-  let params = useParams();
-  let id = params.id;
-  const dispatch = useDispatch();
-  const [color, setColor] = React.useState("");
-  const [quantity, setQuantity] = React.useState(1);
-  const oneProduct = useSelector(selectProduct);
-  const status = useSelector(OneProdStatus);
-  const addCartItemStatus = useSelector(addToCartStatus);
-
-  const [imageUrl, setImageUrl] = React.useState("");
-
-  const handleValue = (event, newValue) => {
-    setColor(newValue);
-  };
-
-  React.useEffect(() => {
-    if (status === "idle") dispatch(fetchOneProduct(id));
-    return () => {
-      dispatch(changeStatus());
-    };
-    // eslint-disable-next-line
-  }, []);
-
-  const handleAddToCart = () => {
-    let postData = {
-      userID: Math.random(0, 1000),
-      itemID: oneProduct._id,
-      cartItemName: oneProduct.productName,
-      cartItemPrice: oneProduct.productPrice,
-      itemShippingPrice: oneProduct.productShipping,
-      cartItemQuantity: quantity,
-      cartItemColor: color,
-      cartItemImage: oneProduct.productImage[0].image,
-    };
-
-    if (addCartItemStatus === "idle") dispatch(addToCart(postData));
-  };
-
-  const handleBuyNow = () => {};
-
-  //Toggle button -----------------------------------------------------
+//Toggle button -----------------------------------------------------
   const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
     width: "100px",
     height: "100px",
@@ -285,6 +244,48 @@ const ViewItem = () => {
       marginTop: "50px",
     },
   }));
+  
+
+const ViewItem = () => {
+  let params = useParams();
+  let id = params.id;
+  const dispatch = useDispatch();
+  const [color, setColor] = React.useState("");
+  const [quantity, setQuantity] = React.useState(1);
+  const oneProduct = useSelector(selectProduct);
+  const status = useSelector(OneProdStatus);
+  const addCartItemStatus = useSelector(addToCartStatus);
+
+  const [imageUrl, setImageUrl] = React.useState("");
+
+  const handleValue = (event, newValue) => {
+    setColor(newValue);
+  };
+
+  React.useEffect(() => {
+    if (status === "idle") dispatch(fetchOneProduct(id));
+    return () => {
+      dispatch(changeStatus());
+    };
+    // eslint-disable-next-line
+  }, []);
+
+  const handleAddToCart = () => {
+    let postData = {
+      userID: Math.random(0, 1000),
+      itemID: oneProduct._id,
+      cartItemName: oneProduct.productName,
+      cartItemPrice: oneProduct.productPrice,
+      itemShippingPrice: oneProduct.productShipping,
+      cartItemQuantity: quantity,
+      cartItemColor: color,
+      cartItemImage: oneProduct.productImage[0].image,
+    };
+
+    if (addCartItemStatus === "idle") dispatch(addToCart(postData));
+  };
+
+  const handleBuyNow = () => {};
 
   return (
     <ViewItemBody>

@@ -15,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
+
+  // const checkToken = useSelector(token)
   return (
     <HomeStyles.HomeBody data-aos="fade-left">
       <HomeStyles.StyledBanner>
