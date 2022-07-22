@@ -245,6 +245,8 @@ import { addToCart, addToCartStatus } from "../../reducers/cartSlice";
     },
   }));
   
+const user = JSON.parse(localStorage.getItem("user"));
+console.log(user);
 
 const ViewItem = () => {
   let params = useParams();
@@ -272,7 +274,7 @@ const ViewItem = () => {
 
   const handleAddToCart = () => {
     let postData = {
-      userID: Math.random(0, 1000),
+      userID: user._id,
       itemID: oneProduct._id,
       cartItemName: oneProduct.productName,
       cartItemPrice: oneProduct.productPrice,

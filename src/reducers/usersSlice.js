@@ -48,6 +48,11 @@ const usersSlice = createSlice({
     setToken: (state) => {
       state.token = true;
     },
+    checkUser: (state) => {
+      if (localStorage.getItem("user")) {
+        state.user = JSON.parse(localStorage.getItem("user"));
+      }
+    },
   },
   extraReducers(builder) {
     builder
@@ -95,7 +100,7 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setToken } = usersSlice.actions;
+export const { setToken, checkUser } = usersSlice.actions;
 export const user = (state) => state.users.user;
 export const token = (state) => state.users.token;
 export const loginStatus = (state) => state.users.loginStatus;

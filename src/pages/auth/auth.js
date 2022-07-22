@@ -10,6 +10,7 @@ import {
   loginStatus,
   addUserStatus,
 } from "../../reducers/usersSlice";
+import { useNavigate } from "react-router-dom";
 
 const StyledGridLoginSideDiv = styled(Grid)(({ theme }) => ({
   width: "80%",
@@ -89,6 +90,7 @@ const StyledGridLoginText = styled("div")(({ theme }) => ({
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [actionType, setActionType] = useState("Login");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -122,7 +124,8 @@ const Login = () => {
   useEffect(() => {
     setLoader(signInStatus);
     if (registerStatus === "succeeded") setActionType("Login");
-  }, [signInStatus, registerStatus]);
+    if (signInStatus === "succeeded") navigate("/shop");
+  }, [signInStatus, registerStatus, navigate]);
 
   return (
     <motion.div

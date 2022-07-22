@@ -15,8 +15,8 @@ import ListItemText from "@mui/material/ListItemText";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSelector } from "react-redux";
-import { user, token } from "../../reducers/usersSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { user, token, checkUser } from "../../reducers/usersSlice";
 
 const searchItems = [
   { listName: "Apple Series 2", listValue: "appleSeries6" },
@@ -131,6 +131,7 @@ const StyledSearchLi = styled("li")(({ theme }) => ({
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [state, setState] = useState({ left: false });
   const [scrolled, setScrolled] = useState(false);
   const [search, setSearch] = useState(false);
@@ -138,8 +139,9 @@ const Navbar = () => {
   const [searchResults, setSearchResults] = useState("");
   const [focus, setFocus] = useState(false);
   const [checkToken, setCheckToken] = useState(false);
+  const [userd, setUserd] = useState("");
   const newToken = useSelector(token);
-  const loggedUser = JSON.parse(localStorage.getItem("user"));
+  const myUser = useSelector(user);
 
   useEffect(() => {
     window.onscroll = function () {
@@ -157,8 +159,18 @@ const Navbar = () => {
     } else {
       setCheckToken(false);
     }
-    console.log(loggedUser.firstname);
-  }, [checkToken, newToken, loggedUser]);
+  }, [checkToken, newToken, dispatch]);
+
+  useEffect(() => {
+    dispatch(checkUser());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setUserd(JSON.parse(localStorage.getItem("user")));
+    }
+    console.log(myUser);
+  }, [myUser]);
 
   const handleBlur = () => {
     setTimeout(() => {
@@ -347,13 +359,17 @@ const Navbar = () => {
                   Login
                 </StyledLoginButton>
               ) : (
-                <IconButton
+                <Button
                   onClick={() => navigate("/acount")}
                   sx={{ color: "black" }}
                 >
                   <AccountCircleIcon />
-                  {loggedUser.firstname}
-                </IconButton>
+                  <span
+                    style={{ fontSize: "14px", textTransform: "capitalize" }}
+                  >
+                    {userd.firstname}
+                  </span>
+                </Button>
               )}
             </Box>
             <IconButton
