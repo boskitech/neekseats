@@ -17,37 +17,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import StickyBox from "react-sticky-box";
 
-const Cart = () => {
-  const [color, setColor] = useState("black");
-  const [quantity, SetQuantity] = useState(1);
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleChange = (event) => {
-    setColor(event.target.value);
-  };
-
-  const CartBody = styled("div")(({ theme }) => ({
-    width: "70%",
-    margin: "130px auto 20px auto",
-    [theme.breakpoints.up("xl")]: {
-      width: "60%",
-    },
-    [theme.breakpoints.down("lg")]: {
-      width: "80%",
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "90%",
-      margin: "70px auto 0px auto",
-    },
-  }));
-
   const StyledCartHeader = styled("div")(({ theme }) => ({
     fontSize: "20px",
     color: "#444",
@@ -220,6 +189,37 @@ const Cart = () => {
   const StyledMobileCheckoutGrid = styled("div")(({ theme }) => ({
     width: "100%",
     height: "auto",
+  }));
+
+const Cart = () => {
+  const [color, setColor] = useState("black");
+  const [quantity, SetQuantity] = useState(1);
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleChange = (event) => {
+    setColor(event.target.value);
+  };
+
+  const CartBody = styled("div")(({ theme }) => ({
+    width: "70%",
+    margin: "130px auto 20px auto",
+    [theme.breakpoints.up("xl")]: {
+      width: "60%",
+    },
+    [theme.breakpoints.down("lg")]: {
+      width: "80%",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+      margin: "70px auto 0px auto",
+    },
   }));
 
   return (
