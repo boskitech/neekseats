@@ -50,7 +50,7 @@ const Shop = () => {
   });
 
   const ShopBody = styled("div")(({ theme }) => ({
-    width: "70%",
+    width: "80%",
     margin: "110px auto",
     [theme.breakpoints.up("xl")]: {
       width: "60%",
@@ -59,7 +59,7 @@ const Shop = () => {
       width: "80%",
     },
     [theme.breakpoints.down("lg")]: {
-      width: "80%",
+      width: "90%",
     },
     [theme.breakpoints.down("md")]: {
       margin: "85px auto",

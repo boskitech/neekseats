@@ -13,12 +13,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
+import SearchBar from "./SearchBar";
+import AccountMenu from "./accountMenu";
 import { useSelector, useDispatch } from "react-redux";
 import { user, token, checkUser } from "../../reducers/usersSlice";
 import { selectUserCart, fetchCartProducts } from "../../reducers/cartSlice";
-import SearchBar from "./SearchBar";
 
 const HeaderText = styled("h2")(({ theme }) => ({
   color: "#000",
@@ -248,17 +248,18 @@ const Navbar = () => {
                   Login
                 </StyledLoginButton>
               ) : (
-                <Button
-                  onClick={() => navigate("/acount")}
-                  sx={{ color: "black" }}
-                >
-                  <PersonIcon />
-                  <span
-                    style={{ fontSize: "14px", textTransform: "capitalize" }}
-                  >
-                    {userd.firstname}
-                  </span>
-                </Button>
+                // <Button
+                //   onClick={() => navigate("/acount")}
+                //   sx={{ color: "black" }}
+                // >
+                //   <PersonIcon />
+                //   <span
+                //     style={{ fontSize: "14px", textTransform: "capitalize" }}
+                //   >
+                //     {userd.firstname}
+                //   </span>
+                // </Button>
+                <AccountMenu user={userd.firstname} />
               )}
             </Box>
             <IconButton

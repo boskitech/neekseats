@@ -84,13 +84,13 @@ const QuantityDiv = styled("span")(({ theme }) => ({
 //View item button -----------------------------------------------------
 
 const ViewItemBody = styled("div")(({ theme }) => ({
-  width: "70%",
+  width: "80%",
   margin: "130px auto",
   [theme.breakpoints.up("xl")]: {
     width: "60%",
   },
   [theme.breakpoints.down("lg")]: {
-    width: "80%",
+    width: "90%",
   },
   [theme.breakpoints.down("md")]: {
     width: "90%",

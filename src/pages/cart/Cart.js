@@ -27,16 +27,17 @@ import {
   fetchOneProduct,
   OneProdStatus,
   selectProduct,
+  changeStatus,
 } from "../../reducers/productSlice";
 
 const CartBody = styled("div")(({ theme }) => ({
-  width: "70%",
+  width: "80%",
   margin: "130px auto 20px auto",
   [theme.breakpoints.up("xl")]: {
     width: "60%",
   },
   [theme.breakpoints.down("lg")]: {
-    width: "80%",
+    width: "90%",
   },
   [theme.breakpoints.down("md")]: {
     width: "90%",
@@ -237,6 +238,13 @@ const Cart = () => {
   useEffect(() => {
     setLoader(status);
   }, [status]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(changeStatus());
+    };
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
