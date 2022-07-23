@@ -22,6 +22,7 @@ import {
 } from "../../reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, addToCartStatus } from "../../reducers/cartSlice";
+import { formatToCurrency } from "../../utils/currencyFormatter";
 
 //Toggle button -----------------------------------------------------
 const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
@@ -245,7 +246,6 @@ const StyledDiscriptionBar = styled("div")(({ theme }) => ({
   },
 }));
 
-
 const ViewItem = () => {
   let params = useParams();
   let id = params.id;
@@ -373,7 +373,7 @@ const ViewItem = () => {
                   Price
                 </StyledProductsDivText>
                 <StyledProductsDivPriceText>
-                  {oneProduct.productPrice}
+                  {formatToCurrency(parseInt(oneProduct.productPrice))}
                 </StyledProductsDivPriceText>
                 <Rating
                   name="read-only"

@@ -12,6 +12,7 @@ import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Skeleton from "@mui/material/Skeleton";
+import { formatToCurrency } from "../../utils/currencyFormatter";
 import {
   fetchProducts,
   selectAllProducts,
@@ -339,7 +340,13 @@ const Shop = () => {
                                 <Skeleton />
                               )}
                               <StyledProductsDivText>
-                                {loaded ? product.productPrice : <Skeleton />}{" "}
+                                {loaded ? (
+                                  formatToCurrency(
+                                    parseInt(product.productPrice)
+                                  )
+                                ) : (
+                                  <Skeleton />
+                                )}{" "}
                               </StyledProductsDivText>
                             </StyledProductDetails>
                           </StyledProductsDiv>

@@ -5,6 +5,13 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
+import { useSelector } from "react-redux";
+import {
+  selectShippingTotal,
+  selectSubTotal,
+  selectTotalPrice,
+} from "../../reducers/cartSlice";
+import { formatToCurrency } from "../../utils/currencyFormatter";
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   "& .MuiToggleButtonGroup-grouped": {
@@ -89,7 +96,10 @@ const StyledBannerCartButton = styled(Button)(({ theme }) => ({
 }));
 
 export default function DeliveryBar() {
-  const [alignment, setAlignment] = React.useState("free");
+  const [alignment, setAlignment] = React.useState("Regular");
+  const shiipping = useSelector(selectShippingTotal);
+  const subTotal = useSelector(selectSubTotal);
+  const totalPrice = useSelector(selectTotalPrice);
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -113,34 +123,30 @@ export default function DeliveryBar() {
           onChange={handleAlignment}
           aria-label="text alignment"
         >
-          <StyledToggleButton value="free" aria-label="paid">
-            Free
+          <StyledToggleButton value="Regular" aria-label="paid">
+            Regular
           </StyledToggleButton>
           <StyledToggleButton value="paid" aria-label="paid">
-            Express: $9.99
+            Express: ₦90,000.99
           </StyledToggleButton>
         </StyledToggleButtonGroup>
       </Paper>
       <StyledSubTotal>
         <StyledSubTotalHeader>
           <span>SubTotal</span>
-          <span>$80.96</span>
+          <span>{formatToCurrency(subTotal)}</span>
         </StyledSubTotalHeader>
         <StyledSubTotalText>
-          <span>Discount</span>
-          <span>$1.46</span>
-        </StyledSubTotalText>
-        <StyledSubTotalText>
-          <span>Delivery</span>
-          <span>$0.00</span>
+          <span>Shipping</span>
+          <span>{formatToCurrency(shiipping)}</span>
         </StyledSubTotalText>
         <StyledSubTotalText>
           <span>Tax</span>
-          <span>$14.00</span>
+          <span>₦14.00</span>
         </StyledSubTotalText>
         <StyledSubTotalHeader sx={{ paddingBottom: "20px" }}>
           <span>Total</span>
-          <span>$78.76</span>
+          <span>{formatToCurrency(totalPrice)}</span>
         </StyledSubTotalHeader>
         <StyledBannerCartButton>Proceed to checkout</StyledBannerCartButton>
       </StyledSubTotal>

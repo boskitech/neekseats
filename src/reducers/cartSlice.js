@@ -67,6 +67,9 @@ export const clearCart = createAsyncThunk("cart/clearCart", async (userid) => {
 
 const initialState = {
   cart: [],
+  subTotal: 0,
+  shippingTotal: 0,
+  totalPrice: 0,
   cartStatus: "idle",
   addToCartStatus: "idle",
   error: null,
@@ -75,7 +78,23 @@ const initialState = {
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {},
+  reducers: {
+    calcShipping: (state) => {
+      const priceArray = state.cart.map(
+        (product) => product.itemShippingPrice * product.cartItemQuantity
+      );
+      state.shippingTotal = priceArray.flat().reduce((acc, sum) => acc + sum);
+    },
+    caclSubtotal: (state) => {
+      const pricesArray = state.cart.map(
+        (product) => product.cartItemPrice * product.cartItemQuantity
+      );
+      state.subTotal = pricesArray.flat().reduce((acc, sum) => acc + sum);
+    },
+    calcTotal: (state) => {
+      state.totalPrice = state.subTotal + state.shippingTotal;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchCartProducts.pending, (state, action) => {
@@ -83,8 +102,16 @@ const cartSlice = createSlice({
       })
       .addCase(fetchCartProducts.fulfilled, (state, action) => {
         state.cartStatus = "succeeded";
-        // Add any fetched posts to the array
         state.cart = action.payload;
+        const pricesArray = state.cart.map(
+          (product) => product.cartItemPrice * product.cartItemQuantity
+        );
+        state.subTotal = pricesArray.flat().reduce((acc, sum) => acc + sum);
+        const priceArray = state.cart.map(
+          (product) => product.itemShippingPrice * product.cartItemQuantity
+        );
+        state.shippingTotal = priceArray.flat().reduce((acc, sum) => acc + sum);
+        state.totalPrice = state.subTotal + state.shippingTotal;
       })
       .addCase(fetchCartProducts.rejected, (state, action) => {
         state.cartStatus = "failed";
@@ -151,5 +178,8 @@ const cartSlice = createSlice({
 export const cartStatus = (state) => state.cart.cartStatus;
 export const addToCartStatus = (state) => state.cart.addToCartStatus;
 export const selectUserCart = (state) => state.cart.cart;
+export const selectShippingTotal = (state) => state.cart.shippingTotal;
+export const selectSubTotal = (state) => state.cart.subTotal;
+export const selectTotalPrice = (state) => state.cart.totalPrice;
 
 export default cartSlice.reducer;

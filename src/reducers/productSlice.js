@@ -53,7 +53,6 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        // Add any fetched posts to the array
         state.products = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {

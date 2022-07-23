@@ -13,6 +13,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import StickyBox from "react-sticky-box";
 import { useDispatch, useSelector } from "react-redux";
+import { formatToCurrency } from "../../utils/currencyFormatter";
+
 import {
   fetchCartProducts,
   selectUserCart,
@@ -302,12 +304,13 @@ const Cart = () => {
                         >
                           <StyledItemName>{item.cartItemName}</StyledItemName>
                           <StyledItemPrice>
-                            {item.cartItemPrice}
+                            {formatToCurrency(parseInt(item.cartItemPrice))}
                           </StyledItemPrice>
                         </Grid>
                         <Grid item>
                           <StyledShippingText>
-                            Shipping - {item.itemShippingPrice}
+                            Shipping -{" "}
+                            {formatToCurrency(parseInt(item.itemShippingPrice))}
                           </StyledShippingText>
                         </Grid>
                         <Grid item>
