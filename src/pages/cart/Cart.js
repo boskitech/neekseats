@@ -15,10 +15,17 @@ import StickyBox from "react-sticky-box";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCartProducts,
-  // cartStatus,
   selectUserCart,
+  patchQuantity,
+  patchColor,
+  deleteItem,
 } from "../../reducers/cartSlice";
 import { user } from "../../reducers/usersSlice";
+import {
+  fetchOneProduct,
+  OneProdStatus,
+  selectProduct,
+} from "../../reducers/productSlice";
 
 const CartBody = styled("div")(({ theme }) => ({
   width: "70%",
@@ -209,17 +216,14 @@ const StyledMobileCheckoutGrid = styled("div")(({ theme }) => ({
   height: "auto",
 }));
 
-// const user = JSON.parse(localStorage.getItem("user"));
-
 const Cart = () => {
-  const [color, setColor] = useState("black");
-  const [quantity, SetQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector(selectUserCart);
-  // const status = useSelector(cartStatus);
   const myUser = useSelector(user);
-
+  const oneProduct = useSelector(selectProduct);
+  const status = useSelector(OneProdStatus);
+  const [loader, setLoader] = useState("");
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -227,9 +231,10 @@ const Cart = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleChange = (event) => {
-    setColor(event.target.value);
-  };
+
+  useEffect(() => {
+    setLoader(status);
+  }, [status]);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -238,6 +243,7 @@ const Cart = () => {
     }
   }, [myUser, dispatch]);
 
+  console.log(loader);
   return (
     <motion.div
       initial={{ x: 200, opacity: 0 }}
@@ -319,23 +325,57 @@ const Cart = () => {
                               }}
                             >
                               <StyledSelectButton
-                                value={color}
-                                onChange={handleChange}
+                                value={item.cartItemColor}
                                 displayEmpty
                                 inputProps={{ "aria-label": "Without label" }}
+                                onFocus={() =>
+                                  dispatch(fetchOneProduct(item.itemID))
+                                }
                               >
-                                <MenuItem value="none">
-                                  <em>Black</em>
+                                <MenuItem value={item.cartItemColor}>
+                                  {item.cartItemColor}
                                 </MenuItem>
-                                <MenuItem value="black">Black</MenuItem>
-                                <MenuItem value="white">White</MenuItem>
-                                <MenuItem value="brown">Brown</MenuItem>
+                                {loader === "succeeded" ? (
+                                  oneProduct.productColor.map(
+                                    (fetchedColors, index) => (
+                                      <MenuItem
+                                        key={index}
+                                        value={fetchedColors.color}
+                                        onClick={() => {
+                                          dispatch(
+                                            patchColor({
+                                              itemId: item._id,
+                                              color: fetchedColors.color,
+                                            })
+                                          );
+                                          dispatch(
+                                            fetchCartProducts(item.userID)
+                                          );
+                                        }}
+                                      >
+                                        {fetchedColors.color}
+                                      </MenuItem>
+                                    )
+                                  )
+                                ) : (
+                                  <MenuItem value="brown">Loading...</MenuItem>
+                                )}
                               </StyledSelectButton>
                               <StyledQuantityBar>
                                 <QuantityDiv>
                                   <IconButton
                                     size="small"
-                                    onClick={() => SetQuantity(quantity - 1)}
+                                    onClick={() => {
+                                      let newQuantity =
+                                        parseInt(item.cartItemQuantity) - 1;
+                                      dispatch(
+                                        patchQuantity({
+                                          itemId: item._id,
+                                          quantity: newQuantity,
+                                        })
+                                      );
+                                      dispatch(fetchCartProducts(item.userID));
+                                    }}
                                   >
                                     <RemoveIcon
                                       sx={{
@@ -349,7 +389,18 @@ const Cart = () => {
                                   {item.cartItemQuantity}
                                   <IconButton
                                     size="small"
-                                    onClick={() => SetQuantity(quantity + 1)}
+                                    onClick={() => {
+                                      let newQuantity =
+                                        parseInt(item.cartItemQuantity) + 1;
+                                      console.log(newQuantity);
+                                      dispatch(
+                                        patchQuantity({
+                                          itemId: item._id,
+                                          quantity: newQuantity,
+                                        })
+                                      );
+                                      dispatch(fetchCartProducts(item.userID));
+                                    }}
                                   >
                                     <AddIcon
                                       sx={{
@@ -366,6 +417,10 @@ const Cart = () => {
                             <Grid item>
                               <StyledDeleteButton
                                 sx={{ display: { xs: "none", md: "flex" } }}
+                                onClick={() => {
+                                  dispatch(deleteItem(item._id));
+                                  dispatch(fetchCartProducts(item.userID));
+                                }}
                               >
                                 <DeleteIcon
                                   sx={{ fontSize: "14px", marginRight: "3px" }}
@@ -376,6 +431,10 @@ const Cart = () => {
                                 sx={{
                                   display: { xs: "block", md: "none" },
                                   marginRight: "3px",
+                                }}
+                                onClick={() => {
+                                  dispatch(deleteItem(item._id));
+                                  dispatch(fetchCartProducts(item.userID));
                                 }}
                               >
                                 <DeleteIcon

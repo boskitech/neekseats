@@ -23,11 +23,14 @@ export const addToCart = createAsyncThunk(
   }
 );
 
-export const patchQuanity = createAsyncThunk(
+export const patchQuantity = createAsyncThunk(
   "cart/patchQuantity",
-  async (itemId) => {
-    const response = await axios.get(
-      `http://localhost:5200/api/product/category/${itemId}`
+  async ({ itemId, quantity }) => {
+    const data = { quantity: quantity };
+    const response = await axios.patch(
+      `http://localhost:5200/api/cart/quantity/${itemId}`,
+      data,
+      {}
     );
     return response.data;
   }
@@ -35,18 +38,26 @@ export const patchQuanity = createAsyncThunk(
 
 export const patchColor = createAsyncThunk(
   "cart/patchColor",
-  async (itemId) => {
-    const response = await axios.get(
-      `http://localhost:5200/api/product/category/${itemId}`
+  async ({ itemId, color }) => {
+    console.log(color, itemId);
+    const response = await axios.patch(
+      `http://localhost:5200/api/cart/colour/${itemId}`,
+      { color: color },
+      {}
     );
     return response.data;
   }
 );
 
-export const deleteItem = createAsyncThunk("cart/deeteItem", async (itemId) => {
-  const response = await axios.get(`http://localhost:5200/api/cart/${itemId}`);
-  return response.data;
-});
+export const deleteItem = createAsyncThunk(
+  "cart/deleteItem",
+  async (itemId) => {
+    const response = await axios.delete(
+      `http://localhost:5200/api/cart/${itemId}`
+    );
+    return response.data;
+  }
+);
 
 export const clearCart = createAsyncThunk("cart/clearCart", async (userid) => {
   const response = await axios.delete(
@@ -92,14 +103,14 @@ const cartSlice = createSlice({
         state.addToCartStatus = "failed";
         state.error = action.error.message;
       })
-      .addCase(patchQuanity.pending, (state, action) => {
+      .addCase(patchQuantity.pending, (state, action) => {
         state.status = "loading";
       })
-      .addCase(patchQuanity.fulfilled, (state, action) => {
+      .addCase(patchQuantity.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.registerResponse = action.payload;
       })
-      .addCase(patchQuanity.rejected, (state, action) => {
+      .addCase(patchQuantity.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
@@ -119,7 +130,6 @@ const cartSlice = createSlice({
       })
       .addCase(deleteItem.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.registerResponse = action.payload;
       })
       .addCase(deleteItem.rejected, (state, action) => {
         state.status = "failed";

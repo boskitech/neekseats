@@ -315,13 +315,6 @@ const ViewItem = () => {
                   display="flex"
                   justifyContent="center"
                 >
-                  {/* {oneProduct.productImage.map((item, index) => (
-                    <Grid item xs={12} key={index}>
-                      <StyledImageGrid
-                        src={`http://localhost:5200/uploads/${item.image}`}
-                      />
-                    </Grid>
-                  ))} */}
                   <ToggleButtonGroup
                     value={imageUrl}
                     onChange={handleValue}
