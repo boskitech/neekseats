@@ -3,7 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import { Badge, Button, IconButton, Slide, TextField } from "@mui/material";
+import { Badge, Button, IconButton, Slide } from "@mui/material";
 import { useNavigate } from "react-router";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
@@ -13,30 +13,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSelector, useDispatch } from "react-redux";
 import { user, token, checkUser } from "../../reducers/usersSlice";
 import { selectUserCart, fetchCartProducts } from "../../reducers/cartSlice";
-
-const searchItems = [
-  { listName: "Apple Series 2", listValue: "appleSeries6" },
-  { listName: "Apple Series 3", listValue: "appleSeries6" },
-  { listName: "Apple Series 4", listValue: "appleSeries6" },
-  { listName: "Apple Series 5", listValue: "appleSeries6" },
-  { listName: "Apple Series 6", listValue: "appleSeries6" },
-  { listName: "Custom Smart Watches", listValue: "customSmartWatches" },
-  {
-    listName: "Gorilla Face Smart Watches",
-    listValue: "gorillaFaceSmartWatches",
-  },
-  { listName: "Water Resitant", listValue: "waterResitant" },
-  { listName: "LV Strip", listValue: "lvstrip" },
-  { listName: "Gucci Strip", listValue: "guccistrip" },
-  { listName: "Dior Strip", listValue: "diorstrip" },
-  { listName: "Quartz Leather Strip", listValue: "quartzleatherstrip" },
-  { listName: "Quartz Chain Strip", listValue: "quartzchainstrip" },
-];
+import SearchBar from "./SearchBar";
 
 const HeaderText = styled("h2")(({ theme }) => ({
   color: "#000",
@@ -97,48 +79,12 @@ const StyledAppBAr = styled(AppBar)(({ theme }) => ({
   },
 }));
 
-const StyledGridLoginInput = styled(TextField)(({ theme }) => ({
-  width: "400px",
-  height: "50px",
-  margin: "0px auto 0 auto",
-  fontSize: "14px",
-  backgoundColor: "white",
-  [theme.breakpoints.down("md")]: {
-    display: "none",
-  },
-}));
-
-const StyledSearchUl = styled("ul")(({ theme }) => ({
-  textDecoration: "none",
-  listStyleType: "none",
-  padding: "15px",
-  margin: "0px",
-  height: "15px",
-  "&:hover": {
-    backgroundColor: "#ebebeb",
-    cursor: "pointer",
-  },
-}));
-
-const StyledSearchLi = styled("li")(({ theme }) => ({
-  textDecoration: "none",
-  height: "15px",
-  listStyleType: "none",
-  paddingLeft: "0",
-  "&:hover": {
-    cursor: "pointer",
-  },
-}));
-
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [state, setState] = useState({ left: false });
   const [scrolled, setScrolled] = useState(false);
   const [search, setSearch] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-  const [searchResults, setSearchResults] = useState("");
-  const [focus, setFocus] = useState(false);
   const [checkToken, setCheckToken] = useState(false);
   const [userd, setUserd] = useState("");
   const newToken = useSelector(token);
@@ -178,25 +124,6 @@ const Navbar = () => {
       dispatch(fetchCartProducts(userd._id));
     }
   }, [dispatch, userd._id]);
-
-  const handleBlur = () => {
-    setTimeout(() => {
-      setFocus(false);
-      setSearchValue("");
-    }, [200]);
-  };
-
-  const handleChange = (e) => {
-    setSearchValue(e.target.value);
-    const userInput = e.target.value;
-
-    const data = searchItems.filter(
-      (searchitem) =>
-        searchitem.listName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    );
-
-    if (userInput) setSearchResults(data.slice(0, 8));
-  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -256,7 +183,6 @@ const Navbar = () => {
       <Divider />
     </Box>
   );
-
   return (
     <div>
       <StyledAppBAr
@@ -300,53 +226,7 @@ const Navbar = () => {
               </StyledMenuButton>
             </Box>
           </Slide>
-          <Slide
-            direction="left"
-            in={search}
-            mountOnEnter
-            unmountOnExit
-            style={{ transformOrigin: "0 0 0" }}
-            {...(search ? { timeout: 100 } : {})}
-          >
-            <Box
-              direction="row"
-              sx={{ marginTop: "15px", display: { xs: "none", md: "block" } }}
-            >
-              <StyledGridLoginInput
-                onChange={handleChange}
-                onFocus={() => setFocus(true)}
-                onBlur={handleBlur}
-                size="small"
-                placeholder="Search Items"
-                value={searchValue}
-              />
-              <StyledLoginButton
-                sx={{ width: "40px", marginLeft: "5px", height: "40px" }}
-              >
-                <SearchIcon />
-              </StyledLoginButton>
-              {searchValue !== " " && searchValue !== "" && focus && (
-                <Box
-                  sx={{
-                    width: "400px",
-                    backgroundColor: "#fff",
-                    position: "absolute",
-                    border: "1px solid #dfdfdf",
-                    color: "black",
-                    overflow: "auto",
-                  }}
-                >
-                  {searchResults.map((results, index) => (
-                    <StyledSearchUl key={index}>
-                      <StyledSearchLi onClick={() => navigate("/shop")}>
-                        {results.listName}
-                      </StyledSearchLi>
-                    </StyledSearchUl>
-                  ))}
-                </Box>
-              )}
-            </Box>
-          </Slide>
+          {search && <SearchBar />}
           <Box>
             <Box sx={{ display: { xs: "none", md: "block" }, color: "black" }}>
               <IconButton
@@ -372,7 +252,7 @@ const Navbar = () => {
                   onClick={() => navigate("/acount")}
                   sx={{ color: "black" }}
                 >
-                  <AccountCircleIcon />
+                  <PersonIcon />
                   <span
                     style={{ fontSize: "14px", textTransform: "capitalize" }}
                   >
