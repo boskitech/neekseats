@@ -245,7 +245,6 @@ const StyledDiscriptionBar = styled("div")(({ theme }) => ({
   },
 }));
 
-const user = JSON.parse(localStorage.getItem("user"));
 
 const ViewItem = () => {
   let params = useParams();
@@ -276,18 +275,23 @@ const ViewItem = () => {
   }, [addCartItemStatus]);
 
   const handleAddToCart = () => {
-    let postData = {
-      userID: user._id,
-      itemID: oneProduct._id,
-      cartItemName: oneProduct.productName,
-      cartItemPrice: oneProduct.productPrice,
-      itemShippingPrice: oneProduct.productShipping,
-      cartItemQuantity: quantity,
-      cartItemColor: color,
-      cartItemImage: oneProduct.productImage[0].image,
-    };
+    if (localStorage.getItem("user")) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      let postData = {
+        userID: user._id,
+        itemID: oneProduct._id,
+        cartItemName: oneProduct.productName,
+        cartItemPrice: oneProduct.productPrice,
+        itemShippingPrice: oneProduct.productShipping,
+        cartItemQuantity: quantity,
+        cartItemColor: color,
+        cartItemImage: oneProduct.productImage[0].image,
+      };
 
-    dispatch(addToCart(postData));
+      dispatch(addToCart(postData));
+    } else {
+      console.log("no user");
+    }
   };
 
   const handleBuyNow = () => {};

@@ -15,9 +15,10 @@ import StickyBox from "react-sticky-box";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCartProducts,
-  cartStatus,
+  // cartStatus,
   selectUserCart,
 } from "../../reducers/cartSlice";
+import { user } from "../../reducers/usersSlice";
 
 const CartBody = styled("div")(({ theme }) => ({
   width: "70%",
@@ -208,7 +209,7 @@ const StyledMobileCheckoutGrid = styled("div")(({ theme }) => ({
   height: "auto",
 }));
 
-const user = JSON.parse(localStorage.getItem("user"));
+// const user = JSON.parse(localStorage.getItem("user"));
 
 const Cart = () => {
   const [color, setColor] = useState("black");
@@ -216,7 +217,8 @@ const Cart = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector(selectUserCart);
-  const status = useSelector(cartStatus);
+  // const status = useSelector(cartStatus);
+  const myUser = useSelector(user);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -230,12 +232,11 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    if (status === "idle") {
+    if (localStorage.getItem("user")) {
+      const user = JSON.parse(localStorage.getItem("user"));
       dispatch(fetchCartProducts(user._id));
     }
-  }, [status, dispatch]);
-
-  console.log("cart", cart.cartItemImage);
+  }, [myUser, dispatch]);
 
   return (
     <motion.div

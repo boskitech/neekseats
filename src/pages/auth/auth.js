@@ -11,6 +11,7 @@ import {
   addUserStatus,
 } from "../../reducers/usersSlice";
 import { useNavigate } from "react-router-dom";
+import { fetchCartProducts } from "../../reducers/cartSlice";
 
 const StyledGridLoginSideDiv = styled(Grid)(({ theme }) => ({
   width: "80%",
@@ -124,8 +125,13 @@ const Login = () => {
   useEffect(() => {
     setLoader(signInStatus);
     if (registerStatus === "succeeded") setActionType("Login");
-    if (signInStatus === "succeeded") navigate("/shop");
-  }, [signInStatus, registerStatus, navigate]);
+    if (signInStatus === "succeeded") {
+      const user = JSON.parse(localStorage.getItem("user"));
+      console.log(user);
+      dispatch(fetchCartProducts(user.id));
+      navigate("/shop");
+    }
+  }, [signInStatus, registerStatus, navigate, dispatch]);
 
   return (
     <motion.div

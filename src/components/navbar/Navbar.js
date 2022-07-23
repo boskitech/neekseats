@@ -17,7 +17,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSelector, useDispatch } from "react-redux";
 import { user, token, checkUser } from "../../reducers/usersSlice";
-import { selectUserCart } from "../../reducers/cartSlice";
+import { selectUserCart, fetchCartProducts } from "../../reducers/cartSlice";
 
 const searchItems = [
   { listName: "Apple Series 2", listValue: "appleSeries6" },
@@ -171,8 +171,13 @@ const Navbar = () => {
     if (localStorage.getItem("user")) {
       setUserd(JSON.parse(localStorage.getItem("user")));
     }
-    console.log(myUser);
   }, [myUser]);
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      dispatch(fetchCartProducts(userd._id));
+    }
+  }, [dispatch, userd._id]);
 
   const handleBlur = () => {
     setTimeout(() => {
