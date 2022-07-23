@@ -39,7 +39,6 @@ export const patchQuantity = createAsyncThunk(
 export const patchColor = createAsyncThunk(
   "cart/patchColor",
   async ({ itemId, color }) => {
-    console.log(color, itemId);
     const response = await axios.patch(
       `http://localhost:5200/api/cart/colour/${itemId}`,
       { color: color },

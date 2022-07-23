@@ -243,7 +243,6 @@ const Cart = () => {
     }
   }, [myUser, dispatch]);
 
-  console.log(loader);
   return (
     <motion.div
       initial={{ x: 200, opacity: 0 }}
@@ -392,7 +391,6 @@ const Cart = () => {
                                     onClick={() => {
                                       let newQuantity =
                                         parseInt(item.cartItemQuantity) + 1;
-                                      console.log(newQuantity);
                                       dispatch(
                                         patchQuantity({
                                           itemId: item._id,

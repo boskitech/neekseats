@@ -127,7 +127,6 @@ const Login = () => {
     if (registerStatus === "succeeded") setActionType("Login");
     if (signInStatus === "succeeded") {
       const user = JSON.parse(localStorage.getItem("user"));
-      console.log(user);
       dispatch(fetchCartProducts(user.id));
       navigate("/shop");
     }
