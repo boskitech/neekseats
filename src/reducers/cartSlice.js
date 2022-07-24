@@ -73,7 +73,7 @@ const initialState = {
   cartStatus: "idle",
   addToCartStatus: "idle",
   patchStatus: "idle",
-  deleteModal: "false",
+  deleteModal: false,
   error: null,
 };
 

@@ -325,181 +325,206 @@ const Cart = () => {
                   }}
                 />
               </StyledCartHeader>
-              {cart.map((item) => (
-                <StyledCartItems key={item._id}>
-                  <Grid container direction="row" spacing="20">
-                    <Grid item xs={3}>
-                      <StyledCartImageDiv>
-                        <StyledCartImage
-                          src={`http://localhost:5200/uploads/${item.cartItemImage}`}
-                        ></StyledCartImage>
-                      </StyledCartImageDiv>
-                    </Grid>
-                    <Grid item xs={9}>
-                      <Grid container direction="column">
-                        <Grid
-                          item
-                          sx={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                          }}
-                        >
-                          <StyledItemName>{item.cartItemName}</StyledItemName>
-                          <StyledItemPrice>
-                            {formatToCurrency(parseInt(item.cartItemPrice))}
-                          </StyledItemPrice>
-                        </Grid>
-                        <Grid item>
-                          <StyledShippingText>
-                            Shipping -{" "}
-                            {formatToCurrency(parseInt(item.itemShippingPrice))}
-                          </StyledShippingText>
-                        </Grid>
-                        <Grid item>
+              {cart.length > 0 ? (
+                cart.map((item) => (
+                  <StyledCartItems key={item._id}>
+                    <Grid container direction="row" spacing="20">
+                      <Grid item xs={3}>
+                        <StyledCartImageDiv>
+                          <StyledCartImage
+                            src={`http://localhost:5200/uploads/${item.cartItemImage}`}
+                          ></StyledCartImage>
+                        </StyledCartImageDiv>
+                      </Grid>
+                      <Grid item xs={9}>
+                        <Grid container direction="column">
                           <Grid
-                            container
-                            display="flex"
-                            direction="row"
-                            justifyContent="space-between"
+                            item
+                            sx={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
                           >
+                            <StyledItemName>{item.cartItemName}</StyledItemName>
+                            <StyledItemPrice>
+                              {formatToCurrency(parseInt(item.cartItemPrice))}
+                            </StyledItemPrice>
+                          </Grid>
+                          <Grid item>
+                            <StyledShippingText>
+                              Shipping -{" "}
+                              {formatToCurrency(
+                                parseInt(item.itemShippingPrice)
+                              )}
+                            </StyledShippingText>
+                          </Grid>
+                          <Grid item>
                             <Grid
-                              item
-                              sx={{
-                                display: "flex",
-                              }}
+                              container
+                              display="flex"
+                              direction="row"
+                              justifyContent="space-between"
                             >
-                              <StyledSelectButton
-                                value={item.cartItemColor}
-                                displayEmpty
-                                inputProps={{ "aria-label": "Without label" }}
-                                onFocus={() =>
-                                  dispatch(fetchOneProduct(item.itemID))
-                                }
-                              >
-                                <MenuItem value={item.cartItemColor}>
-                                  {item.cartItemColor}
-                                </MenuItem>
-                                {loader === "succeeded" ? (
-                                  oneProduct.productColor.map(
-                                    (fetchedColors, index) => (
-                                      <MenuItem
-                                        key={index}
-                                        value={fetchedColors.color}
-                                        onClick={() => {
-                                          dispatch(
-                                            patchColor({
-                                              itemId: item._id,
-                                              color: fetchedColors.color,
-                                            })
-                                          );
-                                          dispatch(
-                                            fetchCartProducts(item.userID)
-                                          );
-                                        }}
-                                      >
-                                        {fetchedColors.color}
-                                      </MenuItem>
-                                    )
-                                  )
-                                ) : (
-                                  <MenuItem value="brown">Loading...</MenuItem>
-                                )}
-                              </StyledSelectButton>
-                              <StyledQuantityBar>
-                                <QuantityDiv>
-                                  <IconButton
-                                    size="small"
-                                    disabled={item.cartItemQuantity === "1"}
-                                    onClick={() => {
-                                      let newQuantity =
-                                        parseInt(item.cartItemQuantity) - 1;
-                                      dispatch(
-                                        patchQuantity({
-                                          itemId: item._id,
-                                          quantity: newQuantity,
-                                        })
-                                      );
-                                      dispatch(fetchCartProducts(item.userID));
-                                    }}
-                                  >
-                                    <RemoveIcon
-                                      sx={{
-                                        fontSize: "17px",
-                                        marginRight: "6px",
-                                        marginLeft: "6px",
-                                        marginBottom: "3px",
-                                      }}
-                                    />
-                                  </IconButton>
-                                  {item.cartItemQuantity}
-                                  <IconButton
-                                    size="small"
-                                    onClick={() => {
-                                      let newQuantity =
-                                        parseInt(item.cartItemQuantity) + 1;
-                                      dispatch(
-                                        patchQuantity({
-                                          itemId: item._id,
-                                          quantity: newQuantity,
-                                        })
-                                      );
-                                      dispatch(fetchCartProducts(item.userID));
-                                    }}
-                                  >
-                                    <AddIcon
-                                      sx={{
-                                        fontSize: "17px",
-                                        marginRight: "6px",
-                                        marginLeft: "6px",
-                                        marginBottom: "3px",
-                                      }}
-                                    />
-                                  </IconButton>
-                                </QuantityDiv>
-                              </StyledQuantityBar>
-                            </Grid>
-                            <Grid item>
-                              <StyledDeleteButton
-                                sx={{ display: { xs: "none", md: "flex" } }}
-                                onClick={() => {
-                                  handleDelete({
-                                    id: item._id,
-                                    user: item.userID,
-                                  });
-                                }}
-                              >
-                                <DeleteIcon
-                                  sx={{ fontSize: "14px", marginRight: "3px" }}
-                                />
-                                Delete
-                              </StyledDeleteButton>
-                              <IconButton
+                              <Grid
+                                item
                                 sx={{
-                                  display: { xs: "block", md: "none" },
-                                  marginRight: "3px",
+                                  display: "flex",
                                 }}
-                                onClick={() =>
-                                  handleDelete({
-                                    id: item._id,
-                                    user: item.userID,
-                                  })
-                                }
                               >
-                                <DeleteIcon
-                                  sx={{
-                                    fontSize: "18px",
-                                    marginTop: "8px",
+                                <StyledSelectButton
+                                  value={item.cartItemColor}
+                                  displayEmpty
+                                  inputProps={{ "aria-label": "Without label" }}
+                                  onFocus={() =>
+                                    dispatch(fetchOneProduct(item.itemID))
+                                  }
+                                >
+                                  <MenuItem value={item.cartItemColor}>
+                                    {item.cartItemColor}
+                                  </MenuItem>
+                                  {loader === "succeeded" ? (
+                                    oneProduct.productColor.map(
+                                      (fetchedColors, index) => (
+                                        <MenuItem
+                                          key={index}
+                                          value={fetchedColors.color}
+                                          onClick={() => {
+                                            dispatch(
+                                              patchColor({
+                                                itemId: item._id,
+                                                color: fetchedColors.color,
+                                              })
+                                            );
+                                            dispatch(
+                                              fetchCartProducts(item.userID)
+                                            );
+                                          }}
+                                        >
+                                          {fetchedColors.color}
+                                        </MenuItem>
+                                      )
+                                    )
+                                  ) : (
+                                    <MenuItem value="brown">
+                                      Loading...
+                                    </MenuItem>
+                                  )}
+                                </StyledSelectButton>
+                                <StyledQuantityBar>
+                                  <QuantityDiv>
+                                    <IconButton
+                                      size="small"
+                                      disabled={item.cartItemQuantity === "1"}
+                                      onClick={() => {
+                                        let newQuantity =
+                                          parseInt(item.cartItemQuantity) - 1;
+                                        dispatch(
+                                          patchQuantity({
+                                            itemId: item._id,
+                                            quantity: newQuantity,
+                                          })
+                                        );
+                                        dispatch(
+                                          fetchCartProducts(item.userID)
+                                        );
+                                      }}
+                                    >
+                                      <RemoveIcon
+                                        sx={{
+                                          fontSize: "17px",
+                                          marginRight: "6px",
+                                          marginLeft: "6px",
+                                          marginBottom: "3px",
+                                        }}
+                                      />
+                                    </IconButton>
+                                    ;{item.cartItemQuantity}
+                                    <IconButton
+                                      size="small"
+                                      onClick={() => {
+                                        let newQuantity =
+                                          parseInt(item.cartItemQuantity) + 1;
+                                        dispatch(
+                                          patchQuantity({
+                                            itemId: item._id,
+                                            quantity: newQuantity,
+                                          })
+                                        );
+                                        dispatch(
+                                          fetchCartProducts(item.userID)
+                                        );
+                                      }}
+                                    >
+                                      <AddIcon
+                                        sx={{
+                                          fontSize: "17px",
+                                          marginRight: "6px",
+                                          marginLeft: "6px",
+                                          marginBottom: "3px",
+                                        }}
+                                      />
+                                    </IconButton>
+                                    ;
+                                  </QuantityDiv>
+                                </StyledQuantityBar>
+                              </Grid>
+                              <Grid item>
+                                <StyledDeleteButton
+                                  sx={{ display: { xs: "none", md: "flex" } }}
+                                  onClick={() => {
+                                    handleDelete({
+                                      id: item._id,
+                                      user: item.userID,
+                                    });
                                   }}
-                                />
-                              </IconButton>
+                                >
+                                  <DeleteIcon
+                                    sx={{
+                                      fontSize: "14px",
+                                      marginRight: "3px",
+                                    }}
+                                  />
+                                  Delete
+                                </StyledDeleteButton>
+                                <IconButton
+                                  sx={{
+                                    display: { xs: "block", md: "none" },
+                                    marginRight: "3px",
+                                  }}
+                                  onClick={() =>
+                                    handleDelete({
+                                      id: item._id,
+                                      user: item.userID,
+                                    })
+                                  }
+                                >
+                                  <DeleteIcon
+                                    sx={{
+                                      fontSize: "18px",
+                                      marginTop: "8px",
+                                    }}
+                                  />
+                                </IconButton>
+                              </Grid>
                             </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                </StyledCartItems>
-              ))}
+                  </StyledCartItems>
+                ))
+              ) : (
+                <div
+                  style={{
+                    textAlign: "center",
+                    marginTop: "50px",
+                    paddingBottom: "50px",
+                    fontSize: "20px",
+                  }}
+                >
+                  No Items In Cart :)
+                </div>
+              )}
             </StyledCartGrid>
           </Grid>
           <Grid item md={4} xs={12}>
