@@ -54,8 +54,8 @@ const StyledSubTotal = styled("div")(({ theme }) => ({
 }));
 
 const StyledSubTotalHeader = styled("div")(({ theme }) => ({
-  fontSize: "14px",
-  color: "#666",
+  fontSize: "16px",
+  color: "#333",
   fontWeight: 390,
   padding: "15px 0px 7px 0px",
   display: "flex",
@@ -64,8 +64,8 @@ const StyledSubTotalHeader = styled("div")(({ theme }) => ({
 }));
 
 const StyledSubTotalText = styled("div")(({ theme }) => ({
-  fontSize: "12px",
-  color: "#888",
+  fontSize: "14px",
+  color: "#666",
   fontWeight: 370,
   padding: "7px 0px",
   display: "flex",
@@ -127,7 +127,7 @@ export default function DeliveryBar() {
             Regular
           </StyledToggleButton>
           <StyledToggleButton value="paid" aria-label="paid">
-            Express: ₦90,000.99
+            Express
           </StyledToggleButton>
         </StyledToggleButtonGroup>
       </Paper>

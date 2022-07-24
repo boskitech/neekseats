@@ -15,7 +15,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import SearchBar from "./SearchBar";
-import AccountMenu from "./accountMenu";
+import AccountMenu from "./AccountMenu";
 import { useSelector, useDispatch } from "react-redux";
 import { user, token, checkUser } from "../../reducers/usersSlice";
 import { selectUserCart, fetchCartProducts } from "../../reducers/cartSlice";

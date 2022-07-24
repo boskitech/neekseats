@@ -57,8 +57,8 @@ const StyledCartHeader = styled("div")(({ theme }) => ({
 }));
 
 const StyledCheckOutHeader = styled("div")(({ theme }) => ({
-  fontSize: "15px",
-  color: "#666",
+  fontSize: "16px",
+  color: "#444",
   fontWeight: 400,
   padding: "15px",
   [theme.breakpoints.down("md")]: {
@@ -117,7 +117,7 @@ const StyledCartImage = styled("img")(({ theme }) => ({
 
 const StyledItemName = styled("div")(({ theme }) => ({
   fontSize: "16px",
-  color: "#666",
+  color: "#444",
   fontWeight: 400,
   padding: "15px 0px",
   [theme.breakpoints.down("md")]: {
@@ -138,7 +138,7 @@ const StyledItemPrice = styled("div")(({ theme }) => ({
 
 const StyledShippingText = styled("span")(({ theme }) => ({
   fontSize: "13px",
-  color: "#999",
+  color: "#666",
   fontWeight: 400,
   padding: "10px 0",
   [theme.breakpoints.down("md")]: {

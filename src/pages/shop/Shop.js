@@ -200,6 +200,7 @@ const Shop = () => {
       background: "#416cb7",
       border: "1px solid #416cb7",
       color: "#fff",
+      zIndex: 999,
     },
     [theme.breakpoints.down("md")]: {
       margin: gridView ? "8px" : "140px 15px 15px 15px",

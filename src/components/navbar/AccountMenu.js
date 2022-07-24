@@ -1,17 +1,20 @@
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import Settings from "@mui/icons-material/Settings";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Logout from "@mui/icons-material/Logout";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import { checkUser } from "../../reducers/usersSlice";
+import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
+import { Favorite, Person } from "@mui/icons-material";
 
 export default function AccountMenu({ user }) {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -19,6 +22,11 @@ export default function AccountMenu({ user }) {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    if (dispatch(checkUser())) window.location.href = "/";
   };
   return (
     <React.Fragment>
@@ -38,6 +46,7 @@ export default function AccountMenu({ user }) {
         >
           <PersonOutlineOutlinedIcon sx={{ fontSize: "28px" }} />
           {user}
+          <KeyboardArrowDownIcon sx={{ color: "#888" }} />
         </Button>
       </Tooltip>
       <Menu
@@ -46,6 +55,7 @@ export default function AccountMenu({ user }) {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
+        sx={{ width: "500px", paddingRight: "50px" }}
         PaperProps={{
           elevation: 0,
           sx: {
@@ -76,25 +86,26 @@ export default function AccountMenu({ user }) {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar /> Profile
+          <ListItemIcon>
+            <Favorite fontSize="small" />
+          </ListItemIcon>
+          Wish List
         </MenuItem>
         <MenuItem>
-          <Avatar /> My account
+          <ListItemIcon>
+            <ShoppingBasketIcon fontSize="small" />
+          </ListItemIcon>
+          Orders
+        </MenuItem>
+        <MenuItem>
+          <ListItemIcon>
+            <Person fontSize="small" />
+          </ListItemIcon>
+          My Account
         </MenuItem>
         <Divider />
-        <MenuItem>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem>
+
+        <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

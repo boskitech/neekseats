@@ -194,6 +194,19 @@ const StyledProductsDivText = styled("div")(({ theme }) => ({
   },
 }));
 
+const StyledProductsDivColorText = styled("div")(({ theme }) => ({
+  fontSize: "17px",
+  fontWeight: 500,
+  color: "#777",
+  marginBottom: "10px",
+  marginTop: "0px",
+  width: "100%",
+  [theme.breakpoints.down("md")]: {
+    marginTop: "20px",
+    marginBottom: "5px",
+  },
+}));
+
 const StyledProductsDivPriceText = styled("div")(({ theme }) => ({
   fontSize: "25px",
   fontWeight: 450,
@@ -383,9 +396,9 @@ const ViewItem = () => {
                 />
                 <StyledColorGrid container>
                   <Grid item md={2.5} xs={3}>
-                    <StyledProductsDivText sx={{ margin: "0" }}>
+                    <StyledProductsDivColorText sx={{ marginTop: "15px" }}>
                       Color:
-                    </StyledProductsDivText>
+                    </StyledProductsDivColorText>
                   </Grid>
                   <Grid item md={9.5} xs={9}>
                     <ToggleButtonGroup
@@ -399,6 +412,7 @@ const ViewItem = () => {
                           key={index}
                           value={color.color}
                           aria-label="bold"
+                          sx={{ mt: "25px" }}
                         >
                           <StyledProductsButttonImage
                             src={
@@ -415,6 +429,19 @@ const ViewItem = () => {
                                 : ""
                             }
                           ></StyledProductsButttonImage>
+                          <span
+                            style={{
+                              color: "#000",
+                              position: "absolute",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignContent: "flex-end",
+                              marginTop: "145px",
+                              marginBottom: "25px",
+                            }}
+                          >
+                            {color.color}
+                          </span>
                         </ToggleButton>
                       ))}
                     </ToggleButtonGroup>

@@ -51,6 +51,8 @@ const usersSlice = createSlice({
     checkUser: (state) => {
       if (localStorage.getItem("user")) {
         state.user = JSON.parse(localStorage.getItem("user"));
+      }else{
+        state.user = []
       }
     },
   },
