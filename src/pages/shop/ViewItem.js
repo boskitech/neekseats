@@ -13,7 +13,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { IconButton } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   fetchOneProduct,
   selectProduct,
@@ -21,8 +21,14 @@ import {
   changeStatus,
 } from "../../reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, addToCartStatus } from "../../reducers/cartSlice";
+import {
+  addToCart,
+  addToCartStatus,
+  changeAddStatus,
+} from "../../reducers/cartSlice";
 import { formatToCurrency } from "../../utils/currencyFormatter";
+import Loader from "../../components/loader/Loader";
+import AlertBar from "../../components/alertBar/AlertBar";
 
 //Toggle button -----------------------------------------------------
 const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
@@ -263,8 +269,10 @@ const ViewItem = () => {
   let params = useParams();
   let id = params.id;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [color, setColor] = React.useState("");
   const [quantity, setQuantity] = React.useState(1);
+  const [colorMessage, setColorMessage] = React.useState("");
   const oneProduct = useSelector(selectProduct);
   const status = useSelector(OneProdStatus);
   const addCartItemStatus = useSelector(addToCartStatus);
@@ -273,6 +281,7 @@ const ViewItem = () => {
 
   const handleValue = (event, newValue) => {
     setColor(newValue);
+    setColorMessage("");
   };
 
   React.useEffect(() => {
@@ -288,29 +297,47 @@ const ViewItem = () => {
   }, [addCartItemStatus]);
 
   const handleAddToCart = () => {
-    if (localStorage.getItem("user")) {
-      const user = JSON.parse(localStorage.getItem("user"));
-      let postData = {
-        userID: user._id,
-        itemID: oneProduct._id,
-        cartItemName: oneProduct.productName,
-        cartItemPrice: oneProduct.productPrice,
-        itemShippingPrice: oneProduct.productShipping,
-        cartItemQuantity: quantity,
-        cartItemColor: color,
-        cartItemImage: oneProduct.productImage[0].image,
-      };
-
-      dispatch(addToCart(postData));
+    if (!color) {
+      setColorMessage("Select Color");
     } else {
-      console.log("no user");
+      if (localStorage.getItem("user")) {
+        const user = JSON.parse(localStorage.getItem("user"));
+        let postData = {
+          userID: user._id,
+          itemID: oneProduct._id,
+          cartItemName: oneProduct.productName,
+          cartItemPrice: oneProduct.productPrice,
+          itemShippingPrice: oneProduct.productShipping,
+          cartItemQuantity: quantity,
+          cartItemColor: color,
+          cartItemImage: oneProduct.productImage[0].image,
+        };
+
+        dispatch(addToCart(postData));
+      } else {
+        console.log("no user");
+      }
     }
   };
 
   const handleBuyNow = () => {};
+  const handleGoToCart = () => {
+    navigate("/cart");
+    dispatch(changeAddStatus());
+  };
 
   return (
     <ViewItemBody>
+      {addCartItemStatus === "loading" && <Loader />}
+      {addCartItemStatus === "succeeded" && (
+        <AlertBar
+          message="Item Added to cart successfully"
+          header="Added Item"
+          action={handleGoToCart}
+          actionTitle="View Cart"
+          closeAction={() => dispatch(changeAddStatus())}
+        />
+      )}
       {status === "succeeded" ? (
         <>
           {" "}
@@ -401,6 +428,9 @@ const ViewItem = () => {
                     </StyledProductsDivColorText>
                   </Grid>
                   <Grid item md={9.5} xs={9}>
+                    {colorMessage && (
+                      <span style={{ color: "red" }}>{colorMessage}</span>
+                    )}
                     <ToggleButtonGroup
                       value={color}
                       onChange={handleValue}

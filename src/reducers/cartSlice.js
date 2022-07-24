@@ -72,6 +72,7 @@ const initialState = {
   totalPrice: 0,
   cartStatus: "idle",
   addToCartStatus: "idle",
+  patchStatus: "idle",
   error: null,
 };
 
@@ -94,6 +95,9 @@ const cartSlice = createSlice({
     calcTotal: (state) => {
       state.totalPrice = state.subTotal + state.shippingTotal;
     },
+    changeAddStatus: (state) => {
+      state.addToCartStatus = "idle";
+    },
   },
   extraReducers(builder) {
     builder
@@ -106,11 +110,15 @@ const cartSlice = createSlice({
         const pricesArray = state.cart.map(
           (product) => product.cartItemPrice * product.cartItemQuantity
         );
-        state.subTotal = pricesArray.flat().reduce((acc, sum) => acc + sum);
+        state.subTotal = pricesArray
+          ?.flat()
+          ?.reduce((acc, sum) => acc + sum, 0);
         const priceArray = state.cart.map(
           (product) => product.itemShippingPrice * product.cartItemQuantity
         );
-        state.shippingTotal = priceArray.flat().reduce((acc, sum) => acc + sum);
+        state.shippingTotal = priceArray
+          ?.flat()
+          ?.reduce((acc, sum) => acc + sum, 0);
         state.totalPrice = state.subTotal + state.shippingTotal;
       })
       .addCase(fetchCartProducts.rejected, (state, action) => {
@@ -123,42 +131,41 @@ const cartSlice = createSlice({
       .addCase(addToCart.fulfilled, (state, action) => {
         state.addToCartStatus = "succeeded";
         state.cart.unshift(action.payload.item);
-        console.log(action.payload.item);
       })
       .addCase(addToCart.rejected, (state, action) => {
         state.addToCartStatus = "failed";
         state.error = action.error.message;
       })
       .addCase(patchQuantity.pending, (state, action) => {
-        state.status = "loading";
+        state.patchStatus = "loading";
       })
       .addCase(patchQuantity.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.patchStatus = "succeeded";
         state.registerResponse = action.payload;
       })
       .addCase(patchQuantity.rejected, (state, action) => {
-        state.status = "failed";
+        state.patchStatus = "failed";
         state.error = action.error.message;
       })
       .addCase(patchColor.pending, (state, action) => {
-        state.status = "loading";
+        state.patchStatus = "loading";
       })
       .addCase(patchColor.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.patchStatus = "succeeded";
         state.registerResponse = action.payload;
       })
       .addCase(patchColor.rejected, (state, action) => {
-        state.status = "failed";
+        state.patchStatus = "failed";
         state.error = action.error.message;
       })
       .addCase(deleteItem.pending, (state, action) => {
-        state.status = "loading";
+        state.patchStatus = "loading";
       })
       .addCase(deleteItem.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.patchStatus = "succeeded";
       })
       .addCase(deleteItem.rejected, (state, action) => {
-        state.status = "failed";
+        state.patchStatus = "failed";
         state.error = action.error.message;
       })
       .addCase(clearCart.pending, (state, action) => {
@@ -175,9 +182,11 @@ const cartSlice = createSlice({
   },
 });
 
+export const { changeAddStatus } = cartSlice.actions;
+export const selectUserCart = (state) => state.cart.cart;
 export const cartStatus = (state) => state.cart.cartStatus;
 export const addToCartStatus = (state) => state.cart.addToCartStatus;
-export const selectUserCart = (state) => state.cart.cart;
+export const selectPatchStatus = (state) => state.cart.patchStatus;
 export const selectShippingTotal = (state) => state.cart.shippingTotal;
 export const selectSubTotal = (state) => state.cart.subTotal;
 export const selectTotalPrice = (state) => state.cart.totalPrice;

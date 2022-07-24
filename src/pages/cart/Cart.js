@@ -14,6 +14,8 @@ import DialogContent from "@mui/material/DialogContent";
 import StickyBox from "react-sticky-box";
 import { useDispatch, useSelector } from "react-redux";
 import { formatToCurrency } from "../../utils/currencyFormatter";
+import Loader from "../../components/loader/Loader";
+import DeleteBar from "../../components/delete/DeleteCartItem";
 
 import {
   fetchCartProducts,
@@ -21,6 +23,7 @@ import {
   patchQuantity,
   patchColor,
   deleteItem,
+  selectPatchStatus,
 } from "../../reducers/cartSlice";
 import { user } from "../../reducers/usersSlice";
 import {
@@ -57,7 +60,7 @@ const StyledCartHeader = styled("div")(({ theme }) => ({
 }));
 
 const StyledCheckOutHeader = styled("div")(({ theme }) => ({
-  fontSize: "16px",
+  fontSize: "16 px",
   color: "#444",
   fontWeight: 400,
   padding: "15px",
@@ -221,12 +224,17 @@ const StyledMobileCheckoutGrid = styled("div")(({ theme }) => ({
 
 const Cart = () => {
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   const dispatch = useDispatch();
   const cart = useSelector(selectUserCart);
   const myUser = useSelector(user);
   const oneProduct = useSelector(selectProduct);
   const status = useSelector(OneProdStatus);
+  const patchStatus = useSelector(selectPatchStatus);
   const [loader, setLoader] = useState("");
+  const [itemID, setItemID] = useState("");
+  const [userID, setUserID] = useState("");
+  const [patchLoader, setPatchLoader] = useState("");
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -235,9 +243,27 @@ const Cart = () => {
     setOpen(false);
   };
 
+  const handleDelete = ({ id, user }) => {
+    setOpenDelete(true);
+    setTimeout(() => {
+      setOpenDelete(false);
+    }, 5000);
+    setItemID(id);
+    setUserID(user);
+  };
+
+  const deleteAction = () => {
+    dispatch(deleteItem(itemID));
+    dispatch(fetchCartProducts(userID));
+  };
+
   useEffect(() => {
     setLoader(status);
   }, [status]);
+
+  useEffect(() => {
+    setPatchLoader(patchStatus);
+  }, [patchStatus]);
 
   useEffect(() => {
     return () => {
@@ -279,6 +305,8 @@ const Cart = () => {
         </DialogActions>
       </Dialog>
       <CartBody>
+        {patchLoader === "loading" && <Loader />}
+        {openDelete && <DeleteBar action={deleteAction} />}
         <Grid container spacing={5}>
           <Grid item md={8} xs={12}>
             <StyledCartGrid>
@@ -375,6 +403,7 @@ const Cart = () => {
                                 <QuantityDiv>
                                   <IconButton
                                     size="small"
+                                    disabled={item.cartItemQuantity === "1"}
                                     onClick={() => {
                                       let newQuantity =
                                         parseInt(item.cartItemQuantity) - 1;
@@ -427,8 +456,10 @@ const Cart = () => {
                               <StyledDeleteButton
                                 sx={{ display: { xs: "none", md: "flex" } }}
                                 onClick={() => {
-                                  dispatch(deleteItem(item._id));
-                                  dispatch(fetchCartProducts(item.userID));
+                                  handleDelete({
+                                    id: item._id,
+                                    user: item.userID,
+                                  });
                                 }}
                               >
                                 <DeleteIcon
@@ -441,10 +472,12 @@ const Cart = () => {
                                   display: { xs: "block", md: "none" },
                                   marginRight: "3px",
                                 }}
-                                onClick={() => {
-                                  dispatch(deleteItem(item._id));
-                                  dispatch(fetchCartProducts(item.userID));
-                                }}
+                                onClick={() =>
+                                  handleDelete({
+                                    id: item._id,
+                                    user: item.userID,
+                                  })
+                                }
                               >
                                 <DeleteIcon
                                   sx={{
