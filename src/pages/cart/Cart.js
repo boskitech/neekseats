@@ -24,6 +24,8 @@ import {
   patchColor,
   deleteItem,
   selectPatchStatus,
+  selectDeleteModal,
+  setDeleteModal,
 } from "../../reducers/cartSlice";
 import { user } from "../../reducers/usersSlice";
 import {
@@ -231,6 +233,7 @@ const Cart = () => {
   const oneProduct = useSelector(selectProduct);
   const status = useSelector(OneProdStatus);
   const patchStatus = useSelector(selectPatchStatus);
+  const deleteModal = useSelector(selectDeleteModal);
   const [loader, setLoader] = useState("");
   const [itemID, setItemID] = useState("");
   const [userID, setUserID] = useState("");
@@ -245,9 +248,7 @@ const Cart = () => {
 
   const handleDelete = ({ id, user }) => {
     setOpenDelete(true);
-    setTimeout(() => {
-      setOpenDelete(false);
-    }, 5000);
+    dispatch(setDeleteModal(true));
     setItemID(id);
     setUserID(user);
   };
@@ -255,6 +256,7 @@ const Cart = () => {
   const deleteAction = () => {
     dispatch(deleteItem(itemID));
     dispatch(fetchCartProducts(userID));
+    dispatch(setDeleteModal(false));
   };
 
   useEffect(() => {
@@ -264,6 +266,10 @@ const Cart = () => {
   useEffect(() => {
     setPatchLoader(patchStatus);
   }, [patchStatus]);
+
+  useEffect(() => {
+    setOpenDelete(deleteModal);
+  }, [deleteModal]);
 
   useEffect(() => {
     return () => {

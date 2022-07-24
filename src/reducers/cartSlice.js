@@ -73,6 +73,7 @@ const initialState = {
   cartStatus: "idle",
   addToCartStatus: "idle",
   patchStatus: "idle",
+  deleteModal: "false",
   error: null,
 };
 
@@ -80,23 +81,11 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    calcShipping: (state) => {
-      const priceArray = state.cart.map(
-        (product) => product.itemShippingPrice * product.cartItemQuantity
-      );
-      state.shippingTotal = priceArray.flat().reduce((acc, sum) => acc + sum);
-    },
-    caclSubtotal: (state) => {
-      const pricesArray = state.cart.map(
-        (product) => product.cartItemPrice * product.cartItemQuantity
-      );
-      state.subTotal = pricesArray.flat().reduce((acc, sum) => acc + sum);
-    },
-    calcTotal: (state) => {
-      state.totalPrice = state.subTotal + state.shippingTotal;
-    },
     changeAddStatus: (state) => {
       state.addToCartStatus = "idle";
+    },
+    setDeleteModal: (state, action) => {
+      state.deleteModal = action.payload;
     },
   },
   extraReducers(builder) {
@@ -182,7 +171,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { changeAddStatus } = cartSlice.actions;
+export const { changeAddStatus, setDeleteModal } = cartSlice.actions;
 export const selectUserCart = (state) => state.cart.cart;
 export const cartStatus = (state) => state.cart.cartStatus;
 export const addToCartStatus = (state) => state.cart.addToCartStatus;
@@ -190,5 +179,7 @@ export const selectPatchStatus = (state) => state.cart.patchStatus;
 export const selectShippingTotal = (state) => state.cart.shippingTotal;
 export const selectSubTotal = (state) => state.cart.subTotal;
 export const selectTotalPrice = (state) => state.cart.totalPrice;
+export const selectDeleteModal = (state) => state.cart.deleteModal;
+
 
 export default cartSlice.reducer;

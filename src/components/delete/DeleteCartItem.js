@@ -6,7 +6,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useDispatch } from "react-redux";
-import { fetchCartProducts } from "../../reducers/cartSlice";
+import { fetchCartProducts, setDeleteModal } from "../../reducers/cartSlice";
 
 export default function DeleteBar({ action }) {
   const [open, setOpen] = React.useState(true);
@@ -14,12 +14,13 @@ export default function DeleteBar({ action }) {
 
   const handleClose = () => {
     setOpen(false);
+    dispatch(setDeleteModal(false));
   };
 
   const handleAction = () => {
     action();
     setOpen(false);
-
+    dispatch(setDeleteModal(false));
     const user = JSON.parse(localStorage.getItem("user"));
     console.log(user._id);
     dispatch(fetchCartProducts(user._id));
