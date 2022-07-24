@@ -10,7 +10,7 @@ import ContactUs from "./pages/contact/Contact";
 import { AnimatePresence } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import ViewItem from "./pages/shop/ViewItem";
+import ViewItem from "./pages/viewItem/ViewItem";
 import Cart from "./pages/cart/Cart";
 import Login from "./pages/auth/auth";
 import AddProduct from "./pages/dashboard/AddProduct";
