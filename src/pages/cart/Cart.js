@@ -438,7 +438,7 @@ const Cart = () => {
                                         }}
                                       />
                                     </IconButton>
-                                    ;{item.cartItemQuantity}
+                                    {item.cartItemQuantity}
                                     <IconButton
                                       size="small"
                                       onClick={() => {
@@ -464,7 +464,6 @@ const Cart = () => {
                                         }}
                                       />
                                     </IconButton>
-                                    ;
                                   </QuantityDiv>
                                 </StyledQuantityBar>
                               </Grid>
@@ -522,7 +521,7 @@ const Cart = () => {
                     fontSize: "20px",
                   }}
                 >
-                  No Items In Cart :)
+                  No Items In Cart
                 </div>
               )}
             </StyledCartGrid>

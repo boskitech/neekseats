@@ -278,6 +278,7 @@ const ViewItem = () => {
   const addCartItemStatus = useSelector(addToCartStatus);
   const [imageUrl, setImageUrl] = React.useState("");
   const [loader, setLoader] = React.useState("");
+  const [error, setError] = React.useState(false);
 
   const handleValue = (event, newValue) => {
     setColor(newValue);
@@ -315,7 +316,7 @@ const ViewItem = () => {
 
         dispatch(addToCart(postData));
       } else {
-        console.log("no user");
+        setError(true);
       }
     }
   };
@@ -336,6 +337,24 @@ const ViewItem = () => {
           action={handleGoToCart}
           actionTitle="View Cart"
           closeAction={() => dispatch(changeAddStatus())}
+        />
+      )}
+      {addCartItemStatus === "failed" && (
+        <AlertBar
+          message="Item not added. Try Again later"
+          header="Error"
+          action={() => {}}
+          actionTitle=""
+          closeAction={() => {}}
+        />
+      )}
+      {error && (
+        <AlertBar
+          message="Couldn't add items to cart. Login to continue"
+          header="Cannot Add Item"
+          action={() => navigate("/login")}
+          actionTitle="Login"
+          closeAction={() => {}}
         />
       )}
       {status === "succeeded" ? (

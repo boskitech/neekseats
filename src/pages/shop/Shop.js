@@ -7,6 +7,7 @@ import ListIcon from "@mui/icons-material/List";
 import StickyBox from "react-sticky-box";
 import Fab from "@mui/material/Fab";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Button, CircularProgress, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
@@ -21,12 +22,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 const Shop = () => {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [viewType, setViewType] = useState(4);
   const [mobileViewType, setMobileViewType] = useState(6);
   const [gridView, setGridView] = useState(true);
   const [loaded, setLoaded] = useState(false);
+  const [wishList, setWishList] = useState([]);
   const allProducts = useSelector(selectAllProducts);
   const status = useSelector(productStatus);
 
@@ -42,12 +43,36 @@ const Shop = () => {
     setGridView(true);
   };
 
+  const handleFav = ({ event, product }) => {
+    if (event.target.name !== "favButton") {
+      event.preventDefault();
+      event.stopPropagation();
+      if (localStorage.getItem("user")) {
+        // const user = JSON.parse(localStorage.getItem("user"));
+        setWishList([...wishList, product]);
+      }
+    } else {
+      console.log("Not Fav button");
+    }
+  };
+
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchProducts());
     }
-    // console.log(allProducts.map((product) => product.productImage[0].image));
   });
+
+  const checkFav = (itemID) => {
+    if (wishList.find((item) => item._id === itemID)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    console.log(wishList);
+  }, [wishList]);
 
   const ShopBody = styled("div")(({ theme }) => ({
     width: "80%",
@@ -298,14 +323,29 @@ const Shop = () => {
                               size="small"
                               color="primary"
                               aria-label="add"
+                              name="favButton"
+                              // sx={{ border: checkFav(product._id) && "none" }}
+                              onClick={(e) =>
+                                handleFav({ event: e, product: product })
+                              }
                             >
-                              <FavoriteBorderOutlinedIcon
-                                sx={{
-                                  display: "flex",
-                                  justifyContent: "flex-end",
-                                  margin: "auto",
-                                }}
-                              />
+                              {checkFav(product._id) ? (
+                                <FavoriteIcon
+                                  sx={{
+                                    display: "flex",
+                                    justifyContent: "flex-end",
+                                    margin: "auto",
+                                  }}
+                                />
+                              ) : (
+                                <FavoriteBorderOutlinedIcon
+                                  sx={{
+                                    display: "flex",
+                                    justifyContent: "flex-end",
+                                    margin: "auto",
+                                  }}
+                                />
+                              )}
                             </StyledFabButton>
                             <StyledProductsImage
                               src={`http://localhost:5200/uploads/${product.productImage[0].image}`}
