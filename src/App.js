@@ -14,6 +14,7 @@ import ViewItem from "./pages/viewItem/ViewItem";
 import Cart from "./pages/cart/Cart";
 import Login from "./pages/auth/auth";
 import AddProduct from "./pages/dashboard/AddProduct";
+import WishList from "./pages/wishList/Wishlist";
 
 function App() {
   useEffect(() => {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/shop/:id" element={<ViewItem />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/wishlist" element={<WishList />} />
             <Route path="/login" element={<Login />} />
             <Route path="/addproduct" element={<AddProduct />} />
           </Routes>

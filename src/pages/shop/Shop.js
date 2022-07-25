@@ -20,6 +20,7 @@ import {
   productStatus,
 } from "../../reducers/productSlice";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -48,8 +49,24 @@ const Shop = () => {
       event.preventDefault();
       event.stopPropagation();
       if (localStorage.getItem("user")) {
-        // const user = JSON.parse(localStorage.getItem("user"));
-        setWishList([...wishList, product]);
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        const data = {
+          userID: user._id,
+          itemID: product._id,
+          wishItemName: product.productName,
+          wishItemPrice: product.productPrice,
+          wishItemImage: product.productImage[0].image,
+        };
+        axios
+          .post("http://localhost:5200/api/wishlist/", data, {})
+          .then((res) => {
+            setWishList([...wishList, product]);
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     } else {
       console.log("Not Fav button");

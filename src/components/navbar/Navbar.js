@@ -248,17 +248,6 @@ const Navbar = () => {
                   Login
                 </StyledLoginButton>
               ) : (
-                // <Button
-                //   onClick={() => navigate("/acount")}
-                //   sx={{ color: "black" }}
-                // >
-                //   <PersonIcon />
-                //   <span
-                //     style={{ fontSize: "14px", textTransform: "capitalize" }}
-                //   >
-                //     {userd.firstname}
-                //   </span>
-                // </Button>
                 <AccountMenu user={userd.firstname} />
               )}
             </Box>

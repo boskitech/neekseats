@@ -11,6 +11,7 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { checkUser } from "../../reducers/usersSlice";
 import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import { Favorite, Person } from "@mui/icons-material";
 
 export default function AccountMenu({ user }) {
@@ -85,26 +86,31 @@ export default function AccountMenu({ user }) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem>
-          <ListItemIcon>
-            <Favorite fontSize="small" />
-          </ListItemIcon>
-          Wish List
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <ShoppingBasketIcon fontSize="small" />
-          </ListItemIcon>
-          Orders
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <Person fontSize="small" />
-          </ListItemIcon>
-          My Account
-        </MenuItem>
+        <Link to="/wishlist" style={{ textDecoration: "none", color: "#333" }}>
+          <MenuItem>
+            <ListItemIcon>
+              <Favorite fontSize="small" />
+            </ListItemIcon>
+            Wish List
+          </MenuItem>
+        </Link>
+        <Link to="/orders" style={{ textDecoration: "none", color: "#333" }}>
+          <MenuItem>
+            <ListItemIcon>
+              <ShoppingBasketIcon fontSize="small" />
+            </ListItemIcon>
+            Orders
+          </MenuItem>
+        </Link>
+        <Link to="/acount" style={{ textDecoration: "none", color: "#333" }}>
+          <MenuItem>
+            <ListItemIcon>
+              <Person fontSize="small" />
+            </ListItemIcon>
+            My Account
+          </MenuItem>
+        </Link>
         <Divider />
-
         <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
             <Logout fontSize="small" />

@@ -357,6 +357,7 @@ const ViewItem = () => {
           closeAction={() => {}}
         />
       )}
+      <Button onClick={() => navigate("/shop")}>Back</Button>
       {status === "succeeded" ? (
         <>
           {" "}
