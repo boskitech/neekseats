@@ -17,6 +17,7 @@ import AddProduct from "./pages/dashboard/AddProduct";
 import WishList from "./pages/wishList/Wishlist";
 import Orders from "./pages/orders/Orders";
 import Account from "./pages/account/Account";
+import SearchPage from "./pages/searchPage/SearchPage";
 
 function App() {
   useEffect(() => {
@@ -35,10 +36,11 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/shop/:id" element={<ViewItem />} />
+            <Route path="/search/:key" element={<SearchPage />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/wishlist" element={<WishList />} />
             <Route path="/orders" element={<Orders />} />
-            <Route path="/acount" element={<Account />} />
+            <Route path="/account" element={<Account />} />
             <Route path="/login" element={<Login />} />
             <Route path="/addproduct" element={<AddProduct />} />
           </Routes>

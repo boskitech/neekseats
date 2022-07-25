@@ -19,6 +19,16 @@ export const fetchOneProduct = createAsyncThunk(
   }
 );
 
+export const fetchSearchProducts = createAsyncThunk(
+  "products/fetchSearchProducts",
+  async (key) => {
+    const response = await axios.get(
+      `http://localhost:5200/api/product/search/${key}`
+    );
+    return response.data;
+  }
+);
+
 export const fetchProductByCategory = createAsyncThunk(
   "products/fetchProductByCategory",
   async (category) => {
@@ -32,9 +42,11 @@ export const fetchProductByCategory = createAsyncThunk(
 const initialState = {
   products: [],
   product: [],
+  searchProducts: [],
   productsCategory: [],
   status: "idle",
   oneProdStatus: "idle",
+  searchStatus: "idle",
   error: null,
 };
 
@@ -70,6 +82,17 @@ const productsSlice = createSlice({
         state.oneProdStatus = "failed";
         state.error = action.error.message;
       })
+      .addCase(fetchSearchProducts.pending, (state, action) => {
+        state.searchStatus = "loading";
+      })
+      .addCase(fetchSearchProducts.fulfilled, (state, action) => {
+        state.searchStatus = "succeeded";
+        state.searchProducts = action.payload;
+      })
+      .addCase(fetchSearchProducts.rejected, (state, action) => {
+        state.searchStatus = "failed";
+        state.error = action.error.message;
+      })
       .addCase(fetchProductByCategory.fulfilled, (state, action) => {
         state.productsCategory = action.payload;
       });
@@ -79,7 +102,9 @@ const productsSlice = createSlice({
 export const { changeStatus } = productsSlice.actions;
 export const productStatus = (state) => state.products.status;
 export const OneProdStatus = (state) => state.products.oneProdStatus;
+export const selectSearchStatus = (state) => state.products.searchStatus;
 export const selectAllProducts = (state) => state.products.products;
+export const selectSearchProducts = (state) => state.products.searchProducts;
 export const selectProduct = (state) => state.products.product;
 export const selectByCategory = (state) => state.products.productsCategory;
 

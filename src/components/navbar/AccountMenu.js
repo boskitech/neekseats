@@ -102,7 +102,7 @@ export default function AccountMenu({ user }) {
             Orders
           </MenuItem>
         </Link>
-        <Link to="/acount" style={{ textDecoration: "none", color: "#333" }}>
+        <Link to="/account" style={{ textDecoration: "none", color: "#333" }}>
           <MenuItem>
             <ListItemIcon>
               <Person fontSize="small" />
