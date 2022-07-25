@@ -1,8 +1,7 @@
-import { Divider, Grid } from "@mui/material";
+import { CircularProgress, Divider, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Loader from "../../components/loader/Loader";
 import ItemBar from "../../components/itemBar/ItemBar";
 import axios from "axios";
 
@@ -51,7 +50,7 @@ const Orders = () => {
       setLoader(true);
       const user = JSON.parse(localStorage.getItem("user"));
       axios
-        .get(`http://localhost:5200/api/orders/user/${user._id}`)
+        .get(`http://localhost:5200/api/orders/${user._id}`)
         .then((res) => {
           setOrders(res.data);
           setLoader(false);
@@ -66,7 +65,7 @@ const Orders = () => {
 
   useEffect(() => {
     getUserItem();
-  });
+  }, []);
 
   return (
     <motion.div
@@ -76,42 +75,53 @@ const Orders = () => {
       transition={{ type: "spring", duration: 0.5 }}
     >
       <CartBody>
-        {loader === "loading" && <Loader />}
-        <Grid container>
-          <Grid item md={12} xs={12}>
-            <StyledCartGrid>
-              <StyledCartHeader>
-                Orders
-                <Divider
-                  sx={{
-                    marginTop: "13px",
-                    display: { xs: "none", sm: "block" },
-                  }}
-                />
-              </StyledCartHeader>
-              {orders.length > 0 ? (
-                orders.map((item) => (
-                  <ItemBar
-                    itemImage={item.itemImage}
-                    itemName={item.itemName}
-                    itemPrice={item.itemPrice}
+        {loader ? (
+          <div
+            style={{
+              margin: "60px auto",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <CircularProgress />
+          </div>
+        ) : (
+          <Grid container>
+            <Grid item md={12} xs={12}>
+              <StyledCartGrid>
+                <StyledCartHeader>
+                  Orders
+                  <Divider
+                    sx={{
+                      marginTop: "13px",
+                      display: { xs: "none", sm: "block" },
+                    }}
                   />
-                ))
-              ) : (
-                <div
-                  style={{
-                    textAlign: "center",
-                    marginTop: "50px",
-                    paddingBottom: "50px",
-                    fontSize: "20px",
-                  }}
-                >
-                  No Items In Wish List
-                </div>
-              )}
-            </StyledCartGrid>
+                </StyledCartHeader>
+                {orders.length > 0 ? (
+                  orders.map((item) => (
+                    <ItemBar
+                      itemImage={item.itemImage}
+                      itemName={item.itemName}
+                      itemPrice={item.itemPrice}
+                    />
+                  ))
+                ) : (
+                  <div
+                    style={{
+                      textAlign: "center",
+                      marginTop: "50px",
+                      paddingBottom: "50px",
+                      fontSize: "20px",
+                    }}
+                  >
+                    No Items In Orders
+                  </div>
+                )}
+              </StyledCartGrid>
+            </Grid>
           </Grid>
-        </Grid>
+        )}
       </CartBody>
     </motion.div>
   );

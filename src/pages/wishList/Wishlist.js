@@ -1,8 +1,7 @@
-import { Divider, Grid } from "@mui/material";
+import { CircularProgress, Divider, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Loader from "../../components/loader/Loader";
 import ItemBar from "../../components/itemBar/ItemBar";
 import axios from "axios";
 
@@ -66,7 +65,7 @@ const WishList = () => {
 
   useEffect(() => {
     getUserItem();
-  });
+  }, []);
 
   return (
     <motion.div
@@ -76,43 +75,54 @@ const WishList = () => {
       transition={{ type: "spring", duration: 0.5 }}
     >
       <CartBody>
-        {loader === "loading" && <Loader />}
-        <Grid container>
-          <Grid item md={12} xs={12}>
-            <StyledCartGrid>
-              <StyledCartHeader>
-                Wish List
-                <Divider
-                  sx={{
-                    marginTop: "13px",
-                    display: { xs: "none", sm: "block" },
-                  }}
-                />
-              </StyledCartHeader>
-              {wishList.length > 0 ? (
-                wishList.map((item) => (
-                  <ItemBar
-                    key={item._id}
-                    itemImage={item.wishItemImage}
-                    itemName={item.wishItemName}
-                    itemPrice={item.wishItemPrice}
+        {loader ? (
+          <div
+            style={{
+              margin: "60px auto",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <CircularProgress />
+          </div>
+        ) : (
+          <Grid container>
+            <Grid item md={12} xs={12}>
+              <StyledCartGrid>
+                <StyledCartHeader>
+                  Wish List
+                  <Divider
+                    sx={{
+                      marginTop: "13px",
+                      display: { xs: "none", sm: "block" },
+                    }}
                   />
-                ))
-              ) : (
-                <div
-                  style={{
-                    textAlign: "center",
-                    marginTop: "50px",
-                    paddingBottom: "50px",
-                    fontSize: "20px",
-                  }}
-                >
-                  No Items In Wish List
-                </div>
-              )}
-            </StyledCartGrid>
+                </StyledCartHeader>
+                {wishList.length > 0 ? (
+                  wishList.map((item) => (
+                    <ItemBar
+                      key={item._id}
+                      itemImage={item.wishItemImage}
+                      itemName={item.wishItemName}
+                      itemPrice={item.wishItemPrice}
+                    />
+                  ))
+                ) : (
+                  <div
+                    style={{
+                      textAlign: "center",
+                      marginTop: "50px",
+                      paddingBottom: "50px",
+                      fontSize: "20px",
+                    }}
+                  >
+                    No Items In Wish List
+                  </div>
+                )}
+              </StyledCartGrid>
+            </Grid>
           </Grid>
-        </Grid>
+        )}
       </CartBody>
     </motion.div>
   );
