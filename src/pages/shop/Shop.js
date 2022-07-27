@@ -221,7 +221,7 @@ const Shop = () => {
 
   const StyledProductDetails = styled("div")(({ theme }) => ({
     float: !gridView && "left",
-    margin: !gridView && "45px 20px",
+    margin: !gridView ? "45px 20px" : "0px 8px",
     [theme.breakpoints.down("md")]: {
       margin: !gridView && "40px 0 0 0",
     },

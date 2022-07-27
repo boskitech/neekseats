@@ -3,12 +3,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
   selectAllProducts,
   productStatus,
+  fetchSearchProducts,
 } from "../../reducers/productSlice";
 
 const StyledSearchUl = styled("ul")(({ theme }) => ({
@@ -68,7 +69,7 @@ const SearchBar = () => {
     setTimeout(() => {
       setFocus(false);
       setSearchValue("");
-    }, [200]);
+    }, [300]);
   };
 
   useEffect(() => {
@@ -105,6 +106,10 @@ const SearchBar = () => {
       />
       <StyledLoginButton
         sx={{ width: "40px", marginLeft: "5px", height: "40px" }}
+        onClick={() => {
+          navigate(`/search/${searchValue}`);
+          dispatch(fetchSearchProducts(searchValue));
+        }}
       >
         <SearchIcon />
       </StyledLoginButton>
@@ -121,7 +126,11 @@ const SearchBar = () => {
         >
           {searchResults.map((results, index) => (
             <StyledSearchUl key={index}>
-              <StyledSearchLi onClick={() => navigate("/shop")}>
+              <StyledSearchLi
+                onClick={() => {
+                  navigate(`/search/${results.productName.substr(0, 15)}`);
+                }}
+              >
                 {results.productName.substr(0, 20)}
               </StyledSearchLi>
             </StyledSearchUl>

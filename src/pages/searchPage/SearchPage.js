@@ -71,15 +71,12 @@ const SearchPage = () => {
           });
       }
     } else {
-      console.log("Not Fav button");
     }
   };
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchSearchProducts(key));
-    }
-  });
+    dispatch(fetchSearchProducts(key));
+  }, [dispatch, key]);
 
   const checkFav = (itemID) => {
     if (wishList.find((item) => item._id === itemID)) {
@@ -189,8 +186,8 @@ const SearchPage = () => {
   }));
 
   const StyledProductsDivHeader = styled("div")(({ theme }) => ({
-    fontSize: "16px",
-    fontWeight: 500,
+    fontSize: "15px",
+    fontWeight: 400,
     color: "#555",
     marginTop: "0px",
     textAlign: "center",
@@ -223,7 +220,7 @@ const SearchPage = () => {
 
   const StyledProductDetails = styled("div")(({ theme }) => ({
     float: !gridView && "left",
-    margin: !gridView && "45px 20px",
+    margin: !gridView ? "45px 20px" : "0px 8px",
     [theme.breakpoints.down("md")]: {
       margin: !gridView && "40px 0 0 0",
     },
@@ -273,10 +270,11 @@ const SearchPage = () => {
           display="flex"
           justifyContent="space-between"
         >
-          <Grid item sx={{ display: { xs: "none", md: "block" } }}>
-            <StyledLinkButton>Home </StyledLinkButton>&gt;
-            <StyledLinkButton>Shop</StyledLinkButton>&gt;
-            <StyledLinkButton>Smart Watches</StyledLinkButton>
+          <Grid
+            item
+            sx={{ fontSize: "20px", display: { xs: "none", md: "block" } }}
+          >
+            Search Results
           </Grid>
           <Grid item>
             <span>View Type: </span>
