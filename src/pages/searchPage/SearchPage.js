@@ -94,7 +94,7 @@ const SearchPage = () => {
     width: "80%",
     margin: "110px auto",
     [theme.breakpoints.up("xl")]: {
-      width: "60%",
+      width: "70%",
     },
     [theme.breakpoints.down("xl")]: {
       width: "80%",

@@ -186,7 +186,15 @@ const Home = () => {
             </HomeStyles.StyledTracKBuyButton>
           </Grid>
           <Grid item md={7} xs={0}>
-            <HomeStyles.StyledTopSpecImage src={WatchFace} />
+            <div
+              style={{
+                display: "grid",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
+              <HomeStyles.StyledTopSpecImage src={WatchFace} />
+            </div>
           </Grid>
           <Grid item md={2.5} xs={6}>
             <HomeStyles.StyledTrackHeader>

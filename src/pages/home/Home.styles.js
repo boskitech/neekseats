@@ -12,7 +12,7 @@ export const HomeBody = styled("div")(({ theme }) => ({
   width: "70%",
   margin: "100px auto",
   [theme.breakpoints.up("xl")]: {
-    width: "60%",
+    width: "70%",
   },
   [theme.breakpoints.down("xl")]: {
     width: "80%",
@@ -204,20 +204,22 @@ export const FeaturesLogo = styled(Grid)(({ theme }) => ({
   },
 }));
 
-export const FeaturesShippingIcon = styled(LocalShippingOutlinedIcon)(({ theme }) => ({
-  width: "50px",
-  height: "50px",
-  padding: "10px",
-  color: "#5eb3d4",
-  [theme.breakpoints.down("lg")]: {
-    width: "40px",
-    height: "40px",
-  },
-  [theme.breakpoints.down("md")]: {
-    width: "30px",
-    height: "30px",
-  },
-}));
+export const FeaturesShippingIcon = styled(LocalShippingOutlinedIcon)(
+  ({ theme }) => ({
+    width: "50px",
+    height: "50px",
+    padding: "10px",
+    color: "#5eb3d4",
+    [theme.breakpoints.down("lg")]: {
+      width: "40px",
+      height: "40px",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "30px",
+      height: "30px",
+    },
+  })
+);
 
 export const FeaturesSupportIcon = styled(CallOutlinedIcon)(({ theme }) => ({
   width: "50px",
@@ -362,7 +364,9 @@ export const StyledTracKBuyNowButton = styled(Button)(({ theme }) => ({
 export const StyledTopSpecImage = styled("img")(({ theme }) => ({
   width: "500px",
   height: "auto",
+  float: "center",
   margin: "auto",
+  align: "center",
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
