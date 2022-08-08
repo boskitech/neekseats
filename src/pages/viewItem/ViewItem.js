@@ -13,6 +13,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { IconButton } from "@mui/material";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate, useParams } from "react-router-dom";
 import {
   fetchOneProduct,
@@ -91,7 +92,7 @@ const QuantityDiv = styled("span")(({ theme }) => ({
 
 const ViewItemBody = styled("div")(({ theme }) => ({
   width: "80%",
-  margin: "130px auto",
+  margin: "100px auto",
   [theme.breakpoints.up("xl")]: {
     width: "65%",
   },
@@ -357,7 +358,7 @@ const ViewItem = () => {
           closeAction={() => {}}
         />
       )}
-      <Button onClick={() => navigate("/shop")}>Back</Button>
+      <IconButton sx={{mb:'30px', color:'#333', fontSize:'24px'}} onClick={() => navigate("/shop")}><ArrowBackIcon/></IconButton>
       {status === "succeeded" ? (
         <>
           {" "}
