@@ -196,34 +196,36 @@ const Home = () => {
               <HomeStyles.StyledTopSpecImage src={WatchFace} />
             </div>
           </Grid>
-          <Grid item md={2.5} xs={6}>
-            <HomeStyles.StyledTrackHeader>
-              Smart Track
-            </HomeStyles.StyledTrackHeader>
-            <HomeStyles.StyledTrackText>$45.99</HomeStyles.StyledTrackText>
-            <HomeStyles.StyledTrackList>
-              Fitness Tracker
-              <HomeStyles.StyledTrackIcon />
-            </HomeStyles.StyledTrackList>
-            <HomeStyles.StyledTrackList>
-              Heart Rate Monitor
-              <HomeStyles.StyledTrackIcon />
-            </HomeStyles.StyledTrackList>
-            <HomeStyles.StyledTrackList>
-              Battery
-              <HomeStyles.StyledTrackIcon />
-            </HomeStyles.StyledTrackList>
-            <HomeStyles.StyledTrackList>
-              Alarm Clock
-              <HomeStyles.StyledTrackIcon />
-            </HomeStyles.StyledTrackList>
-            <HomeStyles.StyledTrackList>
-              Sports Tracker
-              <HomeStyles.StyledTrackIcon />
-            </HomeStyles.StyledTrackList>
-            <HomeStyles.StyledTracKBuyNowButton>
-              Buy Now
-            </HomeStyles.StyledTracKBuyNowButton>
+          <Grid item md={2.5} xs={6} style={{display:'flex', flexDirection:'row', justifyContent:'end'}}>
+            <div>
+              <HomeStyles.StyledTrackHeader>
+                Smart Track
+              </HomeStyles.StyledTrackHeader>
+              <HomeStyles.StyledTrackText>$45.99</HomeStyles.StyledTrackText>
+              <HomeStyles.StyledTrackList>
+                Fitness Tracker
+                <HomeStyles.StyledTrackIcon />
+              </HomeStyles.StyledTrackList>
+              <HomeStyles.StyledTrackList>
+                Heart Rate Monitor
+                <HomeStyles.StyledTrackIcon />
+              </HomeStyles.StyledTrackList>
+              <HomeStyles.StyledTrackList>
+                Battery
+                <HomeStyles.StyledTrackIcon />
+              </HomeStyles.StyledTrackList>
+              <HomeStyles.StyledTrackList>
+                Alarm Clock
+                <HomeStyles.StyledTrackIcon />
+              </HomeStyles.StyledTrackList>
+              <HomeStyles.StyledTrackList>
+                Sports Tracker
+                <HomeStyles.StyledTrackIcon />
+              </HomeStyles.StyledTrackList>
+              <HomeStyles.StyledTracKBuyNowButton>
+                Buy Now
+              </HomeStyles.StyledTracKBuyNowButton>
+            </div>
           </Grid>
         </Grid>
       </HomeStyles.StyledTopSpecs>
