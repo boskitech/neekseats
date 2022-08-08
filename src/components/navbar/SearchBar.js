@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
@@ -47,7 +47,7 @@ const StyledGridLoginInput = styled(TextField)(({ theme }) => ({
 
 const StyledLoginButton = styled(Button)(({ theme }) => ({
   color: "#fff",
-  fontWeight: 800,
+  fontWeight: 700,
   backgroundColor: "#416cb7",
   width: "120px",
   marginLeft: "10px",

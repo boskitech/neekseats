@@ -22,10 +22,10 @@ import { selectUserCart, fetchCartProducts } from "../../reducers/cartSlice";
 
 const HeaderText = styled("h2")(({ theme }) => ({
   color: "#000",
-  fontWeight: "900",
+  fontWeight: 700,
   fontSize: "23px",
   [theme.breakpoints.down("md")]: {
-    fontWeight: "800",
+    fontWeight: 700,
     fontSize: "20px",
   },
 }));
@@ -58,7 +58,7 @@ const StyledMenuButton = styled(Button)({
 
 const StyledLoginButton = styled(Button)(({ theme }) => ({
   color: "#fff",
-  fontWeight: 800,
+  fontWeight: 700,
   backgroundColor: "#416cb7",
   width: "120px",
   marginLeft: "10px",

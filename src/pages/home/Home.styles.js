@@ -66,14 +66,14 @@ export const StyledLeftSideBanner = styled("div")(({ theme }) => ({
 
 export const StyledBannerHeaderText = styled("div")(({ theme }) => ({
   fontSize: "48px",
-  fontWeight: 550,
+  fontWeight: 600,
   color: "#000",
   lineHeight: "65px",
 }));
 
 export const StyledBannerText = styled("div")(({ theme }) => ({
   fontSize: "15px",
-  fontWeight: 420,
+  fontWeight: 400,
   color: "#000",
   lineHeight: "20px",
   marginTop: "15px",
@@ -422,7 +422,7 @@ export const StyledPopularProductsDivHeader = styled("div")(({ theme }) => ({
 
 export const StyledPopularProductsDivText = styled("div")(({ theme }) => ({
   fontSize: "16px",
-  fontWeight: 450,
+  fontWeight: 400,
   textAlign: "center",
   color: "red",
   marginTop: "10px",
@@ -430,7 +430,7 @@ export const StyledPopularProductsDivText = styled("div")(({ theme }) => ({
 
 export const StyledStrikedProductsDivText = styled("span")(({ theme }) => ({
   fontSize: "16px",
-  fontWeight: 450,
+  fontWeight: 400,
   textAlign: "center",
   color: "#888",
   marginLeft: "8px",
@@ -502,7 +502,7 @@ export const StyledOfferBar = styled(Grid)(({ theme }) => ({
 
 export const StyledOfferBarHeader = styled("div")(({ theme }) => ({
   fontSize: "35px",
-  fontWeight: 600,
+  fontWeight: 500,
   color: "#000",
   lineHeight: "45px",
   margin: "30px auto 0 auto",
