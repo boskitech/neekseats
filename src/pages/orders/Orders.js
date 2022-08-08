@@ -74,7 +74,7 @@ const Orders = () => {
       exit={{ x: 200, scale: 0, opacity: 0 }}
       transition={{ type: "spring", duration: 0.5 }}
     >
-      <CartBody>
+      <CartBody sx={{marginBottom:orders.length > 0 ? '50px' : '350px'}}>
         {loader ? (
           <div
             style={{

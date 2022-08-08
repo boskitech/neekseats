@@ -9,7 +9,7 @@ const CartBody = styled("div")(({ theme }) => ({
   width: "80%",
   margin: "130px auto 20px auto",
   [theme.breakpoints.up("xl")]: {
-    width: "70%",
+    width: "65%",
   },
   [theme.breakpoints.down("lg")]: {
     width: "90%",
@@ -74,7 +74,7 @@ const WishList = () => {
       exit={{ x: 200, scale: 0, opacity: 0 }}
       transition={{ type: "spring", duration: 0.5 }}
     >
-      <CartBody>
+      <CartBody sx={{marginBottom:wishList.length > 0 ? '50px' : '350px'}}>
         {loader ? (
           <div
             style={{
