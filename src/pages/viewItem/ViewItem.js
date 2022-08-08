@@ -93,7 +93,7 @@ const ViewItemBody = styled("div")(({ theme }) => ({
   width: "80%",
   margin: "130px auto",
   [theme.breakpoints.up("xl")]: {
-    width: "70%",
+    width: "65%",
   },
   [theme.breakpoints.down("lg")]: {
     width: "90%",

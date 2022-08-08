@@ -37,7 +37,7 @@ const StyledToolBar = styled(Toolbar)(({ theme }) => ({
   justifyContent: "space-between",
   boxShadow: "0px",
   [theme.breakpoints.up("xl")]: {
-    width: "70%",
+    width: "65%",
   },
   [theme.breakpoints.down("xl")]: {
     width: "80%",

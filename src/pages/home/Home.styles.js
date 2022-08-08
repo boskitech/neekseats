@@ -12,7 +12,7 @@ export const HomeBody = styled("div")(({ theme }) => ({
   width: "70%",
   margin: "100px auto",
   [theme.breakpoints.up("xl")]: {
-    width: "70%",
+    width: "65%",
   },
   [theme.breakpoints.down("xl")]: {
     width: "80%",
