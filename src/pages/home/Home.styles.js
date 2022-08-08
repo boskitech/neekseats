@@ -413,7 +413,7 @@ export const StyledPopularProductsImage = styled("img")(({ theme }) => ({
 
 export const StyledPopularProductsDivHeader = styled("div")(({ theme }) => ({
   fontSize: "18px",
-  fontWeight: 800,
+  fontWeight: 600,
   color: "black",
   marginTop: "17px",
   textAlign: "center",
@@ -502,7 +502,7 @@ export const StyledOfferBar = styled(Grid)(({ theme }) => ({
 
 export const StyledOfferBarHeader = styled("div")(({ theme }) => ({
   fontSize: "35px",
-  fontWeight: 500,
+  fontWeight: 600,
   color: "#000",
   lineHeight: "45px",
   margin: "30px auto 0 auto",
