@@ -264,7 +264,7 @@ const Shop = () => {
       exit={{ x: 200, scale: 0, opacity: 0 }}
       transition={{ type: "spring", duration: 0.5 }}
     >
-      <ShopBody>
+      <ShopBody sx={{marginBottom:status === "succeeded" ? '50px' : '250px'}}>
         <StyledLinkTagBar
           container
           direction="row"

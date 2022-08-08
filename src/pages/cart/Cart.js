@@ -310,7 +310,7 @@ const Cart = () => {
           <Button onClick={handleClose}>Cancel</Button>
         </DialogActions>
       </Dialog>
-      <CartBody>
+      <CartBody sx={{marginBottom: cart.length < 2 ? '220px' : '50px'}}>
         {patchLoader === "loading" && <Loader />}
         {openDelete && <DeleteBar action={deleteAction} />}
         <Grid container spacing={5}>

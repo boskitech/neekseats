@@ -142,7 +142,7 @@ export default function DeliveryBar() {
         </StyledSubTotalText>
         <StyledSubTotalText>
           <span>Tax</span>
-          <span>₦14.00</span>
+          <span>₦0.00</span>
         </StyledSubTotalText>
         <StyledSubTotalHeader sx={{ paddingBottom: "20px" }}>
           <span>Total</span>

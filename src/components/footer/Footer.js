@@ -14,11 +14,12 @@ const Footer = () => {
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },
+
   }));
 
   const StyledInerGrid = styled(Grid)(({ theme }) => ({
-    width: "60%",
-    margin: "20px auto",
+    width: "65%",
+    margin: "auto",
     [theme.breakpoints.down("xl")]: {
       width: "70%",
     },
@@ -73,7 +74,8 @@ const Footer = () => {
   }));
 
   return (
-    <StyledFooter>
+    <div style={{position:'absolute', width:'100%', display:'flex', flexDirection:'row', alignContent:'end'}}>
+    <StyledFooter sx={{}}>
       <StyledInerGrid container>
         <Grid item sm={3} xs={6}>
           <StyledGridHeader>Our Services</StyledGridHeader>
@@ -127,6 +129,7 @@ const Footer = () => {
         </Grid>
       </StyledInerGrid>
     </StyledFooter>
+    </div>
   );
 };
 
