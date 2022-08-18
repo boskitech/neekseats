@@ -18,6 +18,7 @@ import WishList from "./pages/wishList/Wishlist";
 import Orders from "./pages/orders/Orders";
 import Account from "./pages/account/Account";
 import SearchPage from "./pages/searchPage/SearchPage";
+import "./App.css"
 
 function App() {
   useEffect(() => {

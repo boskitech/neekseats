@@ -18,7 +18,7 @@ const Footer = () => {
   }));
 
   const StyledInerGrid = styled(Grid)(({ theme }) => ({
-    width: "65%",
+    width: "60%",
     margin: "auto",
     [theme.breakpoints.down("xl")]: {
       width: "70%",
