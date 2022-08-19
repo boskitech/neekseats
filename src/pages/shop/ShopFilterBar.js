@@ -5,37 +5,14 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/system";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import ToggleButtons from "../../components/toggleButton/Toggle";
 import MuiToggleButton from "@mui/material/ToggleButton";
 import MuiToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import {
+  fetchProducts,
   fetchProductsByFilter,
 } from "../../reducers/productSlice";
 import { useDispatch } from "react-redux";
-
- 
-
-
-const filters = {
-    categories: [
-      { listName: "Smart Watches", listValue: "smart" },
-      { listName: "Chain Watches", listValue: "chain" },
-      { listName: "Leather Watches", listValue: "leather" },
-      { listName: "Rubber Watch", listValue: "rubber" },
-      { listName: "Chronograph", listValue: "chronograph" },
-    ],
-    sortBy: [
-      { listName: "Newest", listValue: "newest" },
-      { listName: "Lowest To High", listValue: "lowest" },
-      { listName: "Higest To Lowest", listValue: "highes" },
-    ],
-    brand: [
-      { listName: "APPLE", listValue: "Apple" },
-      { listName: "LIGE", listValue: "LIGE" },
-      { listName: "SENBONO", listValue: "SENBONO" },
-      { listName: "IWO", listValue: "IWO" },
-    ],
-  };
+import { filters } from "../../utils/filter";
 
   const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -125,7 +102,8 @@ const filters = {
 export default function ShopFilterBar() {
 
   const [value, setValue] = React.useState(() => []);
-  const [filterArr, setFilterArr] = React.useState([])
+  const [brandArr, setBrandArr] = React.useState([])
+  const [categoryArr, setCategoryArr] = React.useState([])
   const [action, setAction] = React.useState(false)
   const [type, setType] = React.useState('')
   const dispatch = useDispatch()
@@ -134,33 +112,40 @@ export default function ShopFilterBar() {
     setValue(newValue);
   };
 
-  function handleFilter(e){
+  function handleBrandFilter(e){
     let data = e.target.value
-    setFilterArr(prev => [...prev, data])
+    if(brandArr.find(item => item === data)){
+      setBrandArr(prev => prev.filter(item => item !== data))
+    }else{
+      setBrandArr(prev => [...prev, data])
+    }
     setAction(true)
+  }
 
+  function handleCatFilter(e){
+    let data = e.target.value
+    if(categoryArr.find(item => item === data)){
+      setCategoryArr(prev => prev.filter(item => item !== data))
+    }else{
+      setCategoryArr(prev => [...prev, data])
+    }
+    setAction(true)
   }
 
   React.useEffect(() => {
     if(action){
       const meta = {
-        "brand": filterArr,
-        "category": []
+        "brand": brandArr,
+        "category": categoryArr
       }
-
-      if(type === 'brand'){
-        // meta["brand"].push(JSON.stringify(filterArr)) 
+      if(meta["brand"].length > 0 || meta["category"].length > 0){
         dispatch(fetchProductsByFilter(meta))
-      }else if(type === 'category'){
-        meta["category"].push(filterArr)
-        dispatch(fetchProductsByFilter(meta))
+      }else{
+        dispatch(fetchProducts());
       }
-
-
-      console.log(meta)
     }
   // eslint-disable-next-line
-  }, [action,filterArr])
+  }, [action, type, brandArr, categoryArr])
 
   return (
     <div>
@@ -174,12 +159,21 @@ export default function ShopFilterBar() {
         </AccordionSummary>
         <AccordionDetails>
           {filters.categories.map((filter, index) => (
-            <ToggleButtons
-              key={index}
-              listName={filter.listName}
-              listValue={filter.listValue}
-              tab="categories"
-            />
+            <ToggleButtonGroup
+                key={index}
+                value={value}
+                onChange={handleFormat}
+                aria-label="text formatting"
+              >
+                <ToggleButton onClick={(e) => 
+                    {
+                      setType('category')
+                      handleCatFilter(e)
+                    }
+                  } value={filter.listValue} aria-label="bold">
+                  {filter.listName}
+                </ToggleButton>
+               </ToggleButtonGroup>
           ))}
         </AccordionDetails>
       </Accordion>
@@ -193,12 +187,21 @@ export default function ShopFilterBar() {
         </AccordionSummary>
         <AccordionDetails>
           {filters.sortBy.map((filter, index) => (
-            <ToggleButtons
-              key={index}
-              listName={filter.listName}
-              listValue={filter.listValue}
-              tab="sort"
-            />
+            <ToggleButtonGroup
+                key={index}
+                value={value}
+                onChange={handleFormat}
+                aria-label="text formatting"
+              >
+                <ToggleButton onClick={(e) => 
+                    {
+                      setType('brand')
+                      handleCatFilter(e)
+                    }
+                  } value={filter.listValue} aria-label="bold">
+                  {filter.listName}
+                </ToggleButton>
+               </ToggleButtonGroup>
           ))}
         </AccordionDetails>
       </Accordion>
@@ -221,7 +224,7 @@ export default function ShopFilterBar() {
                 <ToggleButton onClick={(e) => 
                     {
                       setType('brand')
-                      handleFilter(e)
+                      handleBrandFilter(e)
                     }
                   } value={filter.listValue} aria-label="bold">
                   {filter.listName}
