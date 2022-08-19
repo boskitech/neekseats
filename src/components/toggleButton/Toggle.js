@@ -2,13 +2,10 @@ import * as React from "react";
 import MuiToggleButton from "@mui/material/ToggleButton";
 import MuiToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { styled } from "@mui/system";
-
-export default function ToggleButtons({ listName, listValue }) {
-  const [value, setValue] = React.useState(() => []);
-
-  const handleFormat = (event, newValue) => {
-    setValue(newValue);
-  };
+// import {
+//   fetchProductsByFilter,
+// } from "../../reducers/productSlice";
+// import { useDispatch } from "react-redux";
 
   const ToggleButton = styled(MuiToggleButton)(({ theme }) => ({
     display: "block",
@@ -43,13 +40,41 @@ export default function ToggleButtons({ listName, listValue }) {
     marginTop: "-5px",
   }));
 
+
+export default function ToggleButtons({ listName, listValue, tab }) {
+  const [value, setValue] = React.useState(() => []);
+  // const [brandArr, setBrandArr] = React.useState(() => [])
+  const [brandArr, setBrandArr] = React.useState([])
+
+  const handleFormat = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  function handleFilter({listValue, tab}){
+
+    const meta = {
+        "brand": [],
+        "category": []
+    }
+
+    if(tab === "brand"){
+      setBrandArr([...brandArr, listValue])
+        meta["brand"].push(brandArr)
+    }else{
+        meta["category"].push(listValue)
+    }
+
+    console.log(brandArr)
+    
+  }
+
   return (
     <ToggleButtonGroup
       value={value}
       onChange={handleFormat}
       aria-label="text formatting"
     >
-      <ToggleButton value={listValue} aria-label="bold">
+      <ToggleButton onClick={() => handleFilter({listValue, listName, tab})} value={listValue} aria-label="bold">
         {listName}
       </ToggleButton>
     </ToggleButtonGroup>
