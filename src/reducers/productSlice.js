@@ -72,7 +72,7 @@ const productsSlice = createSlice({
       state.oneProdStatus = "idle";
     },
     newestItems: (state) => {
-      state.products = state.products.reverse()
+      state.products = state.products.sort((a,b) => parseInt(b.productQuantity) - parseInt(a.productQuantity))
     },
     lowestItems: (state) => {
       state.products = state.products.sort((a,b) => parseFloat(a.productPrice) - parseFloat(b.productPrice))
