@@ -8,6 +8,9 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import MuiToggleButton from "@mui/material/ToggleButton";
 import MuiToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import {
+  newestItems,
+  highestItems,
+  lowestItems,
   fetchProducts,
   fetchProductsByFilter,
 } from "../../reducers/productSlice";
@@ -105,7 +108,6 @@ export default function ShopFilterBar() {
   const [brandArr, setBrandArr] = React.useState([])
   const [categoryArr, setCategoryArr] = React.useState([])
   const [action, setAction] = React.useState(false)
-  const [type, setType] = React.useState('')
   const dispatch = useDispatch()
 
   const handleFormat = (event, newValue) => {
@@ -120,6 +122,16 @@ export default function ShopFilterBar() {
       setBrandArr(prev => [...prev, data])
     }
     setAction(true)
+  }
+
+  function handleSort(e){
+    if(e.target.value === 'newest'){
+      dispatch(newestItems())
+    }else if(e.target.value === 'lowest'){
+      dispatch(lowestItems())
+    }else if(e.target.value === 'highest'){
+      dispatch(highestItems())
+    }
   }
 
   function handleCatFilter(e){
@@ -145,7 +157,7 @@ export default function ShopFilterBar() {
       }
     }
   // eslint-disable-next-line
-  }, [action, type, brandArr, categoryArr])
+  }, [action, brandArr, categoryArr])
 
   return (
     <div>
@@ -161,16 +173,11 @@ export default function ShopFilterBar() {
           {filters.categories.map((filter, index) => (
             <ToggleButtonGroup
                 key={index}
-                value={value}
                 onChange={handleFormat}
                 aria-label="text formatting"
               >
-                <ToggleButton onClick={(e) => 
-                    {
-                      setType('category')
-                      handleCatFilter(e)
-                    }
-                  } value={filter.listValue} aria-label="bold">
+                <ToggleButton onClick={(e) => handleCatFilter(e) }
+                  value={filter.listValue} aria-label="bold">
                   {filter.listName}
                 </ToggleButton>
                </ToggleButtonGroup>
@@ -190,15 +197,12 @@ export default function ShopFilterBar() {
             <ToggleButtonGroup
                 key={index}
                 value={value}
+                exclusive
                 onChange={handleFormat}
                 aria-label="text formatting"
               >
-                <ToggleButton onClick={(e) => 
-                    {
-                      setType('brand')
-                      handleCatFilter(e)
-                    }
-                  } value={filter.listValue} aria-label="bold">
+                <ToggleButton onClick={(e) => handleSort(e) }
+                    value={filter.listValue} aria-label="bold">
                   {filter.listName}
                 </ToggleButton>
                </ToggleButtonGroup>
@@ -221,12 +225,8 @@ export default function ShopFilterBar() {
                 onChange={handleFormat}
                 aria-label="text formatting"
               >
-                <ToggleButton onClick={(e) => 
-                    {
-                      setType('brand')
-                      handleBrandFilter(e)
-                    }
-                  } value={filter.listValue} aria-label="bold">
+                <ToggleButton onClick={(e) => handleBrandFilter(e) } 
+                  value={filter.listValue} aria-label="bold">
                   {filter.listName}
                 </ToggleButton>
                </ToggleButtonGroup>

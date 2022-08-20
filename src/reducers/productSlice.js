@@ -52,8 +52,6 @@ export const fetchProductsByFilter = createAsyncThunk(
 );
 
 
-
-
 const initialState = {
   products: [],
   product: [],
@@ -73,6 +71,15 @@ const productsSlice = createSlice({
     changeStatus: (state) => {
       state.oneProdStatus = "idle";
     },
+    newestItems: (state) => {
+      state.products = state.products.reverse()
+    },
+    lowestItems: (state) => {
+      state.products = state.products.sort((a,b) => parseFloat(a.productPrice) - parseFloat(b.productPrice))
+    },
+    highestItems: (state) => {
+      state.products = state.products.sort((a,b) => parseFloat(b.productPrice) - parseFloat(a.productPrice))
+    }
   },
   extraReducers(builder) {
     builder
@@ -126,7 +133,7 @@ const productsSlice = createSlice({
   },
 });
 
-export const { changeStatus } = productsSlice.actions;
+export const { changeStatus, newestItems, lowestItems, highestItems } = productsSlice.actions;
 export const productStatus = (state) => state.products.status;
 export const OneProdStatus = (state) => state.products.oneProdStatus;
 export const selectSearchStatus = (state) => state.products.searchStatus;
