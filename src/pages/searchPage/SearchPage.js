@@ -64,7 +64,6 @@ const SearchPage = () => {
           .post("https://netporch.herokuapp.com/api/wishlist/", data, {})
           .then((res) => {
             setWishList([...wishList, product]);
-            console.log(res);
           })
           .catch((err) => {
             console.log(err);

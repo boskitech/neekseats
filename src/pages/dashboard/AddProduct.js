@@ -113,7 +113,6 @@ const AddProduct = React.memo(() => {
       .then((res) => alert("Success"))
       .catch((err) => console.log(err));
 
-    console.log(productData);
   };
 
   return (

@@ -64,7 +64,6 @@ export default function ToggleButtons({ listName, listValue, tab }) {
         meta["category"].push(listValue)
     }
 
-    console.log(brandArr)
     
   }
 

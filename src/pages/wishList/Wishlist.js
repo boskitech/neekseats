@@ -57,7 +57,6 @@ const WishList = () => {
         })
         .catch((err) => {
           setLoader(false);
-          console.log(err);
         });
     } else {
     }

@@ -57,7 +57,6 @@ const Orders = () => {
         })
         .catch((err) => {
           setLoader(false);
-          console.log(err);
         });
     } else {
     }

@@ -8,9 +8,11 @@ const Footer = () => {
   const StyledFooter = styled("div")(({ theme }) => ({
     width: "100%",
     height: "auto",
-    backgroundColor: "#fffdf8",
+    backgroundColor: "#fffdf5",
     color: "black",
     margin: "auto",
+    padding:'50px 0px',
+    borderTop: '1px solid #efefef',
     [theme.breakpoints.down("md")]: {
       height: "auto",
     },

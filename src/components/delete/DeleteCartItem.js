@@ -22,7 +22,6 @@ export default function DeleteBar({ action }) {
     setOpen(false);
     dispatch(setDeleteModal(false));
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user._id);
     dispatch(fetchCartProducts(user._id));
   };
 
