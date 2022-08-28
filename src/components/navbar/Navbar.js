@@ -173,7 +173,7 @@ const Navbar = () => {
               Login
             </StyledLoginButton>
           ) : (
-            <AccountMenu user={userd.firstname} />
+            <AccountMenu sx={{mt:'10px'}} user={userd.firstname} />
           )}
         </ListItem>
       </List>
