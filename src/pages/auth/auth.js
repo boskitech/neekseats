@@ -59,6 +59,9 @@ const StyledGridLoginButton = styled(LoadingButton)(({ theme }) => ({
   margin: "10px auto",
   fontWeight: 600,
   "&:hover": { backgroundColor: "#2f53a5", color: "white" },
+  "&:disabled": {
+    opacity:0.7
+  },
   [theme.breakpoints.down("md")]: {
     width: "100%",
   },
