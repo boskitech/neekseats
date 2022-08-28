@@ -188,7 +188,7 @@ const Navbar = () => {
         sx={{ boxShadow: scrolled ? "0 0 10px #afafaf" : "none" }}
       >
         <StyledToolBar>
-          <HeaderText>
+          <HeaderText onClick={() => navigate("/")} style={{cursor:'pointer'}}>
             <span style={{ color: "orange", fontSize: "28px" }}>Net</span>Porch
           </HeaderText>
           <Slide
