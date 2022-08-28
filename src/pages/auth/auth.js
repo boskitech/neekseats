@@ -12,6 +12,7 @@ import {
 } from "../../reducers/usersSlice";
 import { useNavigate } from "react-router-dom";
 import { fetchCartProducts } from "../../reducers/cartSlice";
+import AlertBar from "../../components/alertBar/AlertBar";
 
 const StyledGridLoginSideDiv = styled(Grid)(({ theme }) => ({
   width: "80%",
@@ -141,6 +142,24 @@ const Login = () => {
       exit={{ x: 200, scale: 0, opacity: 0 }}
       transition={{ type: "spring", duration: 0.5 }}
     >
+      {signInStatus === "failed" && (
+        <AlertBar
+          message="Incorrect sign in details. Check your details try again"
+          header="Error"
+          action={() => {}}
+          actionTitle=""
+          closeAction={() => {}}
+        />
+      )}
+      {registerStatus === "failed" && (
+        <AlertBar
+          message="Could not register. Check your details try again"
+          header="Error"
+          action={() => {}}
+          actionTitle=""
+          closeAction={() => {}}
+        />
+      )}
       <StyledGridLoginSideDiv
         container
         direction="column"
