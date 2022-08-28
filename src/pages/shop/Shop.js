@@ -224,7 +224,7 @@ const Shop = () => {
                                     product.productName.substr(0, 60) + "..."
                                   )
                                 ) : (
-                                  <Skeleton height="20px" />
+                                  <Skeleton height="60px" />
                                 )}
                               </ShopStyles.StyledProductsDivHeader>
                               {loaded ? (
