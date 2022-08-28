@@ -168,7 +168,7 @@ export const ShopBody = styled("div")(({ theme }) => ({
     border: "1px solid #5fa5e3",
     position: gridView ? "absolute" : "relative",
     marginRight: !gridView && '200',
-    display: loaded && gridView ? "flex" : !gridView ? "none" : "flex",
+    display: loaded && gridView ? "flex" : !gridView || !loaded ? "none" : "none",
     justifyContent: gridView ? "flex-start" : "flex-end",
     alignContent: !gridView && "flex-end",
     color: "#5fa5e3",

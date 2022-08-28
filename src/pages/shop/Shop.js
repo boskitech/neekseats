@@ -180,7 +180,6 @@ const Shop = () => {
                                 name="favButton"
                                 gridView={gridView}
                                 loaded={loaded}
-                                // sx={{ border: checkFav(product._id) && "none" }}
                                 onClick={(e) =>
                                   handleFav({ event: e, product: product })
                                 }
@@ -209,7 +208,7 @@ const Shop = () => {
                                 sx={{ display: loaded ? "" : "none" }}
                                 gridView={gridView}
                               />
-                              <ShopStyles.StyledSkeletonImage
+                              <ShopStyles.StyledSkeletonImage gridView={gridView}
                                 variant="rectangular"
                                 sx={{ display: !loaded ? "flex" : "none" }}
                               />
