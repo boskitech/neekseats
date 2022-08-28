@@ -167,7 +167,7 @@ const Navbar = () => {
           </ListItemButton>
         </ListItem>
         <Divider />
-        <ListItem onClick={() => navigate("/login")} disablePadding>
+        <ListItem disablePadding>
           {!checkToken ? (
             <StyledLoginButton sx={{mt:'10px', width:'92%'}} onClick={() => navigate("/login")}>
               Login
@@ -251,7 +251,7 @@ const Navbar = () => {
             <Box style={{display:'flex'}}>
             <IconButton
               onClick={() => setSearch(!search)}
-              sx={{ color: "black" }}
+              sx={{ color: "black", display: { xs: "flex", md: "none", color: "black"}  }}
             >
               <SearchIcon /> 
             </IconButton>

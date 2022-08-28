@@ -148,7 +148,7 @@ export default function DeliveryBar() {
           <span>Total</span>
           <span>{formatToCurrency(totalPrice)}</span>
         </StyledSubTotalHeader>
-        <StyledBannerCartButton>Proceed to checkout</StyledBannerCartButton>
+        <StyledBannerCartButton sx={{backgroundColor: totalPrice === 0  && '#cfcfcf'}} disabled={totalPrice === 0}>Proceed to checkout</StyledBannerCartButton>
       </StyledSubTotal>
     </Box>
   );

@@ -130,7 +130,7 @@ const Login = () => {
     if (signInStatus === "succeeded") {
       const user = JSON.parse(localStorage.getItem("user"));
       dispatch(fetchCartProducts(user.id));
-      navigate("/shop");
+      navigate(-1);
     }
   }, [signInStatus, registerStatus, navigate, dispatch]);
 

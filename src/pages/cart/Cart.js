@@ -539,7 +539,8 @@ const Cart = () => {
       <StyledMobileCheckoutButton
         onClick={handleClickOpen}
         startIcon={<ShoppingCartCheckoutIcon />}
-      >
+        sx={{backgroundColor: cart.length === 0  && '#cfcfcf'}}
+     >
         Checkout
       </StyledMobileCheckoutButton>
     </motion.div>
