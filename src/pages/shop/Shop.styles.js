@@ -152,7 +152,8 @@ export const ShopBody = styled("div")(({ theme }) => ({
   shouldForwardProp: (prop) => prop !== "gridView"
 })(({ theme, gridView }) => ({
     float: !gridView && "left",
-    margin: !gridView ? "45px 20px" : "0px 8px",
+    width: !gridView && '75%',
+    margin: !gridView ? "45px 10px" : "0px 8px",
     [theme.breakpoints.down("md")]: {
       margin: !gridView && "20px 0 0 0",
       float: !gridView && "left",

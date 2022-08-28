@@ -221,7 +221,7 @@ const Shop = () => {
                                   gridView ? (
                                     product.productName.substr(0, 50) + "..."
                                   ) : (
-                                    product.productName.substr(0, 60) + "..."
+                                    product.productName.substr() + ""
                                   )
                                 ) : (
                                   <Skeleton height="60px" />
@@ -235,7 +235,7 @@ const Shop = () => {
                                   sx={{ margin: "10px auto" }}
                                 />
                               ) : (
-                                <Skeleton />
+                                <Skeleton sx={{ marginTop: "-10px", height:'30px' }} />
                               )}
                               <div style={{display:!gridView && 'flex', flexDirection:'row', justifyContent:'space-between'}}>
                               <ShopStyles.StyledProductsDivText gridView={gridView}>
@@ -244,7 +244,7 @@ const Shop = () => {
                                     parseInt(product.productPrice)
                                   )
                                 ) : (
-                                  <Skeleton />
+                                  <Skeleton sx={{ marginTop: "10px", height:'30px' }}/>
                                 )}{" "}
                               </ShopStyles.StyledProductsDivText>
                                <ShopStyles.StyledFabButton2

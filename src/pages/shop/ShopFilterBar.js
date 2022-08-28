@@ -173,6 +173,7 @@ export default function ShopFilterBar() {
           {filters.categories.map((filter, index) => (
             <ToggleButtonGroup
                 key={index}
+                value={value}
                 onChange={handleFormat}
                 aria-label="text formatting"
               >
