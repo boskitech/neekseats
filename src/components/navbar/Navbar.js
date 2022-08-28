@@ -63,9 +63,6 @@ const StyledLoginButton = styled(Button)(({ theme }) => ({
   width: "120px",
   marginLeft: "10px",
   "&:hover": { backgroundColor: "#2f53a5", color: "white" },
-  [theme.breakpoints.down("md")]: {
-    display: "none",
-  },
 }));
 
 const StyledAppBAr = styled(AppBar)(({ theme }) => ({
@@ -166,20 +163,18 @@ const Navbar = () => {
         <Divider />
         <ListItem onClick={() => navigate("/contact")} disablePadding>
           <ListItemButton>
-            <ListItemText primary="contact" />
-          </ListItemButton>
-        </ListItem>
-        <Divider />
-        <ListItem onClick={() => navigate("/cart")} disablePadding>
-          <ListItemButton>
-            <ListItemText primary="Cart" />
+            <ListItemText primary="Contact" />
           </ListItemButton>
         </ListItem>
         <Divider />
         <ListItem onClick={() => navigate("/login")} disablePadding>
-          <ListItemButton>
-            <ListItemText primary="Login" />
-          </ListItemButton>
+          {!checkToken ? (
+            <StyledLoginButton sx={{mt:'10px', width:'92%'}} onClick={() => navigate("/login")}>
+              Login
+            </StyledLoginButton>
+          ) : (
+            <AccountMenu user={userd.firstname} />
+          )}
         </ListItem>
       </List>
       <Divider />
@@ -253,16 +248,35 @@ const Navbar = () => {
                 <AccountMenu user={userd.firstname} />
               )}
             </Box>
+            <Box style={{display:'flex'}}>
+            <IconButton
+              onClick={() => setSearch(!search)}
+              sx={{ color: "black" }}
+            >
+              <SearchIcon /> 
+            </IconButton>
+            <IconButton
+                onClick={() => navigate("/cart")}
+                sx={{ color: "black", display: { xs: "flex", md: "none", color: "black"} }}
+              >
+                <Badge badgeContent={cart.length} color="primary">
+                  <ShoppingCartOutlinedIcon />
+                </Badge>
+              </IconButton>
             <IconButton
               onClick={toggleDrawer("left", true)}
-              sx={{ display: { xs: "block", md: "none", color: "black" } }}
+              sx={{ display: { xs: "flex", md: "none", color: "black" } }}
             >
               <MenuIcon />
             </IconButton>
+            </Box>
           </Box>
         </StyledToolBar>
       </StyledAppBAr>
       <Drawer open={state["left"]} onClose={toggleDrawer("left", false)}>
+        <HeaderText sx={{textAlign:'center', margin:'20px 0'}}>
+          <span style={{ color: "orange", fontSize: "28px" }}>Net</span>Porch
+        </HeaderText>
         {list("left")}
       </Drawer>
     </div>

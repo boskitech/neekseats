@@ -99,6 +99,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loader, setLoader] = useState("");
+  const [loader2, setLoader2] = useState("");
   const signInStatus = useSelector(loginStatus);
   const registerStatus = useSelector(addUserStatus);
 
@@ -124,6 +125,7 @@ const Login = () => {
 
   useEffect(() => {
     setLoader(signInStatus);
+    setLoader2(registerStatus);
     if (registerStatus === "succeeded") setActionType("Login");
     if (signInStatus === "succeeded") {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -310,18 +312,18 @@ const Login = () => {
           >
             <StyledGridLoginButton
               sx={{
-                backgroundColor: loader === "loading" ? "#dfdfdf" : "#c73217",
+                backgroundColor: loader2 === "loading" ? "#dfdfdf" : "#c73217",
                 "&:hover": {
-                  backgroundColor: loader === "loading" && "#dfdfdf",
+                  backgroundColor: loader2 === "loading" && "#dfdfdf",
                 },
                 textAlign: "center",
               }}
-              loading={loader === "loading"}
-              disabled={loader === "loading" || email === "" || password === "" || firstName === "" || lastName === "" || confirmPassword === ""}
+              loading={loader2 === "loading"}
+              disabled={loader2 === "loading" || email === "" || password === "" || firstName === "" || lastName === "" || confirmPassword === ""}
               loadingPosition="center"
               onClick={handleRegister}
             >
-              {loader !== "loading" && "Register"}
+              {loader2 !== "loading" && "Register"}
             </StyledGridLoginButton>
           </Slide>
         </Grid>
