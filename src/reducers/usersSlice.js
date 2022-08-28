@@ -3,7 +3,7 @@ import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
-  const response = await axios.get("http://localhost:5200/api/users/getusers");
+  const response = await axios.get("https://netporch.herokuapp.com/users/getusers");
   return response.data;
 });
 
@@ -11,7 +11,7 @@ export const addUser = createAsyncThunk(
   "users/addUser",
   async (initialPost) => {
     const response = await axios.post(
-      "http://localhost:5200/api/users/register",
+      "https://netporch.herokuapp.com/users/register",
       initialPost,
       {}
     );
@@ -23,7 +23,7 @@ export const loginUser = createAsyncThunk(
   "users/loginUser",
   async (loginPost) => {
     const response = await axios.post(
-      "http://localhost:5200/api/users/login/",
+      "https://netporch.herokuapp.com/users/login/",
       loginPost,
       {}
     );

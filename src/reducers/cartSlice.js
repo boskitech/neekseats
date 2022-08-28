@@ -5,7 +5,7 @@ export const fetchCartProducts = createAsyncThunk(
   "cart/fetchCartProducts",
   async (userid) => {
     const response = await axios.get(
-      `http://localhost:5200/api/cart/user/${userid}`
+      `https://netporch.herokuapp.com/api/cart/user/${userid}`
     );
     return response.data;
   }
@@ -15,7 +15,7 @@ export const addToCart = createAsyncThunk(
   "cart/addToCart",
   async (postData) => {
     const response = await axios.post(
-      `http://localhost:5200/api/cart/`,
+      `https://netporch.herokuapp.com/api/cart/`,
       postData,
       {}
     );
@@ -28,7 +28,7 @@ export const patchQuantity = createAsyncThunk(
   async ({ itemId, quantity }) => {
     const data = { quantity: quantity };
     const response = await axios.patch(
-      `http://localhost:5200/api/cart/quantity/${itemId}`,
+      `https://netporch.herokuapp.com/api/cart/quantity/${itemId}`,
       data,
       {}
     );
@@ -40,7 +40,7 @@ export const patchColor = createAsyncThunk(
   "cart/patchColor",
   async ({ itemId, color }) => {
     const response = await axios.patch(
-      `http://localhost:5200/api/cart/colour/${itemId}`,
+      `https://netporch.herokuapp.com/api/cart/colour/${itemId}`,
       { color: color },
       {}
     );
@@ -52,7 +52,7 @@ export const deleteItem = createAsyncThunk(
   "cart/deleteItem",
   async (itemId) => {
     const response = await axios.delete(
-      `http://localhost:5200/api/cart/${itemId}`
+      `https://netporch.herokuapp.com/api/cart/${itemId}`
     );
     return response.data;
   }
@@ -60,7 +60,7 @@ export const deleteItem = createAsyncThunk(
 
 export const clearCart = createAsyncThunk("cart/clearCart", async (userid) => {
   const response = await axios.delete(
-    `http://localhost:5200/api/cart/clearcart/${userid}`
+    `https://netporch.herokuapp.com/api/cart/clearcart/${userid}`
   );
   return response.data;
 });

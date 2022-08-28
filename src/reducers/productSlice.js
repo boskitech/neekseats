@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const response = await axios.get("http://localhost:5200/api/product/");
+    const response = await axios.get("https://netporch.herokuapp.com/api/product/");
     return response.data;
   }
 );
@@ -13,7 +13,7 @@ export const fetchOneProduct = createAsyncThunk(
   "products/fetchOneProduct",
   async (id) => {
     const response = await axios.get(
-      `http://localhost:5200/api/product/getone/${id}`
+      `https://netporch.herokuapp.com/api/product/getone/${id}`
     );
     return response.data;
   }
@@ -23,7 +23,7 @@ export const fetchSearchProducts = createAsyncThunk(
   "products/fetchSearchProducts",
   async (key) => {
     const response = await axios.get(
-      `http://localhost:5200/api/product/search/${key}`
+      `https://netporch.herokuapp.com/api/product/search/${key}`
     );
     return response.data;
   }
@@ -33,7 +33,7 @@ export const fetchProductByCategory = createAsyncThunk(
   "products/fetchProductByCategory",
   async (category) => {
     const response = await axios.get(
-      `http://localhost:5200/api/product/category/${category}`
+      `https://netporch.herokuapp.com/api/product/category/${category}`
     );
     return response.data;
   }
@@ -43,7 +43,7 @@ export const fetchProductsByFilter = createAsyncThunk(
   "products/fetchProductByFilter",
   async (meta) => {
     const response = await axios.post(
-      `http://localhost:5200/api/product/filter/`,
+      `https://netporch.herokuapp.com/api/product/filter/`,
       meta,
       {}
     );

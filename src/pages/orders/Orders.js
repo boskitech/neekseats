@@ -50,7 +50,7 @@ const Orders = () => {
       setLoader(true);
       const user = JSON.parse(localStorage.getItem("user"));
       axios
-        .get(`http://localhost:5200/api/orders/${user._id}`)
+        .get(`https://netporch.herokuapp.com/api/orders/${user._id}`)
         .then((res) => {
           setOrders(res.data);
           setLoader(false);

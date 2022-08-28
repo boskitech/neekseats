@@ -332,7 +332,7 @@ const Cart = () => {
                       <Grid item xs={3}>
                         <StyledCartImageDiv>
                           <StyledCartImage
-                            src={`http://localhost:5200/uploads/${item.cartItemImage}`}
+                            src={`https://netporch.herokuapp.com/uploads/${item.cartItemImage}`}
                           ></StyledCartImage>
                         </StyledCartImageDiv>
                       </Grid>

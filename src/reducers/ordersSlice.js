@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchProducts = createAsyncThunk(
   "users/fetchProducts",
   async () => {
-    const response = await axios.get("http://localhost:5200/api/product/");
+    const response = await axios.get("https://netporch.herokuapp.com/api/product/");
     return response.data;
   }
 );
@@ -14,7 +14,7 @@ export const fetchOneProduct = createAsyncThunk(
   "users/fetchUser",
   async (id) => {
     const response = await axios.get(
-      `http://localhost:5000/api/product/getone/${id}`
+      `https://netporch.herokuapp.com/api/product/getone/${id}`
     );
     return response.data;
   }
@@ -24,7 +24,7 @@ export const fetchProductByCategory = createAsyncThunk(
   "users/fetchUser",
   async (category) => {
     const response = await axios.get(
-      `http://localhost:5000/api/product/category/${category}`
+      `https://netporch.herokuapp.com/api/product/category/${category}`
     );
     return response.data;
   }

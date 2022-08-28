@@ -59,7 +59,7 @@ const Shop = () => {
           wishItemImage: product.productImage[0].image,
         };
         axios
-          .post("http://localhost:5200/api/wishlist/", data, {})
+          .post("https://netporch.herokuapp.com/api/wishlist/", data, {})
           .then((res) => {
             setWishList([...wishList, product]);
             console.log(res);
@@ -204,7 +204,7 @@ const Shop = () => {
                               )}
                             </ShopStyles.StyledFabButton>
                             <ShopStyles.StyledProductsImage
-                              src={`http://localhost:5200/uploads/${product.productImage[0].image}`}
+                              src={`https://netporch.herokuapp.com/uploads/${product.productImage[0].image}`}
                               onLoad={() => setLoaded(true)}
                               sx={{ display: loaded ? "" : "none" }}
                               gridView={gridView}

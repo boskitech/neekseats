@@ -50,7 +50,7 @@ const WishList = () => {
       setLoader(true);
       const user = JSON.parse(localStorage.getItem("user"));
       axios
-        .get(`http://localhost:5200/api/wishlist/user/${user._id}`)
+        .get(`https://netporch.herokuapp.com/api/wishlist/user/${user._id}`)
         .then((res) => {
           setWishList(res.data);
           setLoader(false);

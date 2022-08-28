@@ -109,7 +109,7 @@ const AddProduct = React.memo(() => {
     formData.append("meta", JSON.stringify(productData));
 
     axios
-      .post("http://localhost:5200/api/product/", formData, {})
+      .post("https://netporch.herokuapp.com/api/product/", formData, {})
       .then((res) => alert("Success"))
       .catch((err) => console.log(err));
 

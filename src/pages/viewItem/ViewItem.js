@@ -399,7 +399,7 @@ const ViewItem = () => {
                         onClick={() => setImageUrl(item.image)}
                       >
                         <StyledProductsButttonImage
-                          src={`http://localhost:5200/uploads/${item.image}`}
+                          src={`https://netporch.herokuapp.com/uploads/${item.image}`}
                         ></StyledProductsButttonImage>
                       </ToggleButton>
                     ))}
@@ -412,11 +412,11 @@ const ViewItem = () => {
                 <StyledProductsDiv>
                   {imageUrl === "" ? (
                     <StyledProductsImage
-                      src={`http://localhost:5200/uploads/${oneProduct.productImage[0].image}`}
+                      src={`https://netporch.herokuapp.com/uploads/${oneProduct.productImage[0].image}`}
                     />
                   ) : (
                     <StyledProductsImage
-                      src={`http://localhost:5200/uploads/${imageUrl}`}
+                      src={`https://netporch.herokuapp.com/uploads/${imageUrl}`}
                     />
                   )}
                 </StyledProductsDiv>
