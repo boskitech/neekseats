@@ -172,50 +172,51 @@ const Shop = () => {
                           style={{ textDecoration: "none" }}
                         >
                           <ShopStyles.StyledProductsDiv gridView={gridView}>
-                            <ShopStyles.StyledFabButton
-                              size="small"
-                              color="primary"
-                              aria-label="add"
-                              name="favButton"
-                              gridView={gridView}
-                              loaded={loaded}
-                              // sx={{ border: checkFav(product._id) && "none" }}
-                              onClick={(e) =>
-                                handleFav({ event: e, product: product })
-                              }
-
-                            >
-                              {checkFav(product._id) ? (
-                                <FavoriteIcon
-                                  sx={{
-                                    display: "flex",
-                                    justifyContent: "flex-end",
-                                    margin: "auto",
-                                  }}
-                                />
-                              ) : (
-                                <FavoriteBorderOutlinedIcon
-                                  sx={{
-                                    display: "flex",
-                                    justifyContent: "flex-end",
-                                    margin: "auto",
-                                  }}
-                                />
-                              )}
-                            </ShopStyles.StyledFabButton>
-                            <ShopStyles.StyledProductsImage
-                              src={`https://netporch.herokuapp.com/uploads/${product.productImage[0].image}`}
-                              onLoad={() => setLoaded(true)}
-                              sx={{ display: loaded ? "" : "none" }}
-                              gridView={gridView}
-                            />
-                            <ShopStyles.StyledSkeletonImage
-                              variant="rectangular"
-                              sx={{ display: !loaded ? "" : "none" }}
-                            />
+                            <div>
+                              <ShopStyles.StyledFabButton
+                                size="small"
+                                color="primary"
+                                aria-label="add"
+                                name="favButton"
+                                gridView={gridView}
+                                loaded={loaded}
+                                // sx={{ border: checkFav(product._id) && "none" }}
+                                onClick={(e) =>
+                                  handleFav({ event: e, product: product })
+                                }
+                              >
+                                {checkFav(product._id) ? (
+                                  <FavoriteIcon
+                                    sx={{
+                                      display: "flex",
+                                      justifyContent: "flex-end",
+                                      margin: "auto",
+                                    }}
+                                  />
+                                ) : (
+                                  <FavoriteBorderOutlinedIcon
+                                    sx={{
+                                      display: "flex",
+                                      justifyContent: "flex-end",
+                                      margin: "auto",
+                                    }}
+                                  />
+                                )}
+                              </ShopStyles.StyledFabButton>
+                              <ShopStyles.StyledProductsImage
+                                src={`https://netporch.herokuapp.com/uploads/${product.productImage[0].image}`}
+                                onLoad={() => setLoaded(true)}
+                                sx={{ display: loaded ? "" : "none" }}
+                                gridView={gridView}
+                              />
+                              <ShopStyles.StyledSkeletonImage
+                                variant="rectangular"
+                                sx={{ display: !loaded ? "flex" : "none" }}
+                              />
+                            </div>
                             <ShopStyles.StyledProductDetails gridView={gridView}>
-                              <ShopStyles.StyledProductsDivHeader
-                                sx={{ overflow: "ellipse" }}
+                              <ShopStyles.StyledProductsDivHeader gridView={gridView}
+                                sx={{ overflow: "ellipse", textAlign:!gridView && 'left',  }}
                               >
                                 {loaded ? (
                                   gridView ? (
@@ -237,6 +238,7 @@ const Shop = () => {
                               ) : (
                                 <Skeleton />
                               )}
+                              <div style={{display:!gridView && 'flex', flexDirection:'row', justifyContent:'space-between'}}>
                               <ShopStyles.StyledProductsDivText gridView={gridView}>
                                 {loaded ? (
                                   formatToCurrency(
@@ -246,6 +248,38 @@ const Shop = () => {
                                   <Skeleton />
                                 )}{" "}
                               </ShopStyles.StyledProductsDivText>
+                               <ShopStyles.StyledFabButton2
+                                  size="small"
+                                  color="primary"
+                                  aria-label="add"
+                                  name="favButton"
+                                  gridView={gridView}
+                                  loaded={loaded}
+                                  // sx={{ border: checkFav(product._id) && "none" }}
+                                  onClick={(e) =>
+                                    handleFav({ event: e, product: product })
+                                  }
+
+                                >
+                                  {checkFav(product._id) ? (
+                                    <FavoriteIcon
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "flex-end",
+                                        margin: "auto",
+                                      }}
+                                    />
+                                  ) : (
+                                    <FavoriteBorderOutlinedIcon
+                                      sx={{
+                                        display: "flex",
+                                        justifyContent: "flex-end",
+                                        margin: "auto",
+                                      }}
+                                    />
+                                  )}
+                                </ShopStyles.StyledFabButton2>
+                              </div>
                             </ShopStyles.StyledProductDetails>
                           </ShopStyles.StyledProductsDiv>
                         </Link>

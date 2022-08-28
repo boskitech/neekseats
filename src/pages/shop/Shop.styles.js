@@ -50,7 +50,7 @@ export const ShopBody = styled("div")(({ theme }) => ({
     borderRadius: "5px",
     boxShadow: "0 0 6px #dfdfdf",
     overflow: "hidden",
-    // border: "1px solid #f6eedc",
+    transition: '.5s',
     padding: gridView && "0px 0px 20px 0px",
     background: "#fff",
     "&:hover": {
@@ -64,14 +64,15 @@ export const ShopBody = styled("div")(({ theme }) => ({
       height: gridView ? "auto" : "200px",
     },
     [theme.breakpoints.down("md")]: {
-      height: gridView ? "auto" : "200px",
+      height: gridView ? "500px" : "200px",
       "&:hover": {
         background: "#fff",
         cursor: "pointer",
       },
     },
     [theme.breakpoints.down("sm")]: {
-      height: gridView ? "auto" : "200px",
+      height: gridView ? "330px" : "auto",
+      paddingBottom:!gridView && '10px',
     },
   }));
 
@@ -83,8 +84,9 @@ export const ShopBody = styled("div")(({ theme }) => ({
     float: !gridView && "left",
     margin: gridView ? "20px auto" : "23px auto",
     [theme.breakpoints.down("md")]: {
-      width: gridView ? "150px" : "150px",
-      height: gridView ? "150px" : "150px",
+      float: !gridView && "left",
+      width: gridView ? "150px" : "110px",
+      height: gridView ? "150px" : "115px",
       margin: gridView ? "13px" : "10px 0px",
     },
   }));
@@ -104,13 +106,19 @@ export const ShopBody = styled("div")(({ theme }) => ({
     },
   }));
 
-  export const StyledProductsDivHeader = styled("div")(({ theme }) => ({
+  export const StyledProductsDivHeader = styled("div", {
+  shouldForwardProp: (prop) => prop !== "gridView"
+})(({ theme, gridView }) => ({
     fontSize: "16px",
     fontWeight: 500,
     color: "#555",
     marginTop: "0px",
     textAlign: "center",
     width: "100%",
+    height: gridView ? "50px" : "auto",
+    [theme.breakpoints.down("md")]: {
+      height: gridView ? "70px" : "auto",
+    },
   }));
 
   export const StyledProductsDivText = styled("div", {
@@ -123,6 +131,7 @@ export const ShopBody = styled("div")(({ theme }) => ({
     marginTop: "0px",
     [theme.breakpoints.down("md")]: {
       fontSize: "20px",
+      textAlign: !gridView && "left",
     },
   }));
 
@@ -145,7 +154,10 @@ export const ShopBody = styled("div")(({ theme }) => ({
     float: !gridView && "left",
     margin: !gridView ? "45px 20px" : "0px 8px",
     [theme.breakpoints.down("md")]: {
-      margin: !gridView && "40px 0 0 0",
+      margin: !gridView && "20px 0 0 0",
+      float: !gridView && "left",
+      width: !gridView && '200px',
+      textAlign:!gridView && 'left'
     },
   }));
 
@@ -155,7 +167,8 @@ export const ShopBody = styled("div")(({ theme }) => ({
     background: "#fff",
     border: "1px solid #5fa5e3",
     position: gridView ? "absolute" : "relative",
-    display: loaded ? "flex" : "none",
+    marginRight: !gridView && '200',
+    display: loaded && gridView ? "flex" : !gridView ? "none" : "flex",
     justifyContent: gridView ? "flex-start" : "flex-end",
     alignContent: !gridView && "flex-end",
     color: "#5fa5e3",
@@ -169,10 +182,38 @@ export const ShopBody = styled("div")(({ theme }) => ({
       zIndex: 999,
     },
     [theme.breakpoints.down("md")]: {
-      margin: gridView ? "8px" : "140px 15px 15px 15px",
+      margin: gridView && "8px",
       position: !gridView && "absolute",
       right: !gridView && "5px",
       border: "none",
+      "&:hover": {
+        background: "#fff",
+        border: "1px solid #fff",
+        color: "#fff",
+      },
+    },
+  }));
+
+  export const StyledFabButton2 = styled(Fab, {
+  shouldForwardProp: (prop) => prop !== "gridView" && prop !== "loaded"
+})(({ theme, gridView, loaded }) => ({
+    background: "#fff",
+    border: "1px solid #5fa5e3",
+    position: gridView ? "absolute" : "relative",
+    marginRight: !gridView && '200',
+    display: gridView ? "none" : "flex",
+    color: "#5fa5e3",
+    boxShadow: "none",
+    float: "right",
+    "&:hover": {
+      background: "#416cb7",
+      border: "1px solid #416cb7",
+      color: "#fff",
+      zIndex: 999,
+    },
+    [theme.breakpoints.down("md")]: {
+      border: "none",
+      marginTop:'-10px',
       "&:hover": {
         background: "#fff",
         border: "1px solid #fff",
