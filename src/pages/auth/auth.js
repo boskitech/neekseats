@@ -295,7 +295,7 @@ const Login = () => {
                 textAlign: "center",
               }}
               loading={loader === "loading"}
-              disabled={loader === "loading"}
+              disabled={loader === "loading" || email === "" || password === ""}
               loadingPosition="center"
               onClick={handleLogin}
             >
@@ -317,7 +317,7 @@ const Login = () => {
                 textAlign: "center",
               }}
               loading={loader === "loading"}
-              disabled={loader === "loading"}
+              disabled={loader === "loading" || email === "" || password === "" || firstName === "" || lastName === "" || confirmPassword === ""}
               loadingPosition="center"
               onClick={handleRegister}
             >

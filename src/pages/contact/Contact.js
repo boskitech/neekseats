@@ -70,17 +70,17 @@ const ContactUs = () => {
           <StyledContactMap />
         </Grid>
         <Grid item xs={7} sx={{ padding: "14px" }}>
-          <StyledContactHeader>Global HQ</StyledContactHeader>
+          <StyledContactHeader>Kaduna HQ</StyledContactHeader>
           <StyledContactSubHeader>
-            475 Brannan St.
+            35 Kanta Road
             <br />
             Suite 430
             <br />
-            San Francisco
+            Kaduna, Nigeria
             <br />
-            CA 94107
+            800218
             <br />
-            Phone: (650) 316-7500
+            Phone: +2348082214245
           </StyledContactSubHeader>
         </Grid>
       </StyledGrid>
@@ -89,15 +89,15 @@ const ContactUs = () => {
           <StyledContactMap />
         </Grid>
         <Grid item xs={7} sx={{ padding: "14px" }}>
-          <StyledContactHeader>Nigeria Head Office</StyledContactHeader>
+          <StyledContactHeader>Abuja Head Office</StyledContactHeader>
           <StyledContactSubHeader>
-            475 Brannan St.
+            211 Bagudu St.
             <br />
-            Suite 430
+            NNDC Building
             <br />
-            Lugard Hall
+            Maitama, Abuja Nigeria
             <br />
-            CA 94107
+            109410
             <br />
             Phone: +2348084417245
           </StyledContactSubHeader>
@@ -108,17 +108,17 @@ const ContactUs = () => {
           <StyledContactMap />
         </Grid>
         <Grid item xs={7} sx={{ padding: "14px" }}>
-          <StyledContactHeader>Mailing Adrdress</StyledContactHeader>
+          <StyledContactHeader>Lagos Head Office</StyledContactHeader>
           <StyledContactSubHeader>
-            475 Brannan St.
+            No. 23 Obasanjo St.
             <br />
-            Suite 430
+            Lekki Phase 2
             <br />
-            San Francisco
+            Lagos, Nigeria
             <br />
-            CA 94107
+            700289
             <br />
-            Phone: (650) 316-7500
+            Phone: +234909992229
           </StyledContactSubHeader>
         </Grid>
       </StyledGrid>

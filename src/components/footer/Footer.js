@@ -80,13 +80,7 @@ const Footer = () => {
     <StyledFooter sx={{}}>
       <StyledInerGrid container>
         <Grid item sm={3} xs={6}>
-          <StyledGridHeader>Our Services</StyledGridHeader>
-          <StyledGridButton onClick={() => navigate("/consult")}>
-            Consultation
-          </StyledGridButton>
-          <StyledGridButton onClick={() => navigate("/services")}>
-            Therapy
-          </StyledGridButton>
+          <StyledGridHeader>Services</StyledGridHeader>
           <StyledGridButton onClick={() => navigate("/contact")}>
             Quick Response
           </StyledGridButton>
@@ -96,13 +90,13 @@ const Footer = () => {
         </Grid>
         <Grid item sm={3} xs={6}>
           <StyledGridHeader>Terms & Condition</StyledGridHeader>
-          <StyledGridButton onClick={() => navigate("/services")}>
+          <StyledGridButton onClick={() => navigate("/about")}>
             Service
           </StyledGridButton>
-          <StyledGridButton onClick={() => navigate("/faq")}>
+          <StyledGridButton onClick={() => navigate("/about")}>
             Tips & Jesks
           </StyledGridButton>
-          <StyledGridButton onClick={() => navigate("/contact")}>
+          <StyledGridButton onClick={() => navigate("/about")}>
             Security
           </StyledGridButton>
           <StyledGridButton onClick={() => navigate("/about")}>

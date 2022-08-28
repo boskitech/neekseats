@@ -49,68 +49,62 @@ const AboutUs = () => {
       <StyledAboutTitle>About US</StyledAboutTitle>
       <StyledAboutSubTitle>The World's best online store</StyledAboutSubTitle>
       <StyledAboutText>
-        Consulta began over two decades ago by pioneering a better way of
-        working, helping businesses find more flexibility and connecting talent
-        with more opportunities.
+        NetPorch began over two years ago by pioneering a better way of
+        shopping, helping businesses find more flexibility and individuals shop with ease.
       </StyledAboutText>
       <StyledAboutQuoteText>
-        Our mission to create economic opportunities so people have better lives
-        has taken us so much further. As a result, we've become the world's work
-        marketplace where every day businesses of all sizes and independent
-        talent from around the globe meet here to accomplish incredible things.
+        Our mission to make online shopping and retail comfortable so people have better lives
+        has taken us so much further. As a result, we've become the world's best
+        marketplace where every day shopping of all sizes and quantities
+        from around the globe happen to accomplish incredible things.
       </StyledAboutQuoteText>
       <StyledAboutText>
-        Like for so many, Upwork has had a big impact on my life. I first came
-        to this company on the product team and over the years have understood
-        what makes this platform really work: the relationships.
+        Like for so many, NetPorch has had big impact on people's life. We started
+        this platform over two years ago and we have understood
+        what makes this platform really work: trust and reliability.
       </StyledAboutText>
-      <StyledAboutHeadingText>We see what you do</StyledAboutHeadingText>
+      <StyledAboutHeadingText>Everything you need in one place</StyledAboutHeadingText>
       <StyledAboutText>
-        I have personally seen the passion and commitment that every user puts
-        into their work here. Whether it's a quick powerpoint presentation or a
-        multi-year development project - both talent on Upwork and our clients
-        care about doing really good work because they love what they do. In
-        fact, we designed it that way. Our work marketplace aligns the goals of
-        our clients with the goals of talent on Upwork so that outcomes are
-        better and everyone grows in the same direction. You'll find tools to
-        develop your skills, evolve your business, and gain the control and
-        freedom you need for success.
-      </StyledAboutText>
-      <StyledAboutHeadingText>
-        Consulta is your workforce
-      </StyledAboutHeadingText>
-      <StyledAboutText>
-        If you're a client that's come here to get things done, use this
-        workforce of independent talent to build faster and transform your
-        business. If you're independent talent that's come here to realize your
-        potential, know that you are a valuable and instrumental part of
-        someone's team.
+        We have seen the passion and commitment that every user puts
+        into shopping with us. Whether it's an express delivery or an 
+        oversea delivery - We at NetPorch
+        care about attending to your needs with maximun satisfaction. In
+        fact, we designed it that way because we love attending of every customer. Our online marketplace aligns the needs of
+        our customers with the goals of products on NetPorch so that outcomes are
+        better and everyone grows in the same direction. You'll find products to
+        run your day-to-day activities, evolve your business, and gain the control and
+        freedom you need for a better life.
       </StyledAboutText>
       <StyledAboutHeadingText>
-        We make work more rewarding
+        NetPorch is your workforce
       </StyledAboutHeadingText>
       <StyledAboutText>
-        We see your vision, and everything we do is an effort to help you make
-        the connections that will turn that vision into reality, by building
-        your Virtual Talent Bench of trusted people.
+        If you're a company that's come here to get things done, use this
+        platform of various products to shop faster and transform your
+        business. If you're a person that's come here to buy our
+        products, know that you are a valuable and instrumental part of
+        our team.
+      </StyledAboutText>
+      <StyledAboutHeadingText>
+        We make shopping more rewarding and exciting
+      </StyledAboutHeadingText>
+      <StyledAboutText>
+        We see your needs, and everything we do is an effort to help you make
+        the shopping that will turn that vision into reality, by supplying
+        your most reliable products
         <br />
         <br />
         The impact is both economic and personal, in the everyday and in the
-        long run. When you find the right people, you stop working to get by and
-        start working strategically.
+        long run. When you find the right product, you start buying to get by and
+        start buying efficiently.
         <br />
-        <br />
-        That is when real opportunity emerges.
-        <br />
-        <br />I can say with confidence that the Upwork team - the team that
-        serves you the talent and you the client - is still driven by our
-        mission to create economic opportunity for our people around the world.
+        <br />I can say with confidence that the NetPorch team - the team that
+        serves you the best products- is still driven by our
+        mission to create simplified shopping experience for people around the world.
         <br />
         <br />
         You're our people now, and we're glad that you're here.
         <br />
-        <br />
-        We can't wait to see what you do.
       </StyledAboutText>
     </StyledAboutBody>
   );
