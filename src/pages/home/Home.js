@@ -33,13 +33,14 @@ const Home = () => {
               </HomeStyles.StyledBannerText>
               <HomeStyles.StyledBannerCartButton
                 startIcon={<AddShoppingCartIcon />}
-                onClick={() => navigate("/cart")}
+                onClick={() => navigate("/shop/62d74bfcf2f28b7c62e5b743")}
               >
                 Add to cart
               </HomeStyles.StyledBannerCartButton>
               <HomeStyles.StyledBannerWatchtButton
                 startIcon={<HomeStyles.StyledWatchLogo />}
-              >
+                onClick={() => navigate("/shop/62d74bfcf2f28b7c62e5b743")}
+              > 
                 More info &gt;
               </HomeStyles.StyledBannerWatchtButton>
             </HomeStyles.StyledLeftSideBanner>
@@ -181,7 +182,9 @@ const Home = () => {
               Sports Tracker
               <HomeStyles.StyledTrackIcon />
             </HomeStyles.StyledTrackList>
-            <HomeStyles.StyledTracKBuyButton variant="outlined">
+            <HomeStyles.StyledTracKBuyButton variant="outlined"
+                onClick={() => navigate("/shop/62d74bfcf2f28b7c62e5b743")}
+            >
               Buy Now
             </HomeStyles.StyledTracKBuyButton>
           </Grid>
@@ -222,7 +225,9 @@ const Home = () => {
                 Sports Tracker
                 <HomeStyles.StyledTrackIcon />
               </HomeStyles.StyledTrackList>
-              <HomeStyles.StyledTracKBuyNowButton>
+              <HomeStyles.StyledTracKBuyNowButton
+                onClick={() => navigate("/shop/62d74bfcf2f28b7c62e5b743")}
+              >
                 Buy Now
               </HomeStyles.StyledTracKBuyNowButton>
             </div>
@@ -239,7 +244,9 @@ const Home = () => {
         </HomeStyles.StyledPopularProductsText>
         <Grid container spacing={4}>
           <Grid item md={4} xs={12} data-aos="fade-up">
-            <HomeStyles.StyledPopularProductsDiv>
+            <HomeStyles.StyledPopularProductsDiv
+                onClick={() => navigate("/shop")}
+            >
               <HomeStyles.StyledPopularProductsImage src={Watch1} />
               <HomeStyles.StyledPopularProductsDivHeader>
                 Chronic Apple Watches
@@ -259,7 +266,9 @@ const Home = () => {
             </HomeStyles.StyledPopularProductsDiv>
           </Grid>
           <Grid item md={4} xs={12} data-aos="fade-up">
-            <HomeStyles.StyledPopularProductsDiv>
+            <HomeStyles.StyledPopularProductsDiv
+                onClick={() => navigate("/shop")}
+            >
               <HomeStyles.StyledPopularProductsImage src={Watch2} />
               <HomeStyles.StyledPopularProductsDivHeader>
                 Watch Proof Watches
@@ -279,7 +288,9 @@ const Home = () => {
             </HomeStyles.StyledPopularProductsDiv>
           </Grid>
           <Grid item md={4} xs={12} data-aos="fade-up">
-            <HomeStyles.StyledPopularProductsDiv>
+            <HomeStyles.StyledPopularProductsDiv 
+                onClick={() => navigate("/shop")}
+            >
               <HomeStyles.StyledPopularProductsImage src={Watch3} />
               <HomeStyles.StyledPopularProductsDivHeader>
                 Custom Strip Watches
@@ -316,7 +327,9 @@ const Home = () => {
               Time awaits no man. Why not take care of time with our smart wrist
               watches. The most affordable you can get anywhere across the net.
             </HomeStyles.StyledBestTimeText>
-            <BuyButton>See Products</BuyButton>
+            <BuyButton
+                onClick={() => navigate("/shop")}
+            >See Products</BuyButton>
           </Grid>
         </Grid>
       </HomeStyles.StyledBestTime>
@@ -332,7 +345,9 @@ const Home = () => {
               Get access to the most reliable set of smart watches with
               varieties of options
             </HomeStyles.StyledOfferBarText>
-            <BuyButton>Buy Now</BuyButton>
+            <BuyButton
+                onClick={() => navigate("/shop/62d747c0f2f28b7c62e5b72f")}
+            >Buy Now</BuyButton>
           </Grid>
           <Grid
             sx={{ display: { xs: "none", md: "block" } }}

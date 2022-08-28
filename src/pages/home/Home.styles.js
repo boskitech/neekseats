@@ -402,7 +402,12 @@ export const StyledPopularProductsDiv = styled("div")(({ theme }) => ({
   borderRadius: "5px",
   boxShadow: "0 0 10px #dfdfdf",
   backgroundColor: "white",
+  transition:'0.3s',
+  cursor:'pointer',
   marginTop: "20px",
+  '&:hover':{
+    backgroundColor: "#fff4f4",
+  }
 }));
 
 export const StyledPopularProductsImage = styled("img")(({ theme }) => ({
