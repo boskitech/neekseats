@@ -164,12 +164,6 @@ const StyledProductsButttonImage = styled("img")(({ theme }) => ({
   margin: "60px 0",
 }));
 
-// const StyledImageGrid = styled("img")(({ theme }) => ({
-//   width: "100px",
-//   height: "auto",
-//   margin: "10px auto",
-// }));
-
 const StyledProductsDivHeader = styled("div")(({ theme }) => ({
   fontSize: "23px",
   fontWeight: 500,
@@ -266,6 +260,16 @@ const StyledDiscriptionBar = styled("div")(({ theme }) => ({
   },
 }));
 
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+    marginBottom: "30px",
+    color:'#333', 
+    fontSize:'24px',
+  [theme.breakpoints.down("md")]: {
+    marginTop: "30px",
+    marginBottom: "0px",
+  },
+}));
+
 const ViewItem = () => {
   let params = useParams();
   let id = params.id;
@@ -358,7 +362,7 @@ const ViewItem = () => {
           closeAction={() => {}}
         />
       )}
-      <IconButton sx={{mb:'30px', color:'#333', fontSize:'24px'}} onClick={() => navigate("/shop")}><ArrowBackIcon/></IconButton>
+      <StyledIconButton sx={{}} onClick={() => navigate("/shop")}><ArrowBackIcon/></StyledIconButton>
       {status === "succeeded" ? (
         <>
           {" "}
