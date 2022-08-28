@@ -232,10 +232,10 @@ const Shop = () => {
                                   name="read-only"
                                   value={5}
                                   readOnly
-                                  sx={{ margin: "10px auto" }}
+                                  sx={{ margin: "0px auto",  height:'40px' }}
                                 />
                               ) : (
-                                <Skeleton sx={{ marginTop: "-10px", height:'30px' }} />
+                                <Skeleton sx={{ marginTop: "0px", height:'40px' }} />
                               )}
                               <div style={{display:!gridView && 'flex', flexDirection:'row', justifyContent:'space-between'}}>
                               <ShopStyles.StyledProductsDivText gridView={gridView}>
@@ -244,7 +244,7 @@ const Shop = () => {
                                     parseInt(product.productPrice)
                                   )
                                 ) : (
-                                  <Skeleton sx={{ marginTop: "10px", height:'30px' }}/>
+                                  <Skeleton sx={{ marginTop: "0px", height:'30px' }}/>
                                 )}{" "}
                               </ShopStyles.StyledProductsDivText>
                                <ShopStyles.StyledFabButton2
