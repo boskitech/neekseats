@@ -117,7 +117,7 @@ export const ShopBody = styled("div")(({ theme }) => ({
     width: "100%",
     height: gridView ? "50px" : "auto",
     [theme.breakpoints.down("md")]: {
-      height: gridView ? "70px" : "auto",
+      height: gridView ? "80px" : "auto",
     },
   }));
 

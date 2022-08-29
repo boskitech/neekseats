@@ -116,8 +116,8 @@ const Footer = () => {
             Porch
           </StyledGridLogo>
           <StyledGridText>
-            An affordable tertiary and multispecialty healthcare framework that
-            provides the best health care services you can find online.
+            An affordable online store with multispecialty in ecommerce that
+            provides the best online shopping experience you can find around the globe.
             <br />
             <br />
             Copyright 2022 - All Rights Reserved
