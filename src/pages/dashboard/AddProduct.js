@@ -157,7 +157,7 @@ const AddProduct = React.memo(() => {
               placeholder="Product Price"
               onChange={useCallback((e) => {
                 setProductPrice(e.target.value);
-              }, [])}
+              }, [])} 
             />
           </Grid>
           <Grid sx={{ margin: "auto" }} item>
