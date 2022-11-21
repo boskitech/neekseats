@@ -134,7 +134,7 @@ const AddProduct = React.memo(() => {
             <StyledGridLoginHeader sx={{ fontSize: "25px" }}>
               Add Items
             </StyledGridLoginHeader>
-          </Grid>
+          </Grid>   
           <Grid sx={{ margin: "auto" }} item>
             <StyledGridLoginInput
               placeholder="Product Name"
