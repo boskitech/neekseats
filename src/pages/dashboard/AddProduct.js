@@ -14,7 +14,7 @@ const StyledGridLoginSideDiv = styled(Grid)(({ theme }) => ({
     width: "90%",
     display: "block",
     height: "auto",
-    marginTop: "100px", 
+    marginTop: "100px",
   },
 }));
 
