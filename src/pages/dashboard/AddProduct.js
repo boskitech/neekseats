@@ -25,7 +25,7 @@ const StyledGridLoginHeader = styled("div")(({ theme }) => ({
   textAlign: "center",
   fontWeight: 500,
   [theme.breakpoints.down("md")]: {
-    margin: "0px 0px",
+    margin: "0px 0px", 
   },
 }));
 
