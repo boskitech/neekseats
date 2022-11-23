@@ -103,6 +103,7 @@ const AddProduct = React.memo(() => {
       productDescription: productDescription,
     };
 
+    
     for (const single_image of productImages) {
       formData.append("productImage", single_image);
     }
