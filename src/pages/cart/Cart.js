@@ -293,7 +293,7 @@ const Cart = () => {
       transition={{ type: "spring", duration: 0.5 }}
     >
       <Dialog
-        open={open}
+        open={open} 
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
